@@ -96,7 +96,7 @@
     .nav-cta:hover { background: #e5e5e5; }
 
     /* ===== HERO ===== */
-    #hero { padding: 96px 24px 0; border-top: none; padding-bottom: 0;}
+    #hero {  border-top: none; padding-bottom: 0; padding-top: 120px; padding-left: 40px; padding-right: 40px; padding-bottom: 0;}
     .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -141,9 +141,9 @@
     /* ===== PORTFOLIO ===== */
     .port-hdr { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
     .port-hdr p { color: var(--t65); max-width: 480px; }
-    .port-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-@media (min-width: 640px) { .port-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; } }
-@media (min-width: 1024px) { .port-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+    
+@media (min-width: 640px) {  }
+@media (min-width: 1024px) {  }
     .port-card { display: block; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: #111; color: #fff; transition: transform .3s ease; }
     .port-card:hover { transform: translateY(-2px); }
     .port-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
@@ -304,14 +304,14 @@
       :root { --px: 40px; --py: 128px; }
       .site-nav { padding: 16px 40px; }
       .nav-links { display: flex; }
-      #hero { padding: 120px 40px 0; padding-bottom: 0;}
+      #hero {  padding-bottom: 0; padding-top: 120px; padding-left: 40px; padding-right: 40px; padding-bottom: 0;}
       .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
       .hero-portrait img { height: 600px; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
       .port-hdr { grid-template-columns: 1fr 1fr; align-items: flex-end; }
       .port-hdr p { justify-self: flex-end; }
-      .port-grid { grid-template-columns: repeat(2,1fr); }
+      
       .prx-box { grid-template-columns: 1fr 1.4fr; }
       .prx-left { border-bottom: none; border-right: 1px solid var(--border); }
       .prx-feats { grid-template-columns: repeat(2,1fr); gap: 0 24px; }
@@ -326,7 +326,16 @@
       .cta-box { padding: 80px; }
       .fq-q { font-size: 18px; }
     }
-  </style>
+  
+.port-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; }
+@media (min-width: 640px) { .port-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 18px !important; } }
+@media (min-width: 1024px) { .port-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; } }
+
+.port-body { padding: 14px 16px 16px !important; }
+.port-body h3, .port-card h3 { font-size: 17px !important; line-height: 1.2 !important; margin: 6px 0 4px !important; }
+.port-body p, .port-card p { font-size: 13px !important; line-height: 1.5 !important; }
+.port-meta { font-size: 11px !important; }
+</style>
 
 
 <style>
