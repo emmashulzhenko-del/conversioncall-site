@@ -25,28 +25,47 @@
 
     /* ===== TOKENS ===== */
     :root {
-      --bg: #000000;
-      --surface: #0a0a0a;
-      --border: rgba(255,255,255,0.10);
-      --white: #ffffff;
-      --t90: rgba(255,255,255,0.90);
-      --t85: rgba(255,255,255,0.85);
-      --t70: rgba(255,255,255,0.70);
-      --t65: rgba(255,255,255,0.65);
-      --t60: rgba(255,255,255,0.60);
-      --t55: rgba(255,255,255,0.55);
-      --t50: rgba(255,255,255,0.50);
-      --t45: rgba(255,255,255,0.45);
-      --t40: rgba(255,255,255,0.40);
-      --t20: rgba(255,255,255,0.20);
-      --font: 'Geist', system-ui, -apple-system, sans-serif;
-      --serif: 'Instrument Serif', Georgia, serif;
-      --max-w: 1280px;
-      --px: 24px;
-      --py: 96px;
-      --r: 24px;
-      --rf: 9999px;
-    }
+  /* COLOR SYSTEM - off-black not pure black */
+  --bg: #0a0a0a;
+  --bg-elevated: #111111;
+  --bg-section-alt: #0d0d0d;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --text: #ffffff;
+  --text-muted: rgba(255,255,255,0.65);
+  --text-subtle: rgba(255,255,255,0.45);
+  --accent: #ff6b1a;
+  
+  /* SPACING SYSTEM - all clamp() based, zoom-safe */
+  --py-section: clamp(64px, 6vw, 96px);
+  --py-section-tight: clamp(32px, 3vw, 48px);
+  --py-section-hero: clamp(80px, 8vw, 120px);
+  --px-container: clamp(24px, 4vw, 48px);
+  --gap-element: clamp(16px, 2vw, 24px);
+  --gap-section-elements: clamp(32px, 4vw, 48px);
+  
+  /* RADIUS SYSTEM */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+  
+  /* TYPOGRAPHY SCALE */
+  --text-xs: clamp(11px, 0.7vw, 12px);
+  --text-sm: clamp(13px, 0.85vw, 14px);
+  --text-base: clamp(15px, 1vw, 17px);
+  --text-lg: clamp(18px, 1.2vw, 20px);
+  --text-xl: clamp(22px, 1.6vw, 28px);
+  --text-2xl: clamp(28px, 2.2vw, 36px);
+  --text-3xl: clamp(36px, 3vw, 48px);
+  --text-display: clamp(48px, 6vw, 96px);
+  
+  /* MOTION */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+}
 
     /* ===== BASE ===== */
     html { scroll-behavior: smooth; }
@@ -61,7 +80,14 @@
 
     /* ===== LAYOUT ===== */
     .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
-    .section { padding: var(--py) var(--px); border-top: 1px solid var(--border); }
+    .section {
+  padding: var(--py-section) var(--px-container);
+  background: var(--bg);
+  position: relative;
+}
+.section + .section {
+  border-top: 1px solid var(--border);
+}
 
     /* ===== TYPOGRAPHY ===== */
     .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); }
@@ -102,7 +128,26 @@
     .nav-cta:hover { background: #e5e5e5; }
 
     /* ===== HERO ===== */
-    #hero { padding: 96px 24px 72px; border-top: none; min-height: 100vh; display: flex; align-items: center; }
+    #hero {
+  min-height: clamp(640px, 85vh, 900px);
+  padding: var(--py-section-hero) var(--px-container) var(--py-section-tight);
+  background: var(--bg);
+  background-image: 
+    radial-gradient(ellipse at 70% 30%, rgba(255, 107, 26, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 107, 26, 0.04) 0%, transparent 50%);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
+}
     .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -215,7 +260,7 @@
     .gua-big { font-size: clamp(80px,12vw,160px); line-height: 0.85; letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
     .gua-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.55); margin-top: 12px; }
     .gua-txt { font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.75); max-width: 360px; margin-top: 24px; }
-    .btn-blk { display: inline-flex; align-items: center; gap: 8px; background: #000; color: #fff; border-radius: var(--rf); padding: 12px 20px; font-size: 14px; margin-top: 32px; align-self: flex-start; transition: background .2s; }
+    .btn-blk { display: inline-flex; align-items: center; gap: 8px; background: var(--bg); color: #fff; border-radius: var(--rf); padding: 12px 20px; font-size: 14px; margin-top: 32px; align-self: flex-start; transition: background .2s; }
     .btn-blk:hover { background: #222; }
     .gua-items { margin-top: 32px; }
     .gua-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.10); }
@@ -232,7 +277,7 @@
     .timeline::before { content: ''; position: absolute; left: 7px; top: 28px; bottom: 28px; width: 1px; background: rgba(255,255,255,0.15); }
     .tl { position: relative; padding: 20px 0 20px 40px; }
     .tl + .tl { border-top: 1px solid rgba(255,255,255,0.08); }
-    .tl-dot { position: absolute; left: 0; top: 28px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: #000; }
+    .tl-dot { position: absolute; left: 0; top: 28px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: var(--bg); }
     .tl-dot.on { background: #fff; }
     .tl-in { display: grid; grid-template-columns: 1fr; gap: 4px; }
     .tl-day { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--t55); }
@@ -281,7 +326,7 @@
     .cta-h { font-size: clamp(40px,8vw,120px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; margin-top: 20px; }
     .cta-p { font-size: 16px; color: rgba(0,0,0,0.65); max-width: 520px; margin: 24px auto 0; }
     .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-    .btn-cta { background: #000; color: #fff; border-radius: var(--rf); padding: 8px 8px 8px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 12px; transition: background .2s; }
+    .btn-cta { background: var(--bg); color: #fff; border-radius: var(--rf); padding: 8px 8px 8px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 12px; transition: background .2s; }
     .btn-cta:hover { background: #333; }
     .btn-cta .ac { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; }
     .btn-cta-out { border: 1px solid rgba(0,0,0,0.15); color: #000; border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
@@ -332,7 +377,21 @@
       .cta-box { padding: 80px; }
       .fq-q { font-size: 18px; }
     }
-  </style>
+  
+.trust-strip,
+[data-section="trust-strip"] {
+  padding: var(--py-section-tight) var(--px-container) !important;
+  background: var(--bg) !important;
+  border-top: none !important;
+  margin-top: -1px;
+}
+
+#about,
+[data-section="about"] {
+  padding-top: var(--py-section) !important;
+  background: var(--bg-section-alt) !important;
+}
+</style>
 
 
 <style>
@@ -388,7 +447,7 @@
     <div class="hero-portrait">
       <!-- HERO IMAGE - currently hero-1.jpg - DO NOT swap with About image -->
       <div class="hero-image-container" data-image-purpose="hero">
-        <img src="hero-1.jpg" alt="Hero portrait" class="hero-portrait-img">
+        <img data-image-slot="hero" class="hero-portrait hero-portrait-img" src="hero-1.jpg" alt="Hero portrait">
       </div>
     </div>
   </div>
@@ -416,7 +475,7 @@
         <div class="about-img" data-image-purpose="about">
           <!-- ABOUT ME IMAGE - currently Emma-3.jpg - DO NOT swap with Hero image -->
           <div class="about-image-container">
-            <img src="Emma-3.jpg" alt="About me portrait" class="about-portrait-img">
+            <img data-image-slot="about" src="Emma-3.jpg" alt="About me portrait" class="about-portrait-img">
           </div>
         </div>
       </div>
@@ -435,7 +494,7 @@
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="section">
+<section data-section="portfolio" id="portfolio" class="section">
   <div class="wrap">
     <div class="port-hdr">
       <div class="reveal">
@@ -557,7 +616,7 @@
 </section>
 
 <!-- PRICING -->
-<section id="oferta" class="section">
+<section data-section="pricing" id="oferta" class="section">
   <div class="wrap">
     <div class="prx-hdr reveal">
       <div class="eyebrow">oferta · bez ukrytych kosztów</div>
@@ -602,7 +661,7 @@
 </section>
 
 <!-- GUARANTEE -->
-<section class="section">
+<section data-section="guarantee" class="section">
   <div class="wrap">
     <div class="gua-box reveal">
       <div class="gua-l">
@@ -626,7 +685,7 @@
 </section>
 
 <!-- PROCESS -->
-<section id="proces" class="section">
+<section data-section="process" id="proces" class="section">
   <div class="wrap">
     <div class="proc-hdr">
       <div class="reveal">
@@ -678,7 +737,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="section">
+<section data-section="testimonials" class="section">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px;" class="reveal">
       <div class="eyebrow">opinie · klienci</div>
@@ -703,7 +762,7 @@
 </section>
 
 <!-- TRUST BADGES -->
-<section class="section">
+<section data-section="trust" class="section">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px;" class="reveal">
       <div class="eyebrow">zaufanie · standardy</div>
@@ -735,7 +794,7 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="section">
+<section data-section="faq" id="faq" class="section">
   <div class="faq-wrap">
     <div class="faq-hdr reveal">
       <div class="eyebrow">faq</div>
