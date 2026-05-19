@@ -416,6 +416,21 @@
   margin: 0;
 }
 
+
+/* === PORTFOLIO (pf-*) === */
+.pf-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 640px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .pf-grid { grid-template-columns: repeat(3, 1fr); } }
+.pf-card { display: flex; flex-direction: column; background: #111; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; text-decoration: none; color: #fff; transition: transform 0.3s ease, border-color 0.3s ease; }
+.pf-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+.pf-img { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #0a0a0a; }
+.pf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.pf-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.pf-meta { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
+.pf-card h3 { font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0; color: #fff; }
+.pf-card p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.65); margin: 0; }
+.pf-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; }
+
 </style>
 
 
@@ -499,70 +514,50 @@
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="section">
-  <div class="wrap">
-    <div class="port-hdr">
-      <div class="reveal">
-        <div class="eyebrow">portfolio · 4 wdrożenia</div>
-        <h2 class="display-h">Strony, które żyją w sieci.</h2>
+<section id="portfolio" class="section" style="padding: 80px 40px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 48px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px;">PORTFOLIO · 4 WDROŻENIA</div>
+        <h2 style="font-size: clamp(36px, 4vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0; color: #fff;">Strony, które żyją w sieci.</h2>
       </div>
-      <p class="reveal">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
+      <p style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.7); max-width: 320px; margin: 0;">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
     </div>
-    <div class="port-grid">
-
-      <!-- 01 yogaretreat.fit -->
-      <a href="https://www.yogaretreat.fit/" target="_blank" class="port-card">
-        <div class="port-img" style="position:relative;overflow:hidden;"><img src="teaser-yoga.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" /></div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta"><span class="port-cat">PL · Retreaty</span><span class="port-num">01 / 04</span></div>
-          <div class="port-title">yogaretreat.fit</div>
-          <p class="port-desc">Retreaty jogi na wyspie Thasos. Strona generująca zapisy online dzięki lokalnemu SEO i precyzyjnemu targetowaniu.</p>
-          <p class="port-note">Wersja testowa — live na Netlify</p>
-          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+    <div class="pf-grid">
+      <a href="https://www.yogaretreat.fit/" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-yoga.jpg" alt="yogaretreat.fit" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · RETREATY</span><span>01 / 04</span></div>
+          <h3>yogaretreat.fit</h3>
+          <p>Retreaty jogi na wyspie Thasos. Strona generująca zapisy online dzięki lokalnemu SEO.</p>
+          <span class="pf-tag">Wersja testowa — live na Netlify</span>
         </div>
       </a>
-
-      <!-- 02 callwindshieldfix.com -->
-      <a href="https://callwindshieldfix.com" target="_blank" class="port-card">
-        <div class="port-img" style="position:relative;overflow:hidden;"><img src="teaser-callwindshield.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" /></div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta"><span class="port-cat">USA · Local SEO</span><span class="port-num">02 / 04</span></div>
-          <div class="port-title">callwindshieldfix.com</div>
-          <p class="port-desc">Mobilna naprawa szyb, San Antonio TX. Strona generująca leady lokalnie 24/7.</p>
-          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+      <a href="https://callwindshieldfix.com" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-callwindshield.jpg" alt="callwindshieldfix.com" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>USA · LOCAL SEO</span><span>02 / 04</span></div>
+          <h3>callwindshieldfix.com</h3>
+          <p>Mobilna naprawa szyb, San Antonio TX. Strona generująca leady lokalnie 24/7.</p>
         </div>
       </a>
-
-      <!-- 03 artdance.org — no image -->
-      <a href="https://artdance.org" target="_blank" class="port-card">
-        <div class="port-img" style="position:relative;overflow:hidden;"><img src="teaser-artdance.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" /></div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta"><span class="port-cat">PL · NGO</span><span class="port-num">03 / 04</span></div>
-          <div class="port-title">artdance.org</div>
-          <p class="port-desc">Polska fundacja taneczna. Mobile-first, 15 URL zaindeksowanych.</p>
-          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+      <a href="https://artdance.org" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-artdance.jpg" alt="artdance.org" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · NGO</span><span>03 / 04</span></div>
+          <h3>artdance.org</h3>
+          <p>Polska fundacja taneczna. Mobile-first, 15 URL zaindeksowanych.</p>
         </div>
       </a>
-
-      <!-- 04 elstom.com — no image -->
-      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="port-card">
-        <div class="port-img" style="position:relative;overflow:hidden;"><img src="teaser-elstom.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;" /></div>
-        </div>
-        <div class="port-body">
-          <div class="port-meta"><span class="port-cat">PL · Stomatologia</span><span class="port-num">04 / 04</span></div>
-          <div class="port-title">elstom.com</div>
-          <p class="port-desc">Gabinet stomatologiczny Wrocław. Strona generująca zapisy online dzięki lokalnemu SEO i profesjonalnemu wizerunkowi.</p>
-          <p class="port-note">Wersja testowa — live na Netlify</p>
-          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-elstom.jpg" alt="elstom.com" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · STOMATOLOGIA</span><span>04 / 04</span></div>
+          <h3>elstom.com</h3>
+          <p>Gabinet stomatologiczny Wrocław. Strona generująca zapisy online dzięki lokalnemu SEO.</p>
+          <span class="pf-tag">Wersja testowa — live na Netlify</span>
         </div>
       </a>
-
-      
-      
-
     </div>
   </div>
 </section>
