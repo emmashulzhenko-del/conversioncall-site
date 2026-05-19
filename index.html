@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  IMAGE SLOT REGISTRY:
+  - HERO section image:  hero-1.jpg  (data-image-slot="hero-portrait")
+  - ABOUT section image: Emma-3.jpg  (data-image-slot="about-portrait")
+  When asked to update an image, find the correct data-image-slot attribute.
+-->
 <html lang="pl">
 <head>
   <meta charset="utf-8">
@@ -117,7 +123,8 @@
     .hs:nth-child(3) { text-align: right; }
     .hs-n { font-size: clamp(22px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
     .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t55); margin-top: 4px; }
-    .hero-portrait img { width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 16px; display: block; }
+    .hero-portrait img, .hero-portrait-img { width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 0; display: block; }
+    .hero-image-container { width: 100%; height: 100%; }
 
     /* ===== LOGO BAR ===== */
     .logo-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -129,7 +136,8 @@
     /* ===== ABOUT ===== */
     .about-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
     .about-img { position: relative; aspect-ratio: 4/5; border-radius: var(--r); overflow: hidden; background: #171717; border: 1px solid var(--border); }
-    .about-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .about-img img, .about-portrait-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .about-image-container { position: absolute; inset: 0; }
     .about-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: var(--rf); background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 11px; color: var(--t70); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
     .about-h2 { font-size: clamp(28px,4.5vw,56px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; max-width: 640px; margin-bottom: 24px; }
     .about-p { color: var(--t70); font-size: 15px; line-height: 1.7; max-width: 520px; margin-bottom: 32px; }
@@ -355,7 +363,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" data-section="hero" data-image-slot="hero-portrait">
   <div class="hero-inner">
     <div>
       <div class="hero-pill"><span class="dot"></span>Wrocław · cała Polska · 5 wdrożeń</div>
@@ -372,7 +380,10 @@
       </div>
     </div>
     <div class="hero-portrait">
-      <img src="Emma-3.jpg" alt="Emma — Conversion Call, Wrocław">
+      <!-- HERO IMAGE - currently hero-1.jpg - DO NOT swap with About image -->
+      <div class="hero-image-container" data-image-purpose="hero">
+        <img src="hero-1.jpg" alt="Hero portrait" class="hero-portrait-img">
+      </div>
     </div>
   </div>
 </section>
@@ -392,11 +403,16 @@
 </div>
 
 <!-- ABOUT -->
-<section class="section">
+<section id="about" class="section" data-section="about" data-image-slot="about-portrait">
   <div class="wrap">
     <div class="about-grid">
       <div class="reveal">
-        <div class="about-img"><img src="Emma-3.jpg" alt="Portret Wrocław"></div>
+        <div class="about-img" data-image-purpose="about">
+          <!-- ABOUT ME IMAGE - currently Emma-3.jpg - DO NOT swap with Hero image -->
+          <div class="about-image-container">
+            <img src="Emma-3.jpg" alt="About me portrait" class="about-portrait-img">
+          </div>
+        </div>
       </div>
       <div class="reveal">
         <div class="about-badge">o mnie</div>
