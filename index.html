@@ -336,13 +336,10 @@
 
 /* CLEAN PORTFOLIO + HERO STYLES */
 #hero {
-  padding: 120px 40px 0;
+  
   min-height: auto;
-  display: block;
-}
-@media (max-width: 767px) {
-  #hero { padding: 100px 20px 0; }
-}
+  display: block; padding-top: 160px; padding-left: 40px; padding-right: 40px; padding-bottom: 0;}
+@media (max-width: 767px) { #hero { padding: 120px 20px 0; } }
 
 .port-grid {
   display: grid;
@@ -431,6 +428,70 @@
 .pf-card p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.65); margin: 0; }
 .pf-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; }
 
+
+/* === COLOR ACCENTS FROM HERO PALETTE === */
+:root {
+  --accent-orange: #ff8a3d;
+  --accent-purple: #6b4dff;
+  --accent-gradient: linear-gradient(135deg, #ff8a3d 0%, #6b4dff 100%);
+}
+.stat-num, .stats-num, [class*="price-num"], [class*="stat-num"] {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero h1 .price-highlight, .price-amount {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btn-primary:hover, button[type="submit"]:hover {
+  box-shadow: 0 0 24px rgba(255, 138, 61, 0.25);
+}
+body.day-mode { background: #fafafa !important; color: #0a0a0a !important; }
+body.day-mode * { --bg: #fafafa; --text: #0a0a0a; --border: rgba(0,0,0,0.08); }
+body.day-mode .pf-card { background: #fff; border-color: rgba(0,0,0,0.08); color: #0a0a0a; }
+body.day-mode .pf-card h3 { color: #0a0a0a; }
+body.day-mode .pf-card p { color: rgba(0,0,0,0.65); }
+body.day-mode .pf-meta, body.day-mode .pf-tag { color: rgba(0,0,0,0.5); }
+body.day-mode .pf-img { background: #f0f0f0; }
+body.day-mode nav, body.day-mode .nav-pill, body.day-mode [class*="nav"] {
+  background: rgba(255,255,255,0.85) !important; color: #0a0a0a !important;
+}
+body.day-mode .nav-pill a, body.day-mode nav a { color: #0a0a0a !important; }
+body.day-mode h1, body.day-mode h2, body.day-mode h3, body.day-mode h4 { color: #0a0a0a !important; }
+body.day-mode p, body.day-mode span, body.day-mode li, body.day-mode td, body.day-mode th { color: rgba(0,0,0,0.75); }
+body.day-mode section { background: #fafafa !important; }
+body.day-mode .stat-num, body.day-mode .price-amount {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.day-mode button, body.day-mode .btn-primary { background: #0a0a0a; color: #fff; }
+body.day-mode .btn-secondary { border-color: rgba(0,0,0,0.2); color: #0a0a0a; }
+body.day-mode table { border-color: rgba(0,0,0,0.1); }
+body.day-mode tr, body.day-mode td, body.day-mode th { border-color: rgba(0,0,0,0.08) !important; }
+
+/* === THEME SWITCHER === */
+.theme-toggle {
+  position: fixed; top: 24px; right: 24px; width: 40px; height: 40px;
+  border-radius: 50%; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); cursor: pointer; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; color: #fff;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+body.day-mode .theme-toggle { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.15); color: #0a0a0a; }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .sun-icon { display: none; }
+.theme-toggle .moon-icon { display: block; }
+body.day-mode .theme-toggle .sun-icon { display: block; }
+body.day-mode .theme-toggle .moon-icon { display: none; }
+@media (max-width: 767px) { .theme-toggle { top: 16px; right: 16px; width: 36px; height: 36px; } }
+
 </style>
 
 
@@ -440,6 +501,23 @@
 </style>
 </head>
 <body>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+  <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+</button>
+<script>
+(function() {
+  const toggle = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('theme');
+  if (saved === 'day') document.body.classList.add('day-mode');
+  toggle.addEventListener('click', function() {
+    document.body.classList.toggle('day-mode');
+    localStorage.setItem('theme', document.body.classList.contains('day-mode') ? 'day' : 'night');
+  });
+})();
+</script>
+
 
 <!-- NAV -->
 <nav class="site-nav">
