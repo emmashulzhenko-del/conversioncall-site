@@ -331,9 +331,6 @@
 @media (min-width: 640px) {  }
 @media (min-width: 1024px) {  }
 
-
-
-
 /* CLEAN PORTFOLIO + HERO STYLES */
 
 @media (max-width: 767px) {  }
@@ -410,7 +407,6 @@
   margin: 0;
 }
 
-
 /* === PORTFOLIO (pf-*) === */
 .pf-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 640px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -425,7 +421,6 @@
 .pf-card p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.65); margin: 0; }
 .pf-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; }
 
-
 /* === THEME SWITCHER === */
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; width: 40px; height: 40px;
@@ -438,7 +433,6 @@
 .theme-toggle:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
 @media (max-width: 767px) { .theme-toggle { top: 16px; right: 16px; width: 36px; height: 36px; } }
 
-
 /* === HERO - PROPER TOP CLEARANCE FROM NAV === */
 #hero {
   padding: 180px 40px 60px !important;
@@ -449,12 +443,9 @@
   #hero { padding: 140px 20px 40px !important; }
 }
 
-
 /* Big price number in pricing card */
 
-
 /* Hero "720 zł" text - highlight the number */
-
 
 /* Subtle glow on primary buttons */
 .btn-primary:hover,
@@ -463,17 +454,16 @@ a[class*="cta"]:hover {
   box-shadow: 0 8px 32px rgba(255, 138, 61, 0.35), 0 0 0 1px rgba(196, 65, 255, 0.2);
 }
 
-
 /* Text colors */
 /* Sections */
 /* Nav */
 /* Nav CTA - invert */
-/* Theme toggle in day mode */
+
 /* Portfolio cards */
 /* Buttons */
 /* Tables */
 /* Section backgrounds with white text - invert */
-/* Keep gradient accents visible in day mode too */
+
 /* Pills and tags */
 /* FAQ */
 /* Footer */
@@ -491,7 +481,6 @@ a[class*="cta"]:hover {
   -webkit-background-clip: initial !important;
 }
 
-
 /* Remove grid pattern svg/image overlays in any section */
 section svg[class*="grid"],
 section [class*="grid-pattern"],
@@ -505,485 +494,82 @@ section > div[style*="background-image"] {
   background-image: none !important;
 }
 
-
-/* === DAY MODE - COMPREHENSIVE LIGHT THEME === */
-body.day-mode {
-  background: #fafafa !important;
-  color: #0a0a0a !important;
-}
-
 /* ALL backgrounds that were dark - make light */
-body.day-mode,
-body.day-mode section,
-body.day-mode div,
-body.day-mode header,
-body.day-mode footer,
-body.day-mode main,
-body.day-mode article {
-  background-color: #fafafa !important;
-}
 
 /* Cards and elevated surfaces - slightly off-white */
-body.day-mode .pf-card,
-body.day-mode [class*="card"],
-body.day-mode [class*="pricing"] > div,
-body.day-mode .pricing-card,
-body.day-mode .price-card {
-  background: #ffffff !important;
-  border-color: rgba(0,0,0,0.08) !important;
-  color: #0a0a0a !important;
-}
 
 /* ALL text becomes dark by default */
-body.day-mode h1,
-body.day-mode h2,
-body.day-mode h3,
-body.day-mode h4,
-body.day-mode h5,
-body.day-mode h6,
-body.day-mode p,
-body.day-mode li,
-body.day-mode span,
-body.day-mode a,
-body.day-mode div,
-body.day-mode label,
-body.day-mode td,
-body.day-mode th,
-body.day-mode strong,
-body.day-mode small,
-body.day-mode em,
-body.day-mode b {
-  color: #0a0a0a !important;
-}
 
 /* Muted text variants */
-body.day-mode p,
-body.day-mode .text-muted,
-body.day-mode [class*="muted"],
-body.day-mode [class*="subtle"] {
-  color: rgba(0,0,0,0.65) !important;
-}
 
 /* Override inline white colors */
-body.day-mode [style*="color: white"],
-body.day-mode [style*="color:white"],
-body.day-mode [style*="color: #fff"],
-body.day-mode [style*="color:#fff"],
-body.day-mode [style*="color: #ffffff"],
-body.day-mode [style*="color:#ffffff"],
-body.day-mode [style*="color: rgba(255"],
-body.day-mode [style*="color:rgba(255"] {
-  color: #0a0a0a !important;
-}
 
 /* === BLACK BUTTONS NEED WHITE TEXT === */
-body.day-mode .btn-primary,
-body.day-mode button.btn-primary,
-body.day-mode .nav-cta,
-body.day-mode a.nav-cta,
-body.day-mode a[href="#cta"].nav-cta,
-body.day-mode [class*="cta-button"],
-body.day-mode button[type="submit"],
-body.day-mode .price-cta,
-body.day-mode a[href*="zamow"],
-body.day-mode a[class*="btn-primary"],
-body.day-mode [class*="btn"][style*="background: #0a0a0a"],
-body.day-mode [class*="btn"][style*="background:#0a0a0a"],
-body.day-mode [class*="btn"][style*="background: #000"],
-body.day-mode [class*="btn"][style*="background:#000"] {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-}
-body.day-mode .btn-primary *,
-body.day-mode .nav-cta *,
-body.day-mode .price-cta *,
-body.day-mode button.btn-primary *,
-body.day-mode [class*="btn-primary"] *,
-body.day-mode [class*="cta-button"] * {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-}
 
 /* Secondary buttons - light */
-body.day-mode .btn-secondary {
-  background: transparent !important;
-  border: 1px solid rgba(0,0,0,0.2) !important;
-  color: #0a0a0a !important;
-}
 
-/* === DARK SECTIONS WITH WHITE TEXT - keep them dark in day mode === */
 /* Sections that are intentionally dark (like guarantee CTA) */
-body.day-mode section[style*="background: #0a0a0a"],
-body.day-mode section[style*="background:#0a0a0a"],
-body.day-mode section[style*="background: #000"],
-body.day-mode section[style*="background:#000"],
-body.day-mode div[style*="background: #0a0a0a"],
-body.day-mode div[style*="background:#0a0a0a"] {
-  background: #0a0a0a !important;
-}
-body.day-mode section[style*="background: #0a0a0a"] *,
-body.day-mode section[style*="background:#0a0a0a"] *,
-body.day-mode div[style*="background: #0a0a0a"] *,
-body.day-mode div[style*="background:#0a0a0a"] * {
-  color: #ffffff !important;
-}
 
 /* Nav */
-body.day-mode nav,
-body.day-mode header[class*="nav"],
-body.day-mode [class*="nav"] > div {
-  background: rgba(255,255,255,0.85) !important;
-  backdrop-filter: blur(12px);
-}
-body.day-mode nav a,
-body.day-mode nav span,
-body.day-mode [class*="nav"] a:not(.nav-cta):not([class*="cta"]) {
-  color: #0a0a0a !important;
-}
 
 /* Theme toggle in nav */
-body.day-mode .nav-theme-toggle {
-  border-color: rgba(0,0,0,0.15) !important;
-  color: #0a0a0a !important;
-  background: transparent !important;
-}
-body.day-mode .nav-theme-toggle .moon-icon { display: none !important; }
-body.day-mode .nav-theme-toggle .sun-icon { display: block !important; }
+
 .nav-theme-toggle .sun-icon { display: none; }
 .nav-theme-toggle .moon-icon { display: block; }
 
-/* Portfolio cards in day mode */
-body.day-mode .pf-card h3 { color: #0a0a0a !important; }
-body.day-mode .pf-card p { color: rgba(0,0,0,0.65) !important; }
-body.day-mode .pf-meta,
-body.day-mode .pf-tag { color: rgba(0,0,0,0.5) !important; }
-
 /* Tables */
-body.day-mode table { background: #ffffff !important; }
-body.day-mode th { 
-  background: rgba(0,0,0,0.04) !important; 
-  color: #0a0a0a !important; 
-}
-body.day-mode td,
-body.day-mode th {
-  border-color: rgba(0,0,0,0.08) !important;
-}
 
 /* Borders */
-body.day-mode hr,
-body.day-mode [class*="divider"],
-body.day-mode [class*="border"] {
-  border-color: rgba(0,0,0,0.1) !important;
-}
 
 /* Pills / badges / tags */
-body.day-mode [class*="pill"]:not(.nav-cta):not([class*="btn"]),
-body.day-mode [class*="badge"],
-body.day-mode [class*="tag"]:not(.pf-tag) {
-  background: rgba(0,0,0,0.05) !important;
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
 
 /* Footer */
-body.day-mode footer {
-  background: #fafafa !important;
-}
-body.day-mode footer * {
-  color: rgba(0,0,0,0.7) !important;
-}
 
 /* Remove ALL background patterns/grids in day mode */
-body.day-mode [style*="background-image"]:not(img):not(.pf-img) {
-  background-image: none !important;
-}
-body.day-mode svg[class*="grid"],
-body.day-mode [class*="grid-pattern"] {
-  display: none !important;
-}
-
 
 /* === HERO TEXT - PROPER CONTRAST IN BOTH MODES === */
-body.day-mode #hero h1,
-body.day-mode #hero .hero-title,
-body.day-mode .hero h1 {
-  color: #0a0a0a !important;
-  background: none !important;
-  -webkit-text-fill-color: #0a0a0a !important;
-  background-clip: initial !important;
-  -webkit-background-clip: initial !important;
-  opacity: 1 !important;
-}
-body.day-mode #hero p,
-body.day-mode .hero p {
-  color: rgba(0,0,0,0.7) !important;
-}
-body.day-mode #hero .stat-num,
-body.day-mode #hero [class*="stat"] {
-  color: #0a0a0a !important;
-  background: none !important;
-  -webkit-text-fill-color: #0a0a0a !important;
-}
-
 
 /* Find the outlined card inside CTA and restore border */
 
-body.day-mode 
-
-/* Hide any grid SVGs or background patterns specifically */
-section[id*="cta"] svg[class*="grid"],
-section[id*="cta"] [class*="grid-pattern"],
-section[id*="cta"] [class*="plaid"] {
-  display: none !important;
-}
-
-
-/* === DAY MODE - COMPREHENSIVE TEXT VISIBILITY === */
-
-/* ALL text that should be readable in day mode */
-body.day-mode * {
-  border-color: rgba(0,0,0,0.1);
-}
-
 /* Sections and main content backgrounds */
-body.day-mode,
-body.day-mode > *,
-body.day-mode main,
-body.day-mode section,
-body.day-mode article,
-body.day-mode footer {
-  background-color: #fafafa !important;
-}
-
-/* Headings - always dark in day mode */
-body.day-mode h1,
-body.day-mode h2,
-body.day-mode h3,
-body.day-mode h4,
-body.day-mode h5,
-body.day-mode h6 {
-  color: #0a0a0a !important;
-  -webkit-text-fill-color: #0a0a0a !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-}
 
 /* Body text - dark */
-body.day-mode p,
-body.day-mode li,
-body.day-mode td,
-body.day-mode th,
-body.day-mode dd,
-body.day-mode dt,
-body.day-mode label,
-body.day-mode caption {
-  color: #1a1a1a !important;
-}
 
 /* Span / div text - inherit unless dark bg */
-body.day-mode span,
-body.day-mode div {
-  color: inherit;
-}
 
 /* Default text colors */
-body.day-mode {
-  color: #0a0a0a !important;
-}
 
 /* Subtitles and muted text */
-body.day-mode [class*="subtitle"],
-body.day-mode [class*="muted"],
-body.day-mode [class*="subtle"],
-body.day-mode [class*="caption"],
-body.day-mode [class*="description"] {
-  color: rgba(0,0,0,0.65) !important;
-}
 
 /* Override ALL white inline colors */
-body.day-mode [style*="color: white"],
-body.day-mode [style*="color:white"],
-body.day-mode [style*="color: #fff"],
-body.day-mode [style*="color:#fff"],
-body.day-mode [style*="color: #ffffff"],
-body.day-mode [style*="color:#ffffff"],
-body.day-mode [style*="color: rgba(255"],
-body.day-mode [style*="color:rgba(255"] {
-  color: #0a0a0a !important;
-}
 
 /* Eyebrow/meta text */
-body.day-mode [class*="eyebrow"],
-body.day-mode [class*="meta"],
-body.day-mode [class*="label"]:not([class*="form"]) {
-  color: rgba(0,0,0,0.55) !important;
-}
 
 /* Big number displays (like the "7" in guarantee) */
-body.day-mode [style*="font-size: 200"],
-body.day-mode [style*="font-size:200"],
-body.day-mode [style*="font-size: 180"],
-body.day-mode [style*="font-size:180"] {
-  color: #0a0a0a !important;
-}
 
 /* === BLACK BUTTONS = WHITE TEXT === */
-body.day-mode .btn-primary,
-body.day-mode .nav-cta,
-body.day-mode a.nav-cta,
-body.day-mode .price-cta,
-body.day-mode a.price-cta,
-body.day-mode [class*="btn-primary"],
-body.day-mode a[class*="zamow"],
-body.day-mode button[type="submit"] {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-  border-color: #0a0a0a !important;
-}
-body.day-mode .btn-primary *,
-body.day-mode .nav-cta *,
-body.day-mode .price-cta *,
-body.day-mode [class*="btn-primary"] *,
-body.day-mode [class*="zamow"] *,
-body.day-mode button[type="submit"] * {
-  color: #ffffff !important;
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-}
-body.day-mode .btn-primary:hover,
-body.day-mode .nav-cta:hover,
-body.day-mode .price-cta:hover {
-  background: #1a1a1a !important;
-  color: #ffffff !important;
-}
 
 /* Secondary / outline buttons */
-body.day-mode .btn-secondary,
-body.day-mode a.btn-secondary,
-body.day-mode [class*="btn-secondary"] {
-  background: transparent !important;
-  border: 1px solid rgba(0,0,0,0.2) !important;
-  color: #0a0a0a !important;
-}
-body.day-mode .btn-secondary * {
-  color: #0a0a0a !important;
-}
 
 /* === SCROLL TO TOP BUTTON === */
-body.day-mode [class*="scroll-top"],
-body.day-mode #scrollTop,
-body.day-mode .scroll-top {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-}
-body.day-mode [class*="scroll-top"] svg,
-body.day-mode #scrollTop svg {
-  stroke: #ffffff !important;
-  fill: #ffffff !important;
-}
 
 /* === NAV === */
-body.day-mode nav,
-body.day-mode header[class*="nav"] {
-  background: rgba(250,250,250,0.85) !important;
-}
-body.day-mode nav a:not(.nav-cta):not([class*="cta"]),
-body.day-mode nav span {
-  color: #0a0a0a !important;
-}
-body.day-mode .nav-theme-toggle {
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.15) !important;
-  background: transparent !important;
-}
-body.day-mode .nav-theme-toggle svg {
-  stroke: #0a0a0a !important;
-}
 
 /* === DARK SECTIONS THAT SHOULD STAY DARK === */
-body.day-mode [style*="background: #0a0a0a"],
-body.day-mode [style*="background:#0a0a0a"],
-body.day-mode [style*="background: #000"],
-body.day-mode [style*="background:#000"],
-body.day-mode [style*="background: #111"],
-body.day-mode [style*="background:#111"] {
-  background-color: #0a0a0a !important;
-}
-body.day-mode [style*="background: #0a0a0a"] *,
-body.day-mode [style*="background:#0a0a0a"] *,
-body.day-mode [style*="background: #000"] *,
-body.day-mode [style*="background:#000"] *,
-body.day-mode [style*="background: #111"] *,
-body.day-mode [style*="background:#111"] * {
-  color: #ffffff !important;
-}
 
 /* === PORTFOLIO CARDS === */
-body.day-mode .pf-card {
-  background: #ffffff !important;
-  border-color: rgba(0,0,0,0.08) !important;
-}
-body.day-mode .pf-card h3 { color: #0a0a0a !important; }
-body.day-mode .pf-card p { color: rgba(0,0,0,0.65) !important; }
-body.day-mode .pf-meta,
-body.day-mode .pf-tag { color: rgba(0,0,0,0.5) !important; }
 
 /* === PRICING CARD === */
-body.day-mode [class*="pricing"],
-body.day-mode .pricing-card {
-  background: #ffffff !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
-body.day-mode [class*="pricing"] h3,
-body.day-mode [class*="pricing"] strong {
-  color: #0a0a0a !important;
-}
 
 /* === TABLES === */
-body.day-mode table {
-  background: #ffffff !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
-body.day-mode th {
-  background: rgba(0,0,0,0.04) !important;
-  color: #0a0a0a !important;
-}
-body.day-mode td {
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.08) !important;
-}
 
 /* === FAQ === */
-body.day-mode details,
-body.day-mode summary,
-body.day-mode [class*="faq"] {
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
 
 /* === FOOTER === */
-body.day-mode footer * {
-  color: rgba(0,0,0,0.7) !important;
-}
-body.day-mode footer a {
-  color: #0a0a0a !important;
-}
 
 /* === PILLS / BADGES === */
-body.day-mode [class*="pill"]:not(.nav-cta):not([class*="btn"]):not([class*="zamow"]) {
-  background: rgba(0,0,0,0.05) !important;
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
 
 /* === REMOVE GRID PATTERNS UNIVERSALLY === */
-body.day-mode [style*="grid-pattern"],
-body.day-mode svg[class*="grid"]:not(.pf-img svg) {
-  display: none !important;
-}
-
 
 /* === HERO TEXT IN DARK MODE - SOLID WHITE === */
 body:not(.day-mode) #hero h1,
@@ -1000,7 +586,6 @@ body:not(.day-mode) #hero [class*="stat"] {
 body:not(.day-mode) #hero p {
   color: rgba(255,255,255,0.85) !important;
 }
-
 
 /* ============================================
    COMPREHENSIVE FINAL FIX - both modes work
@@ -1034,19 +619,6 @@ body:not(.day-mode) #hero p {
 .nav-theme-toggle .sun-icon { display: none; }
 .nav-theme-toggle .moon-icon { display: block; }
 
-body.day-mode .nav-theme-toggle {
-  border-color: rgba(0,0,0,0.3) !important;
-  color: #0a0a0a !important;
-}
-body.day-mode .nav-theme-toggle svg {
-  stroke: #0a0a0a !important;
-}
-body.day-mode .nav-theme-toggle:hover {
-  background: rgba(0,0,0,0.05) !important;
-}
-body.day-mode .nav-theme-toggle .sun-icon { display: block; }
-body.day-mode .nav-theme-toggle .moon-icon { display: none; }
-
 /* BLACK BUTTONS = WHITE TEXT - both modes */
 .btn-primary,
 .nav-cta,
@@ -1073,25 +645,6 @@ a[href*="zamow"][class*="btn"],
   fill: none !important;
 }
 
-body.day-mode .btn-primary,
-body.day-mode .nav-cta,
-body.day-mode .price-cta,
-body.day-mode [class*="btn-primary"],
-body.day-mode [class*="cta-btn"],
-body.day-mode .guarantee-cta {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-}
-body.day-mode .btn-primary *,
-body.day-mode .nav-cta *,
-body.day-mode .price-cta *,
-body.day-mode [class*="btn-primary"] *,
-body.day-mode [class*="cta-btn"] *,
-body.day-mode .guarantee-cta * {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-}
-
 /* WHITE BUTTONS in dark mode (zamów stronę in nav) - dark text */
 body:not(.day-mode) .nav-cta {
   background-color: #ffffff !important;
@@ -1108,29 +661,6 @@ body:not(.day-mode) .nav-cta * {
 }
 #scrollTop svg, [class*="scroll-top"] svg {
   stroke: #0a0a0a !important;
-}
-body.day-mode #scrollTop,
-body.day-mode [class*="scroll-top"] {
-  background: #0a0a0a !important;
-}
-body.day-mode #scrollTop svg,
-body.day-mode [class*="scroll-top"] svg {
-  stroke: #ffffff !important;
-}
-
-/* REMOVE GREY BACKGROUND PATCHES ON TEXT in day mode */
-body.day-mode p,
-body.day-mode h1,
-body.day-mode h2,
-body.day-mode h3,
-body.day-mode h4,
-body.day-mode h5,
-body.day-mode h6,
-body.day-mode span,
-body.day-mode a,
-body.day-mode li {
-  background-color: transparent !important;
-  background-image: none !important;
 }
 
 /* FINAL CTA SECTION - white card, no plaid pattern, keep outline */
@@ -1151,50 +681,15 @@ section[id*="final"] [class*="grid-pattern"] {
 
 /* Remove inline pattern backgrounds on CTA child divs */
 
-/* === CTA SECTION - DAY MODE === */
-body.day-mode section#cta {
-  background: #fafafa !important;
-}
-body.day-mode section#cta .cta-title {
-  color: #0a0a0a !important;
-}
-body.day-mode section#cta .cta-subtitle {
-  color: rgba(0,0,0,0.7) !important;
-}
-body.day-mode section#cta .cta-eyebrow {
-  color: rgba(0,0,0,0.55) !important;
-}
-body.day-mode section#cta .cta-button {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-}
-body.day-mode section#cta .cta-button * {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-}
-body.day-mode section#cta .cta-email {
-  color: rgba(0,0,0,0.7) !important;
-}
-body.day-mode section#cta .cta-email:hover {
-  color: #0a0a0a !important;
-}
-
 /* Dark mode CTA button hover */
 body:not(.day-mode) section#cta .cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(255,255,255,0.15);
 }
-body.day-mode section#cta .cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
+
 section#cta .cta-email:hover {
   color: #ffffff !important;
 }
-body.day-mode section#cta .cta-email:hover {
-  color: #0a0a0a !important;
-}
-
 
 /* === STICKY MOBILE CTA - mobile only === */
 .sticky-mobile-cta {
@@ -1254,22 +749,11 @@ body.day-mode section#cta .cta-email:hover {
     gap: 6px;
     white-space: nowrap;
   }
-  body.day-mode .sticky-mobile-cta {
-    background: rgba(255,255,255,0.95);
-    border-top: 1px solid rgba(0,0,0,0.1);
-  }
-  body.day-mode .sticky-mobile-cta-label {
-    color: rgba(0,0,0,0.55);
-  }
-  body.day-mode .sticky-mobile-cta-price {
-    color: #0a0a0a;
-  }
-  body.day-mode .sticky-mobile-cta-btn {
-    background: #0a0a0a;
-    color: #ffffff;
-  }
+  
+  
+  
+  
 }
-
 
 /* === EXIT-INTENT POPUP === */
 .exit-popup-overlay {
@@ -1390,7 +874,6 @@ body.day-mode section#cta .cta-email:hover {
   text-align: center;
 }
 
-
 /* === DECORATIVE FLORAL BACKGROUNDS === */
 
 /* Guarantee section - subtle floral accent on the right side */
@@ -1418,9 +901,6 @@ section[data-decor-bg="22"] > * {
   position: relative;
   z-index: 1;
 }
-body.day-mode section[data-decor-bg="22"]::before {
-  opacity: 0.35;
-}
 
 /* CTA section - full-bleed background with strong dark overlay */
 section[data-decor-bg="33"] {
@@ -1442,9 +922,6 @@ section[data-decor-bg="33"] > * {
   position: relative;
   z-index: 1;
 }
-body.day-mode section[data-decor-bg="33"]::before {
-  background: rgba(250, 250, 250, 0.88);
-}
 
 /* Mobile - reduce intensity on guarantee section */
 @media (max-width: 767px) {
@@ -1455,7 +932,6 @@ body.day-mode section[data-decor-bg="33"]::before {
     -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%);
   }
 }
-
 
 section[data-decor-bg="77"] {
   position: relative;
@@ -1478,12 +954,11 @@ section[data-decor-bg="77"]::before {
   -webkit-mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
 }
 section[data-decor-bg="77"] > * { position: relative; z-index: 1; }
-body.day-mode section[data-decor-bg="77"]::before { opacity: 0.20; }
+
 @media (max-width: 767px) {
   section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
-  body.day-mode section[data-decor-bg="77"]::before { opacity: 0.12; }
+  
 }
-
 
 /* === MOBILE: Scroll-top button - position above sticky CTA === */
 @media (max-width: 767px) {
@@ -1526,32 +1001,6 @@ body.day-mode section[data-decor-bg="77"]::before { opacity: 0.20; }
   }
 }
 
-
-/* === LOGO ICON visibility in day mode === */
-body.day-mode .logo svg,
-body.day-mode .logo-icon svg,
-body.day-mode [class*="logo"] svg,
-body.day-mode nav a:first-child svg,
-body.day-mode header a:first-child svg {
-  fill: #0a0a0a !important;
-  stroke: #0a0a0a !important;
-  color: #0a0a0a !important;
-}
-body.day-mode .logo svg *,
-body.day-mode [class*="logo"] svg * {
-  fill: #0a0a0a !important;
-  stroke: #0a0a0a !important;
-}
-body.day-mode .logo svg path,
-body.day-mode .logo svg rect,
-body.day-mode .logo svg circle,
-body.day-mode [class*="logo"] svg path,
-body.day-mode [class*="logo"] svg rect,
-body.day-mode [class*="logo"] svg circle {
-  fill: #0a0a0a !important;
-}
-
-
 /* === COMPARISON TABLE - responsive UX === */
 
 @media (max-width: 767px) {
@@ -1581,11 +1030,7 @@ body.day-mode [class*="logo"] svg circle {
     border-radius: 12px;
     background: rgba(255,255,255,0.02);
   }
-  body.day-mode section table tr,
-  body.day-mode table tr {
-    border-color: rgba(0,0,0,0.1) !important;
-    background: rgba(0,0,0,0.02) !important;
-  }
+  
   section table td,
   table td {
     display: flex !important;
@@ -1599,10 +1044,7 @@ body.day-mode [class*="logo"] svg circle {
     text-align: right !important;
     font-size: 13px !important;
   }
-  body.day-mode section table td,
-  body.day-mode table td {
-    border-bottom-color: rgba(0,0,0,0.06) !important;
-  }
+  
   section table td:last-child,
   table td:last-child {
     border-bottom: none !important;
@@ -1618,10 +1060,7 @@ body.day-mode [class*="logo"] svg circle {
     text-align: left;
     flex-shrink: 0;
   }
-  body.day-mode section table td:before,
-  body.day-mode table td:before {
-    color: rgba(0,0,0,0.5);
-  }
+  
   section table td:first-child,
   table td:first-child {
     font-weight: 700;
@@ -1637,11 +1076,7 @@ body.day-mode [class*="logo"] svg circle {
   table td:first-child:before {
     display: none;
   }
-  body.day-mode section table td:first-child,
-  body.day-mode table td:first-child {
-    color: #0a0a0a !important;
-    border-bottom-color: rgba(0,0,0,0.15) !important;
-  }
+  
 }
 
 @media (min-width: 768px) {
@@ -1660,90 +1095,7 @@ body.day-mode [class*="logo"] svg circle {
   }
 }
 
-
-/* === PROMINENT CTA BUTTONS - day mode === */
-body.day-mode section[id="oferta"] a[class*="btn"],
-body.day-mode section[id="oferta"] a[href*="cta"],
-body.day-mode section[id="oferta"] a[href*="mailto"],
-body.day-mode section[id="oferta"] button,
-body.day-mode #oferta [class*="btn-primary"],
-body.day-mode #oferta [class*="price-cta"] {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-  border: 2px solid #0a0a0a !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
-  font-weight: 700 !important;
-}
-body.day-mode section[id="oferta"] a[class*="btn"] *,
-body.day-mode section[id="oferta"] button *,
-body.day-mode #oferta [class*="btn-primary"] * {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
-  fill: #ffffff !important;
-}
-body.day-mode section[id="oferta"] a[class*="btn"]:hover {
-  background: #1a1a1a !important;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.25) !important;
-}
-
-body.day-mode [class*="guarantee"] a[class*="btn"],
-body.day-mode [class*="guarantee"] button {
-  background: #0a0a0a !important;
-  color: #ffffff !important;
-  border: 2px solid #0a0a0a !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
-  font-weight: 700 !important;
-}
-body.day-mode [class*="guarantee"] a[class*="btn"] *,
-body.day-mode [class*="guarantee"] button * {
-  color: #ffffff !important;
-}
-
-
 /* === BRIEF / FORM SECTIONS - clean white in day mode === */
-body.day-mode section[id*="brief"],
-body.day-mode section:has(form),
-body.day-mode form,
-body.day-mode [class*="brief"] {
-  background: #ffffff !important;
-}
-body.day-mode section[id*="brief"] *,
-body.day-mode section:has(form) p,
-body.day-mode section:has(form) label,
-body.day-mode section:has(form) span,
-body.day-mode form p,
-body.day-mode form label {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-body.day-mode p span,
-body.day-mode p strong,
-body.day-mode p em,
-body.day-mode li span,
-body.day-mode h1 span,
-body.day-mode h2 span,
-body.day-mode h3 span {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-body.day-mode input[type="text"],
-body.day-mode input[type="email"],
-body.day-mode input[type="tel"],
-body.day-mode textarea {
-  background: #ffffff !important;
-  border: 1.5px solid rgba(0,0,0,0.15) !important;
-  color: #0a0a0a !important;
-}
-body.day-mode input:focus,
-body.day-mode textarea:focus {
-  border-color: #0a0a0a !important;
-  outline: none !important;
-}
-
 
 /* === TRUST / STANDARDY CARDS - compact === */
 section:has(h2:contains("Bezpieczeństwo")) [class*="card"],
@@ -1787,126 +1139,186 @@ section:has(h2:contains("Bezpieczeństwo")) [class*="card"] p {
   }
 }
 
-
-/* === UNIVERSAL: NO GREY BACKGROUND PATCHES ON ANY TEXT in day mode === */
-body.day-mode * {
-  -webkit-tap-highlight-color: transparent;
-}
-body.day-mode p,
-body.day-mode h1, body.day-mode h2, body.day-mode h3, body.day-mode h4, body.day-mode h5, body.day-mode h6,
-body.day-mode span, body.day-mode li, body.day-mode a,
-body.day-mode label, body.day-mode strong, body.day-mode em,
-body.day-mode b, body.day-mode i, body.day-mode small {
-  background-color: transparent !important;
-  background-image: none !important;
-}
-
-body.day-mode .pf-card,
-body.day-mode .pf-card *,
-body.day-mode table,
-body.day-mode th,
-body.day-mode td,
-body.day-mode [class*="info-box"],
-body.day-mode [class*="info-box"] *,
-body.day-mode [class*="hosting"] {
-  background-color: revert !important;
-}
-body.day-mode .pf-card { background: #ffffff !important; }
-body.day-mode th { background: rgba(0,0,0,0.04) !important; }
-body.day-mode [class*="info-box"],
-body.day-mode [class*="hosting-info"] {
-  background: rgba(0,0,0,0.03) !important;
-}
-
-
-/* === DAY MODE - REMOVE UNWANTED WHITE CARD WRAPPERS === */
-
-body.day-mode section {
-  background: #fafafa !important;
-  background-color: #fafafa !important;
-}
-
-body.day-mode section > div,
-body.day-mode section > div > div {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
 /* EXCEPTIONS */
-
-body.day-mode #oferta > div,
-body.day-mode section[id="oferta"] > div {
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
-  border-radius: 20px !important;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04) !important;
-}
-
-body.day-mode section:has(h2:first-of-type) > div:first-child:has([class*="guarantee"]),
-body.day-mode section > div:has(> div > h2:contains("Nie podoba")) {
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
-  border-radius: 20px !important;
-}
-
-body.day-mode #proces > div:has(li),
-body.day-mode section[id="proces"] > div:has(ol),
-body.day-mode section[id="proces"] > div:has([class*="step"]) {
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
-  border-radius: 20px !important;
-  padding: 32px !important;
-}
-
-body.day-mode section#cta > div:first-of-type {
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.12) !important;
-}
-
-body.day-mode .pf-card {
-  background: #ffffff !important;
-}
 
 /* === KILL ALL GREY TEXT HIGHLIGHTS === */
 
-body.day-mode p,
-body.day-mode h1, body.day-mode h2, body.day-mode h3, 
-body.day-mode h4, body.day-mode h5, body.day-mode h6,
-body.day-mode span, body.day-mode li, body.day-mode a,
-body.day-mode label, body.day-mode strong, body.day-mode em,
-body.day-mode b, body.day-mode i, body.day-mode small,
-body.day-mode div:not(.pf-card):not([class*="info-box"]):not([class*="hosting"]):not(table):not(th):not(td):not(tr) {
-  background-color: transparent !important;
-  background-image: none !important;
-  background: transparent !important;
+
+/* ============================================
+   DAY MODE - SIMPLE COLOR INVERSION
+   Dark → Light, White text → Black text
+   Everything else stays IDENTICAL to dark mode
+   ============================================ */
+
+body.day-mode {
+  background: #fafafa !important;
+  color: #0a0a0a !important;
 }
 
+body.day-mode section,
 body.day-mode footer,
-body.day-mode footer *,
-body.day-mode footer p,
-body.day-mode footer div,
-body.day-mode footer a {
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
+body.day-mode main,
+body.day-mode header,
+body.day-mode nav {
+  background-color: #fafafa !important;
 }
 
-body.day-mode section[id="proces"] ol,
-body.day-mode section[id="proces"] ol li,
-body.day-mode section[id="proces"] li,
-body.day-mode #proces ol,
-body.day-mode #proces li {
-  background: transparent !important;
+body.day-mode,
+body.day-mode h1, body.day-mode h2, body.day-mode h3,
+body.day-mode h4, body.day-mode h5, body.day-mode h6,
+body.day-mode p, body.day-mode span, body.day-mode div,
+body.day-mode li, body.day-mode a, body.day-mode td,
+body.day-mode th, body.day-mode label, body.day-mode strong,
+body.day-mode em, body.day-mode small, body.day-mode b,
+body.day-mode summary {
+  color: #0a0a0a !important;
 }
 
-body.day-mode [class*="step-item"],
-body.day-mode [class*="process-step"],
-body.day-mode [class*="timeline-item"] {
-  background: transparent !important;
+body.day-mode p,
+body.day-mode [class*="muted"],
+body.day-mode [class*="subtle"],
+body.day-mode [class*="description"],
+body.day-mode [class*="subtitle"] {
+  color: rgba(0,0,0,0.7) !important;
 }
+
+body.day-mode [class*="eyebrow"],
+body.day-mode [class*="meta"],
+body.day-mode [class*="label"] {
+  color: rgba(0,0,0,0.55) !important;
+}
+
+body.day-mode [style*="color: white"],
+body.day-mode [style*="color:white"],
+body.day-mode [style*="color: #fff"],
+body.day-mode [style*="color:#fff"],
+body.day-mode [style*="color: #ffffff"],
+body.day-mode [style*="color:#ffffff"],
+body.day-mode [style*="color: rgba(255"],
+body.day-mode [style*="color:rgba(255"] {
+  color: #0a0a0a !important;
+}
+
+body.day-mode [style*="background: #111"],
+body.day-mode [style*="background:#111"],
+body.day-mode [style*="background-color: #111"],
+body.day-mode .pf-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.day-mode [style*="background: #0a0a0a"],
+body.day-mode [style*="background:#0a0a0a"] {
+  background: #ffffff !important;
+}
+
+/* === BUTTONS === */
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode a.nav-cta,
+body.day-mode .price-cta,
+body.day-mode a.price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode button[type="submit"],
+body.day-mode .guarantee-cta,
+body.day-mode .cta-button,
+body.day-mode .sticky-mobile-cta-btn {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode .guarantee-cta *,
+body.day-mode .cta-button *,
+body.day-mode .sticky-mobile-cta-btn * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+body.day-mode .btn-secondary {
+  background: transparent !important;
+  border-color: rgba(0,0,0,0.2) !important;
+  color: #0a0a0a !important;
+}
+
+/* === BORDERS === */
+body.day-mode [style*="border"]:not([class*="btn"]):not(.pf-card),
+body.day-mode hr {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === LOGO === */
+body.day-mode .logo svg,
+body.day-mode [class*="logo"] svg,
+body.day-mode nav a:first-child svg {
+  fill: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+body.day-mode .logo svg *,
+body.day-mode [class*="logo"] svg * {
+  fill: #0a0a0a !important;
+}
+
+/* === NAV === */
+body.day-mode nav,
+body.day-mode header {
+  background: rgba(250,250,250,0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* === THEME TOGGLE === */
+body.day-mode .nav-theme-toggle {
+  border-color: rgba(0,0,0,0.3) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle svg {
+  stroke: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle .moon-icon { display: none !important; }
+body.day-mode .nav-theme-toggle .sun-icon { display: block !important; }
+
+/* === SCROLL TO TOP === */
+body.day-mode #scrollTop,
+body.day-mode [class*="scroll-top"] {
+  background: #0a0a0a !important;
+}
+body.day-mode #scrollTop svg,
+body.day-mode [class*="scroll-top"] svg {
+  stroke: #ffffff !important;
+}
+
+/* === STICKY MOBILE CTA === */
+body.day-mode .sticky-mobile-cta {
+  background: rgba(255,255,255,0.95) !important;
+  border-top-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === TABLES === */
+body.day-mode table { background: transparent !important; }
+body.day-mode th {
+  background: rgba(0,0,0,0.04) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode td {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* === FAQ === */
+body.day-mode details,
+body.day-mode summary {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === FLORAL DECORATION ADJUSTMENTS === */
+body.day-mode section[data-decor-bg="22"]::before { opacity: 0.20 !important; }
+body.day-mode section[data-decor-bg="33"]::before { background: rgba(250,250,250,0.88) !important; }
+body.day-mode section[data-decor-bg="77"]::before { opacity: 0.18 !important; }
 
 </style>
 
