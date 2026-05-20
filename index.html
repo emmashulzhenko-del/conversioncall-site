@@ -1456,6 +1456,368 @@ body.day-mode section[data-decor-bg="33"]::before {
   }
 }
 
+
+section[data-decor-bg="77"] {
+  position: relative;
+  overflow: hidden;
+}
+section[data-decor-bg="77"]::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background-image: url('77-decor.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.10;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+}
+section[data-decor-bg="77"] > * { position: relative; z-index: 1; }
+body.day-mode section[data-decor-bg="77"]::before { opacity: 0.20; }
+@media (max-width: 767px) {
+  section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
+  body.day-mode section[data-decor-bg="77"]::before { opacity: 0.12; }
+}
+
+
+/* === MOBILE: Scroll-top button - position above sticky CTA === */
+@media (max-width: 767px) {
+  #scrollTop, [class*="scroll-top"], .scroll-to-top {
+    bottom: 88px !important;
+    right: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 80 !important;
+  }
+  
+  .sticky-mobile-cta:not(.visible) ~ * #scrollTop {
+    bottom: 24px !important;
+  }
+}
+
+/* === MOBILE: Make sure sticky CTA "Zamów" button is fully visible === */
+@media (max-width: 767px) {
+  .sticky-mobile-cta {
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) !important;
+    gap: 10px !important;
+  }
+  .sticky-mobile-cta-info {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .sticky-mobile-cta-label {
+    font-size: 10px !important;
+  }
+  .sticky-mobile-cta-price {
+    font-size: 15px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sticky-mobile-cta-btn {
+    padding: 11px 18px !important;
+    font-size: 13px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+
+/* === LOGO ICON visibility in day mode === */
+body.day-mode .logo svg,
+body.day-mode .logo-icon svg,
+body.day-mode [class*="logo"] svg,
+body.day-mode nav a:first-child svg,
+body.day-mode header a:first-child svg {
+  fill: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .logo svg *,
+body.day-mode [class*="logo"] svg * {
+  fill: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+body.day-mode .logo svg path,
+body.day-mode .logo svg rect,
+body.day-mode .logo svg circle,
+body.day-mode [class*="logo"] svg path,
+body.day-mode [class*="logo"] svg rect,
+body.day-mode [class*="logo"] svg circle {
+  fill: #0a0a0a !important;
+}
+
+
+/* === COMPARISON TABLE - responsive UX === */
+
+@media (max-width: 767px) {
+  section table,
+  section[id*="por"] table,
+  table:has(th):has(td) {
+    display: block;
+    width: 100% !important;
+    border: none !important;
+  }
+  section table thead,
+  table thead {
+    display: none !important;
+  }
+  section table tbody,
+  table tbody {
+    display: block;
+    width: 100%;
+  }
+  section table tr,
+  table tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  body.day-mode section table tr,
+  body.day-mode table tr {
+    border-color: rgba(0,0,0,0.1) !important;
+    background: rgba(0,0,0,0.02) !important;
+  }
+  section table td,
+  table td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    gap: 16px;
+    text-align: right !important;
+    font-size: 13px !important;
+  }
+  body.day-mode section table td,
+  body.day-mode table td {
+    border-bottom-color: rgba(0,0,0,0.06) !important;
+  }
+  section table td:last-child,
+  table td:last-child {
+    border-bottom: none !important;
+  }
+  section table td:before,
+  table td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-align: left;
+    flex-shrink: 0;
+  }
+  body.day-mode section table td:before,
+  body.day-mode table td:before {
+    color: rgba(0,0,0,0.5);
+  }
+  section table td:first-child,
+  table td:first-child {
+    font-weight: 700;
+    font-size: 15px !important;
+    color: #ffffff !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 8px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+  section table td:first-child:before,
+  table td:first-child:before {
+    display: none;
+  }
+  body.day-mode section table td:first-child,
+  body.day-mode table td:first-child {
+    color: #0a0a0a !important;
+    border-bottom-color: rgba(0,0,0,0.15) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  section table {
+    table-layout: fixed;
+    width: 100% !important;
+  }
+  section table th,
+  section table td {
+    word-wrap: break-word;
+    font-size: 14px;
+  }
+  section table th:first-child,
+  section table td:first-child {
+    width: 26%;
+  }
+}
+
+
+/* === PROMINENT CTA BUTTONS - day mode === */
+body.day-mode section[id="oferta"] a[class*="btn"],
+body.day-mode section[id="oferta"] a[href*="cta"],
+body.day-mode section[id="oferta"] a[href*="mailto"],
+body.day-mode section[id="oferta"] button,
+body.day-mode #oferta [class*="btn-primary"],
+body.day-mode #oferta [class*="price-cta"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 2px solid #0a0a0a !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  font-weight: 700 !important;
+}
+body.day-mode section[id="oferta"] a[class*="btn"] *,
+body.day-mode section[id="oferta"] button *,
+body.day-mode #oferta [class*="btn-primary"] * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+body.day-mode section[id="oferta"] a[class*="btn"]:hover {
+  background: #1a1a1a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25) !important;
+}
+
+body.day-mode [class*="guarantee"] a[class*="btn"],
+body.day-mode [class*="guarantee"] button {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 2px solid #0a0a0a !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
+  font-weight: 700 !important;
+}
+body.day-mode [class*="guarantee"] a[class*="btn"] *,
+body.day-mode [class*="guarantee"] button * {
+  color: #ffffff !important;
+}
+
+
+/* === BRIEF / FORM SECTIONS - clean white in day mode === */
+body.day-mode section[id*="brief"],
+body.day-mode section:has(form),
+body.day-mode form,
+body.day-mode [class*="brief"] {
+  background: #ffffff !important;
+}
+body.day-mode section[id*="brief"] *,
+body.day-mode section:has(form) p,
+body.day-mode section:has(form) label,
+body.day-mode section:has(form) span,
+body.day-mode form p,
+body.day-mode form label {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+body.day-mode p span,
+body.day-mode p strong,
+body.day-mode p em,
+body.day-mode li span,
+body.day-mode h1 span,
+body.day-mode h2 span,
+body.day-mode h3 span {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.day-mode input[type="text"],
+body.day-mode input[type="email"],
+body.day-mode input[type="tel"],
+body.day-mode textarea {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(0,0,0,0.15) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode input:focus,
+body.day-mode textarea:focus {
+  border-color: #0a0a0a !important;
+  outline: none !important;
+}
+
+
+/* === TRUST / STANDARDY CARDS - compact === */
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"],
+section:has(h2:contains("Bezpieczeństwo")) > div > div,
+[class*="trust"] [class*="card"],
+[class*="standardy"] > div > div {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 24px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] svg,
+[class*="trust"] [class*="card"] svg {
+  width: 32px !important;
+  height: 32px !important;
+  margin-bottom: 4px !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] h3,
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] h4 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+@media (min-width: 1024px) {
+  section:has(h2:contains("Bezpieczeństwo")) > div > div:has(> div),
+  section:has(h2:contains("Standardy")) > div > div:has(> div) {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+
+/* === UNIVERSAL: NO GREY BACKGROUND PATCHES ON ANY TEXT in day mode === */
+body.day-mode * {
+  -webkit-tap-highlight-color: transparent;
+}
+body.day-mode p,
+body.day-mode h1, body.day-mode h2, body.day-mode h3, body.day-mode h4, body.day-mode h5, body.day-mode h6,
+body.day-mode span, body.day-mode li, body.day-mode a,
+body.day-mode label, body.day-mode strong, body.day-mode em,
+body.day-mode b, body.day-mode i, body.day-mode small {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.day-mode .pf-card,
+body.day-mode .pf-card *,
+body.day-mode table,
+body.day-mode th,
+body.day-mode td,
+body.day-mode [class*="info-box"],
+body.day-mode [class*="info-box"] *,
+body.day-mode [class*="hosting"] {
+  background-color: revert !important;
+}
+body.day-mode .pf-card { background: #ffffff !important; }
+body.day-mode th { background: rgba(0,0,0,0.04) !important; }
+body.day-mode [class*="info-box"],
+body.day-mode [class*="hosting-info"] {
+  background: rgba(0,0,0,0.03) !important;
+}
+
 </style>
 
 
@@ -1525,7 +1887,7 @@ body.day-mode section[data-decor-bg="33"]::before {
 </div>
 
 <!-- ABOUT -->
-<section data-decor-bg="22" class="section">
+<section class="section">
   <div class="wrap">
     <div class="about-grid">
       <div class="reveal">
@@ -1595,7 +1957,7 @@ body.day-mode section[data-decor-bg="33"]::before {
 </section>
 
 <!-- COMPARE TABLE -->
-<section data-decor-bg="22" class="section">
+<section class="section">
   <div class="wrap">
     <div class="cmp-hdr reveal">
       <div class="eyebrow">porównanie</div>
@@ -1606,22 +1968,22 @@ body.day-mode section[data-decor-bg="33"]::before {
       <table>
         <thead><tr><th></th><th class="hl">conversion call</th><th>typowa agencja</th><th>freelancer (abonament)</th></tr></thead>
         <tbody>
-          <tr><td class="lbl">cena</td><td class="hl">720 zł jednorazowo</td><td>3 000 – 8 000 zł</td><td>200 – 400 zł/mies.</td></tr>
-          <tr><td class="lbl">czas realizacji</td><td class="hl">7 dni roboczych</td><td>4 – 8 tygodni</td><td>bezterminowo</td></tr>
-          <tr><td class="lbl">stała wycena</td><td class="hl">tak, z góry</td><td class="dim">„skontaktuj się"</td><td class="dim">ukryte koszty</td></tr>
-          <tr><td class="lbl">własność strony</td><td class="hl">twoja, bez umowy</td><td>twoja</td><td class="dim">wynajem</td></tr>
-          <tr><td class="lbl">edycja i tworzenie</td><td class="hl">Claude Code + Claude Design</td><td>cms proprietary</td><td class="dim">tylko przez nich</td></tr>
-          <tr><td class="lbl">seo podstawowe</td><td class="hl">w cenie</td><td>+1 000 – 3 000 zł</td><td>+100 zł/mies.</td></tr>
-          <tr><td class="lbl">wsparcie po wdrożeniu</td><td class="hl">60 dni gratis</td><td>~150 zł/h</td><td>w abonamencie</td></tr>
-          <tr><td class="lbl">komunikacja</td><td class="hl">bezpośrednio z autorem</td><td>przez account managera</td><td>bezpośrednio</td></tr>
-        </tbody>
+<tr><td data-label="">cena</td><td data-label="conversion call">720 zł jednorazowo</td><td data-label="typowa agencja">3 000 – 8 000 zł</td><td data-label="freelancer (abonament)">200 – 400 zł/mies.</td></tr>
+<tr><td data-label="">czas realizacji</td><td data-label="conversion call">7 dni roboczych</td><td data-label="typowa agencja">4 – 8 tygodni</td><td data-label="freelancer (abonament)">bezterminowo</td></tr>
+<tr><td data-label="">stała wycena</td><td data-label="conversion call">tak, z góry</td><td data-label="typowa agencja">„skontaktuj się"</td><td data-label="freelancer (abonament)">ukryte koszty</td></tr>
+<tr><td data-label="">własność strony</td><td data-label="conversion call">twoja, bez umowy</td><td data-label="typowa agencja">twoja</td><td data-label="freelancer (abonament)">wynajem</td></tr>
+<tr><td data-label="">edycja i tworzenie</td><td data-label="conversion call">Claude Code + Claude Design</td><td data-label="typowa agencja">cms proprietary</td><td data-label="freelancer (abonament)">tylko przez nich</td></tr>
+<tr><td data-label="">seo podstawowe</td><td data-label="conversion call">w cenie</td><td data-label="typowa agencja">+1 000 – 3 000 zł</td><td data-label="freelancer (abonament)">+100 zł/mies.</td></tr>
+<tr><td data-label="">wsparcie po wdrożeniu</td><td data-label="conversion call">60 dni gratis</td><td data-label="typowa agencja">~150 zł/h</td><td data-label="freelancer (abonament)">w abonamencie</td></tr>
+<tr><td data-label="">komunikacja</td><td data-label="conversion call">bezpośrednio z autorem</td><td data-label="typowa agencja">przez account managera</td><td data-label="freelancer (abonament)">bezpośrednio</td></tr>
+</tbody>
       </table>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section id="oferta" class="section">
+<section data-decor-bg="77" id="oferta" class="section">
   <div class="wrap">
     <div class="prx-hdr reveal">
       <div class="eyebrow">oferta · bez ukrytych kosztów</div>
