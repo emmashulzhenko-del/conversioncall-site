@@ -1032,6 +1032,177 @@ body:not(.day-mode) #hero p {
   color: rgba(255,255,255,0.85) !important;
 }
 
+
+/* ============================================
+   COMPREHENSIVE FINAL FIX - both modes work
+   ============================================ */
+
+/* THEME TOGGLE - visible in BOTH modes */
+.nav-theme-toggle {
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,0.4) !important;
+  color: #ffffff !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 8px !important;
+}
+.nav-theme-toggle svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+}
+.nav-theme-toggle:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+.nav-theme-toggle .sun-icon { display: none; }
+.nav-theme-toggle .moon-icon { display: block; }
+
+body.day-mode .nav-theme-toggle {
+  border-color: rgba(0,0,0,0.3) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle svg {
+  stroke: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle:hover {
+  background: rgba(0,0,0,0.05) !important;
+}
+body.day-mode .nav-theme-toggle .sun-icon { display: block; }
+body.day-mode .nav-theme-toggle .moon-icon { display: none; }
+
+/* BLACK BUTTONS = WHITE TEXT - both modes */
+.btn-primary,
+.nav-cta,
+a.nav-cta,
+.price-cta,
+a.price-cta,
+[class*="btn-primary"],
+[class*="cta-btn"],
+button[type="submit"],
+a[href*="zamow"][class*="btn"],
+.guarantee-cta {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+.btn-primary span, .btn-primary svg,
+.nav-cta span, .nav-cta svg,
+.price-cta span, .price-cta svg,
+[class*="btn-primary"] span, [class*="btn-primary"] svg,
+[class*="cta-btn"] span, [class*="cta-btn"] svg,
+.guarantee-cta span, .guarantee-cta svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode .price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode .guarantee-cta {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode [class*="cta-btn"] *,
+body.day-mode .guarantee-cta * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* WHITE BUTTONS in dark mode (zamów stronę in nav) - dark text */
+body:not(.day-mode) .nav-cta {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body:not(.day-mode) .nav-cta * {
+  color: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+
+/* SCROLL-TO-TOP */
+#scrollTop, [class*="scroll-top"] {
+  background: #ffffff !important;
+}
+#scrollTop svg, [class*="scroll-top"] svg {
+  stroke: #0a0a0a !important;
+}
+body.day-mode #scrollTop,
+body.day-mode [class*="scroll-top"] {
+  background: #0a0a0a !important;
+}
+body.day-mode #scrollTop svg,
+body.day-mode [class*="scroll-top"] svg {
+  stroke: #ffffff !important;
+}
+
+/* REMOVE GREY BACKGROUND PATCHES ON TEXT in day mode */
+body.day-mode p,
+body.day-mode h1,
+body.day-mode h2,
+body.day-mode h3,
+body.day-mode h4,
+body.day-mode h5,
+body.day-mode h6,
+body.day-mode span,
+body.day-mode a,
+body.day-mode li {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* FINAL CTA SECTION - white card, no plaid pattern, keep outline */
+section#cta > div:first-of-type,
+section[id*="final"] > div:first-of-type {
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  border-radius: 16px !important;
+  padding: 56px 32px !important;
+}
+
+/* All text inside CTA card stays dark since bg is white */
+section#cta > div:first-of-type h1,
+section#cta > div:first-of-type h2,
+section#cta > div:first-of-type h3,
+section#cta > div:first-of-type p {
+  color: #0a0a0a !important;
+}
+section#cta > div:first-of-type [class*="eyebrow"],
+section#cta > div:first-of-type [class*="label"] {
+  color: rgba(0,0,0,0.55) !important;
+}
+section#cta > div:first-of-type a:not([class*="btn"]):not([class*="cta"]) {
+  color: #0a0a0a !important;
+}
+
+/* Kill any grid/plaid backgrounds in CTA section */
+section#cta svg[class*="grid"],
+section#cta [class*="grid-pattern"],
+section#cta [class*="plaid"],
+section[id*="final"] svg[class*="grid"],
+section[id*="final"] [class*="grid-pattern"] {
+  display: none !important;
+}
+
+/* Remove inline pattern backgrounds on CTA child divs */
+section#cta div[style*="background-image"]:not(img) {
+  background-image: none !important;
+}
+
 </style>
 
 
