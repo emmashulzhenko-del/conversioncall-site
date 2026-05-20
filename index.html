@@ -1818,6 +1818,96 @@ body.day-mode [class*="hosting-info"] {
   background: rgba(0,0,0,0.03) !important;
 }
 
+
+/* === DAY MODE - REMOVE UNWANTED WHITE CARD WRAPPERS === */
+
+body.day-mode section {
+  background: #fafafa !important;
+  background-color: #fafafa !important;
+}
+
+body.day-mode section > div,
+body.day-mode section > div > div {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* EXCEPTIONS */
+
+body.day-mode #oferta > div,
+body.day-mode section[id="oferta"] > div {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04) !important;
+}
+
+body.day-mode section:has(h2:first-of-type) > div:first-child:has([class*="guarantee"]),
+body.day-mode section > div:has(> div > h2:contains("Nie podoba")) {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  border-radius: 20px !important;
+}
+
+body.day-mode #proces > div:has(li),
+body.day-mode section[id="proces"] > div:has(ol),
+body.day-mode section[id="proces"] > div:has([class*="step"]) {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  border-radius: 20px !important;
+  padding: 32px !important;
+}
+
+body.day-mode section#cta > div:first-of-type {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+}
+
+body.day-mode .pf-card {
+  background: #ffffff !important;
+}
+
+/* === KILL ALL GREY TEXT HIGHLIGHTS === */
+
+body.day-mode p,
+body.day-mode h1, body.day-mode h2, body.day-mode h3, 
+body.day-mode h4, body.day-mode h5, body.day-mode h6,
+body.day-mode span, body.day-mode li, body.day-mode a,
+body.day-mode label, body.day-mode strong, body.day-mode em,
+body.day-mode b, body.day-mode i, body.day-mode small,
+body.day-mode div:not(.pf-card):not([class*="info-box"]):not([class*="hosting"]):not(table):not(th):not(td):not(tr) {
+  background-color: transparent !important;
+  background-image: none !important;
+  background: transparent !important;
+}
+
+body.day-mode footer,
+body.day-mode footer *,
+body.day-mode footer p,
+body.day-mode footer div,
+body.day-mode footer a {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+body.day-mode section[id="proces"] ol,
+body.day-mode section[id="proces"] ol li,
+body.day-mode section[id="proces"] li,
+body.day-mode #proces ol,
+body.day-mode #proces li {
+  background: transparent !important;
+}
+
+body.day-mode [class*="step-item"],
+body.day-mode [class*="process-step"],
+body.day-mode [class*="timeline-item"] {
+  background: transparent !important;
+}
+
 </style>
 
 
