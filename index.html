@@ -426,50 +426,6 @@
 .pf-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; }
 
 
-/* === COLOR ACCENTS FROM HERO PALETTE === */
-:root {
-  --accent-orange: #ff8a3d;
-  --accent-purple: #6b4dff;
-  --accent-gradient: linear-gradient(135deg, #ff8a3d 0%, #6b4dff 100%);
-}
-.stat-num, .stats-num, [class*="price-num"], [class*="stat-num"] {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero h1 .price-highlight, .price-amount {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.btn-primary:hover, button[type="submit"]:hover {
-  box-shadow: 0 0 24px rgba(255, 138, 61, 0.25);
-}
-body.day-mode * { --bg: #fafafa; --text: #0a0a0a; --border: rgba(0,0,0,0.08); }
-body.day-mode .pf-card { background: #fff; border-color: rgba(0,0,0,0.08); color: #0a0a0a; }
-body.day-mode .pf-card h3 { color: #0a0a0a; }
-body.day-mode .pf-card p { color: rgba(0,0,0,0.65); }
-body.day-mode .pf-meta, body.day-mode .pf-tag { color: rgba(0,0,0,0.5); }
-body.day-mode .pf-img { background: #f0f0f0; }
-body.day-mode nav, body.day-mode .nav-pill, body.day-mode [class*="nav"] {
-  background: rgba(255,255,255,0.85) !important; color: #0a0a0a !important;
-}
-body.day-mode .nav-pill a, body.day-mode nav a { color: #0a0a0a !important; }
-body.day-mode h1, body.day-mode h2, body.day-mode h3, body.day-mode h4 { color: #0a0a0a !important; }
-body.day-mode p, body.day-mode span, body.day-mode li, body.day-mode td, body.day-mode th { color: rgba(0,0,0,0.75); }
-body.day-mode section { background: #fafafa !important; }
-body.day-mode .stat-num, body.day-mode .price-amount {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-body.day-mode button, body.day-mode .btn-primary { background: #0a0a0a; color: #fff; }
-body.day-mode .btn-secondary { border-color: rgba(0,0,0,0.2); color: #0a0a0a; }
-body.day-mode table { border-color: rgba(0,0,0,0.1); }
-body.day-mode tr, body.day-mode td, body.day-mode th { border-color: rgba(0,0,0,0.08) !important; }
-
 /* === THEME SWITCHER === */
 .theme-toggle {
   position: fixed; top: 24px; right: 24px; width: 40px; height: 40px;
@@ -480,12 +436,6 @@ body.day-mode tr, body.day-mode td, body.day-mode th { border-color: rgba(0,0,0,
   transition: all 0.3s ease; color: #fff;
 }
 .theme-toggle:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
-body.day-mode .theme-toggle { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.15); color: #0a0a0a; }
-.theme-toggle svg { width: 18px; height: 18px; }
-.theme-toggle .sun-icon { display: none; }
-.theme-toggle .moon-icon { display: block; }
-body.day-mode .theme-toggle .sun-icon { display: block; }
-body.day-mode .theme-toggle .moon-icon { display: none; }
 @media (max-width: 767px) { .theme-toggle { top: 16px; right: 16px; width: 36px; height: 36px; } }
 
 
@@ -500,39 +450,11 @@ body.day-mode .theme-toggle .moon-icon { display: none; }
 }
 
 
-/* === HERO PALETTE COLOR ACCENTS - VISIBLE === */
-.stat-num,
-[class*="stat"] .num,
-.hero-stat-num,
-section[class*="stat"] > div > div:first-child,
-[class*="stat"] strong,
-[class*="stats"] [class*="num"] {
-  background: linear-gradient(135deg, #ff8a3d 0%, #c441ff 50%, #6b4dff 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  color: transparent !important;
-}
-
 /* Big price number in pricing card */
-.price-amount,
-[class*="price-amount"],
-[class*="pricing"] [class*="amount"],
-[class*="pricing"] strong:first-of-type {
-  background: linear-gradient(135deg, #ff8a3d 0%, #c441ff 50%, #6b4dff 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  color: transparent !important;
-}
+
 
 /* Hero "720 zł" text - highlight the number */
-#hero h1 {
-  background: linear-gradient(135deg, #ffffff 30%, #ff8a3d 60%, #c441ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+
 
 /* Subtle glow on primary buttons */
 .btn-primary:hover,
@@ -542,146 +464,233 @@ a[class*="cta"]:hover {
 }
 
 
-/* === DAY MODE - LIGHT THEME (FIXED VISIBILITY) === */
-body.day-mode {
-  background: #fafafa;
-  color: #0a0a0a;
+/* Text colors */
+/* Sections */
+/* Nav */
+/* Nav CTA - invert */
+/* Theme toggle in day mode */
+/* Portfolio cards */
+/* Buttons */
+/* Tables */
+/* Section backgrounds with white text - invert */
+/* Keep gradient accents visible in day mode too */
+/* Pills and tags */
+/* FAQ */
+/* Footer */
+/* === SOLID WHITE TEXT (no gradients) === */
+.stat-num,
+[class*="stat-num"],
+.price-amount,
+[class*="price-amount"],
+#hero h1,
+.hero-title {
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
 }
 
-/* Text colors */
+
+/* === CTA SECTION - SOLID BG, NO PATTERNS === */
+section:has(h2:contains("Gotowa na swoją")),
+section[id*="cta"],
+.cta-section,
+[class*="cta"] section,
+section[class*="cta"] {
+  background-image: none !important;
+  background: var(--bg, #0a0a0a) !important;
+}
+/* Remove grid pattern svg/image overlays in any section */
+section svg[class*="grid"],
+section [class*="grid-pattern"],
+section [style*="background-image"][style*="grid"],
+section [style*="background-image"][style*="pattern"] {
+  display: none !important;
+}
+
+/* If CTA has a wrapper with pattern - clean it */
+section > div[style*="background-image"] {
+  background-image: none !important;
+}
+
+
+/* === DAY MODE - COMPREHENSIVE LIGHT THEME === */
+body.day-mode {
+  background: #fafafa !important;
+  color: #0a0a0a !important;
+}
+
+/* ALL backgrounds that were dark - make light */
+body.day-mode,
+body.day-mode section,
+body.day-mode div,
+body.day-mode header,
+body.day-mode footer,
+body.day-mode main,
+body.day-mode article {
+  background-color: #fafafa !important;
+}
+
+/* Cards and elevated surfaces - slightly off-white */
+body.day-mode .pf-card,
+body.day-mode [class*="card"],
+body.day-mode [class*="pricing"] > div,
+body.day-mode .pricing-card,
+body.day-mode .price-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  color: #0a0a0a !important;
+}
+
+/* ALL text becomes dark by default */
 body.day-mode h1,
 body.day-mode h2,
 body.day-mode h3,
 body.day-mode h4,
 body.day-mode h5,
-body.day-mode h6 {
-  color: #0a0a0a !important;
-}
+body.day-mode h6,
 body.day-mode p,
 body.day-mode li,
 body.day-mode span,
-body.day-mode div,
 body.day-mode a,
+body.day-mode div,
 body.day-mode label,
 body.day-mode td,
 body.day-mode th,
 body.day-mode strong,
 body.day-mode small,
-body.day-mode em {
-  color: #1a1a1a !important;
-}
-body.day-mode [style*="color: rgba(255"],
-body.day-mode [style*="color:rgba(255"],
-body.day-mode [style*="color: #fff"],
-body.day-mode [style*="color:#fff"],
-body.day-mode [style*="color: white"],
-body.day-mode [style*="color:white"] {
-  color: rgba(0,0,0,0.7) !important;
+body.day-mode em,
+body.day-mode b {
+  color: #0a0a0a !important;
 }
 
-/* Sections */
-body.day-mode section { background: #fafafa !important; }
-body.day-mode #hero { background: #fafafa !important; }
+/* Muted text variants */
+body.day-mode p,
+body.day-mode .text-muted,
+body.day-mode [class*="muted"],
+body.day-mode [class*="subtle"] {
+  color: rgba(0,0,0,0.65) !important;
+}
+
+/* Override inline white colors */
+body.day-mode [style*="color: white"],
+body.day-mode [style*="color:white"],
+body.day-mode [style*="color: #fff"],
+body.day-mode [style*="color:#fff"],
+body.day-mode [style*="color: #ffffff"],
+body.day-mode [style*="color:#ffffff"],
+body.day-mode [style*="color: rgba(255"],
+body.day-mode [style*="color:rgba(255"] {
+  color: #0a0a0a !important;
+}
+
+/* === BLACK BUTTONS NEED WHITE TEXT === */
+body.day-mode .btn-primary,
+body.day-mode button.btn-primary,
+body.day-mode .nav-cta,
+body.day-mode a.nav-cta,
+body.day-mode a[href="#cta"].nav-cta,
+body.day-mode [class*="cta-button"],
+body.day-mode button[type="submit"],
+body.day-mode .price-cta,
+body.day-mode a[href*="zamow"],
+body.day-mode a[class*="btn-primary"],
+body.day-mode [class*="btn"][style*="background: #0a0a0a"],
+body.day-mode [class*="btn"][style*="background:#0a0a0a"],
+body.day-mode [class*="btn"][style*="background: #000"],
+body.day-mode [class*="btn"][style*="background:#000"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode button.btn-primary *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode [class*="cta-button"] * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Secondary buttons - light */
+body.day-mode .btn-secondary {
+  background: transparent !important;
+  border: 1px solid rgba(0,0,0,0.2) !important;
+  color: #0a0a0a !important;
+}
+
+/* === DARK SECTIONS WITH WHITE TEXT - keep them dark in day mode === */
+/* Sections that are intentionally dark (like guarantee CTA) */
+body.day-mode section[style*="background: #0a0a0a"],
+body.day-mode section[style*="background:#0a0a0a"],
+body.day-mode section[style*="background: #000"],
+body.day-mode section[style*="background:#000"],
+body.day-mode div[style*="background: #0a0a0a"],
+body.day-mode div[style*="background:#0a0a0a"] {
+  background: #0a0a0a !important;
+}
+body.day-mode section[style*="background: #0a0a0a"] *,
+body.day-mode section[style*="background:#0a0a0a"] *,
+body.day-mode div[style*="background: #0a0a0a"] *,
+body.day-mode div[style*="background:#0a0a0a"] * {
+  color: #ffffff !important;
+}
 
 /* Nav */
 body.day-mode nav,
-body.day-mode header,
-body.day-mode [class*="nav"] {
+body.day-mode header[class*="nav"],
+body.day-mode [class*="nav"] > div {
   background: rgba(255,255,255,0.85) !important;
+  backdrop-filter: blur(12px);
 }
 body.day-mode nav a,
-body.day-mode .nav a {
+body.day-mode nav span,
+body.day-mode [class*="nav"] a:not(.nav-cta):not([class*="cta"]) {
   color: #0a0a0a !important;
 }
 
-/* Nav CTA - invert */
-body.day-mode .nav-cta,
-body.day-mode a[href="#cta"] {
-  background: #0a0a0a !important;
-  color: #fff !important;
-}
-
-/* Theme toggle in day mode */
+/* Theme toggle in nav */
 body.day-mode .nav-theme-toggle {
   border-color: rgba(0,0,0,0.15) !important;
   color: #0a0a0a !important;
+  background: transparent !important;
 }
 body.day-mode .nav-theme-toggle .moon-icon { display: none !important; }
 body.day-mode .nav-theme-toggle .sun-icon { display: block !important; }
+.nav-theme-toggle .sun-icon { display: none; }
+.nav-theme-toggle .moon-icon { display: block; }
 
-/* Portfolio cards */
-body.day-mode .pf-card {
-  background: #fff !important;
-  border-color: rgba(0,0,0,0.08) !important;
-  color: #0a0a0a !important;
-}
+/* Portfolio cards in day mode */
 body.day-mode .pf-card h3 { color: #0a0a0a !important; }
 body.day-mode .pf-card p { color: rgba(0,0,0,0.65) !important; }
 body.day-mode .pf-meta,
 body.day-mode .pf-tag { color: rgba(0,0,0,0.5) !important; }
 
-/* Buttons */
-body.day-mode .btn-primary,
-body.day-mode button[type="submit"] {
-  background: #0a0a0a !important;
-  color: #fff !important;
-}
-body.day-mode .btn-secondary {
-  border-color: rgba(0,0,0,0.2) !important;
-  color: #0a0a0a !important;
-}
-
 /* Tables */
-body.day-mode table,
-body.day-mode tr,
+body.day-mode table { background: #ffffff !important; }
+body.day-mode th { 
+  background: rgba(0,0,0,0.04) !important; 
+  color: #0a0a0a !important; 
+}
 body.day-mode td,
 body.day-mode th {
-  border-color: rgba(0,0,0,0.1) !important;
-  background: transparent !important;
-}
-body.day-mode th {
-  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.08) !important;
 }
 
-/* Section backgrounds with white text - invert */
-body.day-mode [style*="background: #fff"],
-body.day-mode [style*="background:#fff"] {
-  background: #0a0a0a !important;
-  color: #fff !important;
-}
-body.day-mode [style*="background: #fff"] *,
-body.day-mode [style*="background:#fff"] * {
-  color: #fff !important;
-}
-
-/* Keep gradient accents visible in day mode too */
-body.day-mode .stat-num,
-body.day-mode .price-amount,
-body.day-mode #hero h1 {
-  background: linear-gradient(135deg, #ff8a3d 0%, #c441ff 50%, #6b4dff 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-}
-
-/* Borders and dividers */
+/* Borders */
 body.day-mode hr,
-body.day-mode [style*="border"] {
+body.day-mode [class*="divider"],
+body.day-mode [class*="border"] {
   border-color: rgba(0,0,0,0.1) !important;
 }
 
-/* Pills and tags */
-body.day-mode [class*="pill"],
+/* Pills / badges / tags */
+body.day-mode [class*="pill"]:not(.nav-cta):not([class*="btn"]),
 body.day-mode [class*="badge"],
-body.day-mode [class*="tag"] {
+body.day-mode [class*="tag"]:not(.pf-tag) {
   background: rgba(0,0,0,0.05) !important;
-  color: #0a0a0a !important;
-  border-color: rgba(0,0,0,0.1) !important;
-}
-
-/* FAQ */
-body.day-mode details,
-body.day-mode summary {
   color: #0a0a0a !important;
   border-color: rgba(0,0,0,0.1) !important;
 }
@@ -689,9 +698,19 @@ body.day-mode summary {
 /* Footer */
 body.day-mode footer {
   background: #fafafa !important;
-  border-color: rgba(0,0,0,0.1) !important;
 }
-body.day-mode footer * { color: rgba(0,0,0,0.7) !important; }
+body.day-mode footer * {
+  color: rgba(0,0,0,0.7) !important;
+}
+
+/* Remove ALL background patterns/grids in day mode */
+body.day-mode [style*="background-image"]:not(img):not(.pf-img) {
+  background-image: none !important;
+}
+body.day-mode svg[class*="grid"],
+body.day-mode [class*="grid-pattern"] {
+  display: none !important;
+}
 
 </style>
 
