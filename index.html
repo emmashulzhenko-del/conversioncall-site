@@ -1320,6 +1320,179 @@ body.day-mode section[data-decor-bg="22"]::before { opacity: 0.20 !important; }
 body.day-mode section[data-decor-bg="33"]::before { background: rgba(250,250,250,0.88) !important; }
 body.day-mode section[data-decor-bg="77"]::before { opacity: 0.18 !important; }
 
+
+/* ============================================
+   DAY MODE - INVERT ALL DARK CARDS to WHITE
+   ============================================ */
+
+/* All elements that have class containing card / box / panel - flip dark backgrounds */
+body.day-mode [class*="card"]:not(.pf-card),
+body.day-mode [class*="-box"],
+body.day-mode [class*="panel"],
+body.day-mode [class*="container"]:not(section):not(body):not(html),
+body.day-mode .pricing-card,
+body.day-mode .guarantee-card,
+body.day-mode .process-card,
+body.day-mode .price-card,
+body.day-mode #oferta > div,
+body.day-mode #oferta > div > div,
+body.day-mode #proces > div,
+body.day-mode #proces > div > div,
+body.day-mode section > div[class],
+body.day-mode section > div > div[class] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  color: #0a0a0a !important;
+}
+
+/* All children inside these cards inherit dark text */
+body.day-mode [class*="card"]:not(.pf-card) *,
+body.day-mode [class*="-box"] *,
+body.day-mode .pricing-card *,
+body.day-mode .guarantee-card *,
+body.day-mode .process-card *,
+body.day-mode #oferta > div *,
+body.day-mode #oferta > div > div *,
+body.day-mode #proces > div *,
+body.day-mode #proces ol *,
+body.day-mode #proces li * {
+  color: #0a0a0a !important;
+}
+
+/* Process steps specifically - white card with black text */
+body.day-mode #proces > div,
+body.day-mode section[id="proces"] > div,
+body.day-mode section[id="proces"] > div > div,
+body.day-mode section[id="proces"] ol,
+body.day-mode section[id="proces"] li {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.day-mode #proces ol li *,
+body.day-mode #proces li * {
+  color: #0a0a0a !important;
+}
+
+/* Process step dots - black on white card */
+body.day-mode #proces [class*="dot"],
+body.day-mode #proces [class*="circle"],
+body.day-mode #proces svg circle {
+  background: #0a0a0a !important;
+  border-color: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+
+/* Pricing card content - white bg, dark text */
+body.day-mode #oferta > div,
+body.day-mode #oferta > div > div,
+body.day-mode #oferta [class*="left"],
+body.day-mode #oferta [class*="right"],
+body.day-mode #oferta [class*="features"] {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.day-mode #oferta h1,
+body.day-mode #oferta h2,
+body.day-mode #oferta h3,
+body.day-mode #oferta p,
+body.day-mode #oferta span,
+body.day-mode #oferta li,
+body.day-mode #oferta strong {
+  color: #0a0a0a !important;
+}
+
+/* Feature checkmark circles - black on white */
+body.day-mode #oferta [class*="check"],
+body.day-mode #oferta svg circle,
+body.day-mode [class*="feature"] [class*="check"] {
+  background: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+body.day-mode #oferta [class*="check"] svg,
+body.day-mode #oferta svg path {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* Hosting info box specifically */
+body.day-mode [class*="hosting"],
+body.day-mode [class*="info-box"] {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode [class*="hosting"] *,
+body.day-mode [class*="info-box"] * {
+  color: #0a0a0a !important;
+}
+
+/* === GUARANTEE SECTION - flip the dark half too === */
+body.day-mode section:has(h2:contains("Nie podoba")) > div,
+body.day-mode section:has(h2:contains("Nie podoba")) > div > div {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.day-mode section:has(h2:contains("Nie podoba")) * {
+  color: #0a0a0a !important;
+}
+body.day-mode section:has(h2:contains("Nie podoba")) [class*="checkmark"],
+body.day-mode section:has(h2:contains("Nie podoba")) svg circle {
+  background: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+
+/* === HERO TEXT - make visible in day mode === */
+body.day-mode #hero h1,
+body.day-mode #hero .hero-title,
+body.day-mode #hero h2,
+body.day-mode #hero p,
+body.day-mode #hero span,
+body.day-mode #hero a:not([class*="btn"]),
+body.day-mode #hero div {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  opacity: 1 !important;
+}
+
+/* Hero stat numbers */
+body.day-mode #hero [class*="stat"],
+body.day-mode #hero .counter,
+body.day-mode #hero [class*="num"] {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+}
+
+/* === RE-FORCE BLACK BUTTONS WITH WHITE TEXT === */
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode .price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode button[type="submit"],
+body.day-mode .guarantee-cta,
+body.day-mode .cta-button,
+body.day-mode .sticky-mobile-cta-btn,
+body.day-mode a[href*="mailto"][class*="btn"],
+body.day-mode a[href*="cta"][class*="btn"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode .cta-button *,
+body.day-mode .sticky-mobile-cta-btn * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
 </style>
 
 
