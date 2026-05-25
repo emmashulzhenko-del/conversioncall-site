@@ -1752,8 +1752,28 @@ body.day-mode footer * {
 
 
 <style>
+/* ── Day-mode surgical fixes ── */
 
+/* Issue 1: .gua-l uses var(--surface) which is #0a0a0a — override for day mode */
+body.day-mode .gua-l {
+  background: #f0f0f0 !important;
+}
 
+/* Issue 2: .prx-cta has background:#fff — invisible on white .prx-box in day mode
+   (the broad day-mode rule also strips it to transparent via section>div>div) */
+body.day-mode .prx-cta {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+body.day-mode .prx-cta svg {
+  stroke: #fff !important;
+}
+
+/* Issue 3: .prx-box border uses var(--border)=rgba(255,255,255,0.10) — invisible on light bg */
+body.day-mode .prx-box {
+  background: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
 </style>
 </head>
 <body>
