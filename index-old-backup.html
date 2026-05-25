@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conversion Call — Strony za 720 zł gotowe w 7 dni</title>
+  <meta name="description" content="Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Stała cena 720 zł brutto. Bez ukrytych kosztów. Wrocław · cała Polska.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+    table { border-collapse: collapse; }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --border: rgba(255,255,255,0.10);
+      --white: #ffffff;
+      --t90: rgba(255,255,255,0.90);
+      --t85: rgba(255,255,255,0.85);
+      --t70: rgba(255,255,255,0.70);
+      --t65: rgba(255,255,255,0.65);
+      --t60: rgba(255,255,255,0.60);
+      --t55: rgba(255,255,255,0.55);
+      --t50: rgba(255,255,255,0.50);
+      --t45: rgba(255,255,255,0.45);
+      --t40: rgba(255,255,255,0.40);
+      --t20: rgba(255,255,255,0.20);
+      --font: 'Geist', system-ui, -apple-system, sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --max-w: 1280px;
+      --px: 24px;
+      --py: 96px;
+      --r: 24px;
+      --rf: 9999px;
+    }
+
+    /* ===== BASE ===== */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+    .section { padding: var(--py) var(--px); border-top: 1px solid var(--border); }
+
+    /* ===== TYPOGRAPHY ===== */
+    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); }
+    .display-h { font-size: clamp(32px,5vw,60px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; margin-top: 16px; }
+
+    /* ===== GRID BG ===== */
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ===== NAV ===== */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      background: #171717; border-radius: var(--rf); padding: 10px 20px 10px 16px;
+    }
+    .nav-logo svg { width: 20px; height: 20px; }
+    .nav-logo span { font-size: 14px; }
+    .nav-links {
+      display: none; align-items: center; gap: 4px;
+      background: #171717; border-radius: var(--rf); padding: 8px 12px;
+    }
+    .nav-links a { color: var(--t70); font-size: 14px; padding: 8px 20px; border-radius: var(--rf); transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-cta { background: #fff; color: #000; font-size: 14px; border-radius: var(--rf); padding: 10px 24px; transition: background .2s; display: inline-block; }
+    .nav-cta:hover { background: #e5e5e5; }
+
+    /* ===== HERO ===== */
+    
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: var(--rf);
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15);
+      font-size: 12px; color: var(--t85); letter-spacing: 0.05em; margin-bottom: 24px;
+    }
+    .hero-pill .dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; flex-shrink: 0; }
+    .hero-h1 { font-size: clamp(52px,11vw,130px); letter-spacing: -0.04em; line-height: 0.92; font-weight: 500; margin-bottom: 20px; }
+    .hero-sub { font-size: 22px; line-height: 1.5; color: var(--t90); max-width: 540px; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-w { background: #fff; color: #000; border-radius: var(--rf); padding: 12px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: background .2s; }
+    .btn-w:hover { background: #e5e5e5; }
+    .btn-g { background: rgba(255,255,255,0.10); color: #fff; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-g:hover { background: rgba(255,255,255,0.15); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .hs:nth-child(2) { text-align: center; }
+    .hs:nth-child(3) { text-align: right; }
+    .hs-n { font-size: clamp(22px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t55); margin-top: 4px; }
+    .hero-portrait img { width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 16px; display: block; }
+
+    /* ===== LOGO BAR ===== */
+    .logo-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .logo-bar-in { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .logo-items { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .logo-items .nm { font-size: 14px; color: var(--t50); }
+    .logo-items .sep { color: var(--t20); }
+
+    /* ===== ABOUT ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+    .about-img { position: relative; aspect-ratio: 4/5; border-radius: var(--r); overflow: hidden; background: #171717; border: 1px solid var(--border); }
+    .about-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .about-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: var(--rf); background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 11px; color: var(--t70); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .about-h2 { font-size: clamp(28px,4.5vw,56px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; max-width: 640px; margin-bottom: 24px; }
+    .about-p { color: var(--t70); font-size: 15px; line-height: 1.7; max-width: 520px; margin-bottom: 32px; }
+    .about-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 560px; }
+    .ac { border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    .ac-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t45); }
+    .ac-v { font-size: 14px; margin-top: 4px; }
+
+    /* ===== PORTFOLIO ===== */
+    .port-hdr { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .port-hdr p { color: var(--t65); max-width: 480px; }
+    
+@media (min-width: 640px) {  }
+@media (min-width: 1024px) {  }
+    
+    
+    
+    
+    .port-overlay { position: absolute; inset: 0; }
+    .port-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .port-ph span { font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.08); }
+    
+    
+    .port-cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--t45); }
+    .port-num { font-size: 11px; letter-spacing: 0.16em; color: var(--t45); }
+    
+    
+    .port-note { font-size: 12px; color: var(--t45); margin-top: 6px; }
+    .port-foot { display: flex; align-items: center; justify-content: flex-end; margin-top: 16px; }
+    .port-arrow { width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #000; display: inline-flex; align-items: center; justify-content: center; transition: transform .3s; flex-shrink: 0; }
+    
+
+    /* ===== COMPARE TABLE ===== */
+    .cmp-hdr { text-align: center; margin-bottom: 48px; }
+    .cmp-hdr p { color: var(--t65); max-width: 520px; margin: 20px auto 0; }
+    .cmp-scroll { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
+    .cmp-scroll table { width: 100%; font-size: 14px; }
+    .cmp-scroll thead tr { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t50); }
+    .cmp-scroll thead th { text-align: left; padding: 20px; font-weight: normal; }
+    .cmp-scroll thead th.hl { background: #fff; color: #000; }
+    .cmp-scroll tbody td { padding: 20px; color: var(--t85); border-top: 1px solid var(--border); }
+    .cmp-scroll tbody td.lbl { color: var(--t55); }
+    .cmp-scroll tbody td.hl { background: rgba(255,255,255,0.05); }
+    .cmp-scroll tbody td.dim { color: var(--t45); }
+
+    /* ===== PRICING ===== */
+    .prx-hdr { text-align: center; margin-bottom: 48px; }
+    .prx-box { display: grid; grid-template-columns: 1fr; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+    .prx-left { padding: 40px; border-bottom: 1px solid var(--border); }
+    .prx-pkg { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); }
+    .prx-amt { display: flex; align-items: flex-start; gap: 8px; margin-top: 32px; }
+    .prx-n { font-size: clamp(80px,14vw,200px); line-height: 0.85; letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .prx-u { padding-top: 12px; }
+    .prx-u .zl { font-size: 16px; }
+    .prx-u .br { font-size: 14px; color: var(--t55); font-family: var(--serif); font-style: italic; }
+    .prx-rows { margin-top: 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .prx-row { display: flex; justify-content: space-between; padding: 12px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .prx-row:last-child { border-bottom: none; }
+    .prx-row .l { color: var(--t55); }
+    .prx-cta { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; background: #fff; color: #000; border-radius: var(--rf); padding: 16px 20px; font-size: 14px; transition: background .2s; }
+    .prx-cta:hover { background: #e5e5e5; }
+    .prx-right { padding: 40px; }
+    .prx-il { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); margin-bottom: 24px; }
+    .prx-feats { display: grid; grid-template-columns: 1fr; }
+    .prx-feat { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; align-items: flex-start; }
+    .prx-feat:last-child { border-bottom: none; }
+    .chk { width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+    .prx-note { margin-top: 24px; border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
+    .prx-note-ico { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .prx-note-t { font-size: 14px; }
+    .prx-note-s { font-size: 12px; color: var(--t55); margin-top: 4px; }
+
+    /* ===== GUARANTEE ===== */
+    .gua-box { display: grid; grid-template-columns: 1fr; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); }
+    .gua-l { padding: 40px 48px; background: var(--surface); }
+    .gua-r { padding: 40px 48px; background: #fff; color: #000; display: flex; flex-direction: column; justify-content: center; }
+    .gua-big { font-size: clamp(80px,12vw,160px); line-height: 0.85; letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .gua-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.55); margin-top: 12px; }
+    .gua-txt { font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.75); max-width: 360px; margin-top: 24px; }
+    .btn-blk { display: inline-flex; align-items: center; gap: 8px; background: #000; color: #fff; border-radius: var(--rf); padding: 12px 20px; font-size: 14px; margin-top: 32px; align-self: flex-start; transition: background .2s; }
+    .btn-blk:hover { background: #222; }
+    .gua-items { margin-top: 32px; }
+    .gua-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.10); }
+    .gua-item:last-child { border-bottom: none; }
+    .gc { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+    .gi-t { font-size: 14px; }
+    .gi-s { font-size: 12px; color: var(--t55); margin-top: 4px; }
+
+    /* ===== PROCESS ===== */
+    .proc-hdr { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .proc-hdr p { color: var(--t65); max-width: 480px; }
+    .proc-card { border: 1px solid var(--border); border-radius: var(--r); padding: 24px; background: var(--surface); }
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 28px; bottom: 28px; width: 1px; background: rgba(255,255,255,0.15); }
+    .tl { position: relative; padding: 20px 0 20px 40px; }
+    .tl + .tl { border-top: 1px solid rgba(255,255,255,0.08); }
+    .tl-dot { position: absolute; left: 0; top: 28px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: #000; }
+    .tl-dot.on { background: #fff; }
+    .tl-in { display: grid; grid-template-columns: 1fr; gap: 4px; }
+    .tl-day { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--t55); }
+    .tl-day.on { color: #fff; }
+    .tl-t { font-size: 16px; }
+    .tl-d { font-size: 14px; color: var(--t60); margin-top: 4px; }
+
+    /* ===== TESTIMONIALS ===== */
+    .test-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .test-card { border: 1px solid var(--border); border-radius: var(--r); padding: 32px; background: var(--surface); display: flex; flex-direction: column; gap: 24px; min-height: 260px; transition: transform .3s ease; }
+    .test-card:hover { transform: translateY(-2px); }
+    .test-q { font-size: 18px; line-height: 1.4; color: var(--t85); font-family: var(--serif); font-style: italic; flex: 1; }
+    .test-q .tag { display: inline; padding: 2px 6px; background: rgba(255,255,255,0.10); border-radius: 4px; font-size: 12px; color: var(--t60); font-family: monospace; font-style: normal; }
+    .test-auth { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+    .test-av { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 14px; font-family: var(--serif); font-style: italic; }
+    .test-nm { font-size: 14px; }
+    .test-rl { font-size: 12px; color: var(--t50); margin-top: 2px; }
+    .test-ph { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--t40); text-align: center; margin-top: 32px; }
+
+    /* ===== TRUST ===== */
+    .trust-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .trust-c { border: 1px solid var(--border); border-radius: var(--r); padding: 28px; transition: transform .3s ease; }
+    .trust-c:hover { transform: translateY(-2px); }
+    .trust-ico { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .trust-t { font-size: 16px; }
+    .trust-d { font-size: 14px; color: var(--t60); margin-top: 8px; line-height: 1.6; }
+
+    /* ===== FAQ ===== */
+    .faq-wrap { max-width: 920px; margin: 0 auto; }
+    .faq-hdr { text-align: center; margin-bottom: 48px; }
+    details.fq { border-bottom: 1px solid var(--border); }
+    details.fq summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; list-style: none; }
+    details.fq summary::-webkit-details-marker { display: none; }
+    .fq-qi { display: flex; align-items: center; gap: 20px; }
+    .fq-n { font-size: 11px; letter-spacing: 0.16em; color: var(--t45); font-family: monospace; }
+    .fq-q { font-size: 16px; }
+    .fq-ic { width: 20px; height: 20px; flex-shrink: 0; transition: transform .28s ease; }
+    details.fq[open] .fq-ic { transform: rotate(45deg); }
+    .fq-a { padding: 0 0 24px 52px; font-size: 14px; color: var(--t65); line-height: 1.7; }
+
+    /* ===== CTA ===== */
+    .cta-box { border-radius: var(--r); background: #fff; color: #000; padding: 48px 32px; text-align: center; position: relative; overflow: hidden; }
+    .cta-gbg { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px); background-size: 56px 56px; pointer-events: none; }
+    .cta-in { position: relative; }
+    .cta-ey { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.55); }
+    .cta-h { font-size: clamp(40px,8vw,120px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; margin-top: 20px; }
+    .cta-p { font-size: 16px; color: rgba(0,0,0,0.65); max-width: 520px; margin: 24px auto 0; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .btn-cta { background: #000; color: #fff; border-radius: var(--rf); padding: 8px 8px 8px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 12px; transition: background .2s; }
+    .btn-cta:hover { background: #333; }
+    .btn-cta .ac { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; }
+    .btn-cta-out { border: 1px solid rgba(0,0,0,0.15); color: #000; border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-cta-out:hover { background: rgba(0,0,0,0.05); }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 80px 24px 40px; border-top: 1px solid var(--border); }
+    .ft-in { max-width: var(--max-w); margin: 0 auto; }
+    .ft-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+    .ft-logo { display: flex; align-items: center; gap: 12px; }
+    .ft-logo span { font-size: 14px; }
+    .ft-tag { font-size: 14px; color: var(--t55); margin-top: 16px; max-width: 360px; line-height: 1.6; }
+    .ft-mail { display: inline-block; margin-top: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255,255,255,0.30); }
+    .ft-h { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); margin-bottom: 16px; }
+    .ft-a { display: block; font-size: 14px; padding: 4px 0; color: var(--t85); transition: color .2s; }
+    .ft-a:hover { color: #fff; }
+    .ft-s { display: block; font-size: 14px; padding: 4px 0; color: var(--t85); }
+    .ft-bot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 12px; color: var(--t45); flex-wrap: wrap; gap: 12px; }
+    .ft-bot .ver { font-family: monospace; }
+
+    /* ===== SCROLL TOP ===== */
+    #scroll-top { position: fixed; bottom: 32px; right: 32px; z-index: 999; width: 48px; height: 48px; background: #fff; color: #000; border: none; border-radius: 50%; font-size: 20px; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: all 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 768px) {
+      :root { --px: 40px; --py: 128px; }
+      .site-nav { padding: 16px 40px; }
+      .nav-links { display: flex; }
+      
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .hero-portrait img { height: 600px; }
+      .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
+      .about-cards { grid-template-columns: repeat(3,1fr); }
+      .port-hdr { grid-template-columns: 1fr 1fr; align-items: flex-end; }
+      .port-hdr p { justify-self: flex-end; }
+      
+      .prx-box { grid-template-columns: 1fr 1.4fr; }
+      .prx-left { border-bottom: none; border-right: 1px solid var(--border); }
+      .prx-feats { grid-template-columns: repeat(2,1fr); gap: 0 24px; }
+      .gua-box { grid-template-columns: 1.2fr 1fr; }
+      .proc-hdr { grid-template-columns: 1fr 1fr; align-items: flex-end; }
+      .proc-card { padding: 48px; }
+      .tl-in { grid-template-columns: 120px 1fr; gap: 16px; align-items: baseline; }
+      .tl-day { text-align: right; }
+      .test-grid { grid-template-columns: repeat(3,1fr); }
+      .trust-grid { grid-template-columns: repeat(4,1fr); }
+      .ft-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+      .cta-box { padding: 80px; }
+      .fq-q { font-size: 18px; }
+    }
+  
+
+@media (min-width: 640px) {  }
+@media (min-width: 1024px) {  }
+
+/* CLEAN PORTFOLIO + HERO STYLES */
+
+@media (max-width: 767px) {  }
+
+.port-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 100%;
+}
+@media (min-width: 640px) {
+  .port-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+}
+@media (min-width: 1024px) {
+  .port-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+}
+
+.port-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border, rgba(255,255,255,0.1));
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.port-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.port-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+}
+.port-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.port-body {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.port-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
+}
+.port-body h3, .port-card h3 {
+  font-size: 17px;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.port-body p, .port-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.65);
+  margin: 0;
+}
+
+/* === PORTFOLIO (pf-*) === */
+.pf-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 640px) { .pf-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .pf-grid { grid-template-columns: repeat(3, 1fr); } }
+.pf-card { display: flex; flex-direction: column; background: #111; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; text-decoration: none; color: #fff; transition: transform 0.3s ease, border-color 0.3s ease; }
+.pf-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.2); }
+.pf-img { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: #0a0a0a; }
+.pf-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.pf-body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.pf-meta { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); }
+.pf-card h3 { font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; margin: 0; color: #fff; }
+.pf-card p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.65); margin: 0; }
+.pf-tag { font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; }
+
+/* === THEME SWITCHER === */
+.theme-toggle {
+  position: fixed; top: 24px; right: 24px; width: 40px; height: 40px;
+  border-radius: 50%; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); cursor: pointer; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; color: #fff;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+@media (max-width: 767px) { .theme-toggle { top: 16px; right: 16px; width: 36px; height: 36px; } }
+
+/* === HERO - PROPER TOP CLEARANCE FROM NAV === */
+#hero {
+  padding: 180px 40px 60px !important;
+  min-height: auto;
+  display: block;
+}
+@media (max-width: 767px) {
+  #hero { padding: 140px 20px 40px !important; }
+}
+
+/* Big price number in pricing card */
+
+/* Hero "720 zł" text - highlight the number */
+
+/* Subtle glow on primary buttons */
+.btn-primary:hover,
+.nav-cta:hover,
+a[class*="cta"]:hover {
+  box-shadow: 0 8px 32px rgba(255, 138, 61, 0.35), 0 0 0 1px rgba(196, 65, 255, 0.2);
+}
+
+/* Text colors */
+/* Sections */
+/* Nav */
+/* Nav CTA - invert */
+
+/* Portfolio cards */
+/* Buttons */
+/* Tables */
+/* Section backgrounds with white text - invert */
+
+/* Pills and tags */
+/* FAQ */
+/* Footer */
+/* === SOLID WHITE TEXT (no gradients) === */
+.stat-num,
+[class*="stat-num"],
+.price-amount,
+[class*="price-amount"],
+#hero h1,
+.hero-title {
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+}
+
+/* Remove grid pattern svg/image overlays in any section */
+section svg[class*="grid"],
+section [class*="grid-pattern"],
+section [style*="background-image"][style*="grid"],
+section [style*="background-image"][style*="pattern"] {
+  display: none !important;
+}
+
+/* If CTA has a wrapper with pattern - clean it */
+section > div[style*="background-image"] {
+  background-image: none !important;
+}
+
+/* ALL backgrounds that were dark - make light */
+
+/* Cards and elevated surfaces - slightly off-white */
+
+/* ALL text becomes dark by default */
+
+/* Muted text variants */
+
+/* Override inline white colors */
+
+/* === BLACK BUTTONS NEED WHITE TEXT === */
+
+/* Secondary buttons - light */
+
+/* Sections that are intentionally dark (like guarantee CTA) */
+
+/* Nav */
+
+/* Theme toggle in nav */
+
+.nav-theme-toggle .sun-icon { display: none; }
+.nav-theme-toggle .moon-icon { display: block; }
+
+/* Tables */
+
+/* Borders */
+
+/* Pills / badges / tags */
+
+/* Footer */
+
+/* Remove ALL background patterns/grids in day mode */
+
+/* === HERO TEXT - PROPER CONTRAST IN BOTH MODES === */
+
+/* Find the outlined card inside CTA and restore border */
+
+/* Sections and main content backgrounds */
+
+/* Body text - dark */
+
+/* Span / div text - inherit unless dark bg */
+
+/* Default text colors */
+
+/* Subtitles and muted text */
+
+/* Override ALL white inline colors */
+
+/* Eyebrow/meta text */
+
+/* Big number displays (like the "7" in guarantee) */
+
+/* === BLACK BUTTONS = WHITE TEXT === */
+
+/* Secondary / outline buttons */
+
+/* === SCROLL TO TOP BUTTON === */
+
+/* === NAV === */
+
+/* === DARK SECTIONS THAT SHOULD STAY DARK === */
+
+/* === PORTFOLIO CARDS === */
+
+/* === PRICING CARD === */
+
+/* === TABLES === */
+
+/* === FAQ === */
+
+/* === FOOTER === */
+
+/* === PILLS / BADGES === */
+
+/* === REMOVE GRID PATTERNS UNIVERSALLY === */
+
+/* === HERO TEXT IN DARK MODE - SOLID WHITE === */
+body:not(.day-mode) #hero h1,
+body:not(.day-mode) #hero .hero-title {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background: none !important;
+}
+body:not(.day-mode) #hero .stat-num,
+body:not(.day-mode) #hero [class*="stat"] {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+body:not(.day-mode) #hero p {
+  color: rgba(255,255,255,0.85) !important;
+}
+
+/* ============================================
+   COMPREHENSIVE FINAL FIX - both modes work
+   ============================================ */
+
+/* THEME TOGGLE - visible in BOTH modes */
+.nav-theme-toggle {
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,0.4) !important;
+  color: #ffffff !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 8px !important;
+}
+.nav-theme-toggle svg {
+  width: 18px !important;
+  height: 18px !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+}
+.nav-theme-toggle:hover {
+  background: rgba(255,255,255,0.1) !important;
+}
+.nav-theme-toggle .sun-icon { display: none; }
+.nav-theme-toggle .moon-icon { display: block; }
+
+/* BLACK BUTTONS = WHITE TEXT - both modes */
+.btn-primary,
+.nav-cta,
+a.nav-cta,
+.price-cta,
+a.price-cta,
+[class*="btn-primary"],
+[class*="cta-btn"],
+button[type="submit"],
+a[href*="zamow"][class*="btn"],
+.guarantee-cta {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+.btn-primary span, .btn-primary svg,
+.nav-cta span, .nav-cta svg,
+.price-cta span, .price-cta svg,
+[class*="btn-primary"] span, [class*="btn-primary"] svg,
+[class*="cta-btn"] span, [class*="cta-btn"] svg,
+.guarantee-cta span, .guarantee-cta svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* WHITE BUTTONS in dark mode (zamów stronę in nav) - dark text */
+body:not(.day-mode) .nav-cta {
+  background-color: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body:not(.day-mode) .nav-cta * {
+  color: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+
+/* SCROLL-TO-TOP */
+#scrollTop, [class*="scroll-top"] {
+  background: #ffffff !important;
+}
+#scrollTop svg, [class*="scroll-top"] svg {
+  stroke: #0a0a0a !important;
+}
+
+/* FINAL CTA SECTION - white card, no plaid pattern, keep outline */
+section[id*="final"] > div:first-of-type {
+  background: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  border-radius: 16px !important;
+  padding: 56px 32px !important;
+}
+
+/* All text inside CTA card stays dark since bg is white */
+/* Kill any grid/plaid backgrounds in CTA section */
+section[id*="final"] svg[class*="grid"],
+section[id*="final"] [class*="grid-pattern"] {
+  display: none !important;
+}
+
+/* Remove inline pattern backgrounds on CTA child divs */
+
+/* Dark mode CTA button hover */
+body:not(.day-mode) section#cta .cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+}
+
+section#cta .cta-email:hover {
+  color: #ffffff !important;
+}
+
+/* === STICKY MOBILE CTA - mobile only === */
+.sticky-mobile-cta {
+  display: none;
+}
+@media (max-width: 767px) {
+  .sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    gap: 8px;
+    transform: translateY(120%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sticky-mobile-cta.visible {
+    transform: translateY(0);
+  }
+  .sticky-mobile-cta.hidden {
+    transform: translateY(120%);
+  }
+  .sticky-mobile-cta-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sticky-mobile-cta-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .sticky-mobile-cta-price {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+  .sticky-mobile-cta-btn {
+    background: #ffffff;
+    color: #0a0a0a;
+    padding: 12px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  
+  
+  
+  
+}
+
+/* === EXIT-INTENT POPUP === */
+.exit-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.exit-popup-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+.exit-popup {
+  background: #ffffff;
+  color: #0a0a0a;
+  border-radius: 20px;
+  max-width: 480px;
+  width: 100%;
+  padding: 40px 32px 32px;
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.exit-popup-overlay.visible .exit-popup {
+  transform: scale(1);
+}
+.exit-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(0,0,0,0.05);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0,0,0,0.5);
+  transition: background 0.2s;
+}
+.exit-popup-close:hover {
+  background: rgba(0,0,0,0.1);
+  color: #0a0a0a;
+}
+.exit-popup-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ff6b1a;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.exit-popup h3 {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: #0a0a0a;
+}
+.exit-popup p {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.65);
+  margin: 0 0 24px;
+}
+.exit-popup-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.exit-popup-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: #fafafa;
+  color: #0a0a0a;
+  transition: border-color 0.2s;
+}
+.exit-popup-input:focus {
+  outline: none;
+  border-color: #0a0a0a;
+}
+.exit-popup-submit {
+  padding: 14px 24px;
+  background: #0a0a0a;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.exit-popup-submit:hover {
+  background: #1a1a1a;
+}
+.exit-popup-footer {
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+  text-align: center;
+}
+
+/* === DECORATIVE FLORAL BACKGROUNDS === */
+
+/* Guarantee section - subtle floral accent on the right side */
+section[data-decor-bg="22"] {
+  position: relative;
+  overflow: hidden;
+}
+section[data-decor-bg="22"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('22-decor.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to left, black 30%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to left, black 30%, transparent 100%);
+}
+section[data-decor-bg="22"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA section - full-bleed background with strong dark overlay */
+section[data-decor-bg="33"] {
+  position: relative;
+  overflow: hidden;
+  background-image: url('33-decor.jpg') !important;
+  background-size: cover;
+  background-position: center;
+}
+section[data-decor-bg="33"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.82);
+  z-index: 0;
+  pointer-events: none;
+}
+section[data-decor-bg="33"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile - reduce intensity on guarantee section */
+@media (max-width: 767px) {
+  section[data-decor-bg="22"]::before {
+    width: 100%;
+    opacity: 0.08;
+    mask-image: linear-gradient(to top, black 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%);
+  }
+}
+
+section[data-decor-bg="77"] {
+  position: relative;
+  overflow: hidden;
+}
+section[data-decor-bg="77"]::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background-image: url('77-decor.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.10;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+}
+section[data-decor-bg="77"] > * { position: relative; z-index: 1; }
+
+@media (max-width: 767px) {
+  section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
+  
+}
+
+/* === MOBILE: Scroll-top button - position above sticky CTA === */
+@media (max-width: 767px) {
+  #scrollTop, [class*="scroll-top"], .scroll-to-top {
+    bottom: 88px !important;
+    right: 16px !important;
+    width: 40px !important;
+    height: 40px !important;
+    z-index: 80 !important;
+  }
+  
+  .sticky-mobile-cta:not(.visible) ~ * #scrollTop {
+    bottom: 24px !important;
+  }
+}
+
+/* === MOBILE: Make sure sticky CTA "Zamów" button is fully visible === */
+@media (max-width: 767px) {
+  .sticky-mobile-cta {
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom)) !important;
+    gap: 10px !important;
+  }
+  .sticky-mobile-cta-info {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  .sticky-mobile-cta-label {
+    font-size: 10px !important;
+  }
+  .sticky-mobile-cta-price {
+    font-size: 15px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .sticky-mobile-cta-btn {
+    padding: 11px 18px !important;
+    font-size: 13px !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* === COMPARISON TABLE - responsive UX === */
+
+@media (max-width: 767px) {
+  section table,
+  section[id*="por"] table,
+  table:has(th):has(td) {
+    display: block;
+    width: 100% !important;
+    border: none !important;
+  }
+  section table thead,
+  table thead {
+    display: none !important;
+  }
+  section table tbody,
+  table tbody {
+    display: block;
+    width: 100%;
+  }
+  section table tr,
+  table tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+  }
+  
+  section table td,
+  table td {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    gap: 16px;
+    text-align: right !important;
+    font-size: 13px !important;
+  }
+  
+  section table td:last-child,
+  table td:last-child {
+    border-bottom: none !important;
+  }
+  section table td:before,
+  table td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    text-align: left;
+    flex-shrink: 0;
+  }
+  
+  section table td:first-child,
+  table td:first-child {
+    font-weight: 700;
+    font-size: 15px !important;
+    color: #ffffff !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 8px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.12) !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+  }
+  section table td:first-child:before,
+  table td:first-child:before {
+    display: none;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  section table {
+    table-layout: fixed;
+    width: 100% !important;
+  }
+  section table th,
+  section table td {
+    word-wrap: break-word;
+    font-size: 14px;
+  }
+  section table th:first-child,
+  section table td:first-child {
+    width: 26%;
+  }
+}
+
+/* === BRIEF / FORM SECTIONS - clean white in day mode === */
+
+/* === TRUST / STANDARDY CARDS - compact === */
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"],
+section:has(h2:contains("Bezpieczeństwo")) > div > div,
+[class*="trust"] [class*="card"],
+[class*="standardy"] > div > div {
+  min-height: auto !important;
+  height: auto !important;
+  padding: 24px 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] svg,
+[class*="trust"] [class*="card"] svg {
+  width: 32px !important;
+  height: 32px !important;
+  margin-bottom: 4px !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] h3,
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] h4 {
+  margin: 0 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+section:has(h2:contains("Bezpieczeństwo")) [class*="card"] p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+@media (min-width: 1024px) {
+  section:has(h2:contains("Bezpieczeństwo")) > div > div:has(> div),
+  section:has(h2:contains("Standardy")) > div > div:has(> div) {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* EXCEPTIONS */
+
+/* === KILL ALL GREY TEXT HIGHLIGHTS === */
+
+
+/* ============================================
+   DAY MODE - SIMPLE COLOR INVERSION
+   Dark → Light, White text → Black text
+   Everything else stays IDENTICAL to dark mode
+   ============================================ */
+
+body.day-mode {
+  background: #fafafa !important;
+  color: #0a0a0a !important;
+}
+
+body.day-mode section,
+body.day-mode footer,
+body.day-mode main,
+body.day-mode header,
+body.day-mode nav {
+  background-color: #fafafa !important;
+}
+
+body.day-mode,
+body.day-mode h1, body.day-mode h2, body.day-mode h3,
+body.day-mode h4, body.day-mode h5, body.day-mode h6,
+body.day-mode p, body.day-mode span, body.day-mode div,
+body.day-mode li, body.day-mode a, body.day-mode td,
+body.day-mode th, body.day-mode label, body.day-mode strong,
+body.day-mode em, body.day-mode small, body.day-mode b,
+body.day-mode summary {
+  color: #0a0a0a !important;
+}
+
+body.day-mode p,
+body.day-mode [class*="muted"],
+body.day-mode [class*="subtle"],
+body.day-mode [class*="description"],
+body.day-mode [class*="subtitle"] {
+  color: rgba(0,0,0,0.7) !important;
+}
+
+body.day-mode [class*="eyebrow"],
+body.day-mode [class*="meta"],
+body.day-mode [class*="label"] {
+  color: rgba(0,0,0,0.55) !important;
+}
+
+body.day-mode [style*="color: white"],
+body.day-mode [style*="color:white"],
+body.day-mode [style*="color: #fff"],
+body.day-mode [style*="color:#fff"],
+body.day-mode [style*="color: #ffffff"],
+body.day-mode [style*="color:#ffffff"],
+body.day-mode [style*="color: rgba(255"],
+body.day-mode [style*="color:rgba(255"] {
+  color: #0a0a0a !important;
+}
+
+body.day-mode [style*="background: #111"],
+body.day-mode [style*="background:#111"],
+body.day-mode [style*="background-color: #111"],
+body.day-mode .pf-card {
+  background: #ffffff !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+body.day-mode [style*="background: #0a0a0a"],
+body.day-mode [style*="background:#0a0a0a"] {
+  background: #ffffff !important;
+}
+
+/* === BUTTONS === */
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode a.nav-cta,
+body.day-mode .price-cta,
+body.day-mode a.price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode button[type="submit"],
+body.day-mode .guarantee-cta,
+body.day-mode .cta-button,
+body.day-mode .sticky-mobile-cta-btn {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode .guarantee-cta *,
+body.day-mode .cta-button *,
+body.day-mode .sticky-mobile-cta-btn * {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+body.day-mode .btn-secondary {
+  background: transparent !important;
+  border-color: rgba(0,0,0,0.2) !important;
+  color: #0a0a0a !important;
+}
+
+/* === BORDERS === */
+body.day-mode [style*="border"]:not([class*="btn"]):not(.pf-card),
+body.day-mode hr {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === LOGO === */
+body.day-mode .logo svg,
+body.day-mode [class*="logo"] svg,
+body.day-mode nav a:first-child svg {
+  fill: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+body.day-mode .logo svg *,
+body.day-mode [class*="logo"] svg * {
+  fill: #0a0a0a !important;
+}
+
+/* === NAV === */
+body.day-mode nav,
+body.day-mode header {
+  background: rgba(250,250,250,0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* === THEME TOGGLE === */
+body.day-mode .nav-theme-toggle {
+  border-color: rgba(0,0,0,0.3) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle svg {
+  stroke: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle .moon-icon { display: none !important; }
+body.day-mode .nav-theme-toggle .sun-icon { display: block !important; }
+
+/* === SCROLL TO TOP === */
+body.day-mode #scrollTop,
+body.day-mode [class*="scroll-top"] {
+  background: #0a0a0a !important;
+}
+body.day-mode #scrollTop svg,
+body.day-mode [class*="scroll-top"] svg {
+  stroke: #ffffff !important;
+}
+
+/* === STICKY MOBILE CTA === */
+body.day-mode .sticky-mobile-cta {
+  background: rgba(255,255,255,0.95) !important;
+  border-top-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === TABLES === */
+body.day-mode table { background: transparent !important; }
+body.day-mode th {
+  background: rgba(0,0,0,0.04) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode td {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* === FAQ === */
+body.day-mode details,
+body.day-mode summary {
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === FLORAL DECORATION ADJUSTMENTS === */
+body.day-mode section[data-decor-bg="22"]::before { opacity: 0.20 !important; }
+body.day-mode section[data-decor-bg="33"]::before { background: rgba(250,250,250,0.88) !important; }
+body.day-mode section[data-decor-bg="77"]::before { opacity: 0.18 !important; }
+
+
+/* All elements that have class containing card / box / panel - flip dark backgrounds */
+
+
+/* Process step dots - black on white card */
+body.day-mode #proces [class*="dot"],
+body.day-mode #proces [class*="circle"],
+body.day-mode #proces svg circle {
+  background: #0a0a0a !important;
+  border-color: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+
+/* Pricing card content - white bg, dark text */
+body.day-mode #oferta > div,
+body.day-mode #oferta > div > div,
+body.day-mode #oferta [class*="left"],
+body.day-mode #oferta [class*="right"],
+body.day-mode #oferta [class*="features"] {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.day-mode #oferta h1,
+body.day-mode #oferta h2,
+body.day-mode #oferta h3,
+body.day-mode #oferta p,
+body.day-mode #oferta span,
+body.day-mode #oferta li,
+body.day-mode #oferta strong {
+  color: #0a0a0a !important;
+}
+
+/* Feature checkmark circles - black on white */
+body.day-mode #oferta [class*="check"],
+body.day-mode #oferta svg circle,
+body.day-mode [class*="feature"] [class*="check"] {
+  background: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+body.day-mode #oferta [class*="check"] svg,
+body.day-mode #oferta svg path {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* Hosting info box specifically */
+body.day-mode [class*="hosting"],
+body.day-mode [class*="info-box"] {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.1) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode [class*="hosting"] *,
+body.day-mode [class*="info-box"] * {
+  color: #0a0a0a !important;
+}
+
+/* === GUARANTEE SECTION - flip the dark half too === */
+body.day-mode section:has(h2:contains("Nie podoba")) > div,
+body.day-mode section:has(h2:contains("Nie podoba")) > div > div {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+}
+body.day-mode section:has(h2:contains("Nie podoba")) * {
+  color: #0a0a0a !important;
+}
+body.day-mode section:has(h2:contains("Nie podoba")) [class*="checkmark"],
+body.day-mode section:has(h2:contains("Nie podoba")) svg circle {
+  background: #0a0a0a !important;
+  fill: #0a0a0a !important;
+}
+
+/* === HERO TEXT - make visible in day mode === */
+body.day-mode #hero h1,
+body.day-mode #hero .hero-title,
+body.day-mode #hero h2,
+body.day-mode #hero p,
+body.day-mode #hero span,
+body.day-mode #hero a:not([class*="btn"]),
+body.day-mode #hero div {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  opacity: 1 !important;
+}
+
+/* Hero stat numbers */
+body.day-mode #hero [class*="stat"],
+body.day-mode #hero .counter,
+body.day-mode #hero [class*="num"] {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+}
+
+/* === RE-FORCE BLACK BUTTONS WITH WHITE TEXT === */
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode .price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode button[type="submit"],
+body.day-mode .guarantee-cta,
+body.day-mode .cta-button,
+body.day-mode .sticky-mobile-cta-btn,
+body.day-mode a[href*="mailto"][class*="btn"],
+body.day-mode a[href*="cta"][class*="btn"] {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  border-color: #0a0a0a !important;
+}
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode .cta-button *,
+body.day-mode .sticky-mobile-cta-btn * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+
+/* ============================================
+   DAY MODE - FINAL CLEAN VERSION
+   No extra white boxes. Sections stay flat.
+   Only INTENTIONAL cards get white bg.
+   ============================================ */
+
+/* === SECTIONS - flat light bg, no wrapper cards === */
+body.day-mode section,
+body.day-mode section > div,
+body.day-mode section > div > div:not(.pf-card):not(.pricing-card-inner):not(.guarantee-card-inner):not(.process-card-inner):not(.cta-card-inner):not(.prx-box):not(.gua-l):not(.gua-r) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+body.day-mode {
+  background: #fafafa !important;
+}
+body.day-mode section {
+  background: #fafafa !important;
+}
+
+/* === PORTFOLIO CARDS - white with prominent border === */
+body.day-mode .pf-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+body.day-mode .pf-card:hover {
+  border-color: rgba(0,0,0,0.25) !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08) !important;
+}
+
+/* === DARK CARDS THAT SHOULD FLIP - pricing, process, guarantee inner === */
+/* Use specific structural targeting - the inner card with rounded corners */
+
+/* PRICING - find the big card inside #oferta */
+body.day-mode #oferta > div:has(> div:has(> *)),
+body.day-mode section[id="oferta"] > div > div:first-child[style*="border-radius"],
+body.day-mode section[id="oferta"] > div > div:first-child:has(h2 ~ *),
+body.day-mode #oferta [style*="background: #111"],
+body.day-mode #oferta [style*="background:#111"],
+body.day-mode #oferta [style*="background: #0a0a0a"],
+body.day-mode #oferta [style*="background:#0a0a0a"] {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+
+/* PROCESS - the big rounded card with timeline */
+body.day-mode #proces [style*="background: #111"],
+body.day-mode #proces [style*="background:#111"],
+body.day-mode #proces [style*="background: #0a0a0a"],
+body.day-mode #proces [style*="background:#0a0a0a"],
+body.day-mode section[id="proces"] > div > div:has(ol),
+body.day-mode section[id="proces"] > div > div:has(li) {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+}
+
+/* GUARANTEE - the dark left half */
+body.day-mode section:has(h2:first-of-type) [style*="background: #111"],
+body.day-mode section:has(h2:first-of-type) [style*="background:#111"],
+body.day-mode section:has(h2:first-of-type) [style*="background: #0a0a0a"],
+body.day-mode section:has(h2:first-of-type) [style*="background:#0a0a0a"] {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+}
+
+/* === ALL TEXT IN DAY MODE - dark === */
+body.day-mode h1,
+body.day-mode h2,
+body.day-mode h3,
+body.day-mode h4,
+body.day-mode h5,
+body.day-mode h6,
+body.day-mode p,
+body.day-mode span,
+body.day-mode div,
+body.day-mode li,
+body.day-mode a,
+body.day-mode td,
+body.day-mode th,
+body.day-mode label,
+body.day-mode strong,
+body.day-mode em,
+body.day-mode small,
+body.day-mode summary,
+body.day-mode b {
+  color: #0a0a0a !important;
+}
+
+/* Muted variants */
+body.day-mode p,
+body.day-mode [class*="muted"],
+body.day-mode [class*="subtle"],
+body.day-mode [class*="subtitle"],
+body.day-mode [class*="description"] {
+  color: rgba(0,0,0,0.7) !important;
+}
+
+/* Eyebrows */
+body.day-mode [class*="eyebrow"],
+body.day-mode [class*="label-meta"] {
+  color: rgba(0,0,0,0.55) !important;
+}
+
+/* Override inline whites */
+body.day-mode [style*="color: white"],
+body.day-mode [style*="color:white"],
+body.day-mode [style*="color: #fff"],
+body.day-mode [style*="color:#fff"],
+body.day-mode [style*="color: #ffffff"],
+body.day-mode [style*="color:#ffffff"],
+body.day-mode [style*="color: rgba(255"],
+body.day-mode [style*="color:rgba(255"] {
+  color: #0a0a0a !important;
+}
+
+/* === BLACK BUTTONS - WHITE TEXT (this is the key fix) === */
+body.day-mode .btn-primary,
+body.day-mode .nav-cta,
+body.day-mode a.nav-cta,
+body.day-mode .price-cta,
+body.day-mode a.price-cta,
+body.day-mode [class*="btn-primary"],
+body.day-mode [class*="cta-btn"],
+body.day-mode .cta-button,
+body.day-mode button[type="submit"],
+body.day-mode .guarantee-cta,
+body.day-mode .sticky-mobile-cta-btn,
+body.day-mode a[href*="mailto"][class*="btn"],
+body.day-mode a[href*="#cta"][class*="btn"],
+body.day-mode a[href*="cta"][class*="nav"],
+body.day-mode [class*="zamow"]:not(input):not(textarea),
+body.day-mode a[href*="zamow"],
+body.day-mode a:has(> span):has([class*="arrow"]),
+body.day-mode .nav > a[href="#cta"],
+body.day-mode nav a[href="#cta"] {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1px solid #0a0a0a !important;
+}
+
+/* All children of black buttons - WHITE */
+body.day-mode .btn-primary *,
+body.day-mode .nav-cta *,
+body.day-mode .price-cta *,
+body.day-mode [class*="btn-primary"] *,
+body.day-mode [class*="cta-btn"] *,
+body.day-mode .cta-button *,
+body.day-mode .guarantee-cta *,
+body.day-mode .sticky-mobile-cta-btn *,
+body.day-mode a[href*="mailto"][class*="btn"] *,
+body.day-mode a[href*="cta"][class*="nav"] *,
+body.day-mode nav a[href="#cta"] * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* SVGs inside black buttons */
+body.day-mode .btn-primary svg,
+body.day-mode .nav-cta svg,
+body.day-mode .price-cta svg,
+body.day-mode [class*="btn-primary"] svg,
+body.day-mode .cta-button svg,
+body.day-mode .guarantee-cta svg {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* Secondary outlined buttons */
+body.day-mode .btn-secondary,
+body.day-mode a.btn-secondary,
+body.day-mode [class*="btn-secondary"] {
+  background: transparent !important;
+  border: 1.5px solid rgba(0,0,0,0.3) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .btn-secondary * {
+  color: #0a0a0a !important;
+}
+
+/* === PROMINENT OUTLINES on all visible cards === */
+body.day-mode [style*="border-radius"]:not(.btn-primary):not(.nav-cta):not(.price-cta):not(.cta-button):not(button) {
+  border: 1px solid rgba(0,0,0,0.12) !important;
+}
+
+/* === LOGO icon visibility === */
+body.day-mode .logo svg,
+body.day-mode [class*="logo"] svg,
+body.day-mode nav a:first-child svg,
+body.day-mode header a:first-child svg,
+body.day-mode .logo svg *,
+body.day-mode [class*="logo"] svg * {
+  fill: #0a0a0a !important;
+  stroke: #0a0a0a !important;
+}
+
+/* === NAV BAR === */
+body.day-mode nav,
+body.day-mode header {
+  background: rgba(250,250,250,0.85) !important;
+  backdrop-filter: blur(12px) !important;
+}
+body.day-mode nav a:not(.nav-cta):not([class*="cta"]) {
+  color: #0a0a0a !important;
+}
+
+/* Nav pill background */
+body.day-mode nav > div:has(a),
+body.day-mode nav [class*="links"],
+body.day-mode nav [class*="menu"],
+body.day-mode .nav-pill {
+  background: rgba(0,0,0,0.05) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+/* === THEME TOGGLE === */
+body.day-mode .nav-theme-toggle {
+  background: transparent !important;
+  border: 1.5px solid rgba(0,0,0,0.3) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle svg {
+  stroke: #0a0a0a !important;
+}
+body.day-mode .nav-theme-toggle .moon-icon { display: none !important; }
+body.day-mode .nav-theme-toggle .sun-icon { display: block !important; }
+
+/* === SCROLL TO TOP === */
+body.day-mode #scrollTop,
+body.day-mode [class*="scroll-top"] {
+  background: #0a0a0a !important;
+  border: none !important;
+}
+body.day-mode #scrollTop svg,
+body.day-mode [class*="scroll-top"] svg {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+/* === STICKY MOBILE CTA === */
+body.day-mode .sticky-mobile-cta {
+  background: rgba(255,255,255,0.95) !important;
+  border-top: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+/* === TABLES === */
+body.day-mode table {
+  background: transparent !important;
+}
+body.day-mode th {
+  background: rgba(0,0,0,0.04) !important;
+  color: #0a0a0a !important;
+}
+body.day-mode td {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* === FAQ === */
+body.day-mode details,
+body.day-mode summary {
+  background: transparent !important;
+  border-color: rgba(0,0,0,0.1) !important;
+}
+
+/* === HERO TEXT - dark on light bg === */
+body.day-mode #hero h1,
+body.day-mode #hero h2,
+body.day-mode #hero .hero-title {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+}
+body.day-mode #hero p {
+  color: rgba(0,0,0,0.7) !important;
+}
+body.day-mode #hero [class*="stat"],
+body.day-mode #hero .counter {
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+}
+
+/* === FLORAL DECOR opacity adjustments for day mode === */
+body.day-mode section[data-decor-bg="22"]::before { opacity: 0.18 !important; }
+body.day-mode section[data-decor-bg="33"]::before { background: rgba(250,250,250,0.88) !important; }
+body.day-mode section[data-decor-bg="77"]::before { opacity: 0.18 !important; }
+
+/* === Kill grey text background patches === */
+body.day-mode p,
+body.day-mode h1, body.day-mode h2, body.day-mode h3,
+body.day-mode span, body.day-mode li, body.day-mode a,
+body.day-mode footer * {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+</style>
+
+
+<style>
+/* ── Day-mode surgical fixes ── */
+
+/* Issue 1: .gua-l uses var(--surface) which is #0a0a0a — override for day mode */
+body.day-mode .gua-l {
+  background: #f0f0f0 !important;
+}
+
+/* Issue 2: .prx-cta has background:#fff — invisible on white .prx-box in day mode
+   (the broad day-mode rule also strips it to transparent via section>div>div) */
+body.day-mode .prx-cta {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+body.day-mode .prx-cta svg {
+  stroke: #fff !important;
+}
+
+/* Issue 3: .prx-box border uses var(--border)=rgba(255,255,255,0.10) — invisible on light bg */
+body.day-mode .prx-box {
+  background: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+</style>
+</head>
+<body>
+
+
+
+
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">
+    <svg viewBox="0 0 256 256"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="#fff"></path></svg>
+    <span>conversion call</span>
+  </div>
+  <div class="nav-links">
+    <a href="#oferta">oferta</a>
+    <a href="#portfolio">portfolio</a>
+    <a href="#proces">proces</a>
+    <a href="#faq">faq</a>
+  </div>
+  <button class="nav-theme-toggle" id="themeToggle" aria-label="Toggle theme" style="background:transparent;border:1px solid rgba(255,255,255,0.15);width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;margin-right:8px;transition:all 0.3s ease;flex-shrink:0;">
+  <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+</button><a href="#cta" class="nav-cta">zamów stronę</a>
+</nav>
+
+<!-- HERO -->
+<section style="padding-top:0;margin-top:0;border-top:none;" id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><span class="dot"></span>Wrocław · cała Polska · 4 wdrożenia</div>
+      <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł.</h1>
+      <p class="hero-sub">Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Bez ukrytych kosztów.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a href="#portfolio" class="btn-g">zobacz portfolio</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-n">720 zł</div><div class="hs-l">stała cena</div></div>
+        <div class="hs"><div class="hs-n">7 dni</div><div class="hs-l">realizacja</div></div>
+        <div class="hs"><div class="hs-n">60 dni</div><div class="hs-l">wsparcie gratis</div></div>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="11-hero.jpg" alt="Emma — Conversion Call, Wrocław">
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-bar-in">
+    <span class="eyebrow">Zaufały mi firmy z 4 branż</span>
+    <div class="logo-items">
+      <span class="nm">callwindshieldfix</span><span class="sep">·</span>
+      <span class="nm">artdance</span><span class="sep">·</span>
+      <span class="nm">elstom</span><span class="sep">·</span>
+      <span class="nm">yogaretreat</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-img"><img src="Emma-3.jpg" alt="Portret Wrocław"></div>
+      </div>
+      <div class="reveal">
+        <div class="about-badge">o mnie</div>
+        <h2 class="about-h2">Jednoosobowe studio. Zero handlowców.</h2>
+        <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
+        <div class="about-cards">
+          <div class="ac"><div class="ac-l">lokalizacja</div><div class="ac-v">Wrocław, pl</div></div>
+          <div class="ac"><div class="ac-l">doświadczenie</div><div class="ac-v">4 wdrożenia</div></div>
+          <div class="ac"><div class="ac-l">odpowiedź</div><div class="ac-v">Do 24h</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section" style="padding: 80px 40px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; margin-bottom: 48px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px;">PORTFOLIO · 4 WDROŻENIA</div>
+        <h2 style="font-size: clamp(36px, 4vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0; color: #fff;">Strony, które żyją w sieci.</h2>
+      </div>
+      <p style="font-size: 14px; line-height: 1.5; color: rgba(255,255,255,0.7); max-width: 320px; margin: 0;">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
+    </div>
+    <div class="pf-grid">
+      <a href="https://www.yogaretreat.fit/" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-yoga.jpg" alt="yogaretreat.fit" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · RETREATY</span><span>01 / 04</span></div>
+          <h3>yogaretreat.fit</h3>
+          <p>Retreaty jogi na wyspie Thasos. Strona generująca zapisy online dzięki lokalnemu SEO.</p>
+          <span class="pf-tag">Wersja testowa — live na Netlify</span>
+        </div>
+      </a>
+      <a href="https://callwindshieldfix.com" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-callwindshield.jpg" alt="callwindshieldfix.com" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>USA · LOCAL SEO</span><span>02 / 04</span></div>
+          <h3>callwindshieldfix.com</h3>
+          <p>Mobilna naprawa szyb, San Antonio TX. Strona generująca leady lokalnie 24/7.</p>
+        </div>
+      </a>
+      <a href="https://artdance.org" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-artdance.jpg" alt="artdance.org" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · NGO</span><span>03 / 04</span></div>
+          <h3>artdance.org</h3>
+          <p>Polska fundacja taneczna. Mobile-first, 15 URL zaindeksowanych.</p>
+        </div>
+      </a>
+      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="pf-card">
+        <div class="pf-img"><img src="teaser-elstom.jpg" alt="elstom.com" /></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · STOMATOLOGIA</span><span>04 / 04</span></div>
+          <h3>elstom.com</h3>
+          <p>Gabinet stomatologiczny Wrocław. Strona generująca zapisy online dzięki lokalnemu SEO.</p>
+          <span class="pf-tag">Wersja testowa — live na Netlify</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="section">
+  <div class="wrap">
+    <div class="cmp-hdr reveal">
+      <div class="eyebrow">porównanie</div>
+      <h2 class="display-h">720 zł vs typowa agencja.</h2>
+      <p>Otwarte porównanie z realnymi liczbami z polskiego rynku 2026.</p>
+    </div>
+    <div class="cmp-scroll">
+      <table>
+        <thead><tr><th></th><th class="hl">conversion call</th><th>typowa agencja</th><th>freelancer (abonament)</th></tr></thead>
+        <tbody>
+<tr><td data-label="">cena</td><td data-label="conversion call">720 zł jednorazowo</td><td data-label="typowa agencja">3 000 – 8 000 zł</td><td data-label="freelancer (abonament)">200 – 400 zł/mies.</td></tr>
+<tr><td data-label="">czas realizacji</td><td data-label="conversion call">7 dni roboczych</td><td data-label="typowa agencja">4 – 8 tygodni</td><td data-label="freelancer (abonament)">bezterminowo</td></tr>
+<tr><td data-label="">stała wycena</td><td data-label="conversion call">tak, z góry</td><td data-label="typowa agencja">„skontaktuj się"</td><td data-label="freelancer (abonament)">ukryte koszty</td></tr>
+<tr><td data-label="">własność strony</td><td data-label="conversion call">twoja, bez umowy</td><td data-label="typowa agencja">twoja</td><td data-label="freelancer (abonament)">wynajem</td></tr>
+<tr><td data-label="">edycja i tworzenie</td><td data-label="conversion call">Claude Code + Claude Design</td><td data-label="typowa agencja">cms proprietary</td><td data-label="freelancer (abonament)">tylko przez nich</td></tr>
+<tr><td data-label="">seo podstawowe</td><td data-label="conversion call">w cenie</td><td data-label="typowa agencja">+1 000 – 3 000 zł</td><td data-label="freelancer (abonament)">+100 zł/mies.</td></tr>
+<tr><td data-label="">wsparcie po wdrożeniu</td><td data-label="conversion call">60 dni gratis</td><td data-label="typowa agencja">~150 zł/h</td><td data-label="freelancer (abonament)">w abonamencie</td></tr>
+<tr><td data-label="">komunikacja</td><td data-label="conversion call">bezpośrednio z autorem</td><td data-label="typowa agencja">przez account managera</td><td data-label="freelancer (abonament)">bezpośrednio</td></tr>
+</tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section data-decor-bg="77" id="oferta" class="section">
+  <div class="wrap">
+    <div class="prx-hdr reveal">
+      <div class="eyebrow">oferta · bez ukrytych kosztów</div>
+      <h2 class="display-h">Wszystko w jednej cenie — bez niespodzianek.</h2>
+    </div>
+    <div class="prx-box reveal">
+      <div class="prx-left">
+        <div class="prx-pkg">pakiet start</div>
+        <div class="prx-amt">
+          <span class="prx-n">720</span>
+          <div class="prx-u"><div class="zl">zł</div><div class="br">brutto</div></div>
+        </div>
+        <div class="prx-rows">
+          <div class="prx-row"><span class="l">czas realizacji</span><span>7 dni roboczych</span></div>
+          <div class="prx-row"><span class="l">wsparcie</span><span>60 dni gratis</span></div>
+          <div class="prx-row"><span class="l">po wygaśnięciu wsparcia</span><span>100 zł / mies. (opcjonalnie, na życzenie)</span></div>
+        </div>
+        <a href="#cta" class="prx-cta">zamów stronę — 720 zł <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+      <div class="prx-right">
+        <div class="prx-il">w cenie</div>
+        <ul class="prx-feats">
+          <li class="prx-feat"><span class="chk">✓</span>Strona dopasowana do Twojej branży i potrzeb</li>
+          <li class="prx-feat"><span class="chk">✓</span>Responsywność (telefon, tablet, desktop)</li>
+          <li class="prx-feat"><span class="chk">✓</span>Strona tworzona przez Claude Code i Claude Design</li>
+          <li class="prx-feat"><span class="chk">✓</span>Podstawowe SEO (meta tagi, mapa strony)</li>
+          <li class="prx-feat"><span class="chk">✓</span>Formularz kontaktowy</li>
+          <li class="prx-feat"><span class="chk">✓</span>Google Analytics 4</li>
+          <li class="prx-feat"><span class="chk">✓</span>Szkolenie wdrożeniowe po publikacji</li>
+          <li class="prx-feat"><span class="chk">✓</span>2 miesiące wsparcia</li>
+        </ul>
+        <div class="prx-note">
+          <div class="prx-note-ico">i</div>
+          <div>
+            <div class="prx-note-t">Hosting i domena na pierwszy rok</div>
+            <div class="prx-note-s">Pomagam w konfiguracji. Koszt zewnętrzny ~120 zł/rok — przejmujesz pełną kontrolę.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section data-decor-bg="22" class="section">
+  <div class="wrap">
+    <div class="gua-box reveal">
+      <div class="gua-l">
+        <div class="eyebrow">gwarancja · bez ryzyka</div>
+        <h2 class="display-h" style="font-size:clamp(26px,3.5vw,44px);">Nie podoba się? Zwracam pieniądze.</h2>
+        <p style="color:var(--t65);margin-top:20px;max-width:480px;font-size:15px;line-height:1.7;">Pierwsze 7 dni od briefu — pełna gwarancja zwrotu. Jeśli pierwszy projekt designu nie odpowiada Twoim oczekiwaniom, zwracam 100% kwoty bez pytań.</p>
+        <div class="gua-items">
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">100% zwrotu w pierwszych 7 dniach</div><div class="gi-s">Przed startem prac developerskich.</div></div></div>
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">Brak długoterminowych umów</div><div class="gi-s">Płacisz raz, dostajesz stronę. Koniec.</div></div></div>
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">Strona pozostaje Twoja</div><div class="gi-s">Pełna własność kodu, treści i hostingu.</div></div></div>
+        </div>
+      </div>
+      <div class="gua-r">
+        <div class="gua-big">7</div>
+        <div class="gua-lbl">dni · gwarancja zwrotu</div>
+        <p class="gua-txt">Tysiące małych firm zostaje spalonych przez agencje obiecujące „zaraz, zaraz". Tu nie ma takiego ryzyka.</p>
+        <a href="#cta" class="btn-blk">zacznij bez ryzyka <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proces" class="section">
+  <div class="wrap">
+    <div class="proc-hdr">
+      <div class="reveal">
+        <div class="eyebrow">proces · dzień po dniu</div>
+        <h2 class="display-h">Tydzień. Od briefu do live.</h2>
+      </div>
+      <p class="reveal">Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
+    </div>
+    <div class="proc-card reveal">
+      <ol class="timeline">
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 0</span>
+            <div><div class="tl-t">Wypełniasz brief</div><p class="tl-d">5-minutowy formularz: branża, kolory, inspiracje, treści. Natychmiastowe potwierdzenie i faktura proforma.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 1–5</span>
+            <div><div class="tl-t">Tworzenie strony</div><p class="tl-d">Strona tworzona przez Claude Code i Claude Design. Status mailem każdego dnia. SEO, Analytics, formularz.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 6</span>
+            <div><div class="tl-t">Twoje poprawki</div><p class="tl-d">Link do wersji testowej na Netlify. Zbieram uwagi (do 3 rund w cenie).</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot on"></span>
+          <div class="tl-in">
+            <span class="tl-day on">dzień 7</span>
+            <div><div class="tl-t">Publikacja live</div><p class="tl-d">Konfiguracja hostingu, podpięcie domeny, szkolenie 30 min wideo. Dostajesz wszystkie hasła.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 8–68</span>
+            <div><div class="tl-t">Wsparcie 60 dni</div><p class="tl-d">Odpowiadam na pytania, naprawiam usterki, pomagam dodać nowe sekcje.</p></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="display:none">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="eyebrow">opinie · klienci</div>
+      <h2 class="display-h">co mówią klienci?</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o szybkości realizacji i transparencji procesu — w 1-2 zdaniach, własnym językiem branży."</p>
+        <div class="test-auth"><div class="test-av">JK</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[stanowisko], [firma]</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o efekcie biznesowym — wzrost zapytań, łatwość samodzielnej edycji panelu."</p>
+        <div class="test-auth"><div class="test-av">AM</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[branża], [miasto]</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o stosunku jakości do ceny — porównanie z poprzednią ofertą agencyjną, satysfakcja ze wsparcia."</p>
+        <div class="test-auth"><div class="test-av">PN</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[stanowisko], [firma]</div></div></div>
+      </div>
+    </div>
+    <p class="test-ph">[placeholder · uzupełnij prawdziwe cytaty po zebraniu opinii]</p>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="eyebrow">zaufanie · standardy</div>
+      <h2 class="display-h">Bezpieczeństwo od pierwszego dnia.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-4" stroke-width="1.8"></path></svg></div>
+        <div class="trust-t">ssl · https</div>
+        <p class="trust-d">Certyfikat SSL w cenie. Szyfrowane połączenie i zielona kłódka od dnia publikacji.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7 8h10M7 12h6M7 16h10"></path></svg></div>
+        <div class="trust-t">rodo compliant</div>
+        <p class="trust-d">Polityka prywatności, banner cookies (TCF v2), formularz ze zgodami.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20M6 16h4"></path></svg></div>
+        <div class="trust-t">faktura vat</div>
+        <p class="trust-d">Pełna obsługa fakturowa. Przelew tradycyjny, BLIK lub Przelewy24.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
+        <div class="trust-t">odpowiedź w 24h</div>
+        <p class="trust-d">Każdy mail dostaje odpowiedź w 24 godziny robocze. Bez wyjątków.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="faq-wrap">
+    <div class="faq-hdr reveal">
+      <div class="eyebrow">faq</div>
+      <h2 class="display-h">Szybkie odpowiedzi.</h2>
+    </div>
+    <details class="fq" open>
+      <summary><span class="fq-qi"><span class="fq-n">01</span><span class="fq-q">Czy 720 zł to cena końcowa?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Tak, 720 zł brutto to całkowity koszt projektu i wdrożenia. Bez dodatkowych opłat za design, kodowanie, formularze ani podstawowe SEO. Jedyny koszt zewnętrzny to hosting i domena (~120 zł/rok).</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">02</span><span class="fq-q">Ile czasu zajmuje zbudowanie strony?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">7 dni roboczych od zatwierdzenia briefu. Do 3 rund poprawek w cenie.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">03</span><span class="fq-q">Czy mogę samodzielnie edytować stronę?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Tak. Strona tworzona przez Claude Code i Claude Design. Szkolenie wdrożeniowe po publikacji.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">04</span><span class="fq-q">Czy obsługujesz firmy spoza Wrocławia?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Cała Polska, zdalnie. Wrocław to mój adres, nie ograniczenie zasięgu.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">05</span><span class="fq-q">Co jeśli będę potrzebować zmian po publikacji?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">60 dni bezpłatnego wsparcia. Potem wsparcie na życzenie — opcjonalnie, bez stałej umowy.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">06</span><span class="fq-q">Czy strona będzie widoczna w Google?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Podstawowe SEO: meta tagi, sitemap, struktura nagłówków, mobile-first, szybkie ładowanie. GA4 i Search Console skonfigurowane.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">07</span><span class="fq-q">Ile podstron mieści się w cenie?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Strona główna + 4 podstrony (np. o nas, oferta, kontakt, polityka prywatności). Dodatkowe ~80 zł/strona.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section data-decor-bg="33" id="cta" style="padding: 100px 24px; background: var(--bg, #0a0a0a);">
+  <div style="max-width: 880px; margin: 0 auto; text-align: center;">
+    
+    <div style="font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 24px;" class="cta-eyebrow">OSTATNI KROK</div>
+    
+    <h2 style="font-size: clamp(40px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 24px; color: #ffffff;" class="cta-title">Gotowa na swoją stronę?</h2>
+    
+    <p style="font-size: 17px; line-height: 1.6; color: rgba(255,255,255,0.7); max-width: 560px; margin: 0 auto 40px;" class="cta-subtitle">Wypełnij brief, a w 24h dostaniesz plan działania. Bezpłatna wycena. Bez zobowiązań.</p>
+    
+    <div style="display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap;">
+      <a href="mailto:hello@conversioncall.pl?subject=Brief%20–%20Conversion%20Call" class="btn-primary cta-button" style="display: inline-flex; align-items: center; gap: 10px; padding: 16px 28px; background: #ffffff; color: #0a0a0a; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+        zamów stronę — 720 zł
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:hello@conversioncall.pl" class="cta-email" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; padding: 12px 4px; transition: color 0.2s ease;">hello@conversioncall.pl</a>
+    </div>
+    
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">
+          <svg viewBox="0 0 256 256" style="width:20px;height:20px;"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="#fff"></path></svg>
+          <span>conversion call</span>
+        </div>
+        <p class="ft-tag">Strony internetowe dla małych firm w Polsce. Stała cena, transparentny proces, gotowe w 7 dni.</p>
+        <a href="mailto:hello@conversioncall.pl" class="ft-mail">hello@conversioncall.pl</a>
+      </div>
+      <div>
+        <div class="ft-h">oferta</div>
+        <a href="#oferta" class="ft-a">pakiet start</a>
+        <a href="#portfolio" class="ft-a">portfolio</a>
+        <a href="#proces" class="ft-a">proces</a>
+        <a href="#faq" class="ft-a">faq</a>
+      </div>
+      <div>
+        <div class="ft-h">lokalizacja</div>
+        <span class="ft-s">wrocław</span>
+        <span class="ft-s">dolnośląskie</span>
+        <span class="ft-s">cała polska</span>
+      </div>
+      <div>
+        <div class="ft-h">prawne</div>
+        <a href="#" class="ft-a">polityka prywatności</a>
+        <a href="#" class="ft-a">regulamin</a>
+        <a href="#" class="ft-a">cookies</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 conversion call · wrocław, pl</span>
+      <span class="ver">v4.0 · 05.2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<script>
+  // Scroll-to-top
+  var st = document.getElementById('scroll-top');
+  window.addEventListener('scroll', function() {
+    st.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+</script>
+
+
+<script>
+(function() {
+  function initTheme() {
+    var toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+    
+    var saved = localStorage.getItem('cc-theme');
+    if (saved === 'day') {
+      document.body.classList.add('day-mode');
+    }
+    
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.body.classList.toggle('day-mode');
+      var isDay = document.body.classList.contains('day-mode');
+      localStorage.setItem('cc-theme', isDay ? 'day' : 'night');
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+  } else {
+    initTheme();
+  }
+})();
+</script>
+
+
+<div class="sticky-mobile-cta" id="stickyMobileCta">
+  <div class="sticky-mobile-cta-info">
+    <div class="sticky-mobile-cta-label">Pakiet Start</div>
+    <div class="sticky-mobile-cta-price">720 zł · gotowe w 7 dni</div>
+  </div>
+  <a href="mailto:hello@conversioncall.pl?subject=Brief%20–%20Conversion%20Call" class="sticky-mobile-cta-btn">
+    Zamów
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+  </a>
+</div>
+
+<div class="exit-popup-overlay" id="exitPopup">
+  <div class="exit-popup">
+    <button class="exit-popup-close" id="exitPopupClose" aria-label="Zamknij">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="exit-popup-eyebrow">DARMOWY CHECKLIST</div>
+    <h3>12 rzeczy, które musi mieć strona małej firmy w 2026</h3>
+    <p>Praktyczna lista do druku. Sprawdź czy Twoja strona spełnia te wymogi. Bez spamu, jeden mail.</p>
+    <form class="exit-popup-form" id="exitPopupForm" action="mailto:hello@conversioncall.pl" method="post" enctype="text/plain">
+      <input type="email" name="email" class="exit-popup-input" placeholder="twoj@email.pl" required>
+      <button type="submit" class="exit-popup-submit">Pobierz</button>
+    </form>
+    <div class="exit-popup-footer">Bezpłatnie · Brak spamu · Anulujesz jednym klikiem</div>
+  </div>
+</div>
+
+<script id="conversion-features">
+(function() {
+  
+  // === NUMBER COUNTER ANIMATIONS ===
+  function animateCounter(el, target, suffix, duration) {
+    duration = duration || 1500;
+    var start = 0;
+    var startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.floor(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  
+  function initCounters() {
+    var counters = document.querySelectorAll('.counter');
+    if (!counters.length) return;
+    
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.dataset.target, 10);
+          var suffix = el.dataset.suffix || '';
+          if (!el.dataset.animated) {
+            el.dataset.animated = 'true';
+            animateCounter(el, target, suffix, 1500);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(function(c) { observer.observe(c); });
+  }
+  
+  // === STICKY MOBILE CTA ===
+  function initStickyMobileCTA() {
+    var sticky = document.getElementById('stickyMobileCta');
+    if (!sticky) return;
+    
+    var ctaSection = document.getElementById('cta');
+    var lastScroll = 0;
+    var threshold = 600;
+    
+    function updateSticky() {
+      var scroll = window.scrollY;
+      var ctaInView = false;
+      if (ctaSection) {
+        var rect = ctaSection.getBoundingClientRect();
+        ctaInView = rect.top < window.innerHeight && rect.bottom > 0;
+      }
+      
+      if (scroll > threshold && !ctaInView) {
+        sticky.classList.add('visible');
+        sticky.classList.remove('hidden');
+      } else {
+        sticky.classList.remove('visible');
+        sticky.classList.add('hidden');
+      }
+      lastScroll = scroll;
+    }
+    
+    window.addEventListener('scroll', updateSticky, { passive: true });
+    updateSticky();
+  }
+  
+  // === EXIT INTENT POPUP ===
+  function initExitIntent() {
+    var popup = document.getElementById('exitPopup');
+    var closeBtn = document.getElementById('exitPopupClose');
+    var form = document.getElementById('exitPopupForm');
+    if (!popup) return;
+    
+    var hasShown = sessionStorage.getItem('cc-exit-popup-shown');
+    
+    function showPopup() {
+      if (hasShown) return;
+      popup.classList.add('visible');
+      sessionStorage.setItem('cc-exit-popup-shown', '1');
+    }
+    
+    function hidePopup() {
+      popup.classList.remove('visible');
+    }
+    
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY <= 0 && !hasShown) {
+        showPopup();
+        hasShown = true;
+      }
+    });
+    
+    if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) hidePopup();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup.classList.contains('visible')) hidePopup();
+    });
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        setTimeout(hidePopup, 200);
+      });
+    }
+  }
+  
+  function init() {
+    initCounters();
+    initStickyMobileCTA();
+    initExitIntent();
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
