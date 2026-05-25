@@ -100,6 +100,7 @@
     /* ═══ REVEAL ═══ */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1); }
     .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
     /* ═══ NAV ═══ */
     .site-nav {
@@ -168,7 +169,12 @@
     .hs:nth-child(3) { text-align: right; }
     .hs-n { font-size: clamp(22px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
     .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-55); margin-top: 4px; }
-    .hero-portrait img { width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 16px; }
+    .hero-portrait img {
+      width: 100%; height: 400px; object-fit: cover; object-position: top center;
+      border-radius: 0;
+      mask-image: radial-gradient(ellipse at 60% 35%, black 52%, transparent 88%);
+      -webkit-mask-image: radial-gradient(ellipse at 60% 35%, black 52%, transparent 88%);
+    }
 
     /* ═══ LOGO BAR ═══ */
     .logo-bar    { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -415,7 +421,7 @@
       .nav-links { display: flex; }
       #hero { padding: 180px 40px 80px; }
       .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
-      .hero-portrait img { height: 600px; }
+      .hero-portrait img { height: 600px; border-radius: 0; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
       .pf-grid  { grid-template-columns: repeat(2,1fr); }
@@ -470,6 +476,26 @@
     @media (min-width: 768px) {
       .cmp-scroll table { table-layout: fixed; }
       .cmp-scroll th:first-child, .cmp-scroll td:first-child { width: 26%; }
+    }
+    /* ═══ BUTTON HOVER LIFT ═══ */
+    .nav-cta     { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .btn-w       { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .btn-g       { transition: background .2s, transform .2s cubic-bezier(.16,1,.3,1); }
+    .prx-cta     { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .btn-blk     { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .btn-primary { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .sticky-mobile-cta-btn { transition: transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .exit-popup-submit     { transition: background .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
+    .nav-cta:hover, .btn-w:hover, .prx-cta:hover, .btn-primary:hover, .sticky-mobile-cta-btn:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+    }
+    .btn-blk:hover, .exit-popup-submit:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+    }
+    .btn-g:hover { transform: translateY(-2px); }
+    .nav-cta:active, .btn-w:active, .btn-g:active, .prx-cta:active,
+    .btn-blk:active, .btn-primary:active, .sticky-mobile-cta-btn:active, .exit-popup-submit:active {
+      transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
   </style>
 </head>
@@ -531,13 +557,13 @@
 </div>
 
 <!-- ABOUT -->
-<section class="section">
+<section class="section reveal">
   <div class="wrap">
     <div class="about-grid">
-      <div class="reveal">
+      <div>
         <div class="about-img"><img src="Emma-3.jpg" alt="Portret Wrocław"></div>
       </div>
-      <div class="reveal">
+      <div>
         <div class="about-badge">o mnie</div>
         <h2 class="about-h2">Jednoosobowe studio. Zero handlowców.</h2>
         <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
@@ -552,7 +578,7 @@
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio" class="section">
+<section id="portfolio" class="section reveal" style="transition-delay:50ms">
   <div class="wrap">
     <div class="port-hdr">
       <div>
@@ -601,9 +627,9 @@
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="section">
+<section class="section reveal" style="transition-delay:100ms">
   <div class="wrap">
-    <div class="cmp-hdr reveal">
+    <div class="cmp-hdr">
       <div class="eyebrow">porównanie</div>
       <h2 class="display-h">720 zł vs typowa agencja.</h2>
       <p>Otwarte porównanie z realnymi liczbami z polskiego rynku 2026.</p>
@@ -627,13 +653,13 @@
 </section>
 
 <!-- PRICING -->
-<section data-decor-bg="77" id="oferta" class="section">
+<section data-decor-bg="77" id="oferta" class="section reveal" style="transition-delay:150ms">
   <div class="wrap">
-    <div class="prx-hdr reveal">
+    <div class="prx-hdr">
       <div class="eyebrow">oferta · bez ukrytych kosztów</div>
       <h2 class="display-h">Wszystko w jednej cenie — bez niespodzianek.</h2>
     </div>
-    <div class="prx-box reveal">
+    <div class="prx-box">
       <div class="prx-left">
         <div class="prx-pkg">pakiet start</div>
         <div class="prx-amt">
@@ -672,9 +698,9 @@
 </section>
 
 <!-- GUARANTEE -->
-<section data-decor-bg="22" class="section">
+<section data-decor-bg="22" class="section reveal" style="transition-delay:200ms">
   <div class="wrap">
-    <div class="gua-box reveal">
+    <div class="gua-box">
       <div class="gua-l">
         <div class="eyebrow">gwarancja · bez ryzyka</div>
         <h2 class="display-h" style="font-size:clamp(26px,3.5vw,44px);">Nie podoba się? Zwracam pieniądze.</h2>
@@ -696,16 +722,16 @@
 </section>
 
 <!-- PROCESS -->
-<section id="proces" class="section">
+<section id="proces" class="section reveal" style="transition-delay:250ms">
   <div class="wrap">
     <div class="proc-hdr">
-      <div class="reveal">
+      <div>
         <div class="eyebrow">proces · dzień po dniu</div>
         <h2 class="display-h">Tydzień. Od briefu do live.</h2>
       </div>
-      <p class="reveal">Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
+      <p>Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
     </div>
-    <div class="proc-card reveal">
+    <div class="proc-card">
       <ol class="timeline">
         <li class="tl">
           <span class="tl-dot"></span>
@@ -748,29 +774,29 @@
 </section>
 
 <!-- TRUST -->
-<section class="section">
+<section class="section reveal" style="transition-delay:300ms">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+    <div style="text-align:center;margin-bottom:48px;">
       <div class="eyebrow">zaufanie · standardy</div>
       <h2 class="display-h">Bezpieczeństwo od pierwszego dnia.</h2>
     </div>
     <div class="trust-grid">
-      <div class="trust-c reveal">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-4" stroke-width="1.8"></path></svg></div>
         <div class="trust-t">ssl · https</div>
         <p class="trust-d">Certyfikat SSL w cenie. Szyfrowane połączenie i zielona kłódka od dnia publikacji.</p>
       </div>
-      <div class="trust-c reveal">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7 8h10M7 12h6M7 16h10"></path></svg></div>
         <div class="trust-t">rodo compliant</div>
         <p class="trust-d">Polityka prywatności, banner cookies (TCF v2), formularz ze zgodami.</p>
       </div>
-      <div class="trust-c reveal">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20M6 16h4"></path></svg></div>
         <div class="trust-t">faktura vat</div>
         <p class="trust-d">Pełna obsługa fakturowa. Przelew tradycyjny, BLIK lub Przelewy24.</p>
       </div>
-      <div class="trust-c reveal">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
         <div class="trust-t">odpowiedź w 24h</div>
         <p class="trust-d">Każdy mail dostaje odpowiedź w 24 godziny robocze. Bez wyjątków.</p>
@@ -780,9 +806,9 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="section">
+<section id="faq" class="section reveal" style="transition-delay:300ms">
   <div class="faq-wrap">
-    <div class="faq-hdr reveal">
+    <div class="faq-hdr">
       <div class="eyebrow">faq</div>
       <h2 class="display-h">Szybkie odpowiedzi.</h2>
     </div>
@@ -818,7 +844,7 @@
 </section>
 
 <!-- FINAL CTA — always dark (bg image + overlay) -->
-<section data-decor-bg="33" id="cta" class="sec-cta">
+<section data-decor-bg="33" id="cta" class="sec-cta reveal" style="transition-delay:300ms">
   <div class="sec-cta-in">
     <div class="cta-ey">OSTATNI KROK</div>
     <h2 class="cta-h">Gotowa na swoją stronę?</h2>
@@ -911,13 +937,15 @@
     st.style.display = window.scrollY > 400 ? 'flex' : 'none';
   });
 
-  // Reveal on scroll
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  // Reveal on scroll — skip if user prefers reduced motion (CSS handles visible state)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  }
 </script>
 
 <script>
