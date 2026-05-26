@@ -144,44 +144,98 @@
     body.day-mode .nav-theme-toggle .sun-icon  { display: block; }
 
     /* ═══ HERO ═══ */
-    #hero { padding: 180px var(--px) 60px; }
-    .hero-inner {
+    #hero { padding: 80px 24px 0; }
+    .hero-card {
       max-width: var(--max-w); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
+      position: relative; overflow: hidden;
+      border-radius: 24px; border: 1px solid var(--border);
+      min-height: 500px; display: flex; align-items: stretch;
     }
-    .hero-pill {
+    .hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center right;
+    }
+    .hero-card::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+      mask-image: linear-gradient(to right, black 0%, black 30%, transparent 58%);
+      -webkit-mask-image: linear-gradient(to right, black 0%, black 30%, transparent 58%);
+      pointer-events: none;
+    }
+    .hero-card::after {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.38) 30%, transparent 58%);
+      pointer-events: none;
+    }
+    body.day-mode .hero-card::after {
+      background: linear-gradient(to right, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.68) 30%, transparent 58%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 55%; padding: 64px 48px;
+      display: flex; flex-direction: column; gap: 20px; justify-content: center;
+    }
+    .hero-status {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; border-radius: var(--rf);
-      background: var(--border); border: 1px solid var(--border-2);
-      font-size: 12px; color: var(--text-90); letter-spacing: 0.05em; margin-bottom: 24px;
+      padding: 6px 14px; border-radius: var(--rf);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 12px; color: rgba(255,255,255,0.92); letter-spacing: 0.04em;
+      width: fit-content;
     }
-    .hero-pill .dot { width: 6px; height: 6px; background: var(--text); border-radius: 50%; flex-shrink: 0; }
-    .hero-h1   { font-size: clamp(52px,11vw,130px); letter-spacing: -0.04em; line-height: 0.92; font-weight: 500; margin-bottom: 20px; }
-    .hero-sub  { font-size: 22px; line-height: 1.5; color: var(--text-90); max-width: 540px; margin-bottom: 32px; }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    body.day-mode .hero-status {
+      background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.10); color: var(--text-90);
+    }
+    .hero-status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #22c55e; flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    }
+    .hero-eyebrow-text {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.52);
+    }
+    body.day-mode .hero-eyebrow-text { color: var(--text-55); }
+    .hero-h1 { font-size: clamp(56px,7vw,96px); letter-spacing: -0.04em; line-height: 1; font-weight: 500; color: #fff; }
+    body.day-mode .hero-h1 { color: var(--text); }
+    .hero-sub { font-size: clamp(18px,1.8vw,22px); line-height: 1.5; color: rgba(255,255,255,0.88); max-width: 420px; }
+    body.day-mode .hero-sub { color: var(--text-90); }
+    .hero-review {
+      display: inline-flex; align-items: center; gap: 12px;
+      max-width: 360px; padding: 12px; border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    body.day-mode .hero-review { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08); }
+    .hero-review-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .hero-review-name { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.90); }
+    body.day-mode .hero-review-name { color: var(--text-90); }
+    .hero-review-stars { font-size: 12px; color: rgba(255,255,255,0.58); margin-top: 2px; }
+    body.day-mode .hero-review-stars { color: var(--text-60); }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-w { background: var(--btn-inv-bg); color: var(--btn-inv-txt); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: opacity .2s; }
     .btn-w:hover { opacity: 0.85; }
     .btn-w svg { stroke: var(--btn-inv-txt); }
-    .btn-g { background: transparent; color: var(--text); border: 1px solid var(--border-2); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
-    .btn-g:hover { background: var(--border); }
+    .btn-g { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.32); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-g:hover { background: rgba(255,255,255,0.10); }
+    body.day-mode .btn-g { color: var(--text); border-color: var(--border-2); }
+    body.day-mode .btn-g:hover { background: var(--border); }
     .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .hs:nth-child(2) { text-align: center; }
-    .hs:nth-child(3) { text-align: right; }
-    .hs-n { font-size: clamp(22px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
-    .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-55); margin-top: 4px; }
-    .hero-portrait img {
-      width: 100%; height: 400px; object-fit: cover; object-position: top center;
-      border-radius: 0;
-      mask-image: radial-gradient(ellipse at 60% 35%, black 52%, transparent 88%);
-      -webkit-mask-image: radial-gradient(ellipse at 60% 35%, black 52%, transparent 88%);
-    }
+    .hs-n { font-size: clamp(22px,3vw,40px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.92); }
+    body.day-mode .hs-n { color: var(--text); }
+    .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.48); margin-top: 4px; }
+    body.day-mode .hs-l { color: var(--text-55); }
 
     /* ═══ LOGO BAR ═══ */
-    .logo-bar    { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .logo-bar-in { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .logo-items  { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
-    .logo-items .nm  { font-size: 14px; color: var(--text-50); }
-    .logo-items .sep { color: var(--text-20); }
+    .logo-bar    { border-bottom: 1px solid var(--border); margin-top: 32px; }
+    .logo-bar-in { max-width: var(--max-w); margin: 0 auto; padding: 24px var(--px); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .logo-bar-in .eyebrow { font-size: 10px; }
+    .logo-items  { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .logo-items .nm  { font-size: 13px; color: var(--text-50); letter-spacing: 0.02em; }
+    .logo-items .sep { color: var(--text-20); font-size: 12px; }
 
     /* ═══ ABOUT ═══ */
     .about-grid  { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
@@ -419,9 +473,8 @@
       :root { --px: 40px; --py: 128px; }
       .site-nav { padding: 16px 40px; }
       .nav-links { display: flex; }
-      #hero { padding: 180px 40px 80px; }
-      .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
-      .hero-portrait img { height: 600px; border-radius: 0; }
+      #hero { padding: 100px 24px 0; }
+      .hero-card { min-height: 700px; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
       .pf-grid  { grid-template-columns: repeat(2,1fr); }
@@ -441,7 +494,16 @@
       .pf-grid { grid-template-columns: repeat(3,1fr); }
     }
     @media (max-width: 767px) {
-      #hero { padding: 140px 20px 40px; }
+      #hero { padding: 80px 16px 0; }
+      .hero-card { min-height: 500px; }
+      .hero-card::before { mask-image: none; -webkit-mask-image: none; }
+      .hero-card::after { background: rgba(0,0,0,0.65); }
+      body.day-mode .hero-card::after { background: rgba(250,250,250,0.88); }
+      .hero-content { width: 100%; padding: 40px 24px; align-items: flex-start; }
+      .hero-review { max-width: 320px; width: 100%; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .logo-bar-in { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 16px; }
+      .logo-items { gap: 20px; }
       section[data-decor-bg="22"]::before { width: 100%; opacity: 0.08; mask-image: linear-gradient(to top, black 0%, transparent 70%); -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%); }
       section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
       #scroll-top { bottom: 88px; right: 16px; width: 40px; height: 40px; }
@@ -522,11 +584,22 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-pill"><span class="dot"></span>Wrocław · cała Polska · 4 wdrożenia</div>
+  <div class="hero-card">
+    <img class="hero-bg" src="11-hero.jpg" alt="" aria-hidden="true">
+    <div class="hero-content">
+      <div class="hero-status">
+        <span class="hero-status-dot"></span>Przyjmuję zlecenia
+      </div>
+      <p class="hero-eyebrow-text">Wrocław · cała Polska · 4 wdrożenia</p>
       <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł.</h1>
       <p class="hero-sub">Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Bez ukrytych kosztów.</p>
+      <div class="hero-review">
+        <img class="hero-review-img" src="Emma-3.jpg" alt="Emma">
+        <div class="hero-review-text">
+          <div class="hero-review-name">Polecam bezsprzecznie</div>
+          <div class="hero-review-stars">★ 4.9 · 100% poleceń klientów</div>
+        </div>
+      </div>
       <div class="hero-btns">
         <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         <a href="#portfolio" class="btn-g">zobacz portfolio</a>
@@ -536,9 +609,6 @@
         <div class="hs"><div class="hs-n">7 dni</div><div class="hs-l">realizacja</div></div>
         <div class="hs"><div class="hs-n">60 dni</div><div class="hs-l">wsparcie gratis</div></div>
       </div>
-    </div>
-    <div class="hero-portrait">
-      <img src="11-hero.jpg" alt="Emma — Conversion Call, Wrocław">
     </div>
   </div>
 </section>
