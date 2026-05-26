@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Conversion Call — Strony za 720 zł gotowe w 7 dni</title>
   <meta name="description" content="Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Stała cena 720 zł brutto. Bez ukrytych kosztów. Wrocław · cała Polska.">
+  <link rel="preload" as="image" href="var2-hero.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
@@ -144,9 +145,8 @@
     body.day-mode .nav-theme-toggle .sun-icon  { display: block; }
 
     /* ═══ HERO ═══ */
-    #hero { padding: 80px 12px 0; }
+    #hero { padding: 80px 8px 0; }
     .hero-card {
-      max-width: var(--max-w); margin: 0 auto;
       position: relative; overflow: hidden;
       border-radius: 24px; border: 1px solid var(--border);
       min-height: 500px; display: flex; align-items: stretch;
@@ -238,6 +238,28 @@
     .logo-items .nm:hover { color: var(--text-90); }
     .logo-items .sep { color: var(--text-40); font-size: 14px; }
 
+    /* ═══ SECTION CREAM — light in dark-mode, dark in day-mode ═══ */
+    .section-cream {
+      --text:     #0a0a0a; --text-90: rgba(0,0,0,0.90); --text-70: rgba(0,0,0,0.70);
+      --text-65:  rgba(0,0,0,0.65); --text-60: rgba(0,0,0,0.60); --text-55: rgba(0,0,0,0.55);
+      --text-50:  rgba(0,0,0,0.50); --text-45: rgba(0,0,0,0.45); --text-40: rgba(0,0,0,0.40);
+      --text-20:  rgba(0,0,0,0.20); --border: rgba(0,0,0,0.10); --border-2: rgba(0,0,0,0.16);
+      --surface:  #ece9e3; --surface-2: #f0eee9; --card-bg: #fff;
+      --btn-inv-bg: #0a0a0a; --btn-inv-txt: #fff;
+      --cmp-hl-bg: #0a0a0a; --cmp-hl-txt: #fff; --cmp-hl-cell: rgba(0,0,0,0.04);
+      background: #f5f3ee;
+    }
+    body.day-mode .section-cream {
+      --text:     #fff; --text-90: rgba(255,255,255,0.90); --text-70: rgba(255,255,255,0.70);
+      --text-65:  rgba(255,255,255,0.65); --text-60: rgba(255,255,255,0.60); --text-55: rgba(255,255,255,0.55);
+      --text-50:  rgba(255,255,255,0.50); --text-45: rgba(255,255,255,0.45); --text-40: rgba(255,255,255,0.40);
+      --text-20:  rgba(255,255,255,0.20); --border: rgba(255,255,255,0.10); --border-2: rgba(255,255,255,0.16);
+      --surface:  #1c1c1c; --surface-2: #222; --card-bg: #1c1c1c;
+      --btn-inv-bg: #fff; --btn-inv-txt: #0a0a0a;
+      --cmp-hl-bg: #fff; --cmp-hl-txt: #0a0a0a; --cmp-hl-cell: rgba(255,255,255,0.05);
+      background: #1a1a1a;
+    }
+
     /* ═══ ABOUT ═══ */
     .about-grid  { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
     .about-img   { position: relative; aspect-ratio: 4/5; border-radius: var(--r); overflow: hidden; background: var(--surface); border: 1px solid var(--border); }
@@ -279,6 +301,10 @@
     .cmp-scroll tbody td.lbl { color: var(--text-55); }
     .cmp-scroll tbody td.hl  { background: var(--cmp-hl-cell); }
     .cmp-scroll tbody td.dim { color: var(--text-45); }
+    .cmp-scroll tbody tr { transition: background-color 0.2s ease; }
+    .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
+    .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(0,0,0,0.03); }
+    body.day-mode .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
 
     /* ═══ PRICING ═══ */
     .prx-hdr  { text-align: center; margin-bottom: 48px; }
@@ -474,7 +500,7 @@
       :root { --px: 40px; --py: 128px; }
       .site-nav { padding: 16px 40px; }
       .nav-links { display: flex; }
-      #hero { padding: 100px 16px 0; }
+      #hero { padding: 100px 12px 0; }
       .hero-card { min-height: 700px; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
@@ -495,8 +521,11 @@
       .pf-grid { grid-template-columns: repeat(3,1fr); }
       #hero { padding: 100px 12px 0; }
     }
+    @media (min-width: 1440px) {
+      #hero { padding: 100px 16px 0; }
+    }
     @media (max-width: 767px) {
-      #hero { padding: 80px 12px 0; }
+      #hero { padding: 80px 8px 0; }
       .hero-card { min-height: 500px; }
       .hero-card::before { mask-image: none; -webkit-mask-image: none; }
       .hero-card::after { background: rgba(0,0,0,0.65); }
@@ -588,7 +617,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-card">
-    <img class="hero-bg" src="var1.jpg" alt="" aria-hidden="true">
+    <img class="hero-bg" src="var2-hero.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
     <div class="hero-content">
       <div class="hero-status">
         <span class="hero-status-dot"></span>Przyjmuję zlecenia
@@ -630,7 +659,7 @@
 </div>
 
 <!-- ABOUT -->
-<section class="section reveal">
+<section class="section section-cream reveal">
   <div class="wrap">
     <div class="about-grid">
       <div>
@@ -700,7 +729,7 @@
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="section reveal" style="transition-delay:100ms">
+<section class="section section-cream reveal" style="transition-delay:100ms">
   <div class="wrap">
     <div class="cmp-hdr">
       <div class="eyebrow">porównanie</div>
@@ -847,7 +876,7 @@
 </section>
 
 <!-- TRUST -->
-<section class="section reveal" style="transition-delay:300ms">
+<section class="section section-cream reveal" style="transition-delay:300ms">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px;">
       <div class="eyebrow">zaufanie · standardy</div>
