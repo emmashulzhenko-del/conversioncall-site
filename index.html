@@ -50,6 +50,7 @@
       --py:     96px;
       --r:      24px;
       --rf:     9999px;
+      --accent-amber: #D97F2C;
     }
 
     /* ═══ DAY MODE — flip variables only ═══ */
@@ -628,6 +629,216 @@
     .btn-blk:active, .btn-primary:active, .sticky-mobile-cta-btn:active, .exit-popup-submit:active {
       transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
+
+    /* ═══ PARALLAX STORY SECTION ═══ */
+    .story-scene {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      padding: 80px var(--px);
+      opacity: 0.2;
+      transition: opacity 0.65s cubic-bezier(.16,1,.3,1);
+    }
+    .story-scene.scene-active { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) { .story-scene { opacity: 1; transition: none; } }
+    .story-scene > * { position: relative; z-index: 1; }
+    .story-content { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; max-width: 900px; width: 100%; }
+
+    .story-scene--1 { background: #0a0a0a; }
+    .story-scene--1::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url('22-decor.jpg'); background-size: cover; background-position: center;
+      opacity: 0.08;
+    }
+    .story-scene--2 { background: #f5f3ee; }
+    body.day-mode .story-scene--2 { background: #1a1a1a; }
+    .story-scene--3 { background: var(--bg); padding: 80px var(--px); }
+
+    .story-eyebrow {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.45); margin-bottom: 4px;
+    }
+    .story-scene--2 .story-eyebrow { color: rgba(0,0,0,0.4); }
+    body.day-mode .story-scene--2 .story-eyebrow { color: rgba(255,255,255,0.45); }
+
+    .story-h2 {
+      font-size: clamp(40px, 6vw, 88px); letter-spacing: -0.04em; line-height: 1;
+      font-weight: 500; max-width: 860px;
+    }
+    .story-scene--1 .story-h2 { color: #fff; }
+    .story-scene--2 .story-h2 { color: #0a0a0a; }
+    body.day-mode .story-scene--2 .story-h2 { color: #fff; }
+    .story-scene--3 .story-h2 { color: var(--text); margin-bottom: 40px; }
+
+    .story-sub {
+      font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; max-width: 560px;
+      margin-top: 4px; color: rgba(255,255,255,0.65);
+    }
+    .story-scene--2 .story-sub { color: rgba(0,0,0,0.55); }
+    body.day-mode .story-scene--2 .story-sub { color: rgba(255,255,255,0.55); }
+
+    /* Scene 3: comparison cards */
+    .story-cmp-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      max-width: 960px; width: 100%;
+    }
+    .story-card { border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
+    .story-card--before {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border); opacity: 0.65;
+    }
+    body.day-mode .story-card--before { background: #f0ede5; border-color: rgba(0,0,0,0.1); opacity: 0.7; }
+    .story-card--after {
+      background: var(--surface);
+      border: 1px solid rgba(217,127,44,0.35);
+    }
+    body.day-mode .story-card--after { background: #fff; }
+    .story-card-label {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-45);
+    }
+    .story-card--after .story-card-label { color: var(--accent-amber); }
+    .story-card-h {
+      font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2;
+      font-weight: 500; color: var(--text);
+    }
+    .story-card--before .story-card-h { opacity: 0.6; }
+    .story-card-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+    .story-card-item { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--text-65); }
+    .story-card-item .ico { flex-shrink: 0; font-style: normal; margin-top: 1px; }
+    .story-card--before .ico { color: var(--text-35, var(--text-40)); }
+    .story-card--after .ico { color: var(--accent-amber); }
+
+    /* ═══ TESTIMONIAL SLAB ═══ */
+    .testi-slab {
+      position: relative; min-height: 700px;
+      display: flex; align-items: stretch; overflow: hidden;
+      border-top: 1px solid var(--border);
+    }
+    .testi-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #2a3e4e 0%, #c96e1e 100%);
+    }
+    .testi-overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.42) 0%, transparent 60%),
+        linear-gradient(to top, rgba(0,0,0,0.35) 0%, transparent 55%);
+    }
+    .testi-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); width: 100%; margin: 0 auto;
+      padding: 80px var(--px);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .testi-left { display: flex; flex-direction: column; gap: 36px; }
+    .testi-heading {
+      font-size: clamp(72px, 11vw, 172px); letter-spacing: -0.05em; line-height: 0.85;
+      font-weight: 700; color: rgba(255,255,255,0.95);
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 24px; padding: 32px;
+      max-width: 500px;
+    }
+    .testi-quote { font-size: clamp(16px,1.5vw,20px); font-weight: 500; color: #fff; line-height: 1.6; }
+    .testi-divider { height: 1px; background: rgba(255,255,255,0.2); margin: 20px 0; }
+    .testi-secondary { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.65; margin-bottom: 24px; }
+    .testi-person { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); border: 1.5px solid rgba(255,255,255,0.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+      letter-spacing: 0.02em;
+    }
+    .testi-person-name { font-size: 14px; font-weight: 600; color: #fff; }
+    .testi-person-role { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+    .testi-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; align-self: flex-end; padding-bottom: 8px; }
+    .testi-rating-n {
+      font-size: clamp(80px, 11vw, 160px); font-weight: 700;
+      letter-spacing: -0.06em; line-height: 0.85; color: #fff;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .testi-rating-dot {
+      width: 14px; height: 14px; border-radius: 50%; background: #22c55e;
+      margin-top: 16px; flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+    }
+    .testi-rating-meta { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; margin-top: 10px; line-height: 1.6; }
+
+    /* ═══ KORA FOOTER ═══ */
+    .kora-footer {
+      background: var(--surface); border-top: 1px solid var(--border); overflow: hidden;
+    }
+    .kora-ft-top {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 72px var(--px) 0;
+    }
+    .kora-ft-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
+      padding-bottom: 48px; border-bottom: 1px solid var(--border);
+    }
+    .kft-logo { display: flex; align-items: center; gap: 8px; color: var(--text); margin-bottom: 12px; }
+    .kft-logo svg { width: 18px; height: 18px; }
+    .kft-logo span { font-size: 13px; font-weight: 500; }
+    .kft-tagline { font-size: 14px; color: var(--text-65); line-height: 1.6; max-width: 300px; margin-bottom: 12px; }
+    .kft-email { font-size: 14px; color: var(--text-90); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-2); transition: color .2s; }
+    .kft-email:hover { color: var(--text); }
+    .kft-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-45); margin-bottom: 16px; }
+    .kft-socials { display: flex; gap: 8px; }
+    .kft-social {
+      width: 40px; height: 40px; border-radius: 10px;
+      border: 1px solid var(--border-2); color: var(--text-65);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, color .2s;
+    }
+    .kft-social:hover { color: var(--text); border-color: var(--text-40); }
+    .kft-social svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+    .kft-nav-list { display: flex; flex-direction: column; gap: 6px; }
+    .kft-nav-item { font-size: 14px; color: var(--text-70); padding: 4px 0; transition: color .2s; display: block; }
+    .kft-nav-item:hover { color: var(--text); }
+    .kora-ft-legal {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 24px var(--px) 20px;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .kft-legal-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-45); }
+    .kft-legal-links { display: flex; gap: 16px; }
+    .kft-legal-link { font-size: 13px; color: var(--text-60); transition: color .2s; }
+    .kft-legal-link:hover { color: var(--text); }
+    .kora-ft-brand {
+      overflow: hidden; line-height: 1;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+    }
+    .kora-ft-brand-text {
+      font-size: clamp(72px, 17vw, 300px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 0.82;
+      color: var(--accent-amber);
+      padding-left: clamp(16px, 3vw, 48px);
+      display: block; white-space: nowrap;
+    }
+    .kora-ft-copy {
+      display: flex; justify-content: flex-end; align-items: center;
+      padding: 4px var(--px) 14px;
+      font-size: 11px; color: var(--text-40);
+    }
+
+    /* ═══ NEW SECTIONS RESPONSIVE ═══ */
+    @media (max-width: 767px) {
+      .story-scene { min-height: 80vh; padding: 64px 20px; }
+      .story-scene--3 { min-height: auto; padding: 64px 20px; }
+      .story-cmp-row { grid-template-columns: 1fr; gap: 16px; }
+      .story-card { padding: 28px 24px; }
+      .testi-inner { grid-template-columns: 1fr; gap: 36px; padding: 60px var(--px); }
+      .testi-right { align-items: flex-start; padding-bottom: 0; }
+      .testi-rating-meta { text-align: left; }
+      .kora-ft-grid { grid-template-columns: 1fr; gap: 32px; }
+      .kft-socials { gap: 6px; }
+    }
+    @media (min-width: 768px) {
+      .testi-slab { min-height: 680px; }
+    }
   </style>
 </head>
 <body>
@@ -703,6 +914,57 @@
   </div>
 </div>
 
+<!-- PARALLAX STORY -->
+<div class="story-section">
+
+  <!-- Scene 1: Problem statement -->
+  <div class="story-scene story-scene--1">
+    <div class="story-content">
+      <p class="story-eyebrow">Rzeczywistość</p>
+      <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
+      <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
+    </div>
+  </div>
+
+  <!-- Scene 2: Pivot -->
+  <div class="story-scene story-scene--2">
+    <div class="story-content">
+      <p class="story-eyebrow">Zmiana</p>
+      <h2 class="story-h2">Co się zmienia, gdy strona naprawdę działa.</h2>
+    </div>
+  </div>
+
+  <!-- Scene 3: Comparison cards -->
+  <div class="story-scene story-scene--3">
+    <div class="story-content" style="max-width:1000px">
+      <h2 class="story-h2" style="text-align:left;width:100%;margin-bottom:8px">Porównaj sam.</h2>
+      <div class="story-cmp-row">
+        <div class="story-card story-card--before">
+          <div class="story-card-label">Zwykle</div>
+          <div class="story-card-h">Strona szablonowa, długo, drogo.</div>
+          <ul class="story-card-list">
+            <li class="story-card-item"><i class="ico">✕</i><span>5 000 – 15 000 zł</span></li>
+            <li class="story-card-item"><i class="ico">✕</i><span>8 – 12 tygodni do publikacji</span></li>
+            <li class="story-card-item"><i class="ico">✕</i><span>Account manager pośredniczy</span></li>
+            <li class="story-card-item"><i class="ico">✕</i><span>Abonament 50 – 200 zł/mies. na zawsze</span></li>
+          </ul>
+        </div>
+        <div class="story-card story-card--after">
+          <div class="story-card-label">Conversion Call</div>
+          <div class="story-card-h">Strona pod klucz. Szybko, jasno, raz.</div>
+          <ul class="story-card-list">
+            <li class="story-card-item"><i class="ico">✓</i><span>720 zł, stała cena</span></li>
+            <li class="story-card-item"><i class="ico">✓</i><span>7 dni do publikacji</span></li>
+            <li class="story-card-item"><i class="ico">✓</i><span>Bezpośredni kontakt — tylko my dwoje</span></li>
+            <li class="story-card-item"><i class="ico">✓</i><span>Pełna własność, zero abonamentów</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <!-- ABOUT -->
 <section class="section section-cream reveal">
   <div class="wrap">
@@ -772,6 +1034,35 @@
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIAL: Replace placeholder with real client quote when available -->
+<div class="testi-slab reveal">
+  <div class="testi-bg"></div>
+  <div class="testi-overlay"></div>
+  <div class="testi-inner">
+    <div class="testi-left">
+      <div class="testi-heading">Opinie</div>
+      <div class="testi-card">
+        <p class="testi-quote">"Emma nie tylko zaprojektowała stronę — pomogła mi zobaczyć, jak małe zmiany w copy zwiększają konwersję. Strona była online w 6 dni."</p>
+        <div class="testi-divider"></div>
+        <p class="testi-secondary">Po publikacji wzrost zapytań o 40% w pierwszym miesiącu. Najlepsza decyzja w 2026 dla mojego biznesu.</p>
+        <div class="testi-person">
+          <div class="testi-avatar">ŻP</div>
+          <div>
+            <div class="testi-person-name">Żanna Potapowa</div>
+            <div class="testi-person-role">Yoga Retreat · yogaretreat.fit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-right">
+      <div class="testi-rating-n">
+        4.9<span class="testi-rating-dot"></span>
+      </div>
+      <div class="testi-rating-meta">Based on 4 wdrożenia<br>100% satysfakcji klientów</div>
+    </div>
+  </div>
+</div>
 
 <!-- COMPARE TABLE -->
 <section class="section section-cream reveal" style="transition-delay:100ms">
@@ -1006,43 +1297,68 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-in">
-    <div class="ft-grid">
+<!-- FOOTER — Kora-style big brand -->
+<footer class="kora-footer">
+  <div class="kora-ft-top">
+    <div class="kora-ft-grid">
+
+      <!-- Col 1: Brand -->
       <div>
-        <div class="ft-logo">
-          <svg viewBox="0 0 256 256"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"></path></svg>
+        <div class="kft-logo">
+          <svg viewBox="0 0 256 256" width="18" height="18"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"></path></svg>
           <span>conversion call</span>
         </div>
-        <p class="ft-tag">Strony internetowe dla małych firm w Polsce. Stała cena, transparentny proces, gotowe w 7 dni.</p>
-        <a href="mailto:hello@conversioncall.pl" class="ft-mail">hello@conversioncall.pl</a>
+        <p class="kft-tagline">Strony internetowe za 720 zł dla małych firm w Polsce.</p>
+        <a href="mailto:hello@conversioncall.pl" class="kft-email">hello@conversioncall.pl</a>
       </div>
+
+      <!-- Col 2: Socials -->
       <div>
-        <div class="ft-h">oferta</div>
-        <a href="#oferta" class="ft-a">pakiet start</a>
-        <a href="#portfolio" class="ft-a">portfolio</a>
-        <a href="#proces" class="ft-a">proces</a>
-        <a href="#faq" class="ft-a">faq</a>
+        <div class="kft-h">Socials</div>
+        <div class="kft-socials">
+          <a href="#" class="kft-social" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="kft-social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 014 0v4M11 10v7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="kft-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="kft-social" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
+
+      <!-- Col 3: Navigation -->
       <div>
-        <div class="ft-h">lokalizacja</div>
-        <span class="ft-s">wrocław</span>
-        <span class="ft-s">dolnośląskie</span>
-        <span class="ft-s">cała polska</span>
+        <div class="kft-h">Navigation</div>
+        <div class="kft-nav-list">
+          <a href="#oferta" class="kft-nav-item">Oferta</a>
+          <a href="#portfolio" class="kft-nav-item">Portfolio</a>
+          <a href="#proces" class="kft-nav-item">Proces</a>
+          <a href="#faq" class="kft-nav-item">FAQ</a>
+        </div>
       </div>
-      <div>
-        <div class="ft-h">prawne</div>
-        <a href="#" class="ft-a">polityka prywatności</a>
-        <a href="#" class="ft-a">regulamin</a>
-        <a href="#" class="ft-a">cookies</a>
-      </div>
-    </div>
-    <div class="ft-bot">
-      <span>© 2026 conversion call · wrocław, pl</span>
-      <span class="ver">v4.0 · 05.2026</span>
+
     </div>
   </div>
+
+  <!-- Legal row -->
+  <div class="kora-ft-legal">
+    <span class="kft-legal-h">Legal</span>
+    <div class="kft-legal-links">
+      <a href="#" class="kft-legal-link">Privacy Policy</a>
+      <a href="#" class="kft-legal-link">Terms of Service</a>
+    </div>
+  </div>
+
+  <!-- Big brand name — typographic exit -->
+  <div class="kora-ft-brand">
+    <span class="kora-ft-brand-text">conversion call</span>
+  </div>
+  <div class="kora-ft-copy">© 2026 Conversion Call. All rights reserved.</div>
 </footer>
 
 <!-- SCROLL TOP -->
@@ -1105,6 +1421,20 @@
     }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
   }
+
+  // Story scenes: fade in when centered in viewport, fade out when leaving
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scenes = document.querySelectorAll('.story-scene');
+    if (!scenes.length) return;
+    var sceneObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) e.target.classList.add('scene-active');
+        else e.target.classList.remove('scene-active');
+      });
+    }, { threshold: 0.35, rootMargin: '-10% 0px -10% 0px' });
+    scenes.forEach(function(s) { sceneObs.observe(s); });
+  })();
 </script>
 
 <script>
