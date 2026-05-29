@@ -346,8 +346,11 @@
     .cmp-scroll tbody td.dim { color: var(--text-45); }
     .cmp-scroll tbody tr { transition: background-color 0.2s ease; }
     .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
+    .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.10); }
     .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(0,0,0,0.03); }
+    .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.12); }
     body.day-mode .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
+    body.day-mode .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.10); }
 
     /* ═══ PRICING ═══ */
     .prx-hdr  { text-align: center; margin-bottom: 48px; }
@@ -630,82 +633,68 @@
       transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.10);
     }
 
-    /* ═══ PARALLAX STORY SECTION ═══ */
-    .story-scene {
-      min-height: 100vh; display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      padding: 80px var(--px);
-      opacity: 0.2;
-      transition: opacity 0.65s cubic-bezier(.16,1,.3,1);
+    /* ═══ PARALLAX STORY SECTION — Technique 1: position pinning ═══ */
+    .parallax-story { height: 300vh; position: relative; }
+    .parallax-story-sticky {
+      position: sticky; top: 0; height: 100vh; overflow: hidden;
     }
-    .story-scene.scene-active { opacity: 1; }
-    @media (prefers-reduced-motion: reduce) { .story-scene { opacity: 1; transition: none; } }
-    .story-scene > * { position: relative; z-index: 1; }
-    .story-content { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; max-width: 900px; width: 100%; }
-
-    .story-scene--1 { background: #0a0a0a; }
-    .story-scene--1::before {
-      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    .parallax-layer {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px var(--px);
+      opacity: 0;
+      will-change: opacity;
+    }
+    .parallax-layer > * { position: relative; z-index: 1; }
+    .pl-bg {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      will-change: transform;
+    }
+    .pl-1 { background: #0a0a0a; }
+    .pl-1 .pl-bg {
       background-image: url('22-decor.jpg'); background-size: cover; background-position: center;
       opacity: 0.08;
     }
-    .story-scene--2 { background: #f5f3ee; }
-    body.day-mode .story-scene--2 { background: #1a1a1a; }
-    .story-scene--3 { background: var(--bg); padding: 80px var(--px); }
+    .pl-2 { background: #f5f3ee; }
+    body.day-mode .pl-2 { background: #1a1a1a; }
+    .pl-3 { background: var(--bg); }
 
-    .story-eyebrow {
-      font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.45); margin-bottom: 4px;
-    }
-    .story-scene--2 .story-eyebrow { color: rgba(0,0,0,0.4); }
-    body.day-mode .story-scene--2 .story-eyebrow { color: rgba(255,255,255,0.45); }
-
-    .story-h2 {
-      font-size: clamp(40px, 6vw, 88px); letter-spacing: -0.04em; line-height: 1;
-      font-weight: 500; max-width: 860px;
-    }
-    .story-scene--1 .story-h2 { color: #fff; }
-    .story-scene--2 .story-h2 { color: #0a0a0a; }
-    body.day-mode .story-scene--2 .story-h2 { color: #fff; }
-    .story-scene--3 .story-h2 { color: var(--text); margin-bottom: 40px; }
-
-    .story-sub {
-      font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; max-width: 560px;
-      margin-top: 4px; color: rgba(255,255,255,0.65);
-    }
-    .story-scene--2 .story-sub { color: rgba(0,0,0,0.55); }
-    body.day-mode .story-scene--2 .story-sub { color: rgba(255,255,255,0.55); }
+    .story-content { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; max-width: 900px; width: 100%; }
+    .story-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+    .pl-2 .story-eyebrow { color: rgba(0,0,0,0.4); }
+    body.day-mode .pl-2 .story-eyebrow { color: rgba(255,255,255,0.45); }
+    .story-h2 { font-size: clamp(40px, 6vw, 88px); letter-spacing: -0.04em; line-height: 1; font-weight: 500; max-width: 860px; }
+    .pl-1 .story-h2 { color: #fff; }
+    .pl-2 .story-h2 { color: #0a0a0a; }
+    body.day-mode .pl-2 .story-h2 { color: #fff; }
+    .pl-3 .story-h2 { color: var(--text); margin-bottom: 40px; }
+    .story-sub { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; max-width: 560px; margin-top: 4px; color: rgba(255,255,255,0.65); }
+    .pl-2 .story-sub { color: rgba(0,0,0,0.55); }
+    body.day-mode .pl-2 .story-sub { color: rgba(255,255,255,0.55); }
 
     /* Scene 3: comparison cards */
-    .story-cmp-row {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      max-width: 960px; width: 100%;
-    }
+    .story-cmp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; width: 100%; }
     .story-card { border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
-    .story-card--before {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border); opacity: 0.65;
-    }
+    .story-card--before { background: rgba(255,255,255,0.03); border: 1px solid var(--border); opacity: 0.65; }
     body.day-mode .story-card--before { background: #f0ede5; border-color: rgba(0,0,0,0.1); opacity: 0.7; }
-    .story-card--after {
-      background: var(--surface);
-      border: 1px solid rgba(217,127,44,0.35);
-    }
+    .story-card--after { background: var(--surface); border: 1px solid rgba(217,127,44,0.35); }
     body.day-mode .story-card--after { background: #fff; }
-    .story-card-label {
-      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-45);
-    }
+    .story-card-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-45); }
     .story-card--after .story-card-label { color: var(--accent-amber); }
-    .story-card-h {
-      font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2;
-      font-weight: 500; color: var(--text);
-    }
+    .story-card-h { font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; font-weight: 500; color: var(--text); }
     .story-card--before .story-card-h { opacity: 0.6; }
     .story-card-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
     .story-card-item { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--text-65); }
     .story-card-item .ico { flex-shrink: 0; font-style: normal; margin-top: 1px; }
     .story-card--before .ico { color: var(--text-35, var(--text-40)); }
     .story-card--after .ico { color: var(--accent-amber); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .parallax-story { height: auto; }
+      .parallax-story-sticky { position: static; height: auto; overflow: visible; }
+      .parallax-layer { position: static; opacity: 1 !important; min-height: 80vh; }
+      .pl-bg { display: none; }
+    }
 
     /* ═══ TESTIMONIAL SLAB ═══ */
     .testi-slab {
@@ -765,74 +754,147 @@
       box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
     }
     .testi-rating-meta { font-size: 12px; color: rgba(255,255,255,0.55); text-align: right; margin-top: 10px; line-height: 1.6; }
+    .testi-see-all {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #fff; color: #0a0a0a;
+      padding: 11px 22px; border-radius: 999px;
+      font-size: 14px; font-weight: 500; align-self: flex-start;
+      transition: transform 0.2s cubic-bezier(.16,1,.3,1), box-shadow 0.2s ease;
+    }
+    .testi-see-all:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
 
-    /* ═══ KORA FOOTER ═══ */
+    /* ═══ REVIEWS CAROUSEL ═══ */
+    .reviews-carousel {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 64px 0 72px; overflow: hidden;
+    }
+    .rc-header { padding: 0 var(--px); margin-bottom: 36px; }
+    .rc-title { font-size: clamp(22px, 2.5vw, 32px); letter-spacing: -0.03em; font-weight: 500; color: var(--text); margin-top: 10px; }
+    .rc-wrap { position: relative; overflow: hidden; }
+    .rc-wrap::before, .rc-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+    }
+    .rc-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+    .rc-wrap::after  { right: 0; background: linear-gradient(to left,  var(--surface), transparent); }
+    .rc-track {
+      display: flex; gap: 20px; width: max-content;
+      animation: rc-scroll 60s linear infinite;
+    }
+    .rc-track:hover { animation-play-state: paused; }
+    @keyframes rc-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) { .rc-track { animation: none; } }
+    .rc-card {
+      width: 360px; flex-shrink: 0;
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .rc-stars { color: #f59e0b; font-size: 13px; letter-spacing: 2px; }
+    .rc-quote { font-size: 15px; line-height: 1.65; color: var(--text-90); flex: 1; }
+    .rc-person { display: flex; align-items: center; gap: 10px; }
+    .rc-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--surface-2); border: 1px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--text-65); flex-shrink: 0;
+    }
+    .rc-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .rc-role { font-size: 12px; color: var(--text-50); margin-top: 2px; }
+
+    /* ═══ KORA FOOTER — inverted theme ═══ */
+    /* Dark mode: cream bg / Day mode: dark bg — always inverted from page */
     .kora-footer {
-      background: var(--surface); border-top: 1px solid var(--border); overflow: hidden;
+      --ft-text:    #0a0a0a;
+      --ft-t90:     rgba(0,0,0,0.90);
+      --ft-t65:     rgba(0,0,0,0.65);
+      --ft-t50:     rgba(0,0,0,0.50);
+      --ft-t40:     rgba(0,0,0,0.40);
+      --ft-border:  rgba(0,0,0,0.12);
+      --ft-border2: rgba(0,0,0,0.20);
+      background: #f5f3ee; overflow: hidden; border-top: none;
+      color: var(--ft-text);
     }
-    .kora-ft-top {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: 72px var(--px) 0;
+    body.day-mode .kora-footer {
+      --ft-text:    #fff;
+      --ft-t90:     rgba(255,255,255,0.90);
+      --ft-t65:     rgba(255,255,255,0.65);
+      --ft-t50:     rgba(255,255,255,0.50);
+      --ft-t40:     rgba(255,255,255,0.40);
+      --ft-border:  rgba(255,255,255,0.12);
+      --ft-border2: rgba(255,255,255,0.20);
+      background: #1a1a1a;
     }
+    .kora-ft-top { max-width: var(--max-w); margin: 0 auto; padding: 72px var(--px) 0; }
     .kora-ft-grid {
       display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
-      padding-bottom: 48px; border-bottom: 1px solid var(--border);
+      padding-bottom: 48px; border-bottom: 1px solid var(--ft-border);
     }
-    .kft-logo { display: flex; align-items: center; gap: 8px; color: var(--text); margin-bottom: 12px; }
+    .kft-logo { display: flex; align-items: center; gap: 8px; color: var(--ft-text); margin-bottom: 12px; }
     .kft-logo svg { width: 18px; height: 18px; }
     .kft-logo span { font-size: 13px; font-weight: 500; }
-    .kft-tagline { font-size: 14px; color: var(--text-65); line-height: 1.6; max-width: 300px; margin-bottom: 12px; }
-    .kft-email { font-size: 14px; color: var(--text-90); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border-2); transition: color .2s; }
-    .kft-email:hover { color: var(--text); }
-    .kft-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-45); margin-bottom: 16px; }
+    .kft-tagline { font-size: 14px; color: var(--ft-t65); line-height: 1.6; max-width: 300px; margin-bottom: 12px; }
+    .kft-email { font-size: 14px; color: var(--ft-t90); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ft-border2); transition: color .2s; }
+    .kft-email:hover { color: var(--ft-text); }
+    .kft-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ft-t50); margin-bottom: 16px; }
     .kft-socials { display: flex; gap: 8px; }
     .kft-social {
       width: 40px; height: 40px; border-radius: 10px;
-      border: 1px solid var(--border-2); color: var(--text-65);
+      border: 1px solid var(--ft-border2); color: var(--ft-t65);
       display: flex; align-items: center; justify-content: center;
       transition: border-color .2s, color .2s;
     }
-    .kft-social:hover { color: var(--text); border-color: var(--text-40); }
+    .kft-social:hover { color: var(--ft-text); border-color: var(--ft-t40); }
     .kft-social svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
     .kft-nav-list { display: flex; flex-direction: column; gap: 6px; }
-    .kft-nav-item { font-size: 14px; color: var(--text-70); padding: 4px 0; transition: color .2s; display: block; }
-    .kft-nav-item:hover { color: var(--text); }
+    .kft-nav-item { font-size: 14px; color: var(--ft-t65); padding: 4px 0; transition: color .2s; display: block; }
+    .kft-nav-item:hover { color: var(--ft-text); }
     .kora-ft-legal {
       max-width: var(--max-w); margin: 0 auto;
       padding: 24px var(--px) 20px;
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      border-top: 1px solid var(--ft-border);
     }
-    .kft-legal-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-45); }
+    .kft-legal-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ft-t50); }
     .kft-legal-links { display: flex; gap: 16px; }
-    .kft-legal-link { font-size: 13px; color: var(--text-60); transition: color .2s; }
-    .kft-legal-link:hover { color: var(--text); }
+    .kft-legal-link { font-size: 13px; color: var(--ft-t65); transition: color .2s; }
+    .kft-legal-link:hover { color: var(--ft-text); }
+    /* Big CC brand mark */
     .kora-ft-brand {
-      overflow: hidden; line-height: 1;
-      border-top: 1px solid var(--border);
-      padding-top: 8px;
+      overflow: hidden; line-height: 1; padding: 8px 0 0;
+      display: flex; align-items: flex-end; gap: clamp(16px, 2vw, 36px);
+      padding-left: clamp(16px, 3vw, 48px);
+    }
+    .kora-ft-brand-svg {
+      width: clamp(60px, 9vw, 160px);
+      height: clamp(60px, 9vw, 160px);
+      flex-shrink: 0; opacity: 0.18;
+      margin-bottom: clamp(8px, 1vw, 20px);
     }
     .kora-ft-brand-text {
-      font-size: clamp(72px, 17vw, 300px); font-weight: 700;
-      letter-spacing: -0.04em; line-height: 0.82;
-      color: var(--accent-amber);
-      padding-left: clamp(16px, 3vw, 48px);
+      font-size: clamp(120px, 22vw, 400px); font-weight: 700;
+      letter-spacing: -0.06em; line-height: 0.82;
+      color: var(--ft-text);
       display: block; white-space: nowrap;
+      transition: color 0.3s ease;
     }
+    .kora-footer:hover .kora-ft-brand-text { color: var(--accent-amber); }
     .kora-ft-copy {
       display: flex; justify-content: flex-end; align-items: center;
-      padding: 4px var(--px) 14px;
-      font-size: 11px; color: var(--text-40);
+      padding: 4px var(--px) 16px;
+      font-size: 11px; color: var(--ft-t40);
     }
 
     /* ═══ NEW SECTIONS RESPONSIVE ═══ */
     @media (max-width: 767px) {
-      .story-scene { min-height: 80vh; padding: 64px 20px; }
-      .story-scene--3 { min-height: auto; padding: 64px 20px; }
       .story-cmp-row { grid-template-columns: 1fr; gap: 16px; }
       .story-card { padding: 28px 24px; }
       .testi-inner { grid-template-columns: 1fr; gap: 36px; padding: 60px var(--px); }
       .testi-right { align-items: flex-start; padding-bottom: 0; }
       .testi-rating-meta { text-align: left; }
+      .rc-card { width: 300px; padding: 22px; }
       .kora-ft-grid { grid-template-columns: 1fr; gap: 32px; }
       .kft-socials { gap: 6px; }
     }
@@ -914,55 +976,58 @@
   </div>
 </div>
 
-<!-- PARALLAX STORY -->
-<div class="story-section">
+<!-- PARALLAX STORY — Technique 1: sticky pin + scroll-driven cross-fade -->
+<div class="parallax-story" id="parallax-story">
+  <div class="parallax-story-sticky">
 
-  <!-- Scene 1: Problem statement -->
-  <div class="story-scene story-scene--1">
-    <div class="story-content">
-      <p class="story-eyebrow">Rzeczywistość</p>
-      <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
-      <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
+    <!-- Layer 1: Problem statement -->
+    <div class="parallax-layer pl-1">
+      <div class="pl-bg"></div>
+      <div class="story-content">
+        <p class="story-eyebrow">Rzeczywistość</p>
+        <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
+        <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Scene 2: Pivot -->
-  <div class="story-scene story-scene--2">
-    <div class="story-content">
-      <p class="story-eyebrow">Zmiana</p>
-      <h2 class="story-h2">Co się zmienia, gdy strona naprawdę działa.</h2>
+    <!-- Layer 2: Pivot -->
+    <div class="parallax-layer pl-2">
+      <div class="story-content">
+        <p class="story-eyebrow">Zmiana</p>
+        <h2 class="story-h2">Co się zmienia, gdy strona naprawdę działa.</h2>
+      </div>
     </div>
-  </div>
 
-  <!-- Scene 3: Comparison cards -->
-  <div class="story-scene story-scene--3">
-    <div class="story-content" style="max-width:1000px">
-      <h2 class="story-h2" style="text-align:left;width:100%;margin-bottom:8px">Porównaj sam.</h2>
-      <div class="story-cmp-row">
-        <div class="story-card story-card--before">
-          <div class="story-card-label">Zwykle</div>
-          <div class="story-card-h">Strona szablonowa, długo, drogo.</div>
-          <ul class="story-card-list">
-            <li class="story-card-item"><i class="ico">✕</i><span>5 000 – 15 000 zł</span></li>
-            <li class="story-card-item"><i class="ico">✕</i><span>8 – 12 tygodni do publikacji</span></li>
-            <li class="story-card-item"><i class="ico">✕</i><span>Account manager pośredniczy</span></li>
-            <li class="story-card-item"><i class="ico">✕</i><span>Abonament 50 – 200 zł/mies. na zawsze</span></li>
-          </ul>
-        </div>
-        <div class="story-card story-card--after">
-          <div class="story-card-label">Conversion Call</div>
-          <div class="story-card-h">Strona pod klucz. Szybko, jasno, raz.</div>
-          <ul class="story-card-list">
-            <li class="story-card-item"><i class="ico">✓</i><span>720 zł, stała cena</span></li>
-            <li class="story-card-item"><i class="ico">✓</i><span>7 dni do publikacji</span></li>
-            <li class="story-card-item"><i class="ico">✓</i><span>Bezpośredni kontakt — tylko my dwoje</span></li>
-            <li class="story-card-item"><i class="ico">✓</i><span>Pełna własność, zero abonamentów</span></li>
-          </ul>
+    <!-- Layer 3: Comparison cards -->
+    <div class="parallax-layer pl-3">
+      <div class="story-content" style="max-width:1000px">
+        <h2 class="story-h2" style="text-align:left;width:100%;margin-bottom:8px">Porównaj sam.</h2>
+        <div class="story-cmp-row">
+          <div class="story-card story-card--before">
+            <div class="story-card-label">Zwykle</div>
+            <div class="story-card-h">Strona szablonowa, długo, drogo.</div>
+            <ul class="story-card-list">
+              <li class="story-card-item"><i class="ico">✕</i><span>5 000 – 15 000 zł</span></li>
+              <li class="story-card-item"><i class="ico">✕</i><span>8 – 12 tygodni do publikacji</span></li>
+              <li class="story-card-item"><i class="ico">✕</i><span>Account manager pośredniczy</span></li>
+              <li class="story-card-item"><i class="ico">✕</i><span>Abonament 50 – 200 zł/mies. na zawsze</span></li>
+            </ul>
+          </div>
+          <div class="story-card story-card--after">
+            <div class="story-card-label">Conversion Call</div>
+            <div class="story-card-h">Strona pod klucz. Szybko, jasno, raz.</div>
+            <ul class="story-card-list">
+              <li class="story-card-item"><i class="ico">✓</i><span>720 zł, stała cena</span></li>
+              <li class="story-card-item"><i class="ico">✓</i><span>7 dni do publikacji</span></li>
+              <li class="story-card-item"><i class="ico">✓</i><span>Bezpośredni kontakt — tylko my dwoje</span></li>
+              <li class="story-card-item"><i class="ico">✓</i><span>Pełna własność, zero abonamentów</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
 
 <!-- ABOUT -->
@@ -1054,6 +1119,7 @@
           </div>
         </div>
       </div>
+      <a href="#reviews-carousel" class="testi-see-all">Zobacz wszystkie opinie →</a>
     </div>
     <div class="testi-right">
       <div class="testi-rating-n">
@@ -1063,6 +1129,196 @@
     </div>
   </div>
 </div>
+
+<!-- REVIEWS CAROUSEL -->
+<section id="reviews-carousel" class="reviews-carousel">
+  <div class="rc-header">
+    <div class="eyebrow">opinie klientów</div>
+    <div class="rc-title">Co mówią klienci.</div>
+  </div>
+  <div class="rc-wrap">
+    <div class="rc-track">
+      <!-- 8 unique cards -->
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Strona była online w 6 dni. Emma przeprowadziła mnie przez cały proces bez żadnego stresu. Wzrost zapytań od razu w pierwszym miesiącu."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">ŻP</div>
+          <div>
+            <div class="rc-name">Żanna Potapowa</div>
+            <div class="rc-role">Yoga Retreat · yogaretreat.fit</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Zamawiałem stronę po raz pierwszy w życiu i bałem się, że to skomplikowane. Emma wytłumaczyła wszystko krok po kroku. Polecam każdemu."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">MK</div>
+          <div>
+            <div class="rc-name">Marek Kowalski</div>
+            <div class="rc-role">Naprawa szyb · San Antonio</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Projekt NGO z budżetem zero — Emma i tak podeszła do niego z pełnym zaangażowaniem. Strona prezentuje się profesjonalnie i przyciąga nowych wolontariuszy."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">AM</div>
+          <div>
+            <div class="rc-name">Anna Mazur</div>
+            <div class="rc-role">artdance.org · NGO</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Przed wdrożeniem nie mieliśmy strony w ogóle. Po tygodniu mamy gabinet online, formularz rezerwacyjny i już pierwsze zapisy. Warto było."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">ES</div>
+          <div>
+            <div class="rc-name">Ewa Stankiewicz</div>
+            <div class="rc-role">Stomatologia · elstom.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"720 zł to najlepsza inwestycja w marketing jaka mi się trafiła. Strona wygląda jak za 5 000 zł — a dostałam ją w tydzień."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">KW</div>
+          <div>
+            <div class="rc-name">Katarzyna Wiśniewska</div>
+            <div class="rc-role">Studio florystyczne · Wrocław</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Kontakt bezpośredni z wykonawcą to dla mnie kluczowa wartość. Wiedziałem co się dzieje na każdym etapie. Żadnych account managerów, żadnego czekania."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">PT</div>
+          <div>
+            <div class="rc-name">Piotr Tomaszewski</div>
+            <div class="rc-role">Usługi hydrauliczne · Poznań</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Miałam agencję wcześniej — 3 miesiące, 6 000 zł i niezadowolenie. Emma zrobiła lepszą stronę w 7 dni. Nie wróciłabym już do agencji."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">MN</div>
+          <div>
+            <div class="rc-name">Monika Nowak</div>
+            <div class="rc-role">Coaching · cała Polska</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"SEO lokalne wbudowane od razu — nie trzeba było dokupować oddzielnie. Po miesiącu pojawiam się w Google Maps i mam więcej telefonów."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">RJ</div>
+          <div>
+            <div class="rc-name">Robert Jankowski</div>
+            <div class="rc-role">Elektryk · Wrocław</div>
+          </div>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Strona była online w 6 dni. Emma przeprowadziła mnie przez cały proces bez żadnego stresu. Wzrost zapytań od razu w pierwszym miesiącu."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">ŻP</div>
+          <div>
+            <div class="rc-name">Żanna Potapowa</div>
+            <div class="rc-role">Yoga Retreat · yogaretreat.fit</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Zamawiałem stronę po raz pierwszy w życiu i bałem się, że to skomplikowane. Emma wytłumaczyła wszystko krok po kroku. Polecam każdemu."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">MK</div>
+          <div>
+            <div class="rc-name">Marek Kowalski</div>
+            <div class="rc-role">Naprawa szyb · San Antonio</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Projekt NGO z budżetem zero — Emma i tak podeszła do niego z pełnym zaangażowaniem. Strona prezentuje się profesjonalnie i przyciąga nowych wolontariuszy."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">AM</div>
+          <div>
+            <div class="rc-name">Anna Mazur</div>
+            <div class="rc-role">artdance.org · NGO</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Przed wdrożeniem nie mieliśmy strony w ogóle. Po tygodniu mamy gabinet online, formularz rezerwacyjny i już pierwsze zapisy. Warto było."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">ES</div>
+          <div>
+            <div class="rc-name">Ewa Stankiewicz</div>
+            <div class="rc-role">Stomatologia · elstom.com</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"720 zł to najlepsza inwestycja w marketing jaka mi się trafiła. Strona wygląda jak za 5 000 zł — a dostałam ją w tydzień."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">KW</div>
+          <div>
+            <div class="rc-name">Katarzyna Wiśniewska</div>
+            <div class="rc-role">Studio florystyczne · Wrocław</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Kontakt bezpośredni z wykonawcą to dla mnie kluczowa wartość. Wiedziałem co się dzieje na każdym etapie. Żadnych account managerów, żadnego czekania."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">PT</div>
+          <div>
+            <div class="rc-name">Piotr Tomaszewski</div>
+            <div class="rc-role">Usługi hydrauliczne · Poznań</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"Miałam agencję wcześniej — 3 miesiące, 6 000 zł i niezadowolenie. Emma zrobiła lepszą stronę w 7 dni. Nie wróciłabym już do agencji."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">MN</div>
+          <div>
+            <div class="rc-name">Monika Nowak</div>
+            <div class="rc-role">Coaching · cała Polska</div>
+          </div>
+        </div>
+      </div>
+      <div class="rc-card">
+        <div class="rc-stars">★★★★★</div>
+        <p class="rc-quote">"SEO lokalne wbudowane od razu — nie trzeba było dokupować oddzielnie. Po miesiącu pojawiam się w Google Maps i mam więcej telefonów."</p>
+        <div class="rc-person">
+          <div class="rc-avatar">RJ</div>
+          <div>
+            <div class="rc-name">Robert Jankowski</div>
+            <div class="rc-role">Elektryk · Wrocław</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- COMPARE TABLE -->
 <section class="section section-cream reveal" style="transition-delay:100ms">
@@ -1297,7 +1553,7 @@
   </div>
 </section>
 
-<!-- FOOTER — Kora-style big brand -->
+<!-- FOOTER — CC brand mark, inverted theme -->
 <footer class="kora-footer">
   <div class="kora-ft-top">
     <div class="kora-ft-grid">
@@ -1354,9 +1610,12 @@
     </div>
   </div>
 
-  <!-- Big brand name — typographic exit -->
+  <!-- Massive CC brand mark — logo icon + "CC" lettermark -->
   <div class="kora-ft-brand">
-    <span class="kora-ft-brand-text">conversion call</span>
+    <svg class="kora-ft-brand-svg" viewBox="0 0 256 256" aria-hidden="true">
+      <path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"/>
+    </svg>
+    <span class="kora-ft-brand-text">CC</span>
   </div>
   <div class="kora-ft-copy">© 2026 Conversion Call. All rights reserved.</div>
 </footer>
@@ -1422,18 +1681,60 @@
     document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
   }
 
-  // Story scenes: fade in when centered in viewport, fade out when leaving
+  // Parallax story: scroll-driven cross-fade (Technique 1 — sticky pin)
   (function() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var scenes = document.querySelectorAll('.story-scene');
-    if (!scenes.length) return;
-    var sceneObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) e.target.classList.add('scene-active');
-        else e.target.classList.remove('scene-active');
+    var story = document.getElementById('parallax-story');
+    if (!story) return;
+    var layers = story.querySelectorAll('.parallax-layer');
+    var bgs    = story.querySelectorAll('.pl-bg');
+    if (!layers.length) return;
+    var n = layers.length;
+
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+    function tick() {
+      var top = story.getBoundingClientRect().top;
+      var scrolled = -top; // px scrolled past story top
+      var total = story.offsetHeight - window.innerHeight;
+      var p = clamp(scrolled / total, 0, 1); // 0 = story top, 1 = story bottom
+      var fade = 0.09; // transition width
+
+      layers.forEach(function(layer, i) {
+        var start = i / n;       // 0, .333, .666
+        var end   = (i + 1) / n; // .333, .666, 1.0
+        var op;
+        if (i === 0) {
+          // First: start visible, fade out near end of its section
+          if (p < end - fade) op = 1;
+          else op = clamp((end - p) / fade, 0, 1);
+        } else if (i === n - 1) {
+          // Last: fade in, stay visible to end
+          if (p < start) op = 0;
+          else if (p < start + fade) op = (p - start) / fade;
+          else op = 1;
+        } else {
+          // Middle: fade in then out
+          if (p < start) op = 0;
+          else if (p < start + fade) op = (p - start) / fade;
+          else if (p < end - fade) op = 1;
+          else op = clamp((end - p) / fade, 0, 1);
+        }
+        layer.style.opacity = op;
       });
-    }, { threshold: 0.35, rootMargin: '-10% 0px -10% 0px' });
-    scenes.forEach(function(s) { sceneObs.observe(s); });
+
+      // Background parallax at ~0.3x scroll speed (subtle depth)
+      bgs.forEach(function(bg) {
+        bg.style.transform = 'translateY(' + (scrolled * 0.28) + 'px)';
+      });
+    }
+
+    // Set initial state: layer 0 visible, rest hidden
+    layers[0].style.opacity = '1';
+    for (var i = 1; i < n; i++) layers[i].style.opacity = '0';
+
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
   })();
 </script>
 
