@@ -108,10 +108,23 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 16px 24px;
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    .site-nav.nav-scrolled {
       background: var(--nav-bg);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom-color: var(--border);
     }
+    /* Transparent nav over hero: force legibility */
+    .site-nav:not(.nav-scrolled) .nav-logo { background: rgba(255,255,255,0.12); color: #fff; }
+    .site-nav:not(.nav-scrolled) .nav-links { background: rgba(255,255,255,0.12); }
+    .site-nav:not(.nav-scrolled) .nav-links a { color: rgba(255,255,255,0.85); }
+    .site-nav:not(.nav-scrolled) .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.12); }
+    .site-nav:not(.nav-scrolled) .nav-theme-toggle { border-color: rgba(255,255,255,0.35); }
+    .site-nav:not(.nav-scrolled) .nav-theme-toggle svg { stroke: #fff; }
+    .site-nav:not(.nav-scrolled) .nav-cta { background: #fff; color: #0a0a0a; }
     .nav-logo {
       display: flex; align-items: center; gap: 8px;
       background: var(--surface-nav); border-radius: var(--rf); padding: 10px 20px 10px 16px;
@@ -144,49 +157,46 @@
     body.day-mode .nav-theme-toggle .moon-icon { display: none; }
     body.day-mode .nav-theme-toggle .sun-icon  { display: block; }
 
-    /* ═══ HERO ═══ */
-    #hero { padding: 80px 8px 0; }
-    .hero-card {
+    /* ═══ HERO — full-bleed editorial ═══ */
+    #hero {
       position: relative; overflow: hidden;
-      border-radius: 24px; border: 1px solid var(--border);
-      min-height: 500px; display: flex; align-items: stretch;
+      height: 100vh; min-height: 600px;
+      display: flex; align-items: center;
     }
     .hero-bg {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 0;
       width: 100%; height: 100%;
       object-fit: cover; object-position: center right;
     }
-    .hero-card::before {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
-      mask-image: linear-gradient(to right, black 0%, black 30%, transparent 58%);
-      -webkit-mask-image: linear-gradient(to right, black 0%, black 30%, transparent 58%);
-      pointer-events: none;
+    /* Gradient overlays: left readability + top nav + bottom trust area */
+    #hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.35) 48%, transparent 72%),
+        linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 28%),
+        linear-gradient(to top, rgba(0,0,0,0.48) 0%, transparent 36%);
     }
-    .hero-card::after {
-      content: ''; position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to right, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.38) 30%, transparent 58%);
-      pointer-events: none;
-    }
-    body.day-mode .hero-card::after {
-      background: linear-gradient(to right, rgba(250,250,250,0.92) 0%, rgba(250,250,250,0.68) 30%, transparent 58%);
+    /* Day mode: slightly stronger overlay since we keep white text on hero */
+    body.day-mode #hero::before {
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.42) 48%, transparent 72%),
+        linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 28%),
+        linear-gradient(to top, rgba(0,0,0,0.54) 0%, transparent 36%);
     }
     .hero-content {
       position: relative; z-index: 2;
-      width: 55%; padding: 64px 48px;
-      display: flex; flex-direction: column; gap: 20px; justify-content: center;
+      width: 50%; max-width: 640px;
+      padding: clamp(96px,10vh,140px) clamp(32px,5vw,80px) clamp(80px,8vh,120px);
+      display: flex; flex-direction: column; gap: 20px;
     }
     .hero-status {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px; border-radius: var(--rf);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.10);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.18);
       font-size: 12px; color: rgba(255,255,255,0.92); letter-spacing: 0.04em;
       width: fit-content;
-    }
-    body.day-mode .hero-status {
-      background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.10); color: var(--text-90);
     }
     .hero-status-dot {
       width: 7px; height: 7px; border-radius: 50%;
@@ -195,48 +205,80 @@
     }
     .hero-eyebrow-text {
       font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.52);
+      color: rgba(255,255,255,0.60);
     }
-    body.day-mode .hero-eyebrow-text { color: var(--text-55); }
-    .hero-h1 { font-size: clamp(56px,7vw,96px); letter-spacing: -0.04em; line-height: 1; font-weight: 500; color: #fff; }
-    body.day-mode .hero-h1 { color: var(--text); }
-    .hero-sub { font-size: clamp(18px,1.8vw,22px); line-height: 1.5; color: rgba(255,255,255,0.88); max-width: 420px; }
-    body.day-mode .hero-sub { color: var(--text-90); }
-    .hero-review {
-      display: inline-flex; align-items: center; gap: 12px;
-      max-width: 360px; padding: 12px; border-radius: 12px;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-    body.day-mode .hero-review { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.08); }
-    .hero-review-img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .hero-review-name { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.90); }
-    body.day-mode .hero-review-name { color: var(--text-90); }
-    .hero-review-stars { font-size: 12px; color: rgba(255,255,255,0.58); margin-top: 2px; }
-    body.day-mode .hero-review-stars { color: var(--text-60); }
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-h1 { font-size: clamp(56px,7vw,112px); letter-spacing: -0.04em; line-height: 1; font-weight: 500; color: #fff; }
+    .hero-sub { font-size: clamp(17px,1.6vw,21px); line-height: 1.55; color: rgba(255,255,255,0.88); max-width: 460px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
     .btn-w { background: var(--btn-inv-bg); color: var(--btn-inv-txt); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: opacity .2s; }
     .btn-w:hover { opacity: 0.85; }
     .btn-w svg { stroke: var(--btn-inv-txt); }
-    .btn-g { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.32); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
-    .btn-g:hover { background: rgba(255,255,255,0.10); }
-    body.day-mode .btn-g { color: var(--text); border-color: var(--border-2); }
-    body.day-mode .btn-g:hover { background: var(--border); }
-    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .hs-n { font-size: clamp(22px,3vw,40px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; color: rgba(255,255,255,0.92); }
-    body.day-mode .hs-n { color: var(--text); }
-    .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.48); margin-top: 4px; }
-    body.day-mode .hs-l { color: var(--text-55); }
+    /* ghost button always white on hero (image is dark) */
+    .btn-g { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.36); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-g:hover { background: rgba(255,255,255,0.12); }
 
-    /* ═══ LOGO BAR ═══ */
-    .logo-bar    { border-bottom: 1px solid var(--border); margin-top: 48px; }
-    .logo-bar-in { max-width: var(--max-w); margin: 0 auto; padding: 32px var(--px); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-    .logo-bar-in .eyebrow { font-size: 10px; letter-spacing: 0.15em; color: var(--text-45); flex-shrink: 0; }
-    .logo-items  { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
-    .logo-items .nm  { font-size: clamp(16px,1.4vw,20px); color: var(--text-65); letter-spacing: -0.01em; font-weight: 500; transition: color .2s; }
-    .logo-items .nm:hover { color: var(--text-90); }
-    .logo-items .sep { color: var(--text-40); font-size: 14px; }
+    /* ═══ HERO AVATAR TRUST BLOCK ═══ */
+    .hero-trust {
+      position: absolute; bottom: 36px; left: clamp(24px,4vw,56px); z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(0,0,0,0.32);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.16); border-radius: 999px;
+      padding: 10px 18px 10px 12px;
+    }
+    .hero-trust-avatars { display: flex; align-items: center; }
+    .hero-trust-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid #fff; object-fit: cover;
+      margin-left: -8px; background: #555;
+    }
+    .hero-trust-avatar:first-child { margin-left: 0; }
+    .hero-trust-info { display: flex; flex-direction: column; gap: 1px; margin-left: 6px; }
+    .hero-trust-stars { color: #f59e0b; font-size: 11px; letter-spacing: 1px; line-height: 1; }
+    .hero-trust-text { font-size: 12px; color: rgba(255,255,255,0.88); white-space: nowrap; line-height: 1.4; }
+    body.day-mode .hero-trust { background: rgba(255,255,255,0.88); border-color: rgba(0,0,0,0.12); }
+    body.day-mode .hero-trust-text { color: rgba(0,0,0,0.72); }
+    body.day-mode .hero-trust-avatar { border-color: rgba(0,0,0,0.15); }
+
+    /* ═══ HERO CASE STUDY CARD ═══ */
+    .hero-casestudy {
+      position: absolute; bottom: 28px; right: 28px; z-index: 2;
+      width: 340px;
+      background: #fff; color: #0a0a0a;
+      border: 1px solid rgba(0,0,0,0.07); border-radius: 16px; padding: 12px;
+      display: flex; gap: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.14);
+      transition: transform 0.3s cubic-bezier(.16,1,.3,1), box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+    .hero-casestudy:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,0.20); }
+    .hero-casestudy-img {
+      width: 80px; height: 80px; border-radius: 10px;
+      object-fit: cover; object-position: top; flex-shrink: 0;
+    }
+    .hero-casestudy-body { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+    .hero-casestudy-badge {
+      display: inline-flex; width: fit-content;
+      background: #0a0a0a; color: #fff;
+      font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase;
+      border-radius: 999px; padding: 3px 10px;
+    }
+    .hero-casestudy-title {
+      font-size: 13px; font-weight: 500; color: #0a0a0a; line-height: 1.35;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .hero-casestudy-link { font-size: 11px; color: rgba(0,0,0,0.38); }
+
+    /* ═══ STATS BAR (moved out of hero) ═══ */
+    .stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); }
+    .stats-bar-in {
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 36px clamp(24px,4vw,48px);
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+    }
+    .sb-n { font-size: clamp(28px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--text); }
+    .sb-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-50); margin-top: 4px; }
+
 
     /* ═══ SECTION CREAM — light in dark-mode, dark in day-mode ═══ */
     .section-cream {
@@ -500,8 +542,6 @@
       :root { --px: 40px; --py: 128px; }
       .site-nav { padding: 16px 40px; }
       .nav-links { display: flex; }
-      #hero { padding: 100px 12px 0; }
-      .hero-card { min-height: 700px; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
       .pf-grid  { grid-template-columns: repeat(2,1fr); }
@@ -519,23 +559,20 @@
     }
     @media (min-width: 1024px) {
       .pf-grid { grid-template-columns: repeat(3,1fr); }
-      #hero { padding: 100px 12px 0; }
-    }
-    @media (min-width: 1440px) {
-      #hero { padding: 100px 16px 0; }
     }
     @media (max-width: 767px) {
-      #hero { padding: 80px 8px 0; }
-      .hero-card { min-height: 500px; }
-      .hero-card::before { mask-image: none; -webkit-mask-image: none; }
-      .hero-card::after { background: rgba(0,0,0,0.65); }
-      body.day-mode .hero-card::after { background: rgba(250,250,250,0.88); }
-      .hero-content { width: 100%; padding: 40px 24px; align-items: flex-start; }
-      .hero-review { max-width: 320px; width: 100%; }
-      .hero-stats { grid-template-columns: repeat(2,1fr); }
-      .logo-bar { margin-top: 32px; }
-      .logo-bar-in { flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px 16px; }
-      .logo-items { gap: 16px; }
+      #hero { height: 90vh; min-height: 540px; }
+      #hero::before {
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 25%),
+          linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+          linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%);
+      }
+      .hero-content { width: 100%; padding: clamp(88px,12vh,120px) 24px clamp(80px,10vh,100px); }
+      .hero-casestudy { display: none; }
+      .hero-trust { bottom: 24px; left: 16px; right: 16px; border-radius: 16px; }
+      .hero-trust-text { white-space: normal; font-size: 11px; }
+      .stats-bar-in { grid-template-columns: repeat(3,1fr); padding: 24px 16px; }
       section[data-decor-bg="22"]::before { width: 100%; opacity: 0.08; mask-image: linear-gradient(to top, black 0%, transparent 70%); -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%); }
       section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
       #scroll-top { bottom: 88px; right: 16px; width: 40px; height: 40px; }
@@ -616,45 +653,53 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-card">
-    <img class="hero-bg" src="var2-hero.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
-    <div class="hero-content">
-      <div class="hero-status">
-        <span class="hero-status-dot"></span>Przyjmuję zlecenia
-      </div>
-      <p class="hero-eyebrow-text">Wrocław · cała Polska · 4 wdrożenia</p>
-      <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł.</h1>
-      <p class="hero-sub">Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Bez ukrytych kosztów.</p>
-      <div class="hero-review">
-        <img class="hero-review-img" src="Emma-3.jpg" alt="Emma">
-        <div class="hero-review-text">
-          <div class="hero-review-name">Polecam bezsprzecznie</div>
-          <div class="hero-review-stars">★ 4.9 · 100% poleceń klientów</div>
-        </div>
-      </div>
-      <div class="hero-btns">
-        <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-        <a href="#portfolio" class="btn-g">zobacz portfolio</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hs"><div class="hs-n">720 zł</div><div class="hs-l">stała cena</div></div>
-        <div class="hs"><div class="hs-n">7 dni</div><div class="hs-l">realizacja</div></div>
-        <div class="hs"><div class="hs-n">60 dni</div><div class="hs-l">wsparcie gratis</div></div>
-      </div>
+  <img class="hero-bg" src="var2-hero.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async">
+
+  <!-- Zone 1: Left content -->
+  <div class="hero-content">
+    <div class="hero-status">
+      <span class="hero-status-dot"></span>Przyjmuję zlecenia
+    </div>
+    <p class="hero-eyebrow-text">Wrocław · cała Polska · 4 wdrożenia</p>
+    <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł.</h1>
+    <p class="hero-sub">Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Bez ukrytych kosztów.</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      <a href="#portfolio" class="btn-g">zobacz portfolio</a>
     </div>
   </div>
+
+  <!-- Zone 2: Avatar trust block — bottom-left -->
+  <div class="hero-trust">
+    <div class="hero-trust-avatars">
+      <img class="hero-trust-avatar" src="teaser-yoga.jpg" alt="">
+      <img class="hero-trust-avatar" src="teaser-callwindshield.jpg" alt="">
+      <img class="hero-trust-avatar" src="teaser-artdance.jpg" alt="">
+      <img class="hero-trust-avatar" src="teaser-elstom.jpg" alt="">
+    </div>
+    <div class="hero-trust-info">
+      <div class="hero-trust-stars">★★★★★</div>
+      <div class="hero-trust-text">Zaufały mi firmy z 4 branż</div>
+    </div>
+  </div>
+
+  <!-- Zone 3: Floating case study card — bottom-right -->
+  <a href="https://www.yogaretreat.fit/" target="_blank" rel="noopener" class="hero-casestudy">
+    <img class="hero-casestudy-img" src="teaser-yoga.jpg" alt="yogaretreat.fit">
+    <div class="hero-casestudy-body">
+      <span class="hero-casestudy-badge">Nowe wdrożenie</span>
+      <div class="hero-casestudy-title">Yoga Retreat — strona z lokalnym SEO</div>
+      <div class="hero-casestudy-link">↗ yogaretreat.fit</div>
+    </div>
+  </a>
 </section>
 
-<!-- LOGO BAR -->
-<div class="logo-bar">
-  <div class="logo-bar-in">
-    <span class="eyebrow">Zaufały mi firmy z 4 branż</span>
-    <div class="logo-items">
-      <span class="nm">callwindshieldfix</span><span class="sep">·</span>
-      <span class="nm">artdance</span><span class="sep">·</span>
-      <span class="nm">elstom</span><span class="sep">·</span>
-      <span class="nm">yogaretreat</span>
-    </div>
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-in">
+    <div><div class="sb-n">720 zł</div><div class="sb-l">stała cena</div></div>
+    <div><div class="sb-n">7 dni</div><div class="sb-l">realizacja</div></div>
+    <div><div class="sb-n">60 dni</div><div class="sb-l">wsparcie gratis</div></div>
   </div>
 </div>
 
@@ -1033,6 +1078,18 @@
 </div>
 
 <script>
+  // Nav: transparent over hero, solid when scrolled
+  (function() {
+    var nav = document.querySelector('.site-nav');
+    if (!nav) return;
+    function updateNav() {
+      if (window.scrollY > 80) nav.classList.add('nav-scrolled');
+      else nav.classList.remove('nav-scrolled');
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+  })();
+
   // Scroll-to-top
   var st = document.getElementById('scroll-top');
   window.addEventListener('scroll', function() {
