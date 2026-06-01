@@ -546,6 +546,8 @@
       :root { --px: 40px; --py: 128px; }
       .site-nav { padding: 16px 40px; }
       .nav-links { display: flex; }
+      .nav-cta-short { display: none; }
+      .cmp-mobile-cards { display: none; }
       .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
       .about-cards { grid-template-columns: repeat(3,1fr); }
       .pf-grid  { grid-template-columns: repeat(2,1fr); }
@@ -579,7 +581,20 @@
       .stats-bar-in { grid-template-columns: repeat(3,1fr); padding: 24px 16px; }
       section[data-decor-bg="22"]::before { width: 100%; opacity: 0.08; mask-image: linear-gradient(to top, black 0%, transparent 70%); -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%); }
       section[data-decor-bg="77"]::before { opacity: 0.06; width: 100%; height: 40%; }
-      #scroll-top { bottom: 88px; right: 16px; width: 40px; height: 40px; }
+      #scroll-top { bottom: 24px; right: 16px; width: 40px; height: 40px; transition: bottom 0.3s ease; }
+      /* Nav mobile compact */
+      .site-nav { padding: 12px 16px; }
+      .nav-logo { padding: 10px; width: 40px; height: 40px; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+      .nav-logo span { display: none; }
+      .nav-cta-full { display: none; }
+      .nav-cta-short { display: inline; }
+      .nav-cta { padding: 8px 16px; font-size: 13px; }
+      /* Trust cards compact 2x2 */
+      .trust-c { padding: 16px; }
+      .trust-ico { width: 28px; height: 28px; margin-bottom: 10px; }
+      .trust-ico svg { width: 14px; height: 14px; }
+      .trust-t { font-size: 14px; }
+      .trust-d { font-size: 12px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
       .sticky-mobile-cta {
         position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
         padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
@@ -598,20 +613,29 @@
 
     /* ═══ TABLE MOBILE ═══ */
     @media (max-width: 767px) {
-      .cmp-scroll table  { display: block; }
-      .cmp-scroll thead  { display: none; }
-      .cmp-scroll tbody  { display: block; width: 100%; }
-      .cmp-scroll tbody tr { display: block; margin-bottom: 16px; padding: 16px; border: 1px solid var(--border); border-radius: 12px; }
-      .cmp-scroll tbody td { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid var(--border); gap: 16px; font-size: 13px; }
-      .cmp-scroll tbody td:last-child { border-bottom: none; }
-      .cmp-scroll tbody td::before { content: attr(data-label); font-weight: 600; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-50); flex-shrink: 0; }
-      .cmp-scroll tbody td:first-child { font-weight: 700; font-size: 15px; padding-bottom: 12px; border-bottom: 1px solid var(--border-2); }
-      .cmp-scroll tbody td:first-child::before { display: none; }
+      .cmp-scroll { display: none; }
+      .cmp-mobile-cards { display: flex; }
     }
     @media (min-width: 768px) {
       .cmp-scroll table { table-layout: fixed; }
       .cmp-scroll th:first-child, .cmp-scroll td:first-child { width: 26%; }
     }
+    /* ═══ COMPARISON MOBILE CARDS — base styles (display controlled by media queries) ═══ */
+    .cmp-mobile-cards { flex-direction: column; gap: 12px; }
+    .cmp-mc {
+      background: rgba(255,255,255,0.04); border-radius: 16px;
+      padding: 20px; border: 1px solid var(--border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cmp-mc:active { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .section-cream .cmp-mc { background: rgba(0,0,0,0.03); }
+    .cmp-mc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-55); margin-bottom: 10px; }
+    .cmp-mc-brand { font-size: 13px; color: var(--text-70); margin-bottom: 4px; }
+    .cmp-mc-value { font-size: 22px; font-weight: 700; color: var(--accent-amber); letter-spacing: -0.02em; margin-bottom: 14px; line-height: 1.2; }
+    .cmp-mc-divider { height: 1px; background: var(--border); margin-bottom: 10px; }
+    .cmp-mc-others { display: flex; flex-direction: column; gap: 5px; }
+    .cmp-mc-others div { font-size: 13px; color: var(--text-70); }
+
     /* ═══ BUTTON HOVER LIFT ═══ */
     .nav-cta     { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
     .btn-w       { transition: opacity .2s, transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease; }
@@ -650,50 +674,75 @@
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       will-change: transform;
     }
-    .pl-1 { background: #0a0a0a; }
-    .pl-1 .pl-bg {
-      background-image: url('22-decor.jpg'); background-size: cover; background-position: center;
-      opacity: 0.08;
+    /* Parallax: hero image stays, scenes overlay on top */
+    .parallax-hero-img {
+      position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url('var2-hero.jpg');
+      background-size: cover; background-position: center;
+      will-change: filter;
     }
-    .pl-2 { background: #f5f3ee; }
-    body.day-mode .pl-2 { background: #1a1a1a; }
-    .pl-3 { background: var(--bg); }
+    .parallax-dark-overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: rgba(0,0,0,0.38);
+    }
+    .parallax-layer { z-index: 2; }
+    .pl-1, .pl-2, .pl-3 { background: transparent; }
+    .pl-1 .pl-bg { display: none; }
 
     .story-content { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; max-width: 900px; width: 100%; }
     .story-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
-    .pl-2 .story-eyebrow { color: rgba(0,0,0,0.4); }
-    body.day-mode .pl-2 .story-eyebrow { color: rgba(255,255,255,0.45); }
+    .pl-2 .story-eyebrow { color: rgba(255,255,255,0.45); }
     .story-h2 { font-size: clamp(40px, 6vw, 88px); letter-spacing: -0.04em; line-height: 1; font-weight: 500; max-width: 860px; }
-    .pl-1 .story-h2 { color: #fff; }
-    .pl-2 .story-h2 { color: #0a0a0a; }
-    body.day-mode .pl-2 .story-h2 { color: #fff; }
-    .pl-3 .story-h2 { color: var(--text); margin-bottom: 40px; }
+    .pl-1 .story-h2, .pl-2 .story-h2, .pl-3 .story-h2 { color: #fff; }
+    .pl-3 .story-h2 { margin-bottom: 40px; }
     .story-sub { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.65; max-width: 560px; margin-top: 4px; color: rgba(255,255,255,0.65); }
-    .pl-2 .story-sub { color: rgba(0,0,0,0.55); }
-    body.day-mode .pl-2 .story-sub { color: rgba(255,255,255,0.55); }
+    .pl-2 .story-sub { color: rgba(255,255,255,0.65); }
 
     /* Scene 3: comparison cards */
     .story-cmp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; width: 100%; }
     .story-card { border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
-    .story-card--before { background: rgba(255,255,255,0.03); border: 1px solid var(--border); opacity: 0.65; }
-    body.day-mode .story-card--before { background: #f0ede5; border-color: rgba(0,0,0,0.1); opacity: 0.7; }
-    .story-card--after { background: var(--surface); border: 1px solid rgba(217,127,44,0.35); }
-    body.day-mode .story-card--after { background: #fff; }
-    .story-card-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-45); }
+    .story-card--before {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.18); opacity: 1;
+    }
+    .story-card--after {
+      background: rgba(217,127,44,0.12);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(217,127,44,0.45);
+    }
+    .story-card-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
     .story-card--after .story-card-label { color: var(--accent-amber); }
-    .story-card-h { font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; font-weight: 500; color: var(--text); }
-    .story-card--before .story-card-h { opacity: 0.6; }
+    .story-card-h { font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; font-weight: 500; color: #fff; }
+    .story-card--before .story-card-h { opacity: 0.7; }
     .story-card-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
-    .story-card-item { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--text-65); }
+    .story-card-item { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: rgba(255,255,255,0.7); }
     .story-card-item .ico { flex-shrink: 0; font-style: normal; margin-top: 1px; }
-    .story-card--before .ico { color: var(--text-35, var(--text-40)); }
+    .story-card--before .ico { color: rgba(255,255,255,0.4); }
     .story-card--after .ico { color: var(--accent-amber); }
 
     @media (prefers-reduced-motion: reduce) {
       .parallax-story { height: auto; }
       .parallax-story-sticky { position: static; height: auto; overflow: visible; }
-      .parallax-layer { position: static; opacity: 1 !important; min-height: 80vh; }
+      .parallax-layer { position: static; opacity: 1 !important; min-height: 80vh; z-index: auto; }
       .pl-bg { display: none; }
+      .parallax-hero-img { display: none; }
+      .parallax-dark-overlay { display: none; }
+      .pl-1 { background: #0a0a0a; }
+      .pl-2 { background: #f5f3ee; }
+      body.day-mode .pl-2 { background: #1a1a1a; }
+      .pl-3 { background: var(--bg); }
+      .pl-2 .story-h2 { color: #0a0a0a; }
+      body.day-mode .pl-2 .story-h2 { color: #fff; }
+      .pl-2 .story-eyebrow { color: rgba(0,0,0,0.4); }
+      .pl-2 .story-sub { color: rgba(0,0,0,0.55); }
+      body.day-mode .pl-2 .story-sub { color: rgba(255,255,255,0.55); }
+      .story-card--before { background: rgba(255,255,255,0.03); border: 1px solid var(--border); backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .story-card--after { background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none; }
+      .story-card-h { color: var(--text); }
+      .story-card-label { color: var(--text-45); }
+      .story-card-item { color: var(--text-65); }
+      .story-card--before .ico { color: var(--text-40); }
     }
 
     /* ═══ TESTIMONIAL SLAB ═══ */
@@ -827,7 +876,7 @@
       --ft-border2: rgba(255,255,255,0.20);
       background: #1a1a1a;
     }
-    .kora-ft-top { max-width: var(--max-w); margin: 0 auto; padding: 72px var(--px) 0; }
+    .kora-ft-top { max-width: var(--max-w); margin: 0 auto; padding: 64px var(--px) 0; }
     .kora-ft-grid {
       display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
       padding-bottom: 48px; border-bottom: 1px solid var(--ft-border);
@@ -897,6 +946,7 @@
       .rc-card { width: 300px; padding: 22px; }
       .kora-ft-grid { grid-template-columns: 1fr; gap: 32px; }
       .kft-socials { gap: 6px; }
+      .kora-ft-top { padding-top: 40px; }
     }
     @media (min-width: 768px) {
       .testi-slab { min-height: 680px; }
@@ -921,7 +971,7 @@
     <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     <svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
   </button>
-  <a href="#cta" class="nav-cta">zamów stronę</a>
+  <a href="#cta" class="nav-cta"><span class="nav-cta-full">zamów stronę</span><span class="nav-cta-short">Zamów</span></a>
 </nav>
 
 <!-- HERO -->
@@ -979,6 +1029,11 @@
 <!-- PARALLAX STORY — Technique 1: sticky pin + scroll-driven cross-fade -->
 <div class="parallax-story" id="parallax-story">
   <div class="parallax-story-sticky">
+
+    <!-- Hero image: stays visible, blurs as scenes overlay -->
+    <div class="parallax-hero-img" id="parallaxHeroImg"></div>
+    <!-- Dark overlay for text readability -->
+    <div class="parallax-dark-overlay"></div>
 
     <!-- Layer 1: Problem statement -->
     <div class="parallax-layer pl-1">
@@ -1343,6 +1398,79 @@
         </tbody>
       </table>
     </div>
+    <!-- Mobile hero-card comparison (< 768px) -->
+    <div class="cmp-mobile-cards">
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Cena</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">720 zł jednorazowo</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: 3 000 – 8 000 zł</div>
+          <div>Freelancer (abonament): 200 – 400 zł/mies.</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Czas realizacji</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">7 dni roboczych</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: 4 – 8 tygodni</div>
+          <div>Freelancer (abonament): bezterminowo</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Stała wycena</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">tak, z góry</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: „skontaktuj się"</div>
+          <div>Freelancer (abonament): ukryte koszty</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Własność strony</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">twoja, bez umowy</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: twoja</div>
+          <div>Freelancer (abonament): wynajem</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">SEO podstawowe</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">w cenie</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: +1 000 – 3 000 zł</div>
+          <div>Freelancer (abonament): +100 zł/mies.</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Wsparcie po wdrożeniu</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">60 dni gratis</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: ~150 zł/h</div>
+          <div>Freelancer (abonament): w abonamencie</div>
+        </div>
+      </div>
+      <div class="cmp-mc">
+        <div class="cmp-mc-label">Komunikacja</div>
+        <div class="cmp-mc-brand">Conversion Call</div>
+        <div class="cmp-mc-value">bezpośrednio z autorem</div>
+        <div class="cmp-mc-divider"></div>
+        <div class="cmp-mc-others">
+          <div>Typowa agencja: przez account managera</div>
+          <div>Freelancer (abonament): bezpośrednio</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1668,8 +1796,15 @@
   // Scroll-to-top
   var st = document.getElementById('scroll-top');
   window.addEventListener('scroll', function() {
-    st.style.display = window.scrollY > 400 ? 'flex' : 'none';
-  });
+    if (window.scrollY > 400) {
+      st.style.display = 'flex';
+      if (window.innerWidth < 768) {
+        st.style.bottom = window.scrollY > 600 ? '88px' : '24px';
+      }
+    } else {
+      st.style.display = 'none';
+    }
+  }, { passive: true });
 
   // Reveal on scroll — skip if user prefers reduced motion (CSS handles visible state)
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1681,40 +1816,40 @@
     document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
   }
 
-  // Parallax story: scroll-driven cross-fade (Technique 1 — sticky pin)
+  // Parallax story: scroll-driven cross-fade + hero image blur
   (function() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var story = document.getElementById('parallax-story');
     if (!story) return;
     var layers = story.querySelectorAll('.parallax-layer');
-    var bgs    = story.querySelectorAll('.pl-bg');
+    var heroImg = document.getElementById('parallaxHeroImg');
     if (!layers.length) return;
     var n = layers.length;
+    var isMobile = window.innerWidth < 768;
 
     function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+    function lerp(a, b, t) { return a + (b - a) * clamp(t, 0, 1); }
 
     function tick() {
       var top = story.getBoundingClientRect().top;
-      var scrolled = -top; // px scrolled past story top
+      var scrolled = -top;
       var total = story.offsetHeight - window.innerHeight;
-      var p = clamp(scrolled / total, 0, 1); // 0 = story top, 1 = story bottom
-      var fade = 0.09; // transition width
+      var p = clamp(scrolled / total, 0, 1);
+      var fade = 0.09;
 
+      // Layer cross-fade (same logic as before)
       layers.forEach(function(layer, i) {
-        var start = i / n;       // 0, .333, .666
-        var end   = (i + 1) / n; // .333, .666, 1.0
+        var start = i / n;
+        var end   = (i + 1) / n;
         var op;
         if (i === 0) {
-          // First: start visible, fade out near end of its section
           if (p < end - fade) op = 1;
           else op = clamp((end - p) / fade, 0, 1);
         } else if (i === n - 1) {
-          // Last: fade in, stay visible to end
           if (p < start) op = 0;
           else if (p < start + fade) op = (p - start) / fade;
           else op = 1;
         } else {
-          // Middle: fade in then out
           if (p < start) op = 0;
           else if (p < start + fade) op = (p - start) / fade;
           else if (p < end - fade) op = 1;
@@ -1723,17 +1858,25 @@
         layer.style.opacity = op;
       });
 
-      // Background parallax at ~0.3x scroll speed (subtle depth)
-      bgs.forEach(function(bg) {
-        bg.style.transform = 'translateY(' + (scrolled * 0.28) + 'px)';
-      });
+      // Hero image progressive blur
+      if (heroImg) {
+        var maxBlur = isMobile ? 20 : 40;
+        // Control points: p=[0, 0.33, 0.66, 1.0] → blur=[0, 8, 20, maxBlur]
+        var blurStops = [0, 8, Math.min(20, maxBlur), maxBlur];
+        var brightnessStops = [0.8, 0.5, 0.4, 0.3];
+        var seg = Math.min(Math.floor(p * 3), 2);
+        var t = (p * 3) - seg;
+        var blur = lerp(blurStops[seg], blurStops[seg + 1], t);
+        var brightness = lerp(brightnessStops[seg], brightnessStops[seg + 1], t);
+        heroImg.style.filter = 'blur(' + blur.toFixed(1) + 'px) brightness(' + brightness.toFixed(2) + ')';
+      }
     }
 
-    // Set initial state: layer 0 visible, rest hidden
     layers[0].style.opacity = '1';
     for (var i = 1; i < n; i++) layers[i].style.opacity = '0';
 
     window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', function() { isMobile = window.innerWidth < 768; }, { passive: true });
     tick();
   })();
 </script>
