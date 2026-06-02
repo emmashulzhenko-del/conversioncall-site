@@ -324,7 +324,7 @@
     .cmp-scroll thead th { text-align: left; padding: 20px; font-weight: normal; }
     .cmp-scroll thead th.hl { background: var(--cmp-hl-bg); color: var(--cmp-hl-txt); }
     .cmp-scroll tbody td { padding: 20px; color: var(--text-90); border-top: 1px solid var(--border); }
-    .cmp-scroll tbody td.lbl { color: var(--text-55); }
+    .cmp-scroll tbody td.lbl { color: var(--text-55); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
     .cmp-scroll tbody td.hl  { background: var(--cmp-hl-cell); }
     .cmp-scroll tbody td.dim { color: var(--text-45); }
     .cmp-scroll tbody tr { transition: background-color 0.2s ease; }
@@ -537,7 +537,7 @@
       .hero-content { padding-right: 400px; }
     }
     @media (max-width: 767px) {
-      #hero { height: 90vh; min-height: 540px; }
+      #hero { min-height: 90vh; height: auto; flex-wrap: wrap; align-content: flex-start; }
       #hero::before {
         background:
           linear-gradient(to bottom, rgba(0,0,0,0.32) 0%, transparent 25%),
@@ -545,7 +545,8 @@
           linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%);
       }
       .hero-content { width: 100%; padding: clamp(88px,12vh,120px) 24px clamp(80px,10vh,100px); }
-      .hero-casestudy { display: none; }
+      .hero-casestudy { display: flex; position: static; width: calc(100% - 32px); margin: 0 16px 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+      .hero-casestudy-img { width: 64px; height: 64px; }
       .hero-trust { bottom: 24px; left: 16px; right: 16px; border-radius: 16px; }
       .hero-trust-text { white-space: normal; font-size: 11px; }
       .stats-bar-in { grid-template-columns: repeat(3,1fr); padding: 24px 16px; }
@@ -584,8 +585,20 @@
 
     /* ═══ TABLE MOBILE ═══ */
     @media (max-width: 767px) {
-      .cmp-scroll { display: none; }
-      .cmp-mobile-cards { display: flex; }
+      .cmp-mobile-cards { display: none; }
+      .cmp-scroll {
+        display: block;
+        overflow-x: hidden;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        margin: 0 calc(-1 * var(--px));
+      }
+      .cmp-scroll table { font-size: 13px; }
+      .cmp-scroll thead th,
+      .cmp-scroll tbody td { padding: 14px 16px; }
+      .cmp-scroll th:nth-child(n+3),
+      .cmp-scroll td:nth-child(n+3) { display: none; }
     }
     @media (min-width: 768px) {
       .cmp-scroll table { table-layout: fixed; }
@@ -1061,7 +1074,7 @@
       <div>
         <div class="about-badge">o mnie</div>
         <h2 class="about-h2">Jednoosobowe studio. Zero handlowców.</h2>
-        <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
+        <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
         <div class="about-cards">
           <div class="ac"><div class="ac-l">lokalizacja</div><div class="ac-v">Wrocław, pl</div></div>
           <div class="ac"><div class="ac-l">doświadczenie</div><div class="ac-v">4 wdrożenia</div></div>
