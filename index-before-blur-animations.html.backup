@@ -956,70 +956,6 @@
     @media (min-width: 768px) {
       .testi-slab { min-height: 680px; }
     }
-
-    /* ============================================
-       BLUR-SLIDE ENTRANCE ANIMATIONS
-       Inspired by AnimatedGroup / Framer Motion pattern
-       Pure CSS + IntersectionObserver — no dependencies
-       ============================================ */
-
-    .anim-blur-slide {
-      opacity: 0;
-      filter: blur(12px);
-      transform: translateY(12px);
-      transition:
-        opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, filter, transform;
-    }
-    .anim-blur-slide.is-visible {
-      opacity: 1;
-      filter: blur(0px);
-      transform: translateY(0);
-    }
-    .anim-blur-slide:nth-child(1) { transition-delay: 0ms; }
-    .anim-blur-slide:nth-child(2) { transition-delay: 80ms; }
-    .anim-blur-slide:nth-child(3) { transition-delay: 160ms; }
-    .anim-blur-slide:nth-child(4) { transition-delay: 240ms; }
-    .anim-blur-slide:nth-child(5) { transition-delay: 300ms; }
-    .anim-blur-slide:nth-child(6) { transition-delay: 340ms; }
-    .anim-blur-slide:nth-child(7) { transition-delay: 370ms; }
-    .anim-blur-slide:nth-child(8) { transition-delay: 390ms; }
-    .anim-delay-0   { transition-delay: 0ms !important; }
-    .anim-delay-100 { transition-delay: 100ms !important; }
-    .anim-delay-200 { transition-delay: 200ms !important; }
-    .anim-delay-300 { transition-delay: 300ms !important; }
-    .anim-delay-400 { transition-delay: 400ms !important; }
-    .anim-delay-500 { transition-delay: 500ms !important; }
-    .anim-delay-600 { transition-delay: 600ms !important; }
-
-    .anim-hero {
-      opacity: 0;
-      filter: blur(12px);
-      transform: translateY(12px);
-      animation: blurSlideIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes blurSlideIn {
-      to { opacity: 1; filter: blur(0px); transform: translateY(0); }
-    }
-    .anim-hero-1 { animation-delay: 0ms; }
-    .anim-hero-2 { animation-delay: 120ms; }
-    .anim-hero-3 { animation-delay: 240ms; }
-    .anim-hero-4 { animation-delay: 360ms; }
-    .anim-hero-5 { animation-delay: 480ms; }
-    .anim-hero-6 { animation-delay: 600ms; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .anim-blur-slide,
-      .anim-hero {
-        opacity: 1 !important;
-        filter: blur(0px) !important;
-        transform: none !important;
-        animation: none !important;
-        transition: none !important;
-      }
-    }
   </style>
 </head>
 <body>
@@ -1049,19 +985,19 @@
 
   <!-- Zone 1: Left content -->
   <div class="hero-content">
-    <h1 class="hero-h1 anim-hero anim-hero-1">Strona za&nbsp;720&nbsp;zł. Gotowa w&nbsp;7&nbsp;dni. Twoja&nbsp;na zawsze.</h1>
-    <p class="hero-sub anim-hero anim-hero-2">Stała cena, pełna własność, zero abonamentów. Tworzę strony dla małych firm w Polsce — szybko, transparentnie, bezpośrednio.</p>
-    <div class="hero-btns anim-hero anim-hero-3">
+    <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł. Gotowa w&nbsp;7&nbsp;dni. Twoja&nbsp;na zawsze.</h1>
+    <p class="hero-sub">Stała cena, pełna własność, zero abonamentów. Tworzę strony dla małych firm w Polsce — szybko, transparentnie, bezpośrednio.</p>
+    <div class="hero-btns">
       <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       <a href="#portfolio" class="btn-g">zobacz portfolio</a>
     </div>
-    <a href="https://www.yogaretreat.fit/" target="_blank" rel="noopener" class="hero-casestudy-pill anim-hero anim-hero-4">
+    <a href="https://www.yogaretreat.fit/" target="_blank" rel="noopener" class="hero-casestudy-pill">
       <span class="hero-casestudy-pill-arrow">↗</span>yogaretreat.fit&nbsp;·&nbsp;Nowe wdrożenie
     </a>
   </div>
 
   <!-- Zone 2: Avatar trust block — bottom-left -->
-  <div class="hero-trust anim-hero anim-hero-5">
+  <div class="hero-trust">
     <div class="hero-trust-avatars">
       <img class="hero-trust-avatar" src="teaser-yoga.jpg" alt="">
       <img class="hero-trust-avatar" src="teaser-callwindshield.jpg" alt="">
@@ -1088,9 +1024,9 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stats-bar-in">
-    <div class="anim-blur-slide"><div class="sb-n">720 zł</div><div class="sb-l">stała cena</div></div>
-    <div class="anim-blur-slide"><div class="sb-n">7 dni</div><div class="sb-l">realizacja</div></div>
-    <div class="anim-blur-slide"><div class="sb-n">60 dni</div><div class="sb-l">wsparcie gratis</div></div>
+    <div><div class="sb-n">720 zł</div><div class="sb-l">stała cena</div></div>
+    <div><div class="sb-n">7 dni</div><div class="sb-l">realizacja</div></div>
+    <div><div class="sb-n">60 dni</div><div class="sb-l">wsparcie gratis</div></div>
   </div>
 </div>
 
@@ -1157,12 +1093,12 @@
   <div class="wrap">
     <div class="about-grid">
       <div>
-        <div class="about-img anim-blur-slide anim-delay-100"><img src="Emma-3.jpg" alt="Portret Wrocław"></div>
+        <div class="about-img"><img src="Emma-3.jpg" alt="Portret Wrocław"></div>
       </div>
       <div>
-        <div class="about-badge anim-blur-slide anim-delay-0">o mnie</div>
-        <h2 class="about-h2 anim-blur-slide anim-delay-100">Jednoosobowe studio. Zero handlowców.</h2>
-        <p class="about-p anim-blur-slide anim-delay-200">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
+        <div class="about-badge">o mnie</div>
+        <h2 class="about-h2">Jednoosobowe studio. Zero handlowców.</h2>
+        <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
         <div class="about-cards">
           <div class="ac"><div class="ac-l">lokalizacja</div><div class="ac-v">Wrocław, pl</div></div>
           <div class="ac"><div class="ac-l">doświadczenie</div><div class="ac-v">4 wdrożenia</div></div>
@@ -1178,13 +1114,13 @@
   <div class="wrap">
     <div class="port-hdr">
       <div>
-        <div class="port-eyebrow anim-blur-slide anim-delay-0">PORTFOLIO · 4 WDROŻENIA</div>
-        <h2 class="port-h2 anim-blur-slide anim-delay-100">Strony, które żyją w sieci.</h2>
+        <div class="port-eyebrow">PORTFOLIO · 4 WDROŻENIA</div>
+        <h2 class="port-h2">Strony, które żyją w sieci.</h2>
       </div>
-      <p class="port-desc anim-blur-slide anim-delay-200">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
+      <p class="port-desc">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
     </div>
     <div class="pf-grid">
-      <a href="https://www.yogaretreat.fit/" target="_blank" class="pf-card anim-blur-slide">
+      <a href="https://www.yogaretreat.fit/" target="_blank" class="pf-card">
         <div class="pf-img"><img src="teaser-yoga.jpg" alt="yogaretreat.fit"></div>
         <div class="pf-body">
           <div class="pf-meta"><span>PL · RETREATY</span><span>01 / 04</span></div>
@@ -1193,7 +1129,7 @@
           <span class="pf-tag">Wersja testowa — live na Netlify</span>
         </div>
       </a>
-      <a href="https://callwindshieldfix.com" target="_blank" class="pf-card anim-blur-slide">
+      <a href="https://callwindshieldfix.com" target="_blank" class="pf-card">
         <div class="pf-img"><img src="teaser-callwindshield.jpg" alt="callwindshieldfix.com"></div>
         <div class="pf-body">
           <div class="pf-meta"><span>USA · LOCAL SEO</span><span>02 / 04</span></div>
@@ -1201,7 +1137,7 @@
           <p>Mobilna naprawa szyb, San Antonio TX. Strona generująca leady lokalnie 24/7.</p>
         </div>
       </a>
-      <a href="https://artdance.org" target="_blank" class="pf-card anim-blur-slide">
+      <a href="https://artdance.org" target="_blank" class="pf-card">
         <div class="pf-img"><img src="teaser-artdance.jpg" alt="artdance.org"></div>
         <div class="pf-body">
           <div class="pf-meta"><span>PL · NGO</span><span>03 / 04</span></div>
@@ -1209,7 +1145,7 @@
           <p>Polska fundacja taneczna. Mobile-first, 15 URL zaindeksowanych.</p>
         </div>
       </a>
-      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="pf-card anim-blur-slide">
+      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="pf-card">
         <div class="pf-img"><img src="teaser-elstom.jpg" alt="elstom.com"></div>
         <div class="pf-body">
           <div class="pf-meta"><span>PL · STOMATOLOGIA</span><span>04 / 04</span></div>
@@ -1228,8 +1164,8 @@
   <div class="testi-overlay"></div>
   <div class="testi-inner">
     <div class="testi-left">
-      <div class="testi-heading anim-blur-slide anim-delay-0">Opinie</div>
-      <div class="testi-card anim-blur-slide anim-delay-200">
+      <div class="testi-heading">Opinie</div>
+      <div class="testi-card">
         <p class="testi-quote">"Emma nie tylko zaprojektowała stronę — pomogła mi zobaczyć, jak małe zmiany w copy zwiększają konwersję. Strona była online w 6 dni."</p>
         <div class="testi-divider"></div>
         <p class="testi-secondary">Po publikacji wzrost zapytań o 40% w pierwszym miesiącu. Najlepsza decyzja w 2026 dla mojego biznesu.</p>
@@ -1244,10 +1180,10 @@
       <a href="#reviews-carousel" class="testi-see-all">Zobacz wszystkie opinie →</a>
     </div>
     <div class="testi-right">
-      <div class="testi-rating-n anim-blur-slide anim-delay-300">
+      <div class="testi-rating-n">
         4.9<span class="testi-rating-dot"></span>
       </div>
-      <div class="testi-rating-meta anim-blur-slide anim-delay-400">Based on 4 wdrożenia<br>100% satysfakcji klientów</div>
+      <div class="testi-rating-meta">Based on 4 wdrożenia<br>100% satysfakcji klientów</div>
     </div>
   </div>
 </div>
@@ -1255,8 +1191,8 @@
 <!-- REVIEWS CAROUSEL -->
 <section id="reviews-carousel" class="reviews-carousel">
   <div class="rc-header">
-    <div class="eyebrow anim-blur-slide anim-delay-0">opinie klientów</div>
-    <div class="rc-title anim-blur-slide anim-delay-100">Co mówią klienci.</div>
+    <div class="eyebrow">opinie klientów</div>
+    <div class="rc-title">Co mówią klienci.</div>
   </div>
   <div class="rc-wrap">
     <div class="rc-track">
@@ -1445,12 +1381,12 @@
 <!-- COMPARE TABLE -->
 <section class="section section-cream reveal" style="transition-delay:100ms">
   <div class="wrap">
-    <div class="cmp-hdr anim-blur-slide">
+    <div class="cmp-hdr">
       <div class="eyebrow">porównanie</div>
       <h2 class="display-h">720 zł vs typowa agencja.</h2>
       <p>Otwarte porównanie z realnymi liczbami z polskiego rynku 2026.</p>
     </div>
-    <div class="cmp-scroll anim-blur-slide anim-delay-200">
+    <div class="cmp-scroll">
       <table>
         <thead><tr><th></th><th class="hl">conversion call</th><th>typowa agencja</th><th>freelancer (abonament)</th></tr></thead>
         <tbody>
@@ -1544,11 +1480,11 @@
 <!-- PRICING -->
 <section data-decor-bg="77" id="oferta" class="section reveal" style="transition-delay:150ms">
   <div class="wrap">
-    <div class="prx-hdr anim-blur-slide">
+    <div class="prx-hdr">
       <div class="eyebrow">oferta · bez ukrytych kosztów</div>
       <h2 class="display-h">Wszystko w jednej cenie — bez niespodzianek.</h2>
     </div>
-    <div class="prx-box anim-blur-slide anim-delay-200">
+    <div class="prx-box">
       <div class="prx-left">
         <div class="prx-pkg">pakiet start</div>
         <div class="prx-amt">
@@ -1591,42 +1527,42 @@
   <div class="wrap">
     <div class="proc-hdr">
       <div>
-        <div class="eyebrow anim-blur-slide anim-delay-0">proces · dzień po dniu</div>
-        <h2 class="display-h anim-blur-slide anim-delay-100">Tydzień. Od briefu do live.</h2>
+        <div class="eyebrow">proces · dzień po dniu</div>
+        <h2 class="display-h">Tydzień. Od briefu do live.</h2>
       </div>
-      <p class="anim-blur-slide anim-delay-200">Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
+      <p>Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
     </div>
     <div class="proc-card">
       <ol class="timeline">
-        <li class="tl anim-blur-slide">
+        <li class="tl">
           <span class="tl-dot"></span>
           <div class="tl-in">
             <span class="tl-day">dzień 0</span>
             <div><div class="tl-t">Wypełniasz brief</div><p class="tl-d">5-minutowy formularz: branża, kolory, inspiracje, treści. Natychmiastowe potwierdzenie i faktura proforma.</p></div>
           </div>
         </li>
-        <li class="tl anim-blur-slide">
+        <li class="tl">
           <span class="tl-dot"></span>
           <div class="tl-in">
             <span class="tl-day">dzień 1–5</span>
             <div><div class="tl-t">Tworzenie strony</div><p class="tl-d">Strona tworzona przez Claude Code i Claude Design. Status mailem każdego dnia. SEO, Analytics, formularz.</p></div>
           </div>
         </li>
-        <li class="tl anim-blur-slide">
+        <li class="tl">
           <span class="tl-dot"></span>
           <div class="tl-in">
             <span class="tl-day">dzień 6</span>
             <div><div class="tl-t">Twoje poprawki</div><p class="tl-d">Link do wersji testowej na Netlify. Zbieram uwagi (do 3 rund w cenie).</p></div>
           </div>
         </li>
-        <li class="tl anim-blur-slide">
+        <li class="tl">
           <span class="tl-dot on"></span>
           <div class="tl-in">
             <span class="tl-day on">dzień 7</span>
             <div><div class="tl-t">Publikacja live</div><p class="tl-d">Konfiguracja hostingu, podpięcie domeny, szkolenie 30 min wideo. Dostajesz wszystkie hasła.</p></div>
           </div>
         </li>
-        <li class="tl anim-blur-slide">
+        <li class="tl">
           <span class="tl-dot"></span>
           <div class="tl-in">
             <span class="tl-day">dzień 8–68</span>
@@ -1642,26 +1578,26 @@
 <section class="section section-cream reveal" style="transition-delay:300ms">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:48px;">
-      <div class="eyebrow anim-blur-slide anim-delay-0">zaufanie · standardy</div>
-      <h2 class="display-h anim-blur-slide anim-delay-100">Bezpieczeństwo od pierwszego dnia.</h2>
+      <div class="eyebrow">zaufanie · standardy</div>
+      <h2 class="display-h">Bezpieczeństwo od pierwszego dnia.</h2>
     </div>
     <div class="trust-grid">
-      <div class="trust-c anim-blur-slide">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-4" stroke-width="1.8"></path></svg></div>
         <div class="trust-t">ssl · https</div>
         <p class="trust-d">Szyfrowane połączenie.</p>
       </div>
-      <div class="trust-c anim-blur-slide">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7 8h10M7 12h6M7 16h10"></path></svg></div>
         <div class="trust-t">rodo compliant</div>
         <p class="trust-d">Polityka, cookies, zgody.</p>
       </div>
-      <div class="trust-c anim-blur-slide">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20M6 16h4"></path></svg></div>
         <div class="trust-t">faktura vat</div>
         <p class="trust-d">BLIK, przelew, Przelewy24.</p>
       </div>
-      <div class="trust-c anim-blur-slide">
+      <div class="trust-c">
         <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
         <div class="trust-t">odpowiedź w 24h</div>
         <p class="trust-d">Każdy mail. Bez wyjątków.</p>
@@ -1674,34 +1610,34 @@
 <section id="faq" class="section reveal" style="transition-delay:300ms">
   <div class="faq-wrap">
     <div class="faq-hdr">
-      <div class="eyebrow anim-blur-slide anim-delay-0">faq</div>
-      <h2 class="display-h anim-blur-slide anim-delay-100">Szybkie odpowiedzi.</h2>
+      <div class="eyebrow">faq</div>
+      <h2 class="display-h">Szybkie odpowiedzi.</h2>
     </div>
-    <details class="fq anim-blur-slide" open>
+    <details class="fq" open>
       <summary><span class="fq-qi"><span class="fq-n">01</span><span class="fq-q">Czy 720 zł to cena końcowa?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">Tak, 720 zł brutto to całkowity koszt projektu i wdrożenia. Bez dodatkowych opłat za design, kodowanie, formularze ani podstawowe SEO. Jedyny koszt zewnętrzny to hosting i domena (~120 zł/rok).</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">02</span><span class="fq-q">Ile czasu zajmuje zbudowanie strony?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">7 dni roboczych od zatwierdzenia briefu. Do 3 rund poprawek w cenie.</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">03</span><span class="fq-q">Czy mogę samodzielnie edytować stronę?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">Tak. Strona tworzona przez Claude Code i Claude Design. Szkolenie wdrożeniowe po publikacji.</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">04</span><span class="fq-q">Czy obsługujesz firmy spoza Wrocławia?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">Cała Polska, zdalnie. Wrocław to mój adres, nie ograniczenie zasięgu.</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">05</span><span class="fq-q">Co jeśli będę potrzebować zmian po publikacji?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">60 dni bezpłatnego wsparcia. Potem wsparcie na życzenie — opcjonalnie, bez stałej umowy.</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">06</span><span class="fq-q">Czy strona będzie widoczna w Google?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">Podstawowe SEO: meta tagi, sitemap, struktura nagłówków, mobile-first, szybkie ładowanie. GA4 i Search Console skonfigurowane.</p>
     </details>
-    <details class="fq anim-blur-slide">
+    <details class="fq">
       <summary><span class="fq-qi"><span class="fq-n">07</span><span class="fq-q">Ile podstron mieści się w cenie?</span></span><svg class="fq-ic" viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
       <p class="fq-a">Strona główna + 4 podstrony (np. o nas, oferta, kontakt, polityka prywatności). Dodatkowe ~80 zł/strona.</p>
     </details>
@@ -1711,10 +1647,10 @@
 <!-- FINAL CTA — always dark (bg image + overlay) -->
 <section data-decor-bg="33" id="cta" class="sec-cta reveal" style="transition-delay:300ms">
   <div class="sec-cta-in">
-    <div class="cta-ey anim-blur-slide anim-delay-0">OSTATNI KROK</div>
-    <h2 class="cta-h anim-blur-slide anim-delay-100">Gotowa na swoją stronę?</h2>
-    <p class="cta-p anim-blur-slide anim-delay-200">Wypełnij brief, a w 24h dostaniesz plan działania. Bezpłatna wycena. Bez zobowiązań.</p>
-    <div class="cta-links anim-blur-slide anim-delay-300">
+    <div class="cta-ey">OSTATNI KROK</div>
+    <h2 class="cta-h">Gotowa na swoją stronę?</h2>
+    <p class="cta-p">Wypełnij brief, a w 24h dostaniesz plan działania. Bezpłatna wycena. Bez zobowiązań.</p>
+    <div class="cta-links">
       <a href="mailto:hello@conversioncall.pl?subject=Brief%20–%20Conversion%20Call" class="btn-primary">
         zamów stronę — 720 zł
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1730,7 +1666,7 @@
     <div class="kora-ft-grid">
 
       <!-- Col 1: Brand -->
-      <div class="anim-blur-slide">
+      <div>
         <div class="kft-logo">
           <svg viewBox="0 0 256 256" width="18" height="18"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"></path></svg>
           <span>conversion call</span>
@@ -1740,7 +1676,7 @@
       </div>
 
       <!-- Col 2: Socials -->
-      <div class="anim-blur-slide">
+      <div>
         <div class="kft-h">Socials</div>
         <div class="kft-socials">
           <a href="#" class="kft-social" aria-label="X / Twitter">
@@ -1759,7 +1695,7 @@
       </div>
 
       <!-- Col 3: Navigation -->
-      <div class="anim-blur-slide">
+      <div>
         <div class="kft-h">Navigation</div>
         <div class="kft-nav-list">
           <a href="#oferta" class="kft-nav-item">Oferta</a>
@@ -1782,7 +1718,7 @@
   </div>
 
   <!-- Massive CC brand mark — logo icon + "CC" lettermark -->
-  <div class="kora-ft-brand anim-blur-slide anim-delay-200">
+  <div class="kora-ft-brand">
     <svg class="kora-ft-brand-svg" viewBox="0 0 256 256" aria-hidden="true">
       <path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"/>
     </svg>
@@ -2005,27 +1941,6 @@
   function init() { initCounters(); initStickyMobileCTA(); initExitIntent(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
-})();
-</script>
-
-<script>
-(function() {
-  'use strict';
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var observer = new IntersectionObserver(
-    function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.05 }
-  );
-  document.querySelectorAll('.anim-blur-slide').forEach(function(el) {
-    observer.observe(el);
-  });
 })();
 </script>
 </body>
