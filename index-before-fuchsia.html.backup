@@ -51,9 +51,7 @@
       --py:     96px;
       --r:      24px;
       --rf:     9999px;
-      --accent:        #C4357A;
-      --accent-fuchsia:#C4357A;
-      --accent-amber:  #C4357A;
+      --accent-amber: #D97F2C;
     }
 
     /* ═══ DAY MODE — flip variables only ═══ */
@@ -220,7 +218,7 @@
     }
     .hero-trust-avatar:first-child { margin-left: 0; }
     .hero-trust-info { display: flex; flex-direction: column; gap: 1px; margin-left: 6px; }
-    .hero-trust-stars { color: var(--accent); font-size: 11px; letter-spacing: 1px; line-height: 1; }
+    .hero-trust-stars { color: #f59e0b; font-size: 11px; letter-spacing: 1px; line-height: 1; }
     .hero-trust-text { font-size: 12px; color: rgba(255,255,255,0.88); white-space: nowrap; line-height: 1.4; }
     body.day-mode .hero-trust { background: rgba(255,255,255,0.88); border-color: rgba(0,0,0,0.12); }
     body.day-mode .hero-trust-text { color: rgba(0,0,0,0.72); }
@@ -245,25 +243,10 @@
     .hero-casestudy-body { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
     .hero-casestudy-badge {
       display: inline-flex; width: fit-content;
-      background: var(--accent); color: #fff;
+      background: #0a0a0a; color: #fff;
       font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase;
       border-radius: 999px; padding: 3px 10px;
     }
-    /* ═══ HERO CASE STUDY PILL (mobile only) ═══ */
-    .hero-casestudy-pill {
-      display: none;
-      align-items: center; gap: 6px;
-      height: 32px; padding: 0 14px;
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 999px;
-      font-size: 13px; color: #fff;
-      text-decoration: none;
-      margin-bottom: 12px;
-      white-space: nowrap;
-    }
-    .hero-casestudy-pill-arrow { color: var(--accent); }
     .hero-casestudy-title {
       font-size: 13px; font-weight: 500; color: #0a0a0a; line-height: 1.35;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
@@ -346,11 +329,11 @@
     .cmp-scroll tbody td.dim { color: var(--text-45); }
     .cmp-scroll tbody tr { transition: background-color 0.2s ease; }
     .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
-    .cmp-scroll tbody tr:hover td.hl { background: rgba(196,53,122,0.10); }
+    .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.10); }
     .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(0,0,0,0.03); }
-    .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(196,53,122,0.12); }
+    .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.12); }
     body.day-mode .section-cream .cmp-scroll tbody tr:hover { background-color: rgba(255,255,255,0.03); }
-    body.day-mode .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(196,53,122,0.10); }
+    body.day-mode .section-cream .cmp-scroll tbody tr:hover td.hl { background: rgba(217,127,44,0.10); }
 
     /* ═══ PRICING ═══ */
     .prx-hdr  { text-align: center; margin-bottom: 48px; }
@@ -562,8 +545,8 @@
           linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 40%);
       }
       .hero-content { width: 100%; padding: clamp(88px,12vh,120px) 24px clamp(80px,10vh,100px); }
-      .hero-casestudy { display: none; }
-      .hero-casestudy-pill { display: inline-flex; }
+      .hero-casestudy { display: flex; position: static; width: calc(100% - 32px); margin: 0 16px 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+      .hero-casestudy-img { width: 64px; height: 64px; }
       .hero-trust { bottom: 24px; left: 16px; right: 16px; border-radius: 16px; }
       .hero-trust-text { white-space: normal; font-size: 11px; }
       .stats-bar-in { grid-template-columns: repeat(3,1fr); padding: 24px 16px; }
@@ -609,15 +592,11 @@
         border-radius: 0;
         border-left: none;
         border-right: none;
-        margin: 0 calc(-2 * var(--px));
+        margin: 0 calc(-1 * var(--px));
       }
-      .cmp-scroll table { font-size: 13px; width: 100%; }
+      .cmp-scroll table { font-size: 13px; }
       .cmp-scroll thead th,
       .cmp-scroll tbody td { padding: 14px 16px; }
-      .cmp-scroll thead th:first-child,
-      .cmp-scroll tbody td:first-child { padding-left: 24px; }
-      .cmp-scroll thead th:nth-child(2),
-      .cmp-scroll tbody td:nth-child(2) { padding-right: 24px; }
       .cmp-scroll th:nth-child(n+3),
       .cmp-scroll td:nth-child(n+3) { display: none; }
     }
@@ -712,9 +691,9 @@
       border: 1px solid rgba(255,255,255,0.18); opacity: 1;
     }
     .story-card--after {
-      background: rgba(196,53,122,0.12);
+      background: rgba(217,127,44,0.12);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(196,53,122,0.45);
+      border: 1px solid rgba(217,127,44,0.45);
     }
     .story-card-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
     .story-card--after .story-card-label { color: var(--accent-amber); }
@@ -846,7 +825,7 @@
       border-radius: 20px; padding: 28px;
       display: flex; flex-direction: column; gap: 16px;
     }
-    .rc-stars { color: var(--accent); font-size: 13px; letter-spacing: 2px; }
+    .rc-stars { color: #f59e0b; font-size: 13px; letter-spacing: 2px; }
     .rc-quote { font-size: 15px; line-height: 1.65; color: var(--text-90); flex: 1; }
     .rc-person { display: flex; align-items: center; gap: 10px; }
     .rc-avatar {
@@ -991,9 +970,6 @@
       <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       <a href="#portfolio" class="btn-g">zobacz portfolio</a>
     </div>
-    <a href="https://www.yogaretreat.fit/" target="_blank" rel="noopener" class="hero-casestudy-pill">
-      <span class="hero-casestudy-pill-arrow">↗</span>yogaretreat.fit&nbsp;·&nbsp;Nowe wdrożenie
-    </a>
   </div>
 
   <!-- Zone 2: Avatar trust block — bottom-left -->
