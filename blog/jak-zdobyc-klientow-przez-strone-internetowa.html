@@ -18,13 +18,41 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Jak zdobywać klientów przez stronę internetową?",
-    "description": "SEO, CTA, social proof — trzy dźwignie, które przekształcają ruch w zapytania.",
+    "description": "SEO, CTA, social proof — trzy dźwignie przekształcające ruch w zapytania.",
     "author": {"@type": "Person", "name": "Emma Shulzhenko", "url": "https://conversioncall.co"},
     "publisher": {"@type": "Organization", "name": "Conversion Call", "url": "https://conversioncall.co"},
     "datePublished": "2025-06-05",
-    "dateModified": "2025-06-05",
+    "dateModified": "2026-06-04",
     "url": "https://conversioncall.co/blog/jak-zdobyc-klientow-przez-strone-internetowa",
     "mainEntityOfPage": "https://conversioncall.co/blog/jak-zdobyc-klientow-przez-strone-internetowa"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jak szybko strona może przyciągać klientów z Google?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Dla nowych domen Google potrzebuje 3–6 miesięcy na indeksację i budowanie autorytetu. Szybsze efekty daje Google Business Profile (lokalne wyniki) — widoczność możliwa w 2–4 tygodnie. SEO to inwestycja długoterminowa, nie kanał natychmiastowy."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy strona bez bloga może dobrze pozycjonować się w Google?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Tak. Strona firmowa bez bloga może dobrze pozycjonować się na frazy lokalne ('usługi + miasto') i brandowe. Blog pomaga zdobywać długi ogon fraz, ale nie jest konieczny dla lokalnego SEO małej firmy."}
+      },
+      {
+        "@type": "Question",
+        "name": "Co to jest Google Business Profile i czy jest ważne?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Google Business Profile (dawniej Google Moja Firma) to bezpłatny profil firmy pokazywany w mapach i lokalnych wynikach Google. Dla firm obsługujących lokalnych klientów to najszybszy sposób na widoczność — często skuteczniejszy niż samo SEO strony."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy formularz kontaktowy jest lepszy niż numer telefonu?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Oba są potrzebne — uzupełniają się. Formularz zbiera zapytania 24/7 (w nocy, w czasie pracy), numer jest dla tych, którzy wolą rozmowę. Najlepsza strona ma oboje: formularz jako główne CTA + numer i e-mail widoczne w nagłówku lub stopce."}
+      }
+    ]
   }
   </script>
   <style>
@@ -34,7 +62,7 @@
     body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;transition:background .3s,color .3s}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
-    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;background:rgba(10,10,10,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:background .3s}
     body.day-mode .site-nav{background:rgba(245,244,240,.9)}
     .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.02em;color:var(--text);text-decoration:none}
     .nav-logo svg{width:22px;height:22px;color:var(--accent)}
@@ -46,14 +74,21 @@
     body:not(.day-mode) .sun-icon{display:none}
     body.day-mode .moon-icon{display:none}
     .article-wrap{max-width:740px;margin:0 auto;padding:104px 32px 80px}
-    .article-meta{font-size:13px;color:var(--text-50);margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap}
+    .article-meta{font-size:13px;color:var(--text-50);margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .article-meta .sep{opacity:.4}
+    .article-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:rgba(167,139,250,.1);padding:3px 8px;border-radius:4px}
     h1{font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-bottom:24px}
-    .article-lead{font-size:18px;color:var(--text-70);line-height:1.7;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border)}
-    h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-.03em;margin:44px 0 16px}
-    h3{font-size:18px;font-weight:700;margin:28px 0 12px}
+    .article-lead{font-size:18px;color:var(--text-70);line-height:1.7;margin-bottom:32px}
+    h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-.03em;margin:44px 0 12px}
+    h3{font-size:18px;font-weight:700;margin:28px 0 10px}
     p{color:var(--text-70);margin-bottom:18px;font-size:16px;line-height:1.75}
     ul,ol{color:var(--text-70);padding-left:24px;margin-bottom:18px}
     li{margin-bottom:8px;font-size:16px;line-height:1.7}
+    .answer-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:20px 24px;margin:24px 0 40px}
+    .answer-box-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:600;margin-bottom:8px}
+    .answer-box p{font-size:16px;line-height:1.6;color:var(--text);margin:0;font-weight:500}
+    .answer-mini{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:8px;padding:14px 18px;margin:12px 0 24px}
+    .answer-mini p{font-size:15px;line-height:1.6;color:var(--text-70);margin:0}
     .highlight-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:24px 28px;margin:32px 0}
     .highlight-box p{margin:0;color:var(--text-70)}
     .cta-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;margin:48px 0}
@@ -63,6 +98,11 @@
     .btn-primary:hover{opacity:.85;text-decoration:none}
     .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--text-50);font-size:14px;margin-bottom:32px;text-decoration:none}
     .back-link:hover{color:var(--text);text-decoration:none}
+    .related{border-top:1px solid var(--border);padding-top:32px;margin-top:48px}
+    .related-label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-50);margin-bottom:16px}
+    .related-links{display:flex;flex-wrap:wrap;gap:12px}
+    .related-links a{font-size:14px;color:var(--text-70);padding:8px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s,color .2s;text-decoration:none}
+    .related-links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
     .site-footer{border-top:1px solid var(--border);padding:40px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:740px;margin:0 auto;font-size:13px;color:var(--text-50)}
     .site-footer a{color:var(--text-50);transition:color .2s;text-decoration:none}
     .site-footer a:hover{color:var(--text)}
@@ -87,62 +127,77 @@
 <article class="article-wrap">
   <a href="/blog" class="back-link">← wszystkie artykuły</a>
   <div class="article-meta">
-    <span>Emma Shulzhenko</span><span>·</span><span>5 czerwca 2025</span><span>·</span><span>7 min czytania</span>
+    <span class="article-cat">MARKETING</span>
+    <span class="sep">·</span>
+    <span>Emma Shulzhenko</span>
+    <span class="sep">·</span>
+    <span>Aktualizacja: czerwiec 2026</span>
+    <span class="sep">·</span>
+    <span>7 min czytania</span>
   </div>
   <h1>Jak zdobywać klientów przez stronę internetową?</h1>
-  <p class="article-lead">Strona sama w sobie nie przynosi klientów. Klientów przynosi strona zoptymalizowana pod trzy konkretne elementy: widoczność (SEO), przekonanie (CTA i copywriting) oraz zaufanie (social proof). Oto jak to działa w praktyce.</p>
 
-  <h2>Dźwignia 1: SEO — być tam, gdzie szukają</h2>
-  <p>80% osób szukających usług lokalnych zaczyna od Google. Jeśli Twoja strona nie pojawia się w wynikach dla fraz, które wpisują Twoi potencjalni klienci — nie istniejesz dla nich w sieci.</p>
-  <p>SEO dla małej firmy to nie czarna magia. Zacznij od tych 4 kroków:</p>
+  <div class="answer-box">
+    <div class="answer-box-label">Krótka odpowiedź</div>
+    <p>Strona zdobywa klientów przez trzy dźwignie: widoczność (SEO — być tam gdzie szukają), przekonanie (CTA i copywriting — mówić językiem klienta) i zaufanie (social proof — opinie z imienia i nazwiska). Bez tych trzech elementów ruch nie zamienia się w zapytania.</p>
+  </div>
+
+  <p class="article-lead">Strona sama w sobie nie przynosi klientów. Klientów przynosi strona zoptymalizowana pod trzy konkretne elementy: widoczność (SEO), przekonanie (CTA i copywriting) oraz zaufanie (social proof). Oto jak to wdrożyć bez budżetu reklamowego.</p>
+
+  <h2>Jak sprawić, żeby klienci znajdowali Twoją stronę w Google?</h2>
+  <div class="answer-mini">
+    <p>Żeby klienci znajdowali Twoją stronę w Google, musisz: umieścić frazy kluczowe (co szukają Twoi klienci) w tytule, H1 i opisach, wypełnić Google Business Profile (dla lokalnych firm) i zadbać o szybkie ładowanie (PageSpeed 90+). To SEO on-page bez specjalistów.</p>
+  </div>
+  <p>80% osób szukających usług lokalnych zaczyna od Google. Jeśli Twoja strona nie pojawia się dla fraz, które wpisują potencjalni klienci — nie istniejesz dla nich w sieci.</p>
   <ol>
-    <li><strong>Znajdź 3–5 fraz kluczowych</strong>, które wpisują Twoi klienci (np. "fotograf ślubny Kraków", "księgowość dla freelancerów"). Narzędzia: Google Suggest, Ahrefs free, Ubersuggest.</li>
-    <li><strong>Umieść te frazy w strategicznych miejscach:</strong> tytuł strony (&lt;title&gt;), nagłówek H1, pierwszy akapit, opisy sekcji.</li>
-    <li><strong>Google Moja Firma:</strong> Jeśli obsługujesz lokalnych klientów, wypełnij profil w Google Moja Firma. To darmowe i wyjątkowo skuteczne.</li>
-    <li><strong>Prędkość strony:</strong> Google nie pozycjonuje wolnych stron. Cel: Core Web Vitals w zieleni (PageSpeed &gt; 90).</li>
+    <li><strong>Znajdź 3–5 fraz kluczowych</strong>: "fotograf ślubny Kraków", "księgowość dla freelancerów", "fryzjer Śródmieście". Narzędzia: Google Suggest, Ubersuggest, Ahrefs free.</li>
+    <li><strong>Umieść frazy w strategicznych miejscach:</strong> tytuł strony (&lt;title&gt;), nagłówek H1, pierwszy akapit, opisy sekcji.</li>
+    <li><strong>Google Business Profile:</strong> Dla lokalnych firm to darmowe i wyjątkowo skuteczne. Widoczność w mapach i lokalnych wynikach.</li>
+    <li><strong>Prędkość:</strong> Google nie promuje wolnych stron. Cel: PageSpeed Mobile &gt; 90.</li>
   </ol>
 
-  <h2>Dźwignia 2: Copywriting — mówić językiem klienta</h2>
-  <p>Większość stron małych firm popełnia ten sam błąd: mówią o sobie, zamiast mówić o kliencie.</p>
-  <p>Porównaj:</p>
+  <h2>Jak pisać teksty na stronie, żeby przekonywały klientów?</h2>
+  <div class="answer-mini">
+    <p>Teksty na stronie przekonują gdy mówią językiem klienta, a nie językiem firmy. Zamiast "oferujemy kompleksowe usługi budowlane" — "Podajemy stałą cenę remontu przed rozpoczęciem prac. Bez niespodzianek w kosztorysie." Opisuj problem klienta, nie swoje certyfikaty.</p>
+  </div>
+
   <div class="highlight-box">
-    <p><strong>Słabo:</strong> "Jesteśmy doświadczoną firmą budowlaną z 15-letnim stażem, specjalizującą się w kompleksowych remontach."<br><br>
+    <p><strong>Słabo:</strong> "Jesteśmy doświadczoną firmą z 15-letnim stażem, specjalizującą się w kompleksowych remontach."<br><br>
     <strong>Dobrze:</strong> "Remontujesz mieszkanie i nie chcesz niespodzianek w kosztorysie? Podajemy stałą cenę przed rozpoczęciem prac."</p>
   </div>
-  <p>Sposób na lepszy copywriting: napisz listę 5 największych frustracji Twoich klientów (zanim skorzystali z Twojej usługi) i odpowiedz na nie bezpośrednio na stronie.</p>
-  <h3>CTA musi być jedno i konkretne</h3>
-  <p>Każda sekcja powinna prowadzić do jednego działania. Zamiast "skontaktuj się z nami" pisz: "Zadzwoń teraz i umów bezpłatną wycenę" lub "Wypełnij formularz — odpiszę w 24h".</p>
+  <p>Sposób na lepszy copywriting: napisz listę 5 największych frustracji Twoich klientów zanim skorzystali z usługi i odpowiedz na nie bezpośrednio na stronie.</p>
 
-  <h2>Dźwignia 3: Social proof — niech klienci mówią za Ciebie</h2>
-  <p>Jeśli mógłbyś wybrać tylko jeden element do dodania do strony jutro — to byłyby opinie klientów z imienia i nazwiska.</p>
-  <p>Badania pokazują, że strony z opiniami konwertują 2–3x lepiej niż te bez. Nie dlatego, że ludzie są naiwni — ale dlatego, że opinie redukują ryzyko. "Ktoś już skorzystał i mu się spodobało."</p>
-  <p>Jak zebrać opinie szybko:</p>
-  <ul>
-    <li>Po każdym zrealizowanym projekcie napisz do klienta: "Czy mógłbyś opisać w 2–3 zdaniach, co Ci najbardziej pomogło?"</li>
-    <li>Jeśli masz Google Maps, poproś o ocenę — link do formularza opinii możesz wygenerować przez Google Moja Firma</li>
-    <li>Screenshoty z wiadomości SMS/Messenger to też social proof — tylko upewnij się, że masz zgodę</li>
-  </ul>
+  <h2>Jak zbierać i pokazywać opinie klientów na stronie?</h2>
+  <div class="answer-mini">
+    <p>Opinie klientów zbierasz przez: wiadomość mailową po każdym projekcie z konkretnym pytaniem ("Co ci pomogło najbardziej?"), prośbę o recenzję Google (link z GBP), screenshoty wiadomości (za zgodą). Pokazujesz z imienia, nazwiska i zdjęcia lub logo firmy.</p>
+  </div>
+  <p>Jeśli mógłbyś wybrać tylko jeden element do dodania jutro — to byłyby opinie klientów z imienia i nazwiska. Badania pokazują, że strony z opiniami konwertują 2–3× lepiej niż te bez.</p>
 
-  <h2>Bonus: formularz kontaktowy vs. numer telefonu</h2>
-  <p>Wiele firm decyduje się tylko na numer telefonu. Błąd — tracisz wszystkich, którzy szukają w nocy lub w pracy i nie mogą dzwonić.</p>
-  <p>Optymalny zestaw:</p>
-  <ul>
-    <li>Formularz kontaktowy (główne CTA)</li>
-    <li>Adres e-mail (dla tych, którzy wolą pisać)</li>
-    <li>Numer telefonu (dla tych, którzy wolą dzwonić)</li>
-  </ul>
-  <p>Formularz powinien być krótki: imię, e-mail/telefon, wiadomość. Każde dodatkowe pole zmniejsza liczbę wypełnień o ok. 10–15%.</p>
+  <h2>Formularz czy numer telefonu — co działa lepiej?</h2>
+  <div class="answer-mini">
+    <p>Oba są potrzebne. Formularz zbiera zapytania 24/7 (w nocy, w czasie pracy), numer telefonu jest dla tych, którzy wolą rozmawiać. Formularz powinien być krótki: imię, e-mail/telefon, wiadomość. Każde dodatkowe pole zmniejsza liczbę wypełnień o ok. 10–15%.</p>
+  </div>
+  <p>Najlepsza konfiguracja: formularz jako główne CTA (przycisk w każdej sekcji) + numer i e-mail widoczne w nagłówku lub stopce bez konieczności scrollowania.</p>
 
   <div class="cta-box">
     <h3>Chcesz stronę, która aktywnie zdobywa klientów?</h3>
-    <p>Projektuję strony z myślą o konwersji — właściwa hierarchia CTA, szybkość ładowania, SEO on-page. Stała cena 720 zł, gotowe w 7 dni.</p>
+    <p>Projektuję strony z myślą o konwersji — właściwa hierarchia CTA, szybkość, SEO on-page. 720 zł, 7 dni.</p>
     <a href="/brief" class="btn-primary">zacznij projekt →</a>
+  </div>
+
+  <div class="related">
+    <div class="related-label">Przeczytaj też</div>
+    <div class="related-links">
+      <a href="/blog/strona-internetowa-dla-malej-firmy">Co musi mieć strona małej firmy?</a>
+      <a href="/blog/ile-kosztuje-strona-internetowa">Ile kosztuje strona w 2026?</a>
+      <a href="/blog/strona-internetowa-720-zl">Co dostajesz za 720 zł?</a>
+    </div>
   </div>
 </article>
 
 <footer class="site-footer">
-  <span>© 2025 Conversion Call · Emma Shulzhenko</span>
-  <span><a href="mailto:emma@conversioncall.co">emma@conversioncall.co</a></span>
+  <span>© 2025–2026 Conversion Call · Emma Shulzhenko</span>
+  <span><a href="mailto:emma@conversioncall.co">emma@conversioncall.co</a> · <a href="/wroclaw">Strony Wrocław</a></span>
 </footer>
 <script>
   if (localStorage.getItem('cc-theme') === 'day') document.body.classList.add('day-mode');

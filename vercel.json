@@ -5,25 +5,18 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    },
-    {
-      "source": "/brief",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    },
-    {
-      "source": "/blog(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ],
+  "redirects": [
+    { "source": "/blog/strona-internetowa-bez-abonamentu", "destination": "/blog/tania-strona-internetowa-bez-abonamentu", "permanent": true },
+    { "source": "/blog/claude-code-strony-internetowe", "destination": "/blog/strona-robiona-przez-ai", "permanent": true },
+    { "source": "/blog/strony-internetowe-wroclaw", "destination": "/wroclaw", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/brief", "destination": "/brief.html" },
+    { "source": "/wroclaw", "destination": "/wroclaw.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/blog/:slug.html" }
   ]

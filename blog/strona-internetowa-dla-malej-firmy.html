@@ -22,9 +22,37 @@
     "author": {"@type": "Person", "name": "Emma Shulzhenko", "url": "https://conversioncall.co"},
     "publisher": {"@type": "Organization", "name": "Conversion Call", "url": "https://conversioncall.co"},
     "datePublished": "2025-06-02",
-    "dateModified": "2025-06-02",
+    "dateModified": "2026-06-04",
     "url": "https://conversioncall.co/blog/strona-internetowa-dla-malej-firmy",
     "mainEntityOfPage": "https://conversioncall.co/blog/strona-internetowa-dla-malej-firmy"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ile podstron powinna mieć strona małej firmy?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Dla małej firmy usługowej wystarczy jedna strona z kilkoma sekcjami (one-page): hero, oferta, o firmie, opinie, kontakt. To wygodniejsze dla użytkownika niż klika osobnych podstron wymagających nawigacji."}
+      },
+      {
+        "@type": "Question",
+        "name": "Czy strona małej firmy musi mieć blog?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Nie. Blog jest wartościowy dla SEO jeśli masz zasoby do regularnego pisania. Dla większości małych firm ważniejsze jest dopracowanie strony głównej — dobry opis oferty, opinie klientów i wyraźne CTA przyniesą więcej konwersji niż sporadyczne posty."}
+      },
+      {
+        "@type": "Question",
+        "name": "Co to jest CTA na stronie internetowej?",
+        "acceptedAnswer": {"@type": "Answer", "text": "CTA (Call to Action) to wezwanie do działania — przycisk lub link skłaniający użytkownika do konkretnego kroku: 'Umów bezpłatną konsultację', 'Zadzwoń teraz', 'Wypełnij formularz'. Każda strona powinna mieć jedno główne, wyróżnione CTA."}
+      },
+      {
+        "@type": "Question",
+        "name": "Jak szybko powinna ładować się strona małej firmy?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Cel: poniżej 2 sekund na mobilnym połączeniu 4G. Sprawdź w PageSpeed Insights (pagespeed.web.dev) — wynik powyżej 90/100 na mobile to dobry poziom. Wolne strony tracą pozycje w Google i klientów, którzy nie chcą czekać."}
+      }
+    ]
   }
   </script>
   <style>
@@ -46,14 +74,21 @@
     body:not(.day-mode) .sun-icon{display:none}
     body.day-mode .moon-icon{display:none}
     .article-wrap{max-width:740px;margin:0 auto;padding:104px 32px 80px}
-    .article-meta{font-size:13px;color:var(--text-50);margin-bottom:12px;display:flex;gap:16px;flex-wrap:wrap}
+    .article-meta{font-size:13px;color:var(--text-50);margin-bottom:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .article-meta .sep{opacity:.4}
+    .article-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:rgba(167,139,250,.1);padding:3px 8px;border-radius:4px}
     h1{font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-.04em;line-height:1.15;margin-bottom:24px}
-    .article-lead{font-size:18px;color:var(--text-70);line-height:1.7;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid var(--border)}
-    h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-.03em;margin:44px 0 16px}
-    h3{font-size:18px;font-weight:700;margin:28px 0 12px}
+    .article-lead{font-size:18px;color:var(--text-70);line-height:1.7;margin-bottom:32px}
+    h2{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-.03em;margin:44px 0 12px}
+    h3{font-size:18px;font-weight:700;margin:28px 0 10px}
     p{color:var(--text-70);margin-bottom:18px;font-size:16px;line-height:1.75}
     ul,ol{color:var(--text-70);padding-left:24px;margin-bottom:18px}
     li{margin-bottom:8px;font-size:16px;line-height:1.7}
+    .answer-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:20px 24px;margin:24px 0 40px}
+    .answer-box-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:600;margin-bottom:8px}
+    .answer-box p{font-size:16px;line-height:1.6;color:var(--text);margin:0;font-weight:500}
+    .answer-mini{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:8px;padding:14px 18px;margin:12px 0 24px}
+    .answer-mini p{font-size:15px;line-height:1.6;color:var(--text-70);margin:0}
     .highlight-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:24px 28px;margin:32px 0}
     .highlight-box p{margin:0;color:var(--text-70)}
     .cta-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px;text-align:center;margin:48px 0}
@@ -65,7 +100,13 @@
     .back-link:hover{color:var(--text);text-decoration:none}
     .checklist{list-style:none;padding:0}
     .checklist li{padding:12px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--text-70);display:flex;gap:12px;align-items:flex-start}
+    .checklist li:last-child{border-bottom:none}
     .checklist li::before{content:"✓";color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+    .related{border-top:1px solid var(--border);padding-top:32px;margin-top:48px}
+    .related-label{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-50);margin-bottom:16px}
+    .related-links{display:flex;flex-wrap:wrap;gap:12px}
+    .related-links a{font-size:14px;color:var(--text-70);padding:8px 14px;border:1px solid var(--border);border-radius:8px;transition:border-color .2s,color .2s;text-decoration:none}
+    .related-links a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
     .site-footer{border-top:1px solid var(--border);padding:40px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:740px;margin:0 auto;font-size:13px;color:var(--text-50)}
     .site-footer a{color:var(--text-50);transition:color .2s;text-decoration:none}
     .site-footer a:hover{color:var(--text)}
@@ -79,12 +120,7 @@
     conversion call
   </a>
   <div class="nav-links">
-    <a href="/#oferta">oferta</a>
-    <a href="/#portfolio">portfolio</a>
-    <a href="/#proces">proces</a>
-    <a href="/#faq">faq</a>
-    <a href="/brief">brief</a>
-    <a href="/blog">blog</a>
+    <a href="/#oferta">oferta</a><a href="/#portfolio">portfolio</a><a href="/#proces">proces</a><a href="/#faq">faq</a><a href="/brief">brief</a><a href="/blog">blog</a>
   </div>
   <button class="nav-theme-toggle" id="themeToggle" aria-label="Toggle theme">
     <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -95,78 +131,95 @@
 <article class="article-wrap">
   <a href="/blog" class="back-link">← wszystkie artykuły</a>
   <div class="article-meta">
-    <span>Emma Shulzhenko</span><span>·</span><span>2 czerwca 2025</span><span>·</span><span>6 min czytania</span>
+    <span class="article-cat">PORADNIK</span>
+    <span class="sep">·</span>
+    <span>Emma Shulzhenko</span>
+    <span class="sep">·</span>
+    <span>Aktualizacja: czerwiec 2026</span>
+    <span class="sep">·</span>
+    <span>6 min czytania</span>
   </div>
   <h1>Strona internetowa dla małej firmy — co musi zawierać?</h1>
-  <p class="article-lead">Większość stron małych firm albo mówi za mało (same zdjęcia i adres), albo za dużo (ściana tekstu, którą nikt nie czyta). Istnieje 5 elementów, które decydują o tym, czy strona zamienia odwiedzającego w klienta — oto one.</p>
 
-  <h2>Element 1: Jasna propozycja wartości w hero</h2>
-  <p>Masz 3–5 sekund, żeby odwiedzający zrozumiał: <em>co robisz, dla kogo i dlaczego warto</em>. To nie jest czas na poetyckie hasła w stylu "Pasja do doskonałości" — to czas na konkrety.</p>
-  <p>Dobry nagłówek hero wygląda tak:</p>
-  <div class="highlight-box">
-    <p><strong>Strony internetowe dla gabinetów stomatologicznych.</strong><br>Responsywna, szybka, z systemem rezerwacji — gotowa w 2 tygodnie.</p>
-  </div>
-  <p>Zły nagłówek hero wygląda tak: "Witaj w naszej firmie. Tworzymy rozwiązania dostosowane do Twoich potrzeb." — to zdanie nie mówi nic.</p>
-
-  <h2>Element 2: Dowód społeczny</h2>
-  <p>Opinie klientów zwiększają konwersję bardziej niż jakikolwiek copywriting. Ale nie chodzi o gwiazdki — chodzi o konkretne zdania od konkretnych osób z imienia i nazwy.</p>
-  <p>Minimalne wymagania dla skutecznego testimonial:</p>
-  <ul>
-    <li>Imię i nazwisko (nie "Jan K. z Warszawy")</li>
-    <li>Zdjęcie lub logo firmy</li>
-    <li>Konkretny wynik, nie ogólna pochwała</li>
-  </ul>
-  <p>Jeśli dopiero zaczynasz i nie masz opinii — zrób 2–3 projekty pro bono lub za symboliczną kwotę w zamian za szczegółowy testimonial.</p>
-
-  <h2>Element 3: Jasne CTA (call to action)</h2>
-  <p>Każda strona musi mieć <strong>jedno główne wezwanie do działania</strong>. Nie pięć. Jedno.</p>
-  <p>Najczęstszy błąd: strona ma przyciski "napisz do nas", "zadzwoń", "zamów bezpłatną konsultację", "pobierz PDF" i "obserwuj nas na Instagramie" — wszystkie równorzędne. Odwiedzający nie wie, co zrobić, więc nie robi nic.</p>
-  <p>Wybierz jedno działanie, które jest dla Ciebie najbardziej wartościowe (najczęściej: formularz kontaktowy lub telefon), i hierarchicznie podkreśl je na stronie.</p>
-
-  <h2>Element 4: Sekcja "o mnie / o firmie" z twarzą</h2>
-  <p>Małe firmy mają przewagę nad korporacjami: są ludzkie. Klienci kupują od osób, nie od logotypów.</p>
-  <p>Sekcja "o mnie" powinna zawierać:</p>
-  <ul>
-    <li>Twoje zdjęcie (nie stockowe, Twoje)</li>
-    <li>Krótką historię: jak zaczęłeś/-aś, co Cię napędza</li>
-    <li>Konkretne liczby: lata doświadczenia, liczba klientów, specjalizacja</li>
-  </ul>
-
-  <h2>Element 5: Strona musi ładować się w mniej niż 2 sekundy</h2>
-  <p>Prędkość to nie "nice to have" — to kwestia SEO i konwersji jednocześnie. Google nie pozycjonuje wolnych stron. Klienci nie czekają na wolne strony.</p>
-  <p>Główne przyczyny wolnych stron małych firm:</p>
-  <ul>
-    <li>Nieoptymalizowane zdjęcia (PNG zamiast WebP, 5 MB zamiast 200 KB)</li>
-    <li>WordPress z 30 wtyczkami</li>
-    <li>Hosting na najtańszym serwerze za 3 zł/miesiąc</li>
-  </ul>
-
-  <div class="highlight-box">
-    <p>Strona zbudowana w czystym HTML/CSS bez CMS ładuje się 3–5x szybciej niż ta sama strona na WordPressie. To bezpośrednia zaleta niestandardowego kodu.</p>
+  <div class="answer-box">
+    <div class="answer-box-label">Krótka odpowiedź</div>
+    <p>Strona małej firmy musi zawierać: jasną propozycję wartości w hero (co, dla kogo, dlaczego), opinie klientów z imienia i nazwiska, jedno wyraźne CTA, sekcję "o firmie" ze zdjęciem i szybkie ładowanie (PageSpeed 90+). Bez tych 5 elementów strona nie konwertuje.</p>
   </div>
 
-  <h2>Checklista przed publikacją</h2>
+  <p class="article-lead">Większość stron małych firm albo mówi za mało (same zdjęcia i adres), albo za dużo (ściana tekstu, którą nikt nie czyta). 5 elementów decyduje o tym, czy strona zamienia odwiedzającego w klienta — oto one.</p>
+
+  <h2>Dlaczego wiele stron małych firm nie przynosi klientów?</h2>
+  <div class="answer-mini">
+    <p>Strony małych firm nie przynoszą klientów z trzech powodów: niejasna propozycja wartości (odwiedzający nie wie co robisz), brak dowodu społecznego (opinie, realizacje) i brak wyraźnego CTA. Użytkownik nie wie co zrobić — więc nie robi nic.</p>
+  </div>
+  <p>Diagnoza jest prosta. Wejdź na swoją stronę i odpowiedz na pytanie: czy po 5 sekundach widzisz jasno co oferujesz, dla kogo i dlaczego mam zadzwonić właśnie do Ciebie zamiast do konkurencji? Jeśli nie — strona ma problem z propozycją wartości.</p>
+
+  <h2>Co powinno znaleźć się w sekcji hero strony małej firmy?</h2>
+  <div class="answer-mini">
+    <p>Hero powinno zawierać: nagłówek H1 z konkretną propozycją (co, dla kogo, wynik), podnagłówek z rozwinięciem, jedno główne CTA i opcjonalnie zdjęcie/wideo. Wszystko widoczne bez scrollowania na mobilnym ekranie.</p>
+  </div>
+  <p>Masz 3–5 sekund, żeby odwiedzający zrozumiał: <em>co robisz, dla kogo i dlaczego warto</em>. To nie jest czas na poetyckie hasła — to czas na konkrety.</p>
+
+  <div class="highlight-box">
+    <p><strong>Słabo:</strong> "Witaj w naszej firmie. Tworzymy rozwiązania dostosowane do Twoich potrzeb."<br><br>
+    <strong>Dobrze:</strong> "Strony internetowe dla gabinetów stomatologicznych. Responsywna, szybka, gotowa w 7 dni."</p>
+  </div>
+
+  <h2>Dlaczego opinie klientów są kluczowe dla konwersji?</h2>
+  <div class="answer-mini">
+    <p>Strony z opiniami klientów konwertują 2–3x lepiej niż te bez. Opinie redukują ryzyko zakupu — "ktoś już skorzystał i mu się spodobało". Minimalne wymagania: imię i nazwisko (nie "Jan K."), zdjęcie lub logo firmy, konkretny wynik.</p>
+  </div>
+  <p>Nie chodzi o gwiazdki — chodzi o konkretne zdania od konkretnych osób. Jak zebrać opinie szybko: po każdym projekcie napisz do klienta z prośbą o 2–3 zdania opisujące co mu najbardziej pomogło. Screenshoty z wiadomości też działają (za zgodą klienta).</p>
+
+  <h2>Ile CTA powinna mieć strona małej firmy?</h2>
+  <div class="answer-mini">
+    <p>Jedno główne CTA na całą stronę, powtórzone w każdej kluczowej sekcji. Nie pięć różnych przycisków — odwiedzający się gubi i nie klika żadnego. Wybierz jedno działanie (formularz, telefon, e-mail) i hierarchicznie go podkreśl.</p>
+  </div>
+  <p>Najczęstszy błąd: strona ma przyciski "napisz do nas", "zadzwoń", "zamów konsultację", "pobierz PDF" i "obserwuj nas na Instagramie" — wszystkie równorzędne. Użytkownik nie wie co zrobić, więc nie robi nic.</p>
+
+  <h2>Co powinna zawierać sekcja "o firmie" na stronie małej firmy?</h2>
+  <div class="answer-mini">
+    <p>Sekcja "o firmie" powinna zawierać: Twoje zdjęcie (nie stockowe, Twoje), krótką historię (jak zaczęłeś/-aś, co Cię napędza) i konkretne liczby: lata doświadczenia, liczba klientów, specjalizacja. Małe firmy mają przewagę nad korporacjami: są ludzkie.</p>
+  </div>
+  <p>Klienci kupują od osób, nie od logotypów. Twoja historia i twarz są argumentem sprzedażowym — nie ozdobnikiem.</p>
+
+  <h2>Jak szybko powinna ładować się strona małej firmy?</h2>
+  <div class="answer-mini">
+    <p>Cel: poniżej 2 sekund, PageSpeed powyżej 90/100 na mobile. Strony wolniej ładujące tracą pozycje w Google i klientów czekających na ładowanie. Strona w czystym HTML/CSS bez WordPressa ładuje się 3–5x szybciej niż ta sama strona na WP z Elementorem.</p>
+  </div>
+  <p>Główne przyczyny wolnych stron małych firm: nieoptymalizowane zdjęcia (PNG 5 MB zamiast WebP 200 KB), WordPress z 30 wtyczkami, hosting na najtańszym serwerze za 3 zł/miesiąc.</p>
+
+  <h2>Checklista przed publikacją strony małej firmy</h2>
   <ul class="checklist">
-    <li>Nagłówek hero odpowiada na pytanie: co, dla kogo, dlaczego</li>
-    <li>Masz min. 2 opinie z imienia i nazwiska + zdjęciem</li>
-    <li>Jest jedno wyróżnione CTA na każdej sekcji strony</li>
-    <li>Sekcja "o mnie" ma Twoje zdjęcie i konkretne liczby</li>
+    <li>Nagłówek H1 odpowiada na: co, dla kogo, dlaczego właśnie Ty</li>
+    <li>Min. 2 opinie z imienia i nazwiska + zdjęcie lub logo firmy</li>
+    <li>Jedno wyróżnione CTA na każdej kluczowej sekcji</li>
+    <li>Sekcja "o firmie" ze zdjęciem i konkretnymi liczbami</li>
     <li>PageSpeed Insights: min. 90/100 na mobile</li>
-    <li>Strona ma tytuł i opis meta (SEO on-page)</li>
-    <li>Formularz kontaktowy działa i wysyła maila</li>
-    <li>Strona wygląda dobrze na iPhone SE i Samsung Galaxy</li>
+    <li>Tytuł i opis meta (SEO on-page) wypełnione</li>
+    <li>Formularz kontaktowy działa i wysyła maila na właściwy adres</li>
+    <li>Strona wygląda poprawnie na iPhone SE i Samsung Galaxy S</li>
   </ul>
 
   <div class="cta-box">
-    <h3>Chcesz stronę, która spełnia wszystkie 5 elementów?</h3>
-    <p>Buduję strony dla małych firm od podstaw — responsywne, szybkie, zaprojektowane pod konwersję. Stała cena: 720 zł, gotowe w 7 dni.</p>
+    <h3>Chcesz stronę spełniającą wszystkie 5 elementów?</h3>
+    <p>Buduję strony z myślą o konwersji: właściwa hierarchia CTA, szybkość ładowania, SEO on-page. Stała cena 720 zł, gotowe w 7 dni.</p>
     <a href="/brief" class="btn-primary">wypełnij brief →</a>
+  </div>
+
+  <div class="related">
+    <div class="related-label">Przeczytaj też</div>
+    <div class="related-links">
+      <a href="/blog/jak-zdobyc-klientow-przez-strone-internetowa">Jak zdobywać klientów przez stronę?</a>
+      <a href="/blog/ile-kosztuje-strona-internetowa">Ile kosztuje strona w 2026?</a>
+      <a href="/blog/strona-internetowa-720-zl">Co dostajesz za 720 zł?</a>
+    </div>
   </div>
 </article>
 
 <footer class="site-footer">
-  <span>© 2025 Conversion Call · Emma Shulzhenko</span>
-  <span><a href="mailto:emma@conversioncall.co">emma@conversioncall.co</a></span>
+  <span>© 2025–2026 Conversion Call · Emma Shulzhenko</span>
+  <span><a href="mailto:emma@conversioncall.co">emma@conversioncall.co</a> · <a href="/wroclaw">Strony Wrocław</a></span>
 </footer>
 <script>
   if (localStorage.getItem('cc-theme') === 'day') document.body.classList.add('day-mode');
