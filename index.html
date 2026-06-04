@@ -313,15 +313,21 @@
     .about-statement { font-size: clamp(32px,5vw,68px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-top: 40px; }
     .about-sub-text { font-size: clamp(16px,1.5vw,20px); color: var(--text-70); max-width: 640px; margin-top: 32px; line-height: 1.7; }
     .about-portrait-wrap { margin-top: 48px; }
-    .about-portrait { width: 100%; height: clamp(320px,40vw,520px); object-fit: cover; object-position: center 15%; border-radius: 24px; display: block; }
-
-    @media (max-width: 767px) {
-      .about-portrait { object-position: center 20%; }
-    }
+    .about-portrait { width: 100%; height: clamp(320px,55vw,560px); object-fit: cover; object-position: center 20%; border-radius: 24px; display: block; }
 
     @media (min-width: 768px) {
-      .about-portrait-wrap { max-width: 680px; }
-      .about-portrait { height: clamp(360px,38vw,500px); }
+      .about-wrap {
+        display: flex;
+        flex-direction: row;
+        gap: clamp(48px, 6vw, 96px);
+        align-items: flex-start;
+      }
+      .about-wrap > :not(.about-portrait-wrap) {
+        flex: 1;
+        min-width: 0;
+      }
+      .about-portrait-wrap { margin-top: 0; flex-shrink: 0; width: 42%; }
+      .about-portrait { height: 100%; min-height: 520px; max-height: 680px; object-position: center 15%; }
     }
 
     /* ═══ PORTFOLIO ═══ */
@@ -1161,7 +1167,7 @@
 </div>
 <!-- ABOUT -->
 <section class="section section-cream reveal">
-  <div class="wrap">
+  <div class="wrap about-wrap">
     <div class="about-identity anim-blur-slide">
       <span class="about-quote-mark">"</span>
       <div class="about-founder">
