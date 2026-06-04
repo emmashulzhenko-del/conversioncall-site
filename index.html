@@ -211,9 +211,9 @@
     .hero-trust {
       position: absolute; bottom: 36px; left: clamp(24px,4vw,56px); z-index: 2;
       display: flex; align-items: center; gap: 10px;
-      background: rgba(0,0,0,0.32);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.16); border-radius: 999px;
+      background: transparent;
+      border: none;
+      border-radius: 999px;
       padding: 10px 18px 10px 12px;
     }
     .hero-trust-avatars { display: flex; align-items: center; }
@@ -226,9 +226,7 @@
     .hero-trust-info { display: flex; flex-direction: column; gap: 1px; margin-left: 6px; }
     .hero-trust-stars { color: var(--accent); font-size: 11px; letter-spacing: 1px; line-height: 1; }
     .hero-trust-text { font-size: 12px; color: rgba(255,255,255,0.88); white-space: nowrap; line-height: 1.4; }
-    body.day-mode .hero-trust { background: rgba(0,0,0,0.32); border-color: rgba(255,255,255,0.16); }
-    body.day-mode .hero-trust-text { color: rgba(255,255,255,0.88); }
-    body.day-mode .hero-trust-avatar { border-color: rgba(255,255,255,0.35); }
+    body.day-mode .hero-trust { background: transparent; border: none; }
 
     /* ═══ HERO CASE STUDY CARD ═══ */
     .hero-casestudy {
@@ -315,7 +313,11 @@
     .about-statement { font-size: clamp(32px,5vw,68px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-top: 40px; }
     .about-sub-text { font-size: clamp(16px,1.5vw,20px); color: var(--text-70); max-width: 640px; margin-top: 32px; line-height: 1.7; }
     .about-portrait-wrap { margin-top: 48px; }
-    .about-portrait { width: 100%; height: clamp(320px,40vw,520px); object-fit: cover; object-position: center top; border-radius: 24px; display: block; }
+    .about-portrait { width: 100%; height: clamp(320px,40vw,520px); object-fit: cover; object-position: center 15%; border-radius: 24px; display: block; }
+
+    @media (max-width: 767px) {
+      .about-portrait { object-position: center 20%; }
+    }
 
     @media (min-width: 768px) {
       .about-portrait-wrap { max-width: 680px; }
@@ -1844,7 +1846,9 @@
     if (window.scrollY > 400) {
       st.style.display = 'flex';
       if (window.innerWidth < 768) {
-        st.style.bottom = window.scrollY > 600 ? '88px' : '24px';
+        var stickyVisible = document.getElementById('stickyMobileCta') &&
+          document.getElementById('stickyMobileCta').classList.contains('visible');
+        st.style.bottom = stickyVisible ? '88px' : '24px';
       }
     } else {
       st.style.display = 'none';
@@ -1982,8 +1986,15 @@
     var threshold = 600;
     function update() {
       var ctaInView = ctaSection && ctaSection.getBoundingClientRect().top < window.innerHeight && ctaSection.getBoundingClientRect().bottom > 0;
-      if (window.scrollY > threshold && !ctaInView) { sticky.classList.add('visible'); sticky.classList.remove('hidden'); }
-      else { sticky.classList.remove('visible'); sticky.classList.add('hidden'); }
+      if (window.scrollY > threshold && !ctaInView) {
+        sticky.classList.add('visible'); sticky.classList.remove('hidden');
+        var scrollTop = document.getElementById('scroll-top');
+        if (scrollTop && scrollTop.style.display === 'flex') scrollTop.style.bottom = '88px';
+      } else {
+        sticky.classList.remove('visible'); sticky.classList.add('hidden');
+        var scrollTop = document.getElementById('scroll-top');
+        if (scrollTop) scrollTop.style.bottom = '24px';
+      }
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
