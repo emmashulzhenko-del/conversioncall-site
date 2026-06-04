@@ -1,0 +1,4 @@
+OG image needed: og-image.jpg
+Size: 1200x630px
+Content: "Strona za 720 zł. Gotowa w 7 dni." on dark background with CC logo
+To generate: use Canva or similar, then place as og-image.jpg in project root

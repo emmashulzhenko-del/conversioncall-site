@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brief – Zamów stronę | Conversion Call</title>
+  <meta name="description" content="Wypełnij brief online i zamów stronę internetową za 720 zł. Conversion Call – realizacja w 7 dni.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://conversioncall.co/brief">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; border: none; }
+
+    :root {
+      --bg:          #000;
+      --surface:     #0a0a0a;
+      --surface-2:   #111;
+      --surface-nav: #171717;
+      --border:      rgba(255,255,255,0.10);
+      --border-2:    rgba(255,255,255,0.16);
+      --text:        #fff;
+      --text-90:     rgba(255,255,255,0.90);
+      --text-70:     rgba(255,255,255,0.70);
+      --text-65:     rgba(255,255,255,0.65);
+      --text-60:     rgba(255,255,255,0.60);
+      --text-55:     rgba(255,255,255,0.55);
+      --text-50:     rgba(255,255,255,0.50);
+      --text-45:     rgba(255,255,255,0.45);
+      --text-40:     rgba(255,255,255,0.40);
+      --text-20:     rgba(255,255,255,0.20);
+      --nav-bg:      rgba(0,0,0,0.85);
+      --btn-inv-bg:  #fff;
+      --btn-inv-txt: #0a0a0a;
+      --card-bg:     #111;
+      --font:   'Geist', system-ui, -apple-system, sans-serif;
+      --serif:  'Instrument Serif', Georgia, serif;
+      --max-w:  1280px;
+      --px:     24px;
+      --rf:     9999px;
+      --accent: #C4357A;
+    }
+
+    body.day-mode {
+      --bg:          #fafafa;
+      --surface:     #f0f0f0;
+      --surface-2:   #fff;
+      --surface-nav: rgba(0,0,0,0.05);
+      --border:      rgba(0,0,0,0.12);
+      --border-2:    rgba(0,0,0,0.20);
+      --text:        #0a0a0a;
+      --text-90:     rgba(0,0,0,0.90);
+      --text-70:     rgba(0,0,0,0.70);
+      --text-65:     rgba(0,0,0,0.65);
+      --text-60:     rgba(0,0,0,0.60);
+      --text-55:     rgba(0,0,0,0.55);
+      --text-50:     rgba(0,0,0,0.50);
+      --text-45:     rgba(0,0,0,0.45);
+      --text-40:     rgba(0,0,0,0.40);
+      --text-20:     rgba(0,0,0,0.20);
+      --nav-bg:      rgba(250,250,250,0.85);
+      --btn-inv-bg:  #0a0a0a;
+      --btn-inv-txt: #fff;
+      --card-bg:     #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface-nav); border-radius: var(--rf); padding: 10px 20px 10px 16px;
+      color: var(--text);
+    }
+    .nav-logo svg { width: 20px; height: 20px; }
+    .nav-logo span { font-size: 14px; }
+    .nav-links {
+      display: none; align-items: center; gap: 4px;
+      background: var(--surface-nav); border-radius: var(--rf); padding: 8px 12px;
+    }
+    .nav-links a { color: var(--text-70); font-size: 14px; padding: 8px 20px; border-radius: var(--rf); transition: color .2s, background .2s; }
+    .nav-links a:hover { color: var(--text); background: var(--border); }
+    .nav-back {
+      font-size: 14px; color: var(--text-55); padding: 10px 20px;
+      border-radius: var(--rf); border: 1px solid var(--border-2);
+      transition: color .2s, border-color .2s;
+    }
+    .nav-back:hover { color: var(--text); border-color: var(--text-40); }
+    .nav-theme-toggle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: transparent; border: 1px solid var(--border-2);
+      color: var(--text);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: background .2s; flex-shrink: 0; cursor: pointer;
+    }
+    .nav-theme-toggle:hover { background: var(--border); }
+    .nav-theme-toggle svg { width: 16px; height: 16px; stroke: var(--text); fill: none; stroke-width: 2; }
+    .nav-theme-toggle .sun-icon { display: none; }
+    body.day-mode .nav-theme-toggle .moon-icon { display: none; }
+    body.day-mode .nav-theme-toggle .sun-icon  { display: block; }
+
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+
+    /* BRIEF PAGE */
+    .brief-page {
+      max-width: 760px; margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+    .brief-eyebrow {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em;
+      color: var(--text-50); margin-bottom: 16px;
+    }
+    .brief-title {
+      font-size: clamp(32px,4vw,52px); font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px;
+    }
+    .brief-sub {
+      font-size: 16px; color: var(--text-65); line-height: 1.6;
+      margin-bottom: 48px; max-width: 560px;
+    }
+
+    .brief-section {
+      margin-bottom: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brief-section:last-of-type { border-bottom: none; }
+    .brief-section-title {
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--text-45); margin-bottom: 24px; font-weight: 500;
+    }
+
+    .field { margin-bottom: 20px; }
+    .field > label { display: block; font-size: 14px; font-weight: 500; color: var(--text-90); margin-bottom: 8px; }
+    .field label .req { color: var(--accent); margin-left: 2px; }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field input[type="url"],
+    .field input[type="date"],
+    .field textarea,
+    .field select {
+      width: 100%; padding: 14px 16px;
+      background: var(--surface); border: 1.5px solid var(--border-2);
+      border-radius: 12px; font-size: 15px; font-family: inherit;
+      color: var(--text); transition: border-color .2s;
+      -webkit-appearance: none; appearance: none;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      outline: none; border-color: var(--accent);
+    }
+    .field textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+    .field-hint { font-size: 12px; color: var(--text-45); margin-top: 6px; }
+
+    .radio-group, .check-group { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+    .radio-item, .check-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; border: 1.5px solid var(--border-2);
+      border-radius: 10px; cursor: pointer; transition: border-color .2s, background .2s;
+      font-size: 14px; color: var(--text-90);
+    }
+    .radio-item:hover, .check-item:hover { border-color: var(--accent); background: rgba(196,53,122,0.04); }
+    .radio-item input, .check-item input { accent-color: var(--accent); width: 16px; height: 16px; flex-shrink: 0; }
+
+    .brief-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; }
+    .btn-submit {
+      flex: 1; min-width: 200px; padding: 18px 32px;
+      background: var(--btn-inv-bg); color: var(--btn-inv-txt);
+      border: none; border-radius: var(--rf); font-size: 16px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+      transition: opacity .2s, transform .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { opacity: 0.88; transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: 0.6; transform: none; cursor: not-allowed; }
+    .btn-pdf {
+      padding: 18px 24px; background: transparent;
+      border: 1.5px solid var(--border-2); border-radius: var(--rf);
+      font-size: 15px; color: var(--text-70); cursor: pointer;
+      font-family: inherit; transition: border-color .2s, color .2s;
+      white-space: nowrap;
+    }
+    .btn-pdf:hover { border-color: var(--text-70); color: var(--text); }
+
+    .success-msg {
+      display: none; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 16px; padding: 24px; margin-top: 24px;
+      color: var(--text); font-size: 15px; line-height: 1.6;
+    }
+    .success-msg.visible { display: block; }
+
+    /* FOOTER */
+    .brief-footer {
+      border-top: 1px solid var(--border); margin-top: 80px;
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--text-40);
+      max-width: 760px; margin-left: auto; margin-right: auto;
+    }
+    .brief-footer a { color: var(--text-55); }
+    .brief-footer a:hover { color: var(--text); }
+
+    /* Print */
+    @media print {
+      .site-nav, .brief-actions, #scroll-top { display: none !important; }
+      .brief-page { padding: 20px; }
+      body { background: white !important; color: black !important; }
+      .field input, .field textarea, .field select {
+        border: 1px solid #ccc !important; background: white !important; color: black !important;
+      }
+      .radio-item, .check-item { border: 1px solid #ccc !important; color: black !important; }
+      .brief-section { border-bottom: 1px solid #ddd !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="/" class="nav-logo">
+    <svg viewBox="0 0 256 256"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="currentColor"></path></svg>
+    <span>conversion call</span>
+  </a>
+  <div class="nav-links">
+    <a href="/#oferta">oferta</a>
+    <a href="/#portfolio">portfolio</a>
+    <a href="/#proces">proces</a>
+    <a href="/#faq">faq</a>
+    <a href="/brief" style="color:var(--text)">brief</a>
+  </div>
+  <button class="nav-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="sun-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  </button>
+  <a href="/" class="nav-back">← wróć</a>
+</nav>
+
+<div class="brief-page">
+  <div class="brief-eyebrow">BRIEF · ZAMÓW STRONĘ</div>
+  <h1 class="brief-title">Opowiedz mi o swojej firmie.</h1>
+  <p class="brief-sub">Wypełnij formularz online — odpiszę w ciągu 24h z planem działania i fakturą proforma. Możesz też pobrać brief jako PDF i wypełnić go offline.</p>
+
+  <form id="briefForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="hidden" name="_subject" value="Nowy brief – Conversion Call">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+    <!-- SEKCJA 1 -->
+    <div class="brief-section">
+      <div class="brief-section-title">01 — O Twojej firmie</div>
+
+      <div class="field">
+        <label>Nazwa firmy <span class="req">*</span></label>
+        <input type="text" name="nazwa_firmy" required placeholder="np. Kwiaciarnia Róża">
+      </div>
+      <div class="field">
+        <label>Branża / rodzaj działalności <span class="req">*</span></label>
+        <input type="text" name="branza" required placeholder="np. usługi hydrauliczne, gabinet stomatologiczny">
+      </div>
+      <div class="field">
+        <label>Miasto / region <span class="req">*</span></label>
+        <input type="text" name="miasto" required placeholder="np. Wrocław, Kraków, cała Polska">
+      </div>
+      <div class="field">
+        <label>Obecna strona internetowa (jeśli masz)</label>
+        <input type="url" name="obecna_strona" placeholder="https://">
+      </div>
+      <div class="field">
+        <label>Krótki opis firmy – czym się zajmujesz, dla kogo <span class="req">*</span></label>
+        <textarea name="opis_firmy" required placeholder="Napisz 2-3 zdania o tym, co robisz i komu pomagasz..."></textarea>
+      </div>
+    </div>
+
+    <!-- SEKCJA 2 -->
+    <div class="brief-section">
+      <div class="brief-section-title">02 — Cel strony</div>
+
+      <div class="field">
+        <label>Główny cel strony <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="cel_strony" value="leady" required> Generowanie zapytań / leadów</label>
+          <label class="radio-item"><input type="radio" name="cel_strony" value="sprzedaz"> Sprzedaż produktów / usług online</label>
+          <label class="radio-item"><input type="radio" name="cel_strony" value="prezentacja"> Prezentacja firmy / portfolio</label>
+          <label class="radio-item"><input type="radio" name="cel_strony" value="rezerwacje"> Rezerwacje / zapisy online</label>
+          <label class="radio-item"><input type="radio" name="cel_strony" value="inny"> Inny cel</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Kto jest Twoim klientem docelowym? <span class="req">*</span></label>
+        <textarea name="klient_docelowy" required placeholder="np. właściciele małych firm w Wrocławiu, kobiety 30-50 szukające trenera personalnego..."></textarea>
+      </div>
+      <div class="field">
+        <label>Co chcesz, żeby klient zrobił po wejściu na stronę? <span class="req">*</span></label>
+        <textarea name="akcja_klienta" required placeholder="np. zadzwonił, wypełnił formularz, kupił produkt, umówił wizytę..."></textarea>
+      </div>
+    </div>
+
+    <!-- SEKCJA 3 -->
+    <div class="brief-section">
+      <div class="brief-section-title">03 — Treść i struktura</div>
+
+      <div class="field">
+        <label>Jakie podstrony potrzebujesz?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="podstrony" value="glowna"> Strona główna</label>
+          <label class="check-item"><input type="checkbox" name="podstrony" value="o_nas"> O nas / O mnie</label>
+          <label class="check-item"><input type="checkbox" name="podstrony" value="oferta"> Oferta / Usługi</label>
+          <label class="check-item"><input type="checkbox" name="podstrony" value="portfolio"> Portfolio / Realizacje</label>
+          <label class="check-item"><input type="checkbox" name="podstrony" value="blog"> Blog</label>
+          <label class="check-item"><input type="checkbox" name="podstrony" value="kontakt"> Kontakt</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Czy masz już teksty do strony?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="teksty" value="tak"> Tak, mam gotowe teksty</label>
+          <label class="radio-item"><input type="radio" name="teksty" value="czesciowo"> Częściowo</label>
+          <label class="radio-item"><input type="radio" name="teksty" value="nie"> Nie, potrzebuję pomocy z treścią</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Czy masz logo?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="logo" value="tak"> Tak</label>
+          <label class="radio-item"><input type="radio" name="logo" value="nie"> Nie</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Czy masz zdjęcia?</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="zdjecia" value="tak"> Tak, mam profesjonalne zdjęcia</label>
+          <label class="radio-item"><input type="radio" name="zdjecia" value="czesciowo"> Mam kilka, potrzebuję więcej</label>
+          <label class="radio-item"><input type="radio" name="zdjecia" value="nie"> Nie, użyjemy stocków</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEKCJA 4 -->
+    <div class="brief-section">
+      <div class="brief-section-title">04 — Styl i inspiracje</div>
+
+      <div class="field">
+        <label>Jakie strony Ci się podobają? (podaj 1–3 URL lub nazwy firm)</label>
+        <textarea name="inspiracje" placeholder="np. apple.com, strona konkurencji X, coś w stylu Notion..."></textarea>
+      </div>
+      <div class="field">
+        <label>Jakiego stylu szukasz?</label>
+        <div class="check-group">
+          <label class="check-item"><input type="checkbox" name="styl" value="minimalistyczny"> Minimalistyczny / czysty</label>
+          <label class="check-item"><input type="checkbox" name="styl" value="ciemny"> Ciemny / premium</label>
+          <label class="check-item"><input type="checkbox" name="styl" value="jasny"> Jasny / przyjazny</label>
+          <label class="check-item"><input type="checkbox" name="styl" value="nowoczesny"> Nowoczesny / technologiczny</label>
+          <label class="check-item"><input type="checkbox" name="styl" value="klasyczny"> Klasyczny / zaufany</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Preferowane kolory marki</label>
+        <input type="text" name="kolory" placeholder="np. granatowy i złoty, zielony, biały i czarny...">
+      </div>
+      <div class="field">
+        <label>Czego zdecydowanie NIE chcesz na stronie?</label>
+        <textarea name="nie_chce" placeholder="np. przesadnych animacji, zbyt wielu kolorów, zbyt formalnego tonu..."></textarea>
+      </div>
+    </div>
+
+    <!-- SEKCJA 5 -->
+    <div class="brief-section">
+      <div class="brief-section-title">05 — Szczegóły realizacji</div>
+
+      <div class="field">
+        <label>Preferowany termin uruchomienia</label>
+        <input type="date" name="termin">
+      </div>
+      <div class="field">
+        <label>Budżet</label>
+        <div class="radio-group">
+          <label class="radio-item"><input type="radio" name="budzet" value="pakiet_start"> Pakiet Start – 720 zł (strona główna + 4 podstrony)</label>
+          <label class="radio-item"><input type="radio" name="budzet" value="wycena"> Chcę wycenę większego projektu</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Dodatkowe uwagi / pytania</label>
+        <textarea name="uwagi" placeholder="Cokolwiek, co chcesz dodać..."></textarea>
+      </div>
+    </div>
+
+    <!-- SEKCJA 6 -->
+    <div class="brief-section">
+      <div class="brief-section-title">06 — Dane kontaktowe</div>
+
+      <div class="field">
+        <label>Imię i nazwisko <span class="req">*</span></label>
+        <input type="text" name="imie_nazwisko" required placeholder="Anna Kowalska">
+      </div>
+      <div class="field">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" name="email" required placeholder="twoj@email.pl">
+      </div>
+      <div class="field">
+        <label>Telefon</label>
+        <input type="tel" name="telefon" placeholder="+48 600 000 000">
+      </div>
+      <div class="field">
+        <label>Skąd dowiedziałeś się o Conversion Call?</label>
+        <select name="zrodlo">
+          <option value="">— wybierz —</option>
+          <option value="google">Google</option>
+          <option value="polecenie">Polecenie od znajomego</option>
+          <option value="social">Social media</option>
+          <option value="inne">Inne</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="brief-actions">
+      <button type="submit" class="btn-submit" id="submitBtn">
+        Wyślij brief →
+      </button>
+      <button type="button" class="btn-pdf" onclick="window.print()">
+        ↓ Pobierz jako PDF
+      </button>
+    </div>
+
+    <div class="success-msg" id="successMsg">
+      ✓ Brief wysłany! Odezwę się w ciągu 24h z planem działania.<br>
+      <span style="color:var(--text-55);font-size:14px;">Sprawdź skrzynkę — wyślę też potwierdzenie na Twój email.</span>
+    </div>
+  </form>
+</div>
+
+<footer class="brief-footer">
+  <p>© 2026 Conversion Call · <a href="/">strona główna</a> · <a href="mailto:hello@conversioncall.pl">hello@conversioncall.pl</a></p>
+</footer>
+
+<script>
+(function() {
+  // Theme toggle
+  var toggle = document.getElementById('themeToggle');
+  var saved = localStorage.getItem('cc-theme');
+  if (saved === 'day') document.body.classList.add('day-mode');
+  if (toggle) toggle.addEventListener('click', function() {
+    document.body.classList.toggle('day-mode');
+    localStorage.setItem('cc-theme', document.body.classList.contains('day-mode') ? 'day' : 'dark');
+  });
+})();
+
+document.getElementById('briefForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  btn.textContent = 'Wysyłanie...';
+  btn.disabled = true;
+
+  try {
+    var response = await fetch(this.action, {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      document.getElementById('successMsg').classList.add('visible');
+      this.reset();
+      btn.textContent = '✓ Wysłano';
+      document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else {
+      btn.textContent = 'Błąd – spróbuj ponownie';
+      btn.disabled = false;
+    }
+  } catch(err) {
+    btn.textContent = 'Błąd – spróbuj ponownie';
+    btn.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
