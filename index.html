@@ -457,6 +457,17 @@
     .trust-t { font-size: 16px; }
     .trust-d { font-size: 14px; color: var(--text-60); margin-top: 8px; line-height: 1.6; }
 
+    /* ═══ BLOG PREVIEW ═══ */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 24px; margin-bottom: 40px; }
+    .blog-card { display: block; padding: 28px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); text-decoration: none; transition: border-color .2s, transform .2s; }
+    .blog-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .blog-card-meta { font-size: 12px; color: var(--text-50); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 12px; }
+    .blog-card-title { font-size: clamp(16px,2vw,20px); font-weight: 700; color: var(--text); line-height: 1.35; margin: 0 0 12px; }
+    .blog-card-excerpt { font-size: 14px; color: var(--text-70); line-height: 1.65; margin: 0; }
+    .blog-more { text-align: center; }
+    .btn-ghost { display: inline-block; padding: 12px 28px; border: 1px solid var(--border); border-radius: var(--rf); color: var(--text-70); text-decoration: none; font-size: 15px; transition: border-color .2s, color .2s; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
     /* ═══ FAQ ═══ */
     .faq-wrap { max-width: 920px; margin: 0 auto; }
     .faq-hdr  { text-align: center; margin-bottom: 48px; }
@@ -1231,6 +1242,7 @@
     <a href="#proces">proces</a>
     <a href="#faq">faq</a>
     <a href="/brief">brief</a>
+    <a href="/blog">blog</a>
   </div>
   <button class="nav-theme-toggle" id="themeToggle" aria-label="Toggle theme">
     <svg class="moon-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1860,6 +1872,36 @@
         <div class="trust-t">odpowiedź w 24h</div>
         <p class="trust-d">Każdy mail. Bez wyjątków.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section id="blog" class="section reveal" style="transition-delay:300ms">
+  <div class="container">
+    <div class="faq-hdr">
+      <div class="eyebrow anim-blur-slide anim-delay-0">wiedza</div>
+      <h2 class="display-h anim-blur-slide anim-delay-100">Artykuły o stronach.</h2>
+    </div>
+    <div class="blog-grid anim-blur-slide anim-delay-200">
+      <a href="/blog/ile-kosztuje-strona-internetowa" class="blog-card">
+        <div class="blog-card-meta">koszt · 5 min</div>
+        <h3 class="blog-card-title">Ile kosztuje strona internetowa w 2025 roku?</h3>
+        <p class="blog-card-excerpt">Szablony od 0 zł, agencje od 5 000 zł, freelancerzy pośrodku. Sprawdź, co faktycznie dostajesz za każdą kwotę.</p>
+      </a>
+      <a href="/blog/strona-internetowa-dla-malej-firmy" class="blog-card">
+        <div class="blog-card-meta">poradnik · 6 min</div>
+        <h3 class="blog-card-title">Strona internetowa dla małej firmy — co musi zawierać?</h3>
+        <p class="blog-card-excerpt">5 elementów, bez których Twoja strona nie zamieni odwiedzających w klientów. Praktyczna checklista.</p>
+      </a>
+      <a href="/blog/jak-zdobyc-klientow-przez-strone-internetowa" class="blog-card">
+        <div class="blog-card-meta">marketing · 7 min</div>
+        <h3 class="blog-card-title">Jak zdobywać klientów przez stronę internetową?</h3>
+        <p class="blog-card-excerpt">SEO, CTA, social proof — trzy dźwignie, które przekształcają ruch w zapytania. Bez budżetu reklamowego.</p>
+      </a>
+    </div>
+    <div class="blog-more anim-blur-slide anim-delay-300">
+      <a href="/blog" class="btn-ghost">wszystkie artykuły →</a>
     </div>
   </div>
 </section>
