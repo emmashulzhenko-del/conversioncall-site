@@ -322,12 +322,21 @@
         gap: clamp(48px, 6vw, 96px);
         align-items: flex-start;
       }
-      .about-wrap > :not(.about-portrait-wrap) {
+      .about-text-col {
         flex: 1;
         min-width: 0;
       }
-      .about-portrait-wrap { margin-top: 0; flex-shrink: 0; width: 42%; }
-      .about-portrait { height: 100%; min-height: 520px; max-height: 680px; object-position: center 15%; }
+      .about-portrait-wrap {
+        flex-shrink: 0;
+        width: 40%;
+        margin-top: 0;
+      }
+      .about-portrait {
+        height: clamp(480px, 55vw, 680px);
+        min-height: unset;
+        max-height: unset;
+        object-position: center 15%;
+      }
     }
 
     /* ═══ PORTFOLIO ═══ */
@@ -1168,15 +1177,17 @@
 <!-- ABOUT -->
 <section class="section section-cream reveal">
   <div class="wrap about-wrap">
-    <div class="about-identity anim-blur-slide">
-      <span class="about-quote-mark">"</span>
-      <div class="about-founder">
-        <div class="about-founder-name">Emma Shulzhenko</div>
-        <div class="about-founder-title">Founder, Conversion Call</div>
+    <div class="about-text-col">
+      <div class="about-identity anim-blur-slide">
+        <span class="about-quote-mark">"</span>
+        <div class="about-founder">
+          <div class="about-founder-name">Emma Shulzhenko</div>
+          <div class="about-founder-title">Founder, Conversion Call</div>
+        </div>
       </div>
+      <p class="about-statement anim-blur-slide anim-delay-100">Tworzę strony, które nie tylko wyglądają dobrze — ale naprawdę działają dla Twojego biznesu.</p>
+      <p class="about-sub-text anim-blur-slide anim-delay-200">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji. Piszemy mailem, ja koduję, Ty dostajesz stronę gotową do zarabiania.</p>
     </div>
-    <p class="about-statement anim-blur-slide anim-delay-100">Tworzę strony, które nie tylko wyglądają dobrze — ale naprawdę działają dla Twojego biznesu.</p>
-    <p class="about-sub-text anim-blur-slide anim-delay-200">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji. Piszemy mailem, ja koduję, Ty dostajesz stronę gotową do zarabiania.</p>
     <div class="about-portrait-wrap anim-blur-slide anim-delay-300">
       <img class="about-portrait" src="Emma-3.jpg" alt="Emma Shulzhenko — Conversion Call">
     </div>
