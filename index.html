@@ -953,6 +953,8 @@
     .kft-tagline { font-size: 14px; color: var(--ft-t65); line-height: 1.6; max-width: 300px; margin-bottom: 12px; }
     .kft-email { font-size: 14px; color: var(--ft-t90); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--ft-border2); transition: color .2s; }
     .kft-email:hover { color: var(--ft-text); }
+    .kft-phone { display: block; margin-top: 6px; font-size: 14px; color: var(--ft-t65); transition: color .2s; }
+    .kft-phone:hover { color: var(--ft-text); }
     .kft-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ft-t50); margin-bottom: 16px; }
     .kft-socials { display: flex; gap: 8px; }
     .kft-social {
@@ -1091,7 +1093,7 @@
     "name": "Conversion Call",
     "description": "Profesjonalne strony internetowe dla małych firm w Polsce. Stała cena 720 zł, realizacja w 7 dni roboczych.",
     "url": "https://conversioncall.co",
-    "telephone": "",
+    "telephone": "+48 720 750 365",
     "email": "emma@conversioncall.co",
     "founder": {
       "@type": "Person",
@@ -1105,10 +1107,11 @@
       "addressRegion": "Dolny Śląsk",
       "addressCountry": "PL"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Polska"
-    },
+    "areaServed": [
+      { "@type": "City", "name": "Wrocław" },
+      { "@type": "AdministrativeArea", "name": "Dolny Śląsk" },
+      { "@type": "Country", "name": "Polska" }
+    ],
     "priceRange": "720 zł",
     "currenciesAccepted": "PLN",
     "paymentAccepted": "BLIK, przelew, Przelewy24",
@@ -1973,6 +1976,7 @@
         </div>
         <p class="kft-tagline">Strony internetowe za 720 zł dla małych firm w Polsce.</p>
         <a href="mailto:hello@conversioncall.pl" class="kft-email">hello@conversioncall.pl</a>
+        <a href="tel:+48720750365" class="kft-phone">+48 720 750 365</a>
       </div>
 
       <!-- Col 2: Socials -->
