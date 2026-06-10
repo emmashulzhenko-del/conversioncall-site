@@ -17,6 +17,8 @@
   "rewrites": [
     { "source": "/brief", "destination": "/brief.html" },
     { "source": "/wroclaw", "destination": "/wroclaw.html" },
+    { "source": "/strona-wizytowka", "destination": "/strona-wizytowka.html" },
+    { "source": "/strona-landing-page", "destination": "/strona-landing-page.html" },
     { "source": "/blog", "destination": "/blog/index.html" },
     { "source": "/blog/:slug", "destination": "/blog/:slug.html" }
   ]
