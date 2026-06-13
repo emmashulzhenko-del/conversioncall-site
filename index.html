@@ -298,42 +298,52 @@
     }
     .hero-casestudy-link { font-size: 11px; color: rgba(0,0,0,0.38); }
 
-    /* ═══ METRIC BAND ═══ */
-    .metric-band-wrap { position: relative; z-index: 2; }
-    .metric-band {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-bottom: none;
-      border-radius: 36px 36px 0 0;
-      padding: 18px 18px 48px;
-      display: flex; align-items: stretch; gap: 0;
+    /* ═══ METRIC ZONE — shared-bg band + Rzeczywistość ═══ */
+    .metric-zone {
+      position: relative;
+      background: url('parallax-decor.webp') center top / cover no-repeat;
+      border-radius: 40px 40px 0 0;
+      overflow: hidden;
     }
-    .mcell { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 32px 30px; }
-    .mcell + .mcell { border-left: 1px solid var(--border); }
+    .metric-band {
+      position: relative;
+      padding: 64px max(24px,5vw) 80px;
+      background: linear-gradient(180deg, rgba(8,9,10,.84) 0%, rgba(8,9,10,.76) 65%, rgba(8,9,10,.28) 100%);
+    }
+    .metric-grid { max-width: 1280px; margin: 0 auto; display: flex; align-items: stretch; }
+    .mcell { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 8px 36px; }
+    .mcell:not(:last-child) { border-right: 1px solid rgba(255,255,255,.14); }
     .mtop { display: flex; align-items: center; gap: 10px; }
     .mico { width: 24px; height: 24px; color: var(--accent); flex-shrink: 0; }
-    .mlabel { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-50); font-weight: 500; }
-    .mnum { font-weight: 700; letter-spacing: -0.03em; line-height: .95; font-size: clamp(40px,5vw,62px); }
-    .munit { font-size: .38em; color: var(--text-50); font-weight: 400; letter-spacing: 0; vertical-align: baseline; }
-    .mdesc { font-size: 13px; color: var(--text-50); line-height: 1.5; }
-    /* day mode: surface-2 is #fff so use card-like elevated bg */
-    body.day-mode .metric-band { background: var(--surface-2); border-color: var(--border); }
-    body.day-mode .mlabel, body.day-mode .munit, body.day-mode .mdesc { color: var(--text-55); }
-    @media (max-width: 780px) {
-      .metric-band { flex-direction: column; border-radius: 28px 28px 0 0; padding-bottom: 40px; }
-      .mcell { padding: 24px 20px; }
-      .mcell + .mcell { border-left: none; border-top: 1px solid var(--border); }
-    }
+    .mlabel { font-size: 12px; letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.52); font-weight: 500; }
+    .mnum { font-weight: 700; letter-spacing: -0.03em; line-height: .9; font-size: clamp(48px,6vw,84px); color: #fff; }
+    .munit { font-size: .36em; color: rgba(255,255,255,.52); font-weight: 400; letter-spacing: 0; }
+    .mdesc { font-size: 14px; color: #c8c8c8; line-height: 1.55; max-width: 34ch; }
 
-    /* ═══ PARALLAX FLOW — band continues into Rzeczywistość ═══ */
-    .parallax-story { margin-top: -1px; }
-    .parallax-flow-cap {
-      position: absolute; top: 0; left: 0; right: 0; height: 35%;
-      background: linear-gradient(180deg, var(--surface-2) 0%, rgba(0,0,0,0) 100%);
-      z-index: 3; pointer-events: none;
+    .rzecz-section {
+      position: relative;
+      min-height: 520px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      overflow: hidden; padding: 80px 24px;
     }
-    body.day-mode .parallax-flow-cap {
-      background: linear-gradient(180deg, var(--surface-2) 0%, rgba(255,255,255,0) 100%);
+    .rzecz-section::before {
+      content: ""; position: absolute; inset: -30px;
+      background: url('parallax-decor-blur.webp') center / cover no-repeat;
+      filter: brightness(.52);
+      z-index: 0;
+    }
+    .rzecz-section::after {
+      content: ""; position: absolute; inset: 0;
+      background: rgba(8,9,10,.42); z-index: 1;
+    }
+    .rzecz-section > * { position: relative; z-index: 2; }
+
+    @media (max-width: 780px) {
+      .metric-zone { border-radius: 28px 28px 0 0; }
+      .metric-band { padding: 48px 20px 56px; }
+      .metric-grid { flex-direction: column; gap: 0; }
+      .mcell { padding: 24px 8px; border-right: none; }
+      .mcell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,.14); }
     }
 
 
@@ -1326,10 +1336,10 @@
   </a>
 </section>
 
-<!-- METRIC BAND -->
-<section class="metric-band-wrap">
-  <div class="wrap">
-    <div class="metric-band">
+<!-- METRIC ZONE: shared-bg metric band + Rzeczywistość -->
+<div class="metric-zone">
+  <div class="metric-band">
+    <div class="metric-grid">
       <div class="mcell">
         <div class="mtop">
           <svg class="mico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
@@ -1356,7 +1366,14 @@
       </div>
     </div>
   </div>
-</section>
+  <section class="rzecz-section">
+    <div class="story-content">
+      <p class="story-eyebrow">Rzeczywistość</p>
+      <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
+      <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
+    </div>
+  </section>
+</div>
 
 <!-- PARALLAX STORY — Technique 1: sticky pin + scroll-driven cross-fade -->
 <div class="parallax-story" id="parallax-story">
@@ -1366,18 +1383,6 @@
     <div class="parallax-hero-img" id="parallaxHeroImg"></div>
     <!-- Dark overlay for text readability -->
     <div class="parallax-dark-overlay"></div>
-    <!-- Flow gradient: band surface colour bleeds into the top of the section -->
-    <div class="parallax-flow-cap"></div>
-
-    <!-- Layer 1: Problem statement -->
-    <div class="parallax-layer pl-1">
-      <div class="pl-bg"></div>
-      <div class="story-content">
-        <p class="story-eyebrow">Rzeczywistość</p>
-        <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
-        <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
-      </div>
-    </div>
 
     <!-- Layer 2: Pivot -->
     <div class="parallax-layer pl-2">
