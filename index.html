@@ -35,9 +35,9 @@
   <link rel="preload" as="image" href="parallax-decor.webp" fetchpriority="low">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ═══ RESET ═══ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,7 +72,7 @@
       --cmp-hl-txt:  #0a0a0a;
       --cmp-hl-cell: rgba(255,255,255,0.05);
       --card-bg:     #111;
-      --font:   'Geist', system-ui, -apple-system, sans-serif;
+      --font:   'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
       --serif:  'Instrument Serif', Georgia, serif;
       --max-w:  1280px;
       --px:     24px;
@@ -298,15 +298,43 @@
     }
     .hero-casestudy-link { font-size: 11px; color: rgba(0,0,0,0.38); }
 
-    /* ═══ STATS BAR (moved out of hero) ═══ */
-    .stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); }
-    .stats-bar-in {
-      max-width: var(--max-w); margin: 0 auto;
-      padding: 36px clamp(24px,4vw,48px);
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+    /* ═══ METRIC BAND ═══ */
+    .metric-band-wrap { position: relative; z-index: 2; }
+    .metric-band {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 36px 36px 0 0;
+      padding: 18px 18px 48px;
+      display: flex; align-items: stretch; gap: 0;
     }
-    .sb-n { font-size: clamp(28px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; color: var(--text); }
-    .sb-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-50); margin-top: 4px; }
+    .mcell { flex: 1; display: flex; flex-direction: column; gap: 12px; padding: 32px 30px; }
+    .mcell + .mcell { border-left: 1px solid var(--border); }
+    .mtop { display: flex; align-items: center; gap: 10px; }
+    .mico { width: 24px; height: 24px; color: var(--accent); flex-shrink: 0; }
+    .mlabel { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-50); font-weight: 500; }
+    .mnum { font-weight: 700; letter-spacing: -0.03em; line-height: .95; font-size: clamp(40px,5vw,62px); }
+    .munit { font-size: .38em; color: var(--text-50); font-weight: 400; letter-spacing: 0; vertical-align: baseline; }
+    .mdesc { font-size: 13px; color: var(--text-50); line-height: 1.5; }
+    /* day mode: surface-2 is #fff so use card-like elevated bg */
+    body.day-mode .metric-band { background: var(--surface-2); border-color: var(--border); }
+    body.day-mode .mlabel, body.day-mode .munit, body.day-mode .mdesc { color: var(--text-55); }
+    @media (max-width: 780px) {
+      .metric-band { flex-direction: column; border-radius: 28px 28px 0 0; padding-bottom: 40px; }
+      .mcell { padding: 24px 20px; }
+      .mcell + .mcell { border-left: none; border-top: 1px solid var(--border); }
+    }
+
+    /* ═══ PARALLAX FLOW — band continues into Rzeczywistość ═══ */
+    .parallax-story { margin-top: -1px; }
+    .parallax-flow-cap {
+      position: absolute; top: 0; left: 0; right: 0; height: 35%;
+      background: linear-gradient(180deg, var(--surface-2) 0%, rgba(0,0,0,0) 100%);
+      z-index: 3; pointer-events: none;
+    }
+    body.day-mode .parallax-flow-cap {
+      background: linear-gradient(180deg, var(--surface-2) 0%, rgba(255,255,255,0) 100%);
+    }
 
 
     /* ═══ SECTION CREAM — light in dark-mode, dark in day-mode ═══ */
@@ -1298,14 +1326,37 @@
   </a>
 </section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stats-bar-in">
-    <div class="anim-blur-slide"><div class="sb-n">720 zł</div><div class="sb-l">stała cena</div></div>
-    <div class="anim-blur-slide"><div class="sb-n">7 dni</div><div class="sb-l">realizacja</div></div>
-    <div class="anim-blur-slide"><div class="sb-n">60 dni</div><div class="sb-l">wsparcie gratis</div></div>
+<!-- METRIC BAND -->
+<section class="metric-band-wrap">
+  <div class="wrap">
+    <div class="metric-band">
+      <div class="mcell">
+        <div class="mtop">
+          <svg class="mico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span class="mlabel">Stała cena</span>
+        </div>
+        <div class="mnum">720 <span class="munit">zł</span></div>
+        <p class="mdesc">Jedna kwota brutto, bez ukrytych kosztów.</p>
+      </div>
+      <div class="mcell">
+        <div class="mtop">
+          <svg class="mico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2"/></svg>
+          <span class="mlabel">Realizacja</span>
+        </div>
+        <div class="mnum">7 <span class="munit">dni</span></div>
+        <p class="mdesc">Tydzień roboczy od briefu do publikacji.</p>
+      </div>
+      <div class="mcell">
+        <div class="mtop">
+          <svg class="mico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span class="mlabel">Wsparcie gratis</span>
+        </div>
+        <div class="mnum">60 <span class="munit">dni</span></div>
+        <p class="mdesc">Bezpłatne poprawki i pomoc po wdrożeniu.</p>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- PARALLAX STORY — Technique 1: sticky pin + scroll-driven cross-fade -->
 <div class="parallax-story" id="parallax-story">
@@ -1315,6 +1366,8 @@
     <div class="parallax-hero-img" id="parallaxHeroImg"></div>
     <!-- Dark overlay for text readability -->
     <div class="parallax-dark-overlay"></div>
+    <!-- Flow gradient: band surface colour bleeds into the top of the section -->
+    <div class="parallax-flow-cap"></div>
 
     <!-- Layer 1: Problem statement -->
     <div class="parallax-layer pl-1">
