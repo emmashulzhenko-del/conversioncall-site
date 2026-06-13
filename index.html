@@ -32,7 +32,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="preload" as="image" href="var2-hero.webp" fetchpriority="high">
-  <link rel="preload" as="image" href="parallax-decor.webp" fetchpriority="low">
+  <link rel="preload" as="image" href="parallax-decor-blur.webp" fetchpriority="low">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap">
@@ -298,52 +298,32 @@
     }
     .hero-casestudy-link { font-size: 11px; color: rgba(0,0,0,0.38); }
 
-    /* ═══ METRIC ZONE — shared-bg band + Rzeczywistość ═══ */
+    /* ═══ METRIC BAND — white ═══ */
     .metric-zone {
-      position: relative;
-      background: url('parallax-decor.webp') center top / cover no-repeat;
+      background: #fff;
       border-radius: 40px 40px 0 0;
       overflow: hidden;
     }
     .metric-band {
-      position: relative;
+      background: #fff;
       padding: 64px max(24px,5vw) 80px;
-      background: linear-gradient(180deg, rgba(8,9,10,.84) 0%, rgba(8,9,10,.76) 65%, rgba(8,9,10,.28) 100%);
     }
     .metric-grid { max-width: 1280px; margin: 0 auto; display: flex; align-items: stretch; }
     .mcell { flex: 1; display: flex; flex-direction: column; gap: 14px; padding: 8px 36px; }
-    .mcell:not(:last-child) { border-right: 1px solid rgba(255,255,255,.14); }
+    .mcell:not(:last-child) { border-right: 1px solid rgba(0,0,0,.10); }
     .mtop { display: flex; align-items: center; gap: 10px; }
     .mico { width: 24px; height: 24px; color: var(--accent); flex-shrink: 0; }
-    .mlabel { font-size: 12px; letter-spacing: .13em; text-transform: uppercase; color: rgba(255,255,255,.52); font-weight: 500; }
-    .mnum { font-weight: 700; letter-spacing: -0.03em; line-height: .9; font-size: clamp(48px,6vw,84px); color: #fff; }
-    .munit { font-size: .36em; color: rgba(255,255,255,.52); font-weight: 400; letter-spacing: 0; }
-    .mdesc { font-size: 14px; color: #c8c8c8; line-height: 1.55; max-width: 34ch; }
-
-    .rzecz-section {
-      position: relative;
-      min-height: 520px;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      overflow: hidden; padding: 80px 24px;
-    }
-    .rzecz-section::before {
-      content: ""; position: absolute; inset: -30px;
-      background: url('parallax-decor-blur.webp') center / cover no-repeat;
-      filter: brightness(.52);
-      z-index: 0;
-    }
-    .rzecz-section::after {
-      content: ""; position: absolute; inset: 0;
-      background: rgba(8,9,10,.42); z-index: 1;
-    }
-    .rzecz-section > * { position: relative; z-index: 2; }
+    .mlabel { font-size: 12px; letter-spacing: .13em; text-transform: uppercase; color: #6a6a6a; font-weight: 500; }
+    .mnum { font-weight: 700; letter-spacing: -0.03em; line-height: .9; font-size: clamp(48px,6vw,84px); color: #0a0a0a; }
+    .munit { font-size: .36em; color: #6a6a6a; font-weight: 400; letter-spacing: 0; }
+    .mdesc { font-size: 14px; color: #6a6a6a; line-height: 1.55; max-width: 34ch; }
 
     @media (max-width: 780px) {
       .metric-zone { border-radius: 28px 28px 0 0; }
       .metric-band { padding: 48px 20px 56px; }
       .metric-grid { flex-direction: column; gap: 0; }
       .mcell { padding: 24px 8px; border-right: none; }
-      .mcell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(255,255,255,.14); }
+      .mcell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(0,0,0,.10); }
     }
 
 
@@ -784,7 +764,7 @@
     /* Parallax: hero image stays, scenes overlay on top */
     .parallax-hero-img {
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url('parallax-decor.webp');
+      background-image: url('parallax-decor-blur.webp'); /* pre-blurred ≈ final frame (40px desktop) */
       background-size: cover; background-position: center;
       will-change: filter;
     }
@@ -1336,7 +1316,7 @@
   </a>
 </section>
 
-<!-- METRIC ZONE: shared-bg metric band + Rzeczywistość -->
+<!-- METRIC BAND -->
 <div class="metric-zone">
   <div class="metric-band">
     <div class="metric-grid">
@@ -1366,23 +1346,26 @@
       </div>
     </div>
   </div>
-  <section class="rzecz-section">
-    <div class="story-content">
-      <p class="story-eyebrow">Rzeczywistość</p>
-      <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
-      <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
-    </div>
-  </section>
 </div>
 
 <!-- PARALLAX STORY — Technique 1: sticky pin + scroll-driven cross-fade -->
 <div class="parallax-story" id="parallax-story">
   <div class="parallax-story-sticky">
 
-    <!-- Hero image: stays visible, blurs as scenes overlay -->
+    <!-- Hero image: pre-blurred to match final parallax frame (~40px); blurs further via JS as you scroll -->
     <div class="parallax-hero-img" id="parallaxHeroImg"></div>
     <!-- Dark overlay for text readability -->
     <div class="parallax-dark-overlay"></div>
+
+    <!-- Layer 1: Problem statement (Rzeczywistość) — restored -->
+    <div class="parallax-layer pl-1">
+      <div class="pl-bg"></div>
+      <div class="story-content">
+        <p class="story-eyebrow">Rzeczywistość</p>
+        <h2 class="story-h2">Strona z&nbsp;2018 nie sprzedaje w&nbsp;2026.</h2>
+        <p class="story-sub">Większość małych firm w Polsce ma stronę, która tylko istnieje. Twoja może pracować.</p>
+      </div>
+    </div>
 
     <!-- Layer 2: Pivot -->
     <div class="parallax-layer pl-2">
