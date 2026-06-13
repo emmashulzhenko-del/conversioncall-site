@@ -301,8 +301,9 @@
     /* ═══ METRIC BAND — white ═══ */
     .metric-zone {
       background: #fff;
-      border-radius: 40px 40px 0 0;
+      border-radius: 40px;
       overflow: hidden;
+      margin: 0 auto 64px;
     }
     .metric-band {
       background: #fff;
@@ -319,11 +320,12 @@
     .mdesc { font-size: 14px; color: #6a6a6a; line-height: 1.55; max-width: 34ch; }
 
     @media (max-width: 780px) {
-      .metric-zone { border-radius: 28px 28px 0 0; }
-      .metric-band { padding: 48px 20px 56px; }
+      .metric-zone { border-radius: 28px; margin-bottom: 40px; }
+      .metric-band { padding: 40px 20px 48px; }
       .metric-grid { flex-direction: column; gap: 0; }
-      .mcell { padding: 24px 8px; border-right: none; }
+      .mcell { padding: 22px 20px; border-right: none; }
       .mcell:not(:last-child) { border-right: none; border-bottom: 1px solid rgba(0,0,0,.10); }
+      .mnum { font-size: clamp(36px,11vw,52px); }
     }
 
 
@@ -356,34 +358,36 @@
     .about-founder-title { font-size: clamp(14px,1.5vw,18px); color: var(--text-55); margin-top: 4px; }
     .about-statement { font-size: clamp(32px,5vw,68px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-top: 40px; }
     .about-sub-text { font-size: clamp(16px,1.5vw,20px); color: var(--text-70); max-width: 640px; margin-top: 32px; line-height: 1.7; }
-    .about-portrait-wrap { margin-top: 48px; }
-    .about-portrait { width: 100%; height: clamp(320px,55vw,560px); object-fit: cover; object-position: center 20%; border-radius: 24px; display: block; }
 
+    /* ═══ FOUNDER SECTION — full-bleed photo right panel ═══ */
+    .founder-section {
+      display: grid;
+      grid-template-columns: 1fr 40%;
+      align-items: stretch;
+      min-height: 600px;
+      padding: 0;
+      border-radius: 40px 40px 0 0;
+      overflow: hidden;
+    }
+    .founder-text {
+      padding: 80px clamp(24px,5vw,80px);
+      align-self: center;
+    }
+    .founder-photo { position: relative; }
+    .founder-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 15%;
+      display: block; border-radius: 0;
+    }
     @media (min-width: 768px) {
-      .about-wrap {
-        display: flex;
-        flex-direction: row;
-        gap: clamp(48px, 6vw, 96px);
-        align-items: flex-start;
-      }
-      .about-text-col {
-        flex: 1;
-        min-width: 0;
-      }
-      .about-portrait-wrap {
-        flex-shrink: 0;
-        width: 40%;
-        margin-top: 8px;
-      }
-      .about-portrait {
-        height: clamp(480px, 55vw, 680px);
-        min-height: unset;
-        max-height: unset;
-        object-position: center 15%;
-      }
       .about-quote-mark { font-size: clamp(48px, 6vw, 80px); margin-top: -8px; }
       .about-statement { font-size: clamp(28px, 3.8vw, 52px); margin-top: 28px; }
       .about-sub-text { max-width: 480px; }
+    }
+    @media (max-width: 860px) {
+      .founder-section { grid-template-columns: 1fr; border-radius: 28px 28px 0 0; min-height: unset; }
+      .founder-photo { height: 60vh; order: -1; }
+      .founder-text { padding: 48px 24px; }
     }
 
     /* ═══ PORTFOLIO ═══ */
@@ -608,6 +612,22 @@
     body.day-mode section[data-decor-bg="22"]::before { opacity: 0; }
     body.day-mode section[data-decor-bg="77"]::before { opacity: 0; }
 
+    /* ═══ PRICING SECTION — full blurred bg ═══ */
+    section.pricing-section[data-decor-bg="77"] { position: relative; }
+    section.pricing-section[data-decor-bg="77"]::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('77-decor-blur.webp') center/cover no-repeat;
+      opacity: 1; z-index: 0; pointer-events: none;
+      top: 0; left: 0; width: 100%; height: 100%;
+      mask-image: none; -webkit-mask-image: none;
+    }
+    section.pricing-section[data-decor-bg="77"]::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(8,9,10,.80); z-index: 0;
+    }
+    section.pricing-section > * { position: relative; z-index: 1; }
+    body.day-mode section.pricing-section[data-decor-bg="77"]::before { opacity: 1; }
+
     /* ═══ RESPONSIVE ═══ */
     @media (min-width: 768px) {
       :root { --px: 40px; --py: 128px; }
@@ -786,20 +806,26 @@
     .pl-2 .story-sub { color: rgba(255,255,255,0.65); }
 
     /* Scene 3: comparison cards */
-    .story-cmp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; width: 100%; }
+    .story-cmp-row { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; max-width: 960px; width: 100%; }
     .story-card { border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-align: left; }
     .story-card--before {
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.18); opacity: 1;
-    }
-    .story-card--after {
       background: rgba(255,255,255,0.06);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.12); opacity: 0.82;
+    }
+    .story-card--after {
+      background: rgba(255,255,255,0.09);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 0 1px rgba(196,53,122,.20), 0 8px 32px rgba(196,53,122,.22);
     }
     .story-card-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-    .story-card--after .story-card-label { color: rgba(255,255,255,0.9); }
+    .story-card--after .story-card-label { color: var(--accent); }
+    .story-card-badge {
+      display: inline-block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--accent); color: #fff; padding: 3px 10px; border-radius: 999px;
+      font-weight: 600; align-self: flex-start; margin-bottom: 2px;
+    }
     .story-card-h { font-size: clamp(20px, 2.2vw, 28px); letter-spacing: -0.02em; line-height: 1.2; font-weight: 500; color: #fff; }
     .story-card--before .story-card-h { opacity: 0.7; }
     .story-card-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
@@ -1028,6 +1054,7 @@
     /* ═══ NEW SECTIONS RESPONSIVE ═══ */
     @media (max-width: 767px) {
       .story-cmp-row { grid-template-columns: 1fr; gap: 16px; }
+      .story-card--after { order: -1; }
       .story-card { padding: 28px 24px; }
       .testi-inner { grid-template-columns: 1fr; gap: 36px; padding: 60px var(--px); }
       .testi-right { align-items: flex-start; padding-bottom: 0; }
@@ -1391,6 +1418,7 @@
             </ul>
           </div>
           <div class="story-card story-card--after">
+            <div class="story-card-badge">Polecane</div>
             <div class="story-card-label">Adbie</div>
             <div class="story-card-h">Strona pod klucz. Szybko, jasno, raz.</div>
             <ul class="story-card-list">
@@ -1406,23 +1434,21 @@
 
   </div>
 </div>
-<!-- ABOUT -->
-<section class="section section-cream reveal">
-  <div class="wrap about-wrap">
-    <div class="about-text-col">
-      <div class="about-identity anim-blur-slide">
-        <span class="about-quote-mark">"</span>
-        <div class="about-founder">
-          <div class="about-founder-name">Emma Shulzhenko</div>
-          <div class="about-founder-title">Founder, Adbie</div>
-        </div>
+<!-- ABOUT / FOUNDER -->
+<section class="section section-cream reveal founder-section">
+  <div class="founder-text">
+    <div class="about-identity anim-blur-slide">
+      <span class="about-quote-mark">"</span>
+      <div class="about-founder">
+        <div class="about-founder-name">Emma Shulzhenko</div>
+        <div class="about-founder-title">Founder, Adbie</div>
       </div>
-      <p class="about-statement anim-blur-slide anim-delay-100">Tworzę strony, które nie tylko wyglądają dobrze — ale naprawdę działają dla Twojego biznesu.</p>
-      <p class="about-sub-text anim-blur-slide anim-delay-200">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji. Piszemy mailem, ja koduję, Ty dostajesz stronę gotową do zarabiania.</p>
     </div>
-    <div class="about-portrait-wrap anim-blur-slide anim-delay-300">
-      <img class="about-portrait" src="Emma-3.webp" alt="Emma Shulzhenko — Adbie" loading="lazy">
-    </div>
+    <p class="about-statement anim-blur-slide anim-delay-100">Tworzę strony, które nie tylko wyglądają dobrze — ale naprawdę działają dla Twojego biznesu.</p>
+    <p class="about-sub-text anim-blur-slide anim-delay-200">Prowadzę wszystko sama — od briefu po publikację. Bez account managerów, bez wewnętrznej biurokracji. Piszemy mailem, ja koduję, Ty dostajesz stronę gotową do zarabiania.</p>
+  </div>
+  <div class="founder-photo anim-blur-slide anim-delay-300">
+    <img src="Emma-3.webp" alt="Emma Shulzhenko — Adbie" loading="lazy">
   </div>
 </section>
 
@@ -1811,7 +1837,7 @@
 </section>
 
 <!-- PRICING -->
-<section data-decor-bg="77" id="oferta" class="section reveal" style="transition-delay:150ms">
+<section data-decor-bg="77" id="oferta" class="section reveal pricing-section" style="transition-delay:150ms">
   <div class="wrap">
     <div class="prx-hdr anim-blur-slide">
       <div class="eyebrow">oferta · bez ukrytych kosztów</div>
