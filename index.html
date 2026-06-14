@@ -35,9 +35,9 @@
   <link rel="preload" as="image" href="parallax-decor-blur.webp" fetchpriority="low">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Domine:wght@400;500;600;700&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Domine:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ═══ RESET ═══ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,7 +72,7 @@
       --cmp-hl-txt:  #0a0a0a;
       --cmp-hl-cell: rgba(255,255,255,0.05);
       --card-bg:     #111;
-      --font:   'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+      --font:   'Geologica', system-ui, -apple-system, sans-serif;
       --serif:  'Instrument Serif', Georgia, serif;
       --max-w:  1280px;
       --px:     24px;
@@ -223,7 +223,7 @@
       align-self: stretch;
     }
     .hero-h1 { font-size: clamp(40px,4.5vw,80px); letter-spacing: -0.02em; line-height: 1.08; font-weight: 600; color: #fff; hyphens: none; }
-    .hero-italic { font-style: italic; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+    .hero-italic { font-style: normal; font-family: 'Domine', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
     .hero-sub { font-size: clamp(16px,1.4vw,20px); line-height: 1.5; color: rgba(255,255,255,0.85); max-width: 640px; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
     .btn-w { background: var(--btn-inv-bg); color: var(--btn-inv-txt); border-radius: var(--rf); padding: 14px 28px; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: opacity .2s; }
@@ -353,7 +353,7 @@
 
     /* ═══ ABOUT ═══ */
     .about-identity { display: flex; align-items: center; gap: 24px; }
-    .about-quote-mark { font-size: clamp(80px,12vw,160px); font-family: Georgia, serif; color: var(--accent); line-height: 0.8; opacity: 0.9; flex-shrink: 0; margin-top: -16px; }
+    .about-quote-mark { font-size: clamp(80px,12vw,160px); font-family: 'Domine', Georgia, serif; color: var(--accent); line-height: 0.8; opacity: 0.9; flex-shrink: 0; margin-top: -16px; }
     .about-founder-name { font-size: clamp(20px,2.5vw,32px); font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
     .about-founder-title { font-size: clamp(14px,1.5vw,18px); color: var(--text-55); margin-top: 4px; }
     .about-statement { font-size: clamp(32px,5vw,68px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); margin-top: 40px; }
@@ -364,8 +364,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: stretch;
-      min-height: 600px;
+      min-height: 760px;
       padding: 0;
+      border-top: none;
       border-radius: 40px 40px 0 0;
       overflow: hidden;
     }
@@ -378,7 +379,7 @@
       position: absolute;
       top: -2px; right: -2px; bottom: 0; left: 0;
       width: calc(100% + 2px); height: calc(100% + 2px);
-      object-fit: cover; object-position: center 15%;
+      object-fit: cover; object-position: center top;
       display: block; border-radius: 0;
     }
     @media (min-width: 768px) {
@@ -387,8 +388,8 @@
       .about-sub-text { max-width: 480px; }
     }
     @media (max-width: 860px) {
-      .founder-section { grid-template-columns: 1fr; border-radius: 28px 28px 0 0; min-height: unset; }
-      .founder-photo { height: 60vh; order: -1; }
+      .founder-section { grid-template-columns: 1fr; border-radius: 28px 28px 0 0; min-height: unset; border-top: none; }
+      .founder-photo { height: 65vh; order: -1; }
       .founder-text { padding: 48px 24px; }
     }
 
