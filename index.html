@@ -1169,7 +1169,7 @@
 
     window.addEventListener('scroll', tick, { passive: true });
     window.addEventListener('resize', function() { isMobile = window.innerWidth < 768; }, { passive: true });
-    tick();
+    requestAnimationFrame(tick);
   })();
 </script>
 
@@ -1236,7 +1236,7 @@
       }
     }
     window.addEventListener('scroll', update, { passive: true });
-    update();
+    requestAnimationFrame(update);
   }
 
   function initExitIntent() {
