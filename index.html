@@ -415,8 +415,8 @@
     .cmp-scroll thead tr { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-50); }
     .cmp-scroll thead th { text-align: left; padding: 20px; font-weight: normal; }
     .cmp-scroll thead th.hl { background: var(--cmp-hl-bg); color: var(--cmp-hl-txt); }
-    .cmp-scroll tbody td { padding: 20px; color: var(--text-90); border-top: 1px solid var(--border); }
-    .cmp-scroll tbody td.lbl { color: var(--text-55); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+    .cmp-scroll tbody td, .cmp-scroll tbody th { padding: 20px; color: var(--text-90); border-top: 1px solid var(--border); font-weight: normal; text-align: left; }
+    .cmp-scroll tbody td.lbl, .cmp-scroll tbody th.lbl { color: var(--text-55); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
     .cmp-scroll tbody td.hl  { background: var(--cmp-hl-cell); }
     .cmp-scroll tbody td.dim { color: var(--text-45); }
     .cmp-scroll tbody tr { transition: background-color 0.2s ease; }
@@ -716,9 +716,9 @@
       }
       .cmp-scroll table { font-size: 12px; min-width: 520px; }
       .cmp-scroll thead th,
-      .cmp-scroll tbody td { padding: 14px 16px; }
+      .cmp-scroll tbody td, .cmp-scroll tbody th { padding: 14px 16px; }
       .cmp-scroll thead th:first-child,
-      .cmp-scroll tbody td:first-child { padding-left: 24px; }
+      .cmp-scroll tbody td:first-child, .cmp-scroll tbody th:first-child { padding-left: 24px; }
       .cmp-scroll thead th:nth-child(2),
       .cmp-scroll tbody td:nth-child(2) { padding-right: 24px; }
       /* mobile: allow horizontal scroll, show all columns */
@@ -1021,7 +1021,7 @@
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
       border-top: 1px solid var(--ft-border);
     }
-    .kft-legal-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ft-t50); }
+    .kft-legal-h { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ft-t65); }
     .kft-legal-links { display: flex; gap: 16px; }
     .kft-legal-link { font-size: 13px; color: var(--ft-t65); transition: color .2s; }
     .kft-legal-link:hover { color: var(--ft-text); }
@@ -1048,7 +1048,7 @@
     .kora-ft-copy {
       display: flex; justify-content: flex-end; align-items: center;
       padding: 4px var(--px) 16px;
-      font-size: 11px; color: var(--ft-t40);
+      font-size: 11px; color: var(--ft-t65);
     }
 
     /* ═══ NEW SECTIONS RESPONSIVE ═══ */
@@ -1757,16 +1757,16 @@
     </div>
     <div class="cmp-scroll anim-blur-slide anim-delay-200">
       <table>
-        <thead><tr><th></th><th class="hl">adbie</th><th>typowa agencja</th><th>freelancer (abonament)</th></tr></thead>
+        <thead><tr><th scope="col"></th><th scope="col" class="hl">adbie</th><th scope="col">typowa agencja</th><th scope="col">freelancer (abonament)</th></tr></thead>
         <tbody>
-          <tr><td class="lbl" data-label="">cena</td><td class="hl" data-label="adbie">720 zł jednorazowo</td><td data-label="typowa agencja">3 000 – 8 000 zł</td><td class="dim" data-label="freelancer (abonament)">200 – 400 zł/mies.</td></tr>
-          <tr><td class="lbl" data-label="">czas realizacji</td><td class="hl" data-label="adbie">7 dni roboczych</td><td data-label="typowa agencja">4 – 8 tygodni</td><td class="dim" data-label="freelancer (abonament)">bezterminowo</td></tr>
-          <tr><td class="lbl" data-label="">stała wycena</td><td class="hl" data-label="adbie">tak, z góry</td><td data-label="typowa agencja">„skontaktuj się"</td><td class="dim" data-label="freelancer (abonament)">ukryte koszty</td></tr>
-          <tr><td class="lbl" data-label="">własność strony</td><td class="hl" data-label="adbie">twoja, bez umowy</td><td data-label="typowa agencja">twoja</td><td class="dim" data-label="freelancer (abonament)">wynajem</td></tr>
-          <tr><td class="lbl" data-label="">edycja i tworzenie</td><td class="hl" data-label="adbie">Claude Code + Claude Design</td><td data-label="typowa agencja">cms proprietary</td><td class="dim" data-label="freelancer (abonament)">tylko przez nich</td></tr>
-          <tr><td class="lbl" data-label="">seo podstawowe</td><td class="hl" data-label="adbie">w cenie</td><td data-label="typowa agencja">+1 000 – 3 000 zł</td><td class="dim" data-label="freelancer (abonament)">+100 zł/mies.</td></tr>
-          <tr><td class="lbl" data-label="">wsparcie po wdrożeniu</td><td class="hl" data-label="adbie">60 dni gratis</td><td data-label="typowa agencja">~150 zł/h</td><td class="dim" data-label="freelancer (abonament)">w abonamencie</td></tr>
-          <tr><td class="lbl" data-label="">komunikacja</td><td class="hl" data-label="adbie">bezpośrednio z autorem</td><td data-label="typowa agencja">przez account managera</td><td class="dim" data-label="freelancer (abonament)">bezpośrednio</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">cena</th><td class="hl" data-label="adbie">720 zł jednorazowo</td><td data-label="typowa agencja">3 000 – 8 000 zł</td><td class="dim" data-label="freelancer (abonament)">200 – 400 zł/mies.</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">czas realizacji</th><td class="hl" data-label="adbie">7 dni roboczych</td><td data-label="typowa agencja">4 – 8 tygodni</td><td class="dim" data-label="freelancer (abonament)">bezterminowo</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">stała wycena</th><td class="hl" data-label="adbie">tak, z góry</td><td data-label="typowa agencja">„skontaktuj się"</td><td class="dim" data-label="freelancer (abonament)">ukryte koszty</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">własność strony</th><td class="hl" data-label="adbie">twoja, bez umowy</td><td data-label="typowa agencja">twoja</td><td class="dim" data-label="freelancer (abonament)">wynajem</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">edycja i tworzenie</th><td class="hl" data-label="adbie">Claude Code + Claude Design</td><td data-label="typowa agencja">cms proprietary</td><td class="dim" data-label="freelancer (abonament)">tylko przez nich</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">seo podstawowe</th><td class="hl" data-label="adbie">w cenie</td><td data-label="typowa agencja">+1 000 – 3 000 zł</td><td class="dim" data-label="freelancer (abonament)">+100 zł/mies.</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">wsparcie po wdrożeniu</th><td class="hl" data-label="adbie">60 dni gratis</td><td data-label="typowa agencja">~150 zł/h</td><td class="dim" data-label="freelancer (abonament)">w abonamencie</td></tr>
+          <tr><th scope="row" class="lbl" data-label="">komunikacja</th><td class="hl" data-label="adbie">bezpośrednio z autorem</td><td data-label="typowa agencja">przez account managera</td><td class="dim" data-label="freelancer (abonament)">bezpośrednio</td></tr>
         </tbody>
       </table>
     </div>
