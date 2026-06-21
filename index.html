@@ -586,7 +586,7 @@
           </div>
         </div>
       </div>
-      <a href="#reviews-carousel" class="testi-see-all">Zobacz wszystkie opinie →</a>
+      <a href="https://maps.app.goo.gl/wGupmh9Q7cy9UbJh8" target="_blank" rel="noopener" class="testi-see-all testi-google-link">★ 5,0 — Zobacz opinie w Google →</a>
     </div>
     <div class="testi-right">
       <div class="testi-rating-n anim-blur-slide anim-delay-300">
@@ -1228,13 +1228,36 @@
     }
   }, { passive: true });
 
-  // Reveal on scroll — skip if user prefers reduced motion (CSS handles visible state)
-  function revealAllDotReveal() {
+  // ── GLOBAL REVEAL SAFETY NET ──────────────────────────────────────────────
+  // Covers ALL animated sections site-wide:
+  //   .reveal → .in  (founder/testimonial/sections)
+  //   .anim-blur-slide → .is-visible  (portfolio cards, eyebrows, text)
+  // In-app browsers (Threads / Instagram / Facebook) often fire IntersectionObserver
+  // with zero intersecting entries, so nothing ever becomes visible.
+  // The 1200ms timer is the guaranteed fallback: NO section ever stays blank.
+  function revealGlobal() {
     document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
+    document.querySelectorAll('.anim-blur-slide').forEach(function(el) { el.classList.add('is-visible'); });
   }
+
+  // Reveal above-fold elements on load (already in viewport, IO may miss first paint)
+  window.addEventListener('load', function() {
+    var vh = window.innerHeight + 100;
+    document.querySelectorAll('.reveal, .anim-blur-slide').forEach(function(el) {
+      if (el.getBoundingClientRect().top < vh) {
+        el.classList.add('in');
+        el.classList.add('is-visible');
+      }
+    });
+  });
+
+  // 1200ms global safety net — reveals everything if IO never fires
+  setTimeout(revealGlobal, 1200);
+
+  // IO-based scroll reveal (skip if reduced motion; Script 4 handles .anim-blur-slide IO)
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (!('IntersectionObserver' in window)) {
-      revealAllDotReveal();
+      revealGlobal();
     } else {
       var io = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
@@ -1242,8 +1265,6 @@
         });
       }, { threshold: 0.10, rootMargin: '0px 0px 0px 0px' });
       document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
-      // Safety: in-app browsers (Threads/IG/FB) may not fire IO — reveal everything after 1.5s
-      setTimeout(revealAllDotReveal, 1500);
     }
   }
 
@@ -1388,29 +1409,10 @@
 <script>
 (function() {
   'use strict';
-
-  function revealAll() {
-    document.querySelectorAll('.anim-blur-slide').forEach(function(el) {
-      el.classList.add('is-visible');
-    });
-  }
-
-  // Reduced-motion: CSS already makes them visible, but call revealAll to be safe
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    revealAll();
-    return;
-  }
-
-  // IO not supported (very old webviews)
-  if (!('IntersectionObserver' in window)) {
-    revealAll();
-    return;
-  }
-
-  // Safety net: in-app browsers (Threads/Instagram/Facebook) sometimes park the
-  // viewport differently or fire IO with zero intersecting entries — reveal
-  // everything after 1.5 s so cards are NEVER permanently invisible.
-  var safetyTimer = setTimeout(revealAll, 1500);
+  // Global safety net (1200ms + load event) is handled by Script 1's revealGlobal().
+  // This script only handles the IntersectionObserver for smooth per-element animations.
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
 
   var observer = new IntersectionObserver(
     function(entries) {
@@ -1427,7 +1429,6 @@
   document.querySelectorAll('.anim-blur-slide').forEach(function(el) {
     observer.observe(el);
   });
-
 })();
 </script>
 </body>
