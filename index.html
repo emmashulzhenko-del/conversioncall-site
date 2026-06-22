@@ -53,6 +53,7 @@
   .parallax-layer{position:static!important;opacity:1!important;min-height:60vh;z-index:auto!important;will-change:auto!important;}
   .parallax-hero-img,.parallax-dark-overlay{display:none!important;}
   .pl-1{background:#0a0a0a;}
+  .pl-2{background:#f5f3ee;}
   .pl-3{background:var(--bg);}
 }
 </style>
@@ -1253,22 +1254,31 @@
     // Heuristic: mobile WebKit without Version/ token (WKWebView, not mobile Safari)
     || (/iPhone|iPad/i.test(_ua) && /AppleWebKit/i.test(_ua) && !/Version\//i.test(_ua));
   if (isInAppBrowser) {
-    // Inject CSS fail-safe — covers reveal system AND parallax layers
+    // Make the parallax section flow as a static vertical stack (layout only).
+    // The LAYER container is opacity:1 so it's laid out; the inner .story-content
+    // starts hidden via .anim-blur-slide and fades in through the reliable IO +
+    // revealGlobal safety-net system — same as the founder section.
     var inAppStyle = document.createElement('style');
     inAppStyle.textContent =
-      '.reveal,.anim-blur-slide{opacity:1!important;filter:none!important;transform:none!important;transition:none!important;visibility:visible!important;}' +
-      '.parallax-layer{opacity:1!important;transform:none!important;transition:none!important;position:static!important;}' +
-      '.parallax-story-sticky{position:static!important;}' +
-      '.parallax-story{height:auto!important;}';
+      '.parallax-story{height:auto!important;}' +
+      '.parallax-story-sticky{position:static!important;height:auto!important;overflow:visible!important;}' +
+      '.parallax-layer{position:static!important;opacity:1!important;min-height:auto!important;padding:48px var(--px)!important;will-change:auto!important;}' +
+      '.parallax-hero-img,.parallax-dark-overlay{display:none!important;}';
     document.head.appendChild(inAppStyle);
-    // Force final state on reveal elements
-    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
-    document.querySelectorAll('.anim-blur-slide').forEach(function(el) { el.classList.add('is-visible'); });
     // Clear any inline opacity/transform the parallax rAF may have already set
     document.querySelectorAll('.parallax-layer').forEach(function(el) {
       el.style.opacity = '1'; el.style.transform = 'none';
     });
-    // Script 4 (IO observer) checks window.isInAppBrowser and returns early.
+    // Tag each layer's story-content with anim-blur-slide so the reliable fade-in
+    // system (Script 4 IO + 1200ms revealGlobal) handles their entrance.
+    // This runs before Script 4's querySelectorAll, so they're picked up automatically.
+    document.querySelectorAll('.parallax-layer .story-content').forEach(function(el, i) {
+      el.classList.add('anim-blur-slide');
+      if (i === 1) el.classList.add('anim-delay-100');
+      if (i >= 2) el.classList.add('anim-delay-200');
+    });
+    // .reveal sections + all .anim-blur-slide (incl. newly tagged) are handled by
+    // the revealGlobal 1200ms timer below and Script 4's IO observer.
   }
 
   // ── GLOBAL REVEAL SAFETY NET ──────────────────────────────────────────────
@@ -1452,9 +1462,9 @@
 (function() {
   'use strict';
   // Global safety net (1200ms + load event) is handled by Script 1's revealGlobal().
-  // This script only handles the IntersectionObserver for smooth per-element animations.
-  // In-app browsers: Script 1 already forced all elements visible — skip IO entirely.
-  if (window.isInAppBrowser) return;
+  // This script handles IO for smooth per-element animations including, in webviews,
+  // the .story-content elements tagged with anim-blur-slide by Script 1's in-app block.
+  // The revealGlobal 1200ms timer is the safety net if IO stalls in webviews.
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
 
