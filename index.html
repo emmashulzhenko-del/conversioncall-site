@@ -1228,13 +1228,27 @@
     }
   }, { passive: true });
 
+  // ── IN-APP BROWSER DETECTION ──────────────────────────────────────────────
+  // Threads / Instagram / Facebook / Messenger / WhatsApp webviews stall CSS
+  // transitions mid-animation even after IO fires. Skip all animation machinery
+  // and force every element to its final visible state immediately.
+  var isInAppBrowser = window.isInAppBrowser = /FBAN|FBAV|Instagram|Threads|Messenger|Line|WhatsApp/i.test(navigator.userAgent);
+  if (isInAppBrowser) {
+    // Inject CSS fail-safe (runs before paint, covers slow-JS edge cases)
+    var inAppStyle = document.createElement('style');
+    inAppStyle.textContent = '.reveal,.anim-blur-slide{opacity:1!important;filter:none!important;transform:none!important;transition:none!important;visibility:visible!important;}';
+    document.head.appendChild(inAppStyle);
+    // Force final state synchronously on all animated elements
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
+    document.querySelectorAll('.anim-blur-slide').forEach(function(el) { el.classList.add('is-visible'); });
+    // Script 4 (IO observer) checks isInAppBrowser and returns early — nothing more to do.
+  }
+
   // ── GLOBAL REVEAL SAFETY NET ──────────────────────────────────────────────
   // Covers ALL animated sections site-wide:
   //   .reveal → .in  (founder/testimonial/sections)
   //   .anim-blur-slide → .is-visible  (portfolio cards, eyebrows, text)
-  // In-app browsers (Threads / Instagram / Facebook) often fire IntersectionObserver
-  // with zero intersecting entries, so nothing ever becomes visible.
-  // The 1200ms timer is the guaranteed fallback: NO section ever stays blank.
+  // In-app browsers: handled above. Timer below is fallback for slow normal browsers.
   function revealGlobal() {
     document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
     document.querySelectorAll('.anim-blur-slide').forEach(function(el) { el.classList.add('is-visible'); });
@@ -1254,8 +1268,8 @@
   // 1200ms global safety net — reveals everything if IO never fires
   setTimeout(revealGlobal, 1200);
 
-  // IO-based scroll reveal (skip if reduced motion; Script 4 handles .anim-blur-slide IO)
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // IO-based scroll reveal (skip if in-app or reduced motion; Script 4 handles .anim-blur-slide IO)
+  if (!isInAppBrowser && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (!('IntersectionObserver' in window)) {
       revealGlobal();
     } else {
@@ -1411,6 +1425,8 @@
   'use strict';
   // Global safety net (1200ms + load event) is handled by Script 1's revealGlobal().
   // This script only handles the IntersectionObserver for smooth per-element animations.
+  // In-app browsers: Script 1 already forced all elements visible — skip IO entirely.
+  if (window.isInAppBrowser) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
 
