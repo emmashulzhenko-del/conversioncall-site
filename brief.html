@@ -498,6 +498,7 @@ document.getElementById('briefForm').addEventListener('submit', async function(e
       headers: { 'Accept': 'application/json' }
     });
     if (response.ok) {
+      gtag('event', 'brief_submit');
       document.getElementById('successMsg').classList.add('visible');
       this.reset();
       btn.textContent = '✓ Wysłano';
@@ -513,5 +514,6 @@ document.getElementById('briefForm').addEventListener('submit', async function(e
 });
 </script>
 
+<script src="/ga-events.js"></script>
 </body>
 </html>
