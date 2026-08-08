@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CWMBC6SY9D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CWMBC6SY9D');
+</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adbie — Strony za 720 zł gotowe w 7 dni</title>
+  <meta name="description" content="Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Stała cena 720 zł brutto. Bez ukrytych kosztów. Wrocław · cała Polska.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+    table { border-collapse: collapse; }
+
+    /* ===== TOKENS ===== */
+    :root {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --border: rgba(255,255,255,0.10);
+      --white: #ffffff;
+      --t90: rgba(255,255,255,0.90);
+      --t85: rgba(255,255,255,0.85);
+      --t70: rgba(255,255,255,0.70);
+      --t65: rgba(255,255,255,0.65);
+      --t60: rgba(255,255,255,0.60);
+      --t55: rgba(255,255,255,0.55);
+      --t50: rgba(255,255,255,0.50);
+      --t45: rgba(255,255,255,0.45);
+      --t40: rgba(255,255,255,0.40);
+      --t20: rgba(255,255,255,0.20);
+      --font: 'Geist', system-ui, -apple-system, sans-serif;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --max-w: 1280px;
+      --px: 24px;
+      --py: 96px;
+      --r: 24px;
+      --rf: 9999px;
+    }
+
+    /* ===== BASE ===== */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+    .section { padding: var(--py) var(--px); border-top: 1px solid var(--border); }
+
+    /* ===== TYPOGRAPHY ===== */
+    .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); }
+    .display-h { font-size: clamp(32px,5vw,60px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; margin-top: 16px; }
+
+    /* ===== GRID BG ===== */
+    .grid-bg {
+      background-image: linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+      background-size: 56px 56px;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 700ms cubic-bezier(.16,1,.3,1), transform 700ms cubic-bezier(.16,1,.3,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ===== NAV ===== */
+    .site-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      background: #171717; border-radius: var(--rf); padding: 10px 20px 10px 16px;
+    }
+    .nav-logo svg { width: 20px; height: 20px; }
+    .nav-logo span { font-size: 14px; }
+    .nav-links {
+      display: none; align-items: center; gap: 4px;
+      background: #171717; border-radius: var(--rf); padding: 8px 12px;
+    }
+    .nav-links a { color: var(--t70); font-size: 14px; padding: 8px 20px; border-radius: var(--rf); transition: color .2s, background .2s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-cta { background: #fff; color: #000; font-size: 14px; border-radius: var(--rf); padding: 10px 24px; transition: background .2s; display: inline-block; }
+    .nav-cta:hover { background: #e5e5e5; }
+
+    /* ===== HERO ===== */
+    #hero { padding: 96px 24px 72px; border-top: none; min-height: 100vh; display: flex; align-items: center; }
+    .hero-inner { max-width: var(--max-w); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: var(--rf);
+      background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.15);
+      font-size: 12px; color: var(--t85); letter-spacing: 0.05em; margin-bottom: 24px;
+    }
+    .hero-pill .dot { width: 6px; height: 6px; background: #fff; border-radius: 50%; flex-shrink: 0; }
+    .hero-h1 { font-size: clamp(52px,11vw,130px); letter-spacing: -0.04em; line-height: 0.92; font-weight: 500; margin-bottom: 20px; }
+    .hero-sub { font-size: 22px; line-height: 1.5; color: var(--t90); max-width: 540px; margin-bottom: 32px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-w { background: #fff; color: #000; border-radius: var(--rf); padding: 12px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; transition: background .2s; }
+    .btn-w:hover { background: #e5e5e5; }
+    .btn-g { background: rgba(255,255,255,0.10); color: #fff; border: 1px solid rgba(255,255,255,0.15); border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-g:hover { background: rgba(255,255,255,0.15); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .hs:nth-child(2) { text-align: center; }
+    .hs:nth-child(3) { text-align: right; }
+    .hs-n { font-size: clamp(22px,3.5vw,44px); letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .hs-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t55); margin-top: 4px; }
+    .hero-portrait img { width: 100%; height: 400px; object-fit: cover; object-position: top center; border-radius: 16px; display: block; }
+
+    /* ===== LOGO BAR ===== */
+    .logo-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .logo-bar-in { max-width: var(--max-w); margin: 0 auto; padding: 32px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .logo-items { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .logo-items .nm { font-size: 14px; color: var(--t50); }
+    .logo-items .sep { color: var(--t20); }
+
+    /* ===== ABOUT ===== */
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
+    .about-img { position: relative; aspect-ratio: 4/5; border-radius: var(--r); overflow: hidden; background: #171717; border: 1px solid var(--border); }
+    .about-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .about-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: var(--rf); background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-size: 11px; color: var(--t70); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+    .about-h2 { font-size: clamp(28px,4.5vw,56px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; max-width: 640px; margin-bottom: 24px; }
+    .about-p { color: var(--t70); font-size: 15px; line-height: 1.7; max-width: 520px; margin-bottom: 32px; }
+    .about-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 560px; }
+    .ac { border: 1px solid var(--border); border-radius: 16px; padding: 16px; }
+    .ac-l { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t45); }
+    .ac-v { font-size: 14px; margin-top: 4px; }
+
+    /* ===== PORTFOLIO ===== */
+    .port-hdr { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .port-hdr p { color: var(--t65); max-width: 480px; }
+    .port-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .port-card { display: block; border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; background: #111; color: #fff; transition: transform .3s ease; }
+    .port-card:hover { transform: translateY(-2px); }
+    .port-img { position: relative; height: 200px; overflow: hidden; }
+    .port-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .port-overlay { position: absolute; inset: 0; }
+    .port-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .port-ph span { font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.08); }
+    .port-body { padding: 20px; }
+    .port-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .port-cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--t45); }
+    .port-num { font-size: 11px; letter-spacing: 0.16em; color: var(--t45); }
+    .port-title { font-size: clamp(20px,3vw,36px); letter-spacing: -0.02em; margin-bottom: 8px; }
+    .port-desc { font-size: 14px; color: var(--t65); line-height: 1.5; }
+    .port-note { font-size: 12px; color: var(--t45); margin-top: 6px; }
+    .port-foot { display: flex; align-items: center; justify-content: flex-end; margin-top: 16px; }
+    .port-arrow { width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #000; display: inline-flex; align-items: center; justify-content: center; transition: transform .3s; flex-shrink: 0; }
+    .port-card:hover .port-arrow { transform: scale(1.1); }
+
+    /* ===== COMPARE TABLE ===== */
+    .cmp-hdr { text-align: center; margin-bottom: 48px; }
+    .cmp-hdr p { color: var(--t65); max-width: 520px; margin: 20px auto 0; }
+    .cmp-scroll { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
+    .cmp-scroll table { width: 100%; font-size: 14px; }
+    .cmp-scroll thead tr { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--t50); }
+    .cmp-scroll thead th { text-align: left; padding: 20px; font-weight: normal; }
+    .cmp-scroll thead th.hl { background: #fff; color: #000; }
+    .cmp-scroll tbody td { padding: 20px; color: var(--t85); border-top: 1px solid var(--border); }
+    .cmp-scroll tbody td.lbl { color: var(--t55); }
+    .cmp-scroll tbody td.hl { background: rgba(255,255,255,0.05); }
+    .cmp-scroll tbody td.dim { color: var(--t45); }
+
+    /* ===== PRICING ===== */
+    .prx-hdr { text-align: center; margin-bottom: 48px; }
+    .prx-box { display: grid; grid-template-columns: 1fr; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+    .prx-left { padding: 40px; border-bottom: 1px solid var(--border); }
+    .prx-pkg { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); }
+    .prx-amt { display: flex; align-items: flex-start; gap: 8px; margin-top: 32px; }
+    .prx-n { font-size: clamp(80px,14vw,200px); line-height: 0.85; letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .prx-u { padding-top: 12px; }
+    .prx-u .zl { font-size: 16px; }
+    .prx-u .br { font-size: 14px; color: var(--t55); font-family: var(--serif); font-style: italic; }
+    .prx-rows { margin-top: 32px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .prx-row { display: flex; justify-content: space-between; padding: 12px 0; font-size: 14px; border-bottom: 1px solid var(--border); }
+    .prx-row:last-child { border-bottom: none; }
+    .prx-row .l { color: var(--t55); }
+    .prx-cta { display: flex; align-items: center; justify-content: space-between; margin-top: 32px; background: #fff; color: #000; border-radius: var(--rf); padding: 16px 20px; font-size: 14px; transition: background .2s; }
+    .prx-cta:hover { background: #e5e5e5; }
+    .prx-right { padding: 40px; }
+    .prx-il { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); margin-bottom: 24px; }
+    .prx-feats { display: grid; grid-template-columns: 1fr; }
+    .prx-feat { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; align-items: flex-start; }
+    .prx-feat:last-child { border-bottom: none; }
+    .chk { width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+    .prx-note { margin-top: 24px; border: 1px solid var(--border); border-radius: 16px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
+    .prx-note-ico { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .prx-note-t { font-size: 14px; }
+    .prx-note-s { font-size: 12px; color: var(--t55); margin-top: 4px; }
+
+    /* ===== GUARANTEE ===== */
+    .gua-box { display: grid; grid-template-columns: 1fr; border-radius: var(--r); overflow: hidden; border: 1px solid var(--border); }
+    .gua-l { padding: 40px 48px; background: var(--surface); }
+    .gua-r { padding: 40px 48px; background: #fff; color: #000; display: flex; flex-direction: column; justify-content: center; }
+    .gua-big { font-size: clamp(80px,12vw,160px); line-height: 0.85; letter-spacing: -0.05em; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .gua-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.55); margin-top: 12px; }
+    .gua-txt { font-size: 16px; line-height: 1.7; color: rgba(0,0,0,0.75); max-width: 360px; margin-top: 24px; }
+    .btn-blk { display: inline-flex; align-items: center; gap: 8px; background: #000; color: #fff; border-radius: var(--rf); padding: 12px 20px; font-size: 14px; margin-top: 32px; align-self: flex-start; transition: background .2s; }
+    .btn-blk:hover { background: #222; }
+    .gua-items { margin-top: 32px; }
+    .gua-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,0.10); }
+    .gua-item:last-child { border-bottom: none; }
+    .gc { width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+    .gi-t { font-size: 14px; }
+    .gi-s { font-size: 12px; color: var(--t55); margin-top: 4px; }
+
+    /* ===== PROCESS ===== */
+    .proc-hdr { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    .proc-hdr p { color: var(--t65); max-width: 480px; }
+    .proc-card { border: 1px solid var(--border); border-radius: var(--r); padding: 24px; background: var(--surface); }
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 28px; bottom: 28px; width: 1px; background: rgba(255,255,255,0.15); }
+    .tl { position: relative; padding: 20px 0 20px 40px; }
+    .tl + .tl { border-top: 1px solid rgba(255,255,255,0.08); }
+    .tl-dot { position: absolute; left: 0; top: 28px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid #fff; background: #000; }
+    .tl-dot.on { background: #fff; }
+    .tl-in { display: grid; grid-template-columns: 1fr; gap: 4px; }
+    .tl-day { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--t55); }
+    .tl-day.on { color: #fff; }
+    .tl-t { font-size: 16px; }
+    .tl-d { font-size: 14px; color: var(--t60); margin-top: 4px; }
+
+    /* ===== TESTIMONIALS ===== */
+    .test-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .test-card { border: 1px solid var(--border); border-radius: var(--r); padding: 32px; background: var(--surface); display: flex; flex-direction: column; gap: 24px; min-height: 260px; transition: transform .3s ease; }
+    .test-card:hover { transform: translateY(-2px); }
+    .test-q { font-size: 18px; line-height: 1.4; color: var(--t85); font-family: var(--serif); font-style: italic; flex: 1; }
+    .test-q .tag { display: inline; padding: 2px 6px; background: rgba(255,255,255,0.10); border-radius: 4px; font-size: 12px; color: var(--t60); font-family: monospace; font-style: normal; }
+    .test-auth { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--border); margin-top: auto; }
+    .test-av { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; font-size: 14px; font-family: var(--serif); font-style: italic; }
+    .test-nm { font-size: 14px; }
+    .test-rl { font-size: 12px; color: var(--t50); margin-top: 2px; }
+    .test-ph { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--t40); text-align: center; margin-top: 32px; }
+
+    /* ===== TRUST ===== */
+    .trust-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .trust-c { border: 1px solid var(--border); border-radius: var(--r); padding: 28px; transition: transform .3s ease; }
+    .trust-c:hover { transform: translateY(-2px); }
+    .trust-ico { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .trust-t { font-size: 16px; }
+    .trust-d { font-size: 14px; color: var(--t60); margin-top: 8px; line-height: 1.6; }
+
+    /* ===== FAQ ===== */
+    .faq-wrap { max-width: 920px; margin: 0 auto; }
+    .faq-hdr { text-align: center; margin-bottom: 48px; }
+    details.fq { border-bottom: 1px solid var(--border); }
+    details.fq summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; list-style: none; }
+    details.fq summary::-webkit-details-marker { display: none; }
+    .fq-qi { display: flex; align-items: center; gap: 20px; }
+    .fq-n { font-size: 11px; letter-spacing: 0.16em; color: var(--t45); font-family: monospace; }
+    .fq-q { font-size: 16px; }
+    .fq-ic { width: 20px; height: 20px; flex-shrink: 0; transition: transform .28s ease; }
+    details.fq[open] .fq-ic { transform: rotate(45deg); }
+    .fq-a { padding: 0 0 24px 52px; font-size: 14px; color: var(--t65); line-height: 1.7; }
+
+    /* ===== CTA ===== */
+    .cta-box { border-radius: var(--r); background: #fff; color: #000; padding: 48px 32px; text-align: center; position: relative; overflow: hidden; }
+    .cta-gbg { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px); background-size: 56px 56px; pointer-events: none; }
+    .cta-in { position: relative; }
+    .cta-ey { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(0,0,0,0.55); }
+    .cta-h { font-size: clamp(40px,8vw,120px); letter-spacing: -0.035em; line-height: 0.98; font-weight: 500; margin-top: 20px; }
+    .cta-p { font-size: 16px; color: rgba(0,0,0,0.65); max-width: 520px; margin: 24px auto 0; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+    .btn-cta { background: #000; color: #fff; border-radius: var(--rf); padding: 8px 8px 8px 24px; font-size: 14px; display: inline-flex; align-items: center; gap: 12px; transition: background .2s; }
+    .btn-cta:hover { background: #333; }
+    .btn-cta .ac { width: 36px; height: 36px; border-radius: 50%; background: #fff; color: #000; display: flex; align-items: center; justify-content: center; }
+    .btn-cta-out { border: 1px solid rgba(0,0,0,0.15); color: #000; border-radius: var(--rf); padding: 12px 24px; font-size: 14px; transition: background .2s; display: inline-block; }
+    .btn-cta-out:hover { background: rgba(0,0,0,0.05); }
+
+    /* ===== FOOTER ===== */
+    footer { padding: 80px 24px 40px; border-top: 1px solid var(--border); }
+    .ft-in { max-width: var(--max-w); margin: 0 auto; }
+    .ft-grid { display: grid; grid-template-columns: 1fr; gap: 48px; }
+    .ft-logo { display: flex; align-items: center; gap: 12px; }
+    .ft-logo span { font-size: 14px; }
+    .ft-tag { font-size: 14px; color: var(--t55); margin-top: 16px; max-width: 360px; line-height: 1.6; }
+    .ft-mail { display: inline-block; margin-top: 16px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(255,255,255,0.30); }
+    .ft-h { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--t50); margin-bottom: 16px; }
+    .ft-a { display: block; font-size: 14px; padding: 4px 0; color: var(--t85); transition: color .2s; }
+    .ft-a:hover { color: #fff; }
+    .ft-s { display: block; font-size: 14px; padding: 4px 0; color: var(--t85); }
+    .ft-bot { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 12px; color: var(--t45); flex-wrap: wrap; gap: 12px; }
+    .ft-bot .ver { font-family: monospace; }
+
+    /* ===== SCROLL TOP ===== */
+    #scroll-top { position: fixed; bottom: 32px; right: 32px; z-index: 999; width: 48px; height: 48px; background: #fff; color: #000; border: none; border-radius: 50%; font-size: 20px; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: all 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 768px) {
+      :root { --px: 40px; --py: 128px; }
+      .site-nav { padding: 16px 40px; }
+      .nav-links { display: flex; }
+      #hero { padding: 120px 40px 96px; }
+      .hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+      .hero-portrait img { height: 600px; }
+      .about-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
+      .about-cards { grid-template-columns: repeat(3,1fr); }
+      .port-hdr { grid-template-columns: 1fr 1fr; align-items: flex-end; }
+      .port-hdr p { justify-self: flex-end; }
+      .port-grid { grid-template-columns: repeat(2,1fr); }
+      .prx-box { grid-template-columns: 1fr 1.4fr; }
+      .prx-left { border-bottom: none; border-right: 1px solid var(--border); }
+      .prx-feats { grid-template-columns: repeat(2,1fr); gap: 0 24px; }
+      .gua-box { grid-template-columns: 1.2fr 1fr; }
+      .proc-hdr { grid-template-columns: 1fr 1fr; align-items: flex-end; }
+      .proc-card { padding: 48px; }
+      .tl-in { grid-template-columns: 120px 1fr; gap: 16px; align-items: baseline; }
+      .tl-day { text-align: right; }
+      .test-grid { grid-template-columns: repeat(3,1fr); }
+      .trust-grid { grid-template-columns: repeat(4,1fr); }
+      .ft-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+      .cta-box { padding: 80px; }
+      .fq-q { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-logo">
+    <svg viewBox="0 0 256 256"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="#fff"></path></svg>
+    <span>adbie</span>
+  </div>
+  <div class="nav-links">
+    <a href="#oferta">oferta</a>
+    <a href="#portfolio">portfolio</a>
+    <a href="#proces">proces</a>
+    <a href="#faq">faq</a>
+  </div>
+  <a href="#cta" class="nav-cta">zamów stronę</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-pill"><span class="dot"></span>Wrocław · cała Polska · 5 wdrożeń</div>
+      <h1 class="hero-h1">Strona za&nbsp;720&nbsp;zł.</h1>
+      <p class="hero-sub">Profesjonalna strona dla małej firmy. Gotowa w 7 dni. Bez ukrytych kosztów.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-w">zamów stronę <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        <a href="#portfolio" class="btn-g">zobacz portfolio</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-n">720 zł</div><div class="hs-l">stała cena</div></div>
+        <div class="hs"><div class="hs-n">7 dni</div><div class="hs-l">realizacja</div></div>
+        <div class="hs"><div class="hs-n">60 dni</div><div class="hs-l">wsparcie gratis</div></div>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <img src="Emma-1.jpg" alt="Emma — Adbie, Wrocław">
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-bar-in">
+    <span class="eyebrow">Zaufały mi firmy z 5 branż</span>
+    <div class="logo-items">
+      <span class="nm">callwindshieldfix</span><span class="sep">·</span>
+      <span class="nm">hudafy</span><span class="sep">·</span>
+      <span class="nm">artdance</span><span class="sep">·</span>
+      <span class="nm">elstom</span><span class="sep">·</span>
+      <span class="nm">yogaretreat</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-img"><img src="Emma-1.jpg" alt="Portret Wrocław"></div>
+      </div>
+      <div class="reveal">
+        <div class="about-badge">o mnie</div>
+        <h2 class="about-h2">Jednoosobowe studio. Zero handlowców.</h2>
+        <p class="about-p">Prowadzę wszystko sama — od briefu po publikację. bez account managerów, bez wewnętrznej biurokracji, bez „wracam do pana w przyszłym tygodniu". Piszemy mailem, ja koduję, Ty dostajesz stronę.</p>
+        <div class="about-cards">
+          <div class="ac"><div class="ac-l">lokalizacja</div><div class="ac-v">Wrocław, pl</div></div>
+          <div class="ac"><div class="ac-l">doświadczenie</div><div class="ac-v">5 wdrożeń</div></div>
+          <div class="ac"><div class="ac-l">odpowiedź</div><div class="ac-v">Do 24h</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="section">
+  <div class="wrap">
+    <div class="port-hdr">
+      <div class="reveal">
+        <div class="eyebrow">portfolio · 5 wdrożeń</div>
+        <h2 class="display-h">Strony, które żyją w sieci.</h2>
+      </div>
+      <p class="reveal">Każdy projekt stworzony z konkretnym celem — więcej zapytań, więcej klientów, lepsza widoczność lokalnie.</p>
+    </div>
+    <div class="port-grid">
+
+      <!-- 01 yogaretreat.fit -->
+      <a href="https://www.yogaretreat.fit/" target="_blank" class="port-card">
+        <div class="port-img">
+          <img src="teaser-yoga.jpg" alt="yogaretreat.fit">
+          <div class="port-overlay" style="background:rgba(107,142,107,0.30);"></div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta"><span class="port-cat">PL · Retreaty</span><span class="port-num">01 / 05</span></div>
+          <div class="port-title">yogaretreat.fit</div>
+          <p class="port-desc">Retreaty jogi na wyspie Thasos. Strona generująca zapisy online dzięki lokalnemu SEO i precyzyjnemu targetowaniu.</p>
+          <p class="port-note">Wersja testowa — live na Netlify</p>
+          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+        </div>
+      </a>
+
+      <!-- 02 callwindshieldfix.com -->
+      <a href="https://callwindshieldfix.com" target="_blank" class="port-card">
+        <div class="port-img">
+          <img src="teaser-windshield.jpg" alt="callwindshieldfix.com">
+          <div class="port-overlay" style="background:rgba(10,22,40,0.35);"></div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta"><span class="port-cat">USA · Local SEO</span><span class="port-num">02 / 05</span></div>
+          <div class="port-title">callwindshieldfix.com</div>
+          <p class="port-desc">Mobilna naprawa szyb, San Antonio TX. Strona generująca leady lokalnie 24/7.</p>
+          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+        </div>
+      </a>
+
+      <!-- 03 artdance.org — no image -->
+      <a href="https://artdance.org" target="_blank" class="port-card">
+        <div class="port-img">
+          <div class="port-ph" style="background:#111111;"><span>ARTDANCE.ORG</span></div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta"><span class="port-cat">PL · NGO</span><span class="port-num">03 / 05</span></div>
+          <div class="port-title">artdance.org</div>
+          <p class="port-desc">Polska fundacja taneczna. Mobile-first, 15 URL zaindeksowanych.</p>
+          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+        </div>
+      </a>
+
+      <!-- 04 elstom.com — no image -->
+      <a href="https://zingy-malabi-b5ef98.netlify.app/" target="_blank" class="port-card">
+        <div class="port-img">
+          <div class="port-ph" style="background:#111111;"><span>ELSTOM.COM</span></div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta"><span class="port-cat">PL · Stomatologia</span><span class="port-num">04 / 05</span></div>
+          <div class="port-title">elstom.com</div>
+          <p class="port-desc">Gabinet stomatologiczny Wrocław. Strona generująca zapisy online dzięki lokalnemu SEO i profesjonalnemu wizerunkowi.</p>
+          <p class="port-note">Wersja testowa — live na Netlify</p>
+          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+        </div>
+      </a>
+
+      <!-- 05 hudafy.com -->
+      <a href="https://hudafy.com" target="_blank" class="port-card">
+        <div class="port-img">
+          <img src="teaser-hudafy.jpg" alt="hudafy.com">
+          <div class="port-overlay" style="background:rgba(16,185,129,0.30);"></div>
+        </div>
+        <div class="port-body">
+          <div class="port-meta"><span class="port-cat">Global · AEO</span><span class="port-num">05 / 05</span></div>
+          <div class="port-title">hudafy.com</div>
+          <p class="port-desc">Islamskie narzędzia duchowe. Kalkulator Zakat, strategia AEO, 40 tematów.</p>
+          <div class="port-foot"><span class="port-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17 17 7M9 7h8v8"></path></svg></span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="section">
+  <div class="wrap">
+    <div class="cmp-hdr reveal">
+      <div class="eyebrow">porównanie</div>
+      <h2 class="display-h">720 zł vs typowa agencja.</h2>
+      <p>Otwarte porównanie z realnymi liczbami z polskiego rynku 2026.</p>
+    </div>
+    <div class="cmp-scroll">
+      <table>
+        <thead><tr><th></th><th class="hl">adbie</th><th>typowa agencja</th><th>freelancer (abonament)</th></tr></thead>
+        <tbody>
+          <tr><td class="lbl">cena</td><td class="hl">720 zł jednorazowo</td><td>3 000 – 8 000 zł</td><td>200 – 400 zł/mies.</td></tr>
+          <tr><td class="lbl">czas realizacji</td><td class="hl">7 dni roboczych</td><td>4 – 8 tygodni</td><td>bezterminowo</td></tr>
+          <tr><td class="lbl">stała wycena</td><td class="hl">tak, z góry</td><td class="dim">„skontaktuj się"</td><td class="dim">ukryte koszty</td></tr>
+          <tr><td class="lbl">własność strony</td><td class="hl">twoja, bez umowy</td><td>twoja</td><td class="dim">wynajem</td></tr>
+          <tr><td class="lbl">edycja i tworzenie</td><td class="hl">Claude Code + Claude Design</td><td>cms proprietary</td><td class="dim">tylko przez nich</td></tr>
+          <tr><td class="lbl">seo podstawowe</td><td class="hl">w cenie</td><td>+1 000 – 3 000 zł</td><td>+100 zł/mies.</td></tr>
+          <tr><td class="lbl">wsparcie po wdrożeniu</td><td class="hl">60 dni gratis</td><td>~150 zł/h</td><td>w abonamencie</td></tr>
+          <tr><td class="lbl">komunikacja</td><td class="hl">bezpośrednio z autorem</td><td>przez account managera</td><td>bezpośrednio</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="oferta" class="section">
+  <div class="wrap">
+    <div class="prx-hdr reveal">
+      <div class="eyebrow">oferta · bez ukrytych kosztów</div>
+      <h2 class="display-h">Wszystko w jednej cenie — bez niespodzianek.</h2>
+    </div>
+    <div class="prx-box reveal">
+      <div class="prx-left">
+        <div class="prx-pkg">pakiet start</div>
+        <div class="prx-amt">
+          <span class="prx-n">720</span>
+          <div class="prx-u"><div class="zl">zł</div><div class="br">brutto</div></div>
+        </div>
+        <div class="prx-rows">
+          <div class="prx-row"><span class="l">czas realizacji</span><span>7 dni roboczych</span></div>
+          <div class="prx-row"><span class="l">wsparcie</span><span>60 dni gratis</span></div>
+          <div class="prx-row"><span class="l">po wygaśnięciu wsparcia</span><span>100 zł / mies. (opcjonalnie, na życzenie)</span></div>
+        </div>
+        <a href="#cta" class="prx-cta">zamów stronę — 720 zł <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+      <div class="prx-right">
+        <div class="prx-il">w cenie</div>
+        <ul class="prx-feats">
+          <li class="prx-feat"><span class="chk">✓</span>Strona dopasowana do Twojej branży i potrzeb</li>
+          <li class="prx-feat"><span class="chk">✓</span>Responsywność (telefon, tablet, desktop)</li>
+          <li class="prx-feat"><span class="chk">✓</span>Strona tworzona przez Claude Code i Claude Design</li>
+          <li class="prx-feat"><span class="chk">✓</span>Podstawowe SEO (meta tagi, mapa strony)</li>
+          <li class="prx-feat"><span class="chk">✓</span>Formularz kontaktowy</li>
+          <li class="prx-feat"><span class="chk">✓</span>Google Analytics 4</li>
+          <li class="prx-feat"><span class="chk">✓</span>Szkolenie wdrożeniowe po publikacji</li>
+          <li class="prx-feat"><span class="chk">✓</span>2 miesiące wsparcia</li>
+        </ul>
+        <div class="prx-note">
+          <div class="prx-note-ico">i</div>
+          <div>
+            <div class="prx-note-t">Hosting i domena na pierwszy rok</div>
+            <div class="prx-note-s">Pomagam w konfiguracji. Koszt zewnętrzny ~120 zł/rok — przejmujesz pełną kontrolę.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="section">
+  <div class="wrap">
+    <div class="gua-box reveal">
+      <div class="gua-l">
+        <div class="eyebrow">gwarancja · bez ryzyka</div>
+        <h2 class="display-h" style="font-size:clamp(26px,3.5vw,44px);">Nie podoba się? Zwracam pieniądze.</h2>
+        <p style="color:var(--t65);margin-top:20px;max-width:480px;font-size:15px;line-height:1.7;">Pierwsze 7 dni od briefu — pełna gwarancja zwrotu. Jeśli pierwszy projekt designu nie odpowiada Twoim oczekiwaniom, zwracam 100% kwoty bez pytań.</p>
+        <div class="gua-items">
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">100% zwrotu w pierwszych 7 dniach</div><div class="gi-s">Przed startem prac developerskich.</div></div></div>
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">Brak długoterminowych umów</div><div class="gi-s">Płacisz raz, dostajesz stronę. Koniec.</div></div></div>
+          <div class="gua-item"><span class="gc">✓</span><div><div class="gi-t">Strona pozostaje Twoja</div><div class="gi-s">Pełna własność kodu, treści i hostingu.</div></div></div>
+        </div>
+      </div>
+      <div class="gua-r">
+        <div class="gua-big">7</div>
+        <div class="gua-lbl">dni · gwarancja zwrotu</div>
+        <p class="gua-txt">Tysiące małych firm zostaje spalonych przez agencje obiecujące „zaraz, zaraz". Tu nie ma takiego ryzyka.</p>
+        <a href="#cta" class="btn-blk">zacznij bez ryzyka <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proces" class="section">
+  <div class="wrap">
+    <div class="proc-hdr">
+      <div class="reveal">
+        <div class="eyebrow">proces · dzień po dniu</div>
+        <h2 class="display-h">Tydzień. Od briefu do live.</h2>
+      </div>
+      <p class="reveal">Codzienny status, bez znikania na tygodnie. Od pierwszego dnia wiesz, na czym stoisz.</p>
+    </div>
+    <div class="proc-card reveal">
+      <ol class="timeline">
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 0</span>
+            <div><div class="tl-t">Wypełniasz brief</div><p class="tl-d">5-minutowy formularz: branża, kolory, inspiracje, treści. Natychmiastowe potwierdzenie i faktura proforma.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 1–5</span>
+            <div><div class="tl-t">Tworzenie strony</div><p class="tl-d">Strona tworzona przez Claude Code i Claude Design. Status mailem każdego dnia. SEO, Analytics, formularz.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 6</span>
+            <div><div class="tl-t">Twoje poprawki</div><p class="tl-d">Link do wersji testowej na Netlify. Zbieram uwagi (do 3 rund w cenie).</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot on"></span>
+          <div class="tl-in">
+            <span class="tl-day on">dzień 7</span>
+            <div><div class="tl-t">Publikacja live</div><p class="tl-d">Konfiguracja hostingu, podpięcie domeny, szkolenie 30 min wideo. Dostajesz wszystkie hasła.</p></div>
+          </div>
+        </li>
+        <li class="tl">
+          <span class="tl-dot"></span>
+          <div class="tl-in">
+            <span class="tl-day">dzień 8–68</span>
+            <div><div class="tl-t">Wsparcie 60 dni</div><p class="tl-d">Odpowiadam na pytania, naprawiam usterki, pomagam dodać nowe sekcje.</p></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="eyebrow">opinie · klienci</div>
+      <h2 class="display-h">co mówią klienci?</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o szybkości realizacji i transparencji procesu — w 1-2 zdaniach, własnym językiem branży."</p>
+        <div class="test-auth"><div class="test-av">JK</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[stanowisko], [firma]</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o efekcie biznesowym — wzrost zapytań, łatwość samodzielnej edycji panelu."</p>
+        <div class="test-auth"><div class="test-av">AM</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[branża], [miasto]</div></div></div>
+      </div>
+      <div class="test-card reveal">
+        <p class="test-q">„<span class="tag">cytat</span> o stosunku jakości do ceny — porównanie z poprzednią ofertą agencyjną, satysfakcja ze wsparcia."</p>
+        <div class="test-auth"><div class="test-av">PN</div><div><div class="test-nm">[imię nazwisko]</div><div class="test-rl">[stanowisko], [firma]</div></div></div>
+      </div>
+    </div>
+    <p class="test-ph">[placeholder · uzupełnij prawdziwe cytaty po zebraniu opinii]</p>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <div class="eyebrow">zaufanie · standardy</div>
+      <h2 class="display-h">Bezpieczeństwo od pierwszego dnia.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"></path><path d="M9 12l2 2 4-4" stroke-width="1.8"></path></svg></div>
+        <div class="trust-t">ssl · https</div>
+        <p class="trust-d">Certyfikat SSL w cenie. Szyfrowane połączenie i zielona kłódka od dnia publikacji.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"></rect><path d="M7 8h10M7 12h6M7 16h10"></path></svg></div>
+        <div class="trust-t">rodo compliant</div>
+        <p class="trust-d">Polityka prywatności, banner cookies (TCF v2), formularz ze zgodami.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="14" rx="2"></rect><path d="M2 10h20M6 16h4"></path></svg></div>
+        <div class="trust-t">faktura vat</div>
+        <p class="trust-d">Pełna obsługa fakturowa. Przelew tradycyjny, BLIK lub Przelewy24.</p>
+      </div>
+      <div class="trust-c reveal">
+        <div class="trust-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div>
+        <div class="trust-t">odpowiedź w 24h</div>
+        <p class="trust-d">Każdy mail dostaje odpowiedź w 24 godziny robocze. Bez wyjątków.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section">
+  <div class="faq-wrap">
+    <div class="faq-hdr reveal">
+      <div class="eyebrow">faq</div>
+      <h2 class="display-h">Szybkie odpowiedzi.</h2>
+    </div>
+    <details class="fq" open>
+      <summary><span class="fq-qi"><span class="fq-n">01</span><span class="fq-q">Czy 720 zł to cena końcowa?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Tak, 720 zł brutto to całkowity koszt projektu i wdrożenia. Bez dodatkowych opłat za design, kodowanie, formularze ani podstawowe SEO. Jedyny koszt zewnętrzny to hosting i domena (~120 zł/rok).</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">02</span><span class="fq-q">Ile czasu zajmuje zbudowanie strony?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">7 dni roboczych od zatwierdzenia briefu. Do 3 rund poprawek w cenie.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">03</span><span class="fq-q">Czy mogę samodzielnie edytować stronę?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Tak. Strona tworzona przez Claude Code i Claude Design. Szkolenie wdrożeniowe po publikacji.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">04</span><span class="fq-q">Czy obsługujesz firmy spoza Wrocławia?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Cała Polska, zdalnie. Wrocław to mój adres, nie ograniczenie zasięgu.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">05</span><span class="fq-q">Co jeśli będę potrzebować zmian po publikacji?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">60 dni bezpłatnego wsparcia. Potem wsparcie na życzenie — opcjonalnie, bez stałej umowy.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">06</span><span class="fq-q">Czy strona będzie widoczna w Google?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Podstawowe SEO: meta tagi, sitemap, struktura nagłówków, mobile-first, szybkie ładowanie. GA4 i Search Console skonfigurowane.</p>
+    </details>
+    <details class="fq">
+      <summary><span class="fq-qi"><span class="fq-n">07</span><span class="fq-q">Ile podstron mieści się w cenie?</span></span><svg class="fq-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"></path></svg></summary>
+      <p class="fq-a">Strona główna + 4 podstrony (np. o nas, oferta, kontakt, polityka prywatności). Dodatkowe ~80 zł/strona.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="section">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div class="cta-gbg"></div>
+      <div class="cta-in">
+        <div class="cta-ey">ostatni krok</div>
+        <h2 class="cta-h">Gotowy na swoją stronę?</h2>
+        <p class="cta-p">Wypełnij brief, a w 24h dostaniesz plan działania. Bezpłatna wycena. Bez zobowiązań.</p>
+        <div class="cta-btns">
+          <a href="mailto:emma@adbie.pl?subject=Brief%20–%20Conversion%20Call" class="btn-cta">
+            zamów stronę — 720 zł
+            <span class="ac"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+          </a>
+          <a href="mailto:emma@adbie.pl" class="btn-cta-out">emma@adbie.pl</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">
+          <svg viewBox="0 0 256 256" style="width:20px;height:20px;"><path d="M 128 192 L 128 256 L 64.5 256 L 32 223 L 0 192 L 0 128 L 64 128 Z M 256 192 L 256 256 L 192.5 256 L 160 223 L 128 192 L 128 128 L 192 128 Z M 128 64 L 128 128 L 64.5 128 L 32 95 L 0 64 L 0 0 L 64 0 Z M 256 64 L 256 128 L 192.5 128 L 160 95 L 128 64 L 128 0 L 192 0 Z" fill="#fff"></path></svg>
+          <span>adbie</span>
+        </div>
+        <p class="ft-tag">Strony internetowe dla małych firm w Polsce. Stała cena, transparentny proces, gotowe w 7 dni.</p>
+        <a href="mailto:emma@adbie.pl" class="ft-mail">emma@adbie.pl</a>
+      </div>
+      <div>
+        <div class="ft-h">oferta</div>
+        <a href="#oferta" class="ft-a">pakiet start</a>
+        <a href="#portfolio" class="ft-a">portfolio</a>
+        <a href="#proces" class="ft-a">proces</a>
+        <a href="#faq" class="ft-a">faq</a>
+      </div>
+      <div>
+        <div class="ft-h">lokalizacja</div>
+        <span class="ft-s">wrocław</span>
+        <span class="ft-s">dolnośląskie</span>
+        <span class="ft-s">cała polska</span>
+      </div>
+      <div>
+        <div class="ft-h">prawne</div>
+        <a href="#" class="ft-a">polityka prywatności</a>
+        <a href="#" class="ft-a">regulamin</a>
+        <a href="#" class="ft-a">cookies</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 adbie · wrocław, pl</span>
+      <span class="ver">v4.0 · 05.2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TOP -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">↑</button>
+
+<script>
+  // Scroll-to-top
+  var st = document.getElementById('scroll-top');
+  window.addEventListener('scroll', function() {
+    st.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+
+  // Reveal on scroll
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+</script>
+
+</body>
+</html>
