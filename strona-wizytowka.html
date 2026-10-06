@@ -299,11 +299,12 @@
     body.day-mode .moon-icon { display: none; }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--accent); color: #fff;
+      background: #fff; color: #0a0a0a;
       font-size: 13px; font-weight: 500;
       padding: 8px 18px; border-radius: var(--rf);
       transition: opacity .2s;
     }
+    body.day-mode .nav-cta { background: #0a0a0a; color: #fff; }
     .nav-cta:hover { opacity: .85; }
     .nav-cta-short { display: none; }
 
@@ -755,41 +756,47 @@
 
     /* ─── SCROLL-TOP ─── */
     #scroll-top {
-      position: fixed; bottom: 24px; right: 24px; z-index: 90;
+      position: fixed; bottom: 32px; right: 24px; z-index: 999;
       width: 40px; height: 40px; border-radius: 50%;
       background: var(--surface-2); border: 1px solid var(--border);
       color: var(--text-50); font-size: 16px;
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none;
-      transition: opacity .3s, background .2s;
+      transition: opacity .3s, background .2s, bottom .3s ease;
     }
     #scroll-top.visible { opacity: 1; pointer-events: auto; }
+    #scroll-top.above-sticky { bottom: calc(80px + env(safe-area-inset-bottom, 0px) + 16px); z-index: 10000; }
     #scroll-top:hover { background: var(--border); color: var(--text); }
 
     /* ─── STICKY MOBILE CTA ─── */
     .sticky-mobile-cta {
       display: none;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 80;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 12px 20px;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
       align-items: center; justify-content: space-between; gap: 12px;
     }
-    .sticky-mobile-cta-info { flex: 1; }
+    .sticky-mobile-cta-info { flex: 1; min-width: 0; }
     .sticky-mobile-cta-label {
-      font-size: 11px; color: var(--text-45);
-      text-transform: uppercase; letter-spacing: .08em;
+      font-size: 11px; color: rgba(255,255,255,0.55);
+      text-transform: uppercase; letter-spacing: .05em;
     }
     .sticky-mobile-cta-price {
-      font-size: 14px; font-weight: 500; color: var(--text-80);
+      font-size: 15px; font-weight: 700; color: #fff; letter-spacing: -0.01em;
     }
     .sticky-mobile-cta-btn {
       display: inline-flex; align-items: center; gap: 6px;
-      background: var(--accent); color: #fff;
-      font-size: 14px; font-weight: 500;
-      padding: 10px 20px; border-radius: var(--rf);
+      background: #fff; color: #0a0a0a;
+      font-size: 14px; font-weight: 600;
+      padding: 12px 20px; border-radius: 999px;
+      min-height: 48px; flex-shrink: 0;
       white-space: nowrap;
+      transition: transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s ease;
     }
+    .sticky-mobile-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.14); }
+    .sticky-mobile-cta-btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.10); }
 
     /* ─── ANIMATIONS ─── */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s, transform .6s; }
@@ -824,6 +831,8 @@
       .kora-ft-grid { grid-template-columns: 1fr; gap: 32px; }
       .sticky-mobile-cta { display: flex; }
       .steps { grid-template-columns: 1fr; }
+      .two-col-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .co-zawiera-card { padding: 24px 20px !important; }
     }
     @media (max-width: 480px) {
       .pf-grid { grid-template-columns: 1fr; }
@@ -920,7 +929,7 @@
       <p class="eyebrow anim-blur-slide">DEFINICJA</p>
       <h2 class="display-h anim-blur-slide anim-delay-100">Co to jest <em>strona wizytówka</em>?</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="anim-blur-slide anim-delay-200">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="two-col-grid anim-blur-slide anim-delay-200">
       <div>
         <p style="font-size:17px;color:var(--text-70);line-height:1.75;margin-bottom:20px;">
           Strona wizytówka to strona www dla firmy w swojej najprostszej, najbardziej użytecznej formie. Zamiast rozbudowanego sklepu, systemu rezerwacji czy bloga — dostajesz to, czego naprawdę potrzebuje klient: wiedzę o Twojej firmie, zakres usług i sposób kontaktu. Nic ponad to, co konieczne. Prostota jest tutaj zaletą, nie kompromisem.
@@ -929,7 +938,7 @@
           Typowa strona wizytówka ma 1–3 podstrony: stronę główną z ofertą i wyróżnikami, sekcję „o firmie", stronę kontaktową z formularzem. Nie ma koszyka, nie ma panelu admina, nie ma bazy danych. To sprawia, że ładuje się błyskawicznie, nie wymaga miesięcznych aktualizacji i działa niezawodnie przez lata.
         </p>
       </div>
-      <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r);padding:28px 30px;">
+      <div class="co-zawiera-card" style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r);padding:28px 30px;">
         <p style="font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-40);margin-bottom:18px;">CO ZAWIERA</p>
         <ul style="display:flex;flex-direction:column;gap:12px;">
           <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:var(--text-70);">
@@ -1471,23 +1480,22 @@
     document.querySelectorAll('.reveal,.anim-blur-slide').forEach(function(el){ io.observe(el); });
   })();
 
-  // Scroll-top button
+  // Scroll-top button + sticky mobile CTA — show after hero
   (function(){
     var btn = document.getElementById('scroll-top');
-    window.addEventListener('scroll',function(){
-      btn.classList.toggle('visible', window.scrollY > 400);
-    },{passive:true});
-  })();
-
-  // Sticky mobile CTA — show after hero
-  (function(){
     var sticky = document.getElementById('stickyMobileCta');
     if(!sticky) return;
     var hero = document.getElementById('hero');
+    var stickyVisible = false;
     var io = new IntersectionObserver(function(entries){
-      sticky.style.display = entries[0].isIntersecting ? 'none' : 'flex';
+      stickyVisible = !entries[0].isIntersecting;
+      sticky.style.display = stickyVisible ? 'flex' : 'none';
+      btn.classList.toggle('above-sticky', stickyVisible);
     },{threshold:0});
     io.observe(hero);
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('visible', window.scrollY > 400);
+    },{passive:true});
   })();
 </script>
 <script src="/ga-events.js"></script>
