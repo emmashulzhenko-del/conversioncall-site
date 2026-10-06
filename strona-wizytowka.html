@@ -578,66 +578,26 @@
     }
 
     /* ─── PORTFOLIO (REALIZACJE) ─── */
-    .pf-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .pf-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: border-color .2s, transform .2s;
-    }
-    .pf-card:hover {
-      border-color: rgba(196,53,122,.35);
-      transform: translateY(-2px);
-    }
-    .pf-browser {
-      background: var(--surface); border-bottom: 1px solid var(--border);
-    }
-    .pf-browser-chrome {
-      display: flex; align-items: center; gap: 8px;
-      padding: 10px 14px;
-    }
-    .pf-browser-dots {
-      display: flex; gap: 5px;
-    }
-    .pf-browser-dots span {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--border-2);
-    }
-    .pf-browser-url {
-      font-size: 11px; color: var(--text-40);
-      flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    .pf-browser-screen img {
-      width: 100%; aspect-ratio: 16/9; object-fit: cover;
-    }
-    .pf-body {
-      padding: 20px 22px; flex: 1;
-    }
-    .pf-meta {
-      display: flex; justify-content: space-between;
-      font-size: 11px; font-weight: 500; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--text-40);
-      margin-bottom: 10px;
-    }
-    .pf-body h3 {
-      font-size: 17px; font-weight: 500; color: var(--text-90);
-      margin-bottom: 8px;
-    }
-    .pf-body p {
-      font-size: 14px; color: var(--text-55); line-height: 1.6;
-    }
-    .pf-link {
-      display: inline-flex; align-items: center; gap: 4px;
-      margin-top: 14px; font-size: 13px; color: var(--accent);
-      transition: gap .15s;
-    }
-    .pf-card:hover .pf-link { gap: 7px; }
+    .pf-grid{display:grid;grid-template-columns:1fr;gap:20px}
+    .pf-card{display:flex;flex-direction:column;background:var(--card-bg,var(--surface-2));border:1px solid var(--border);border-radius:12px;overflow:hidden;color:var(--text);transition:transform 0.3s ease,border-color 0.3s ease;position:relative}
+    .pf-card:hover{transform:translateY(-4px);border-color:var(--border-2)}
+    .pf-img{width:100%;aspect-ratio:4/3;overflow:hidden}
+    .pf-img img{width:100%;height:100%;object-fit:cover;object-position:top}
+    .pf-body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .pf-meta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-50)}
+    .pf-card h3{font-size:18px;font-weight:600;line-height:1.2;letter-spacing:-0.01em}
+    .pf-card p{font-size:13px;line-height:1.5;color:var(--text-65,var(--text-55))}
+    .pf-browser{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.88);width:300px;z-index:3;border-radius:10px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.08);opacity:0;transition:opacity 0.2s ease,transform 0.2s ease;pointer-events:none;background:#1e1e20}
+    @media(hover:hover) and (min-width:781px){.pf-card:hover .pf-browser{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+    .pf-browser-chrome{display:flex;align-items:center;gap:8px;padding:7px 10px;background:#2c2c2e;border-bottom:1px solid rgba(255,255,255,0.07)}
+    .pf-browser-dots{display:flex;gap:5px;flex-shrink:0}
+    .pf-browser-dots span{width:8px;height:8px;border-radius:50%;display:block}
+    .pf-browser-dots span:nth-child(1){background:rgba(255,95,86,0.65)}
+    .pf-browser-dots span:nth-child(2){background:rgba(255,189,46,0.65)}
+    .pf-browser-dots span:nth-child(3){background:rgba(40,202,66,0.65)}
+    .pf-browser-url{flex:1;font-size:9.5px;color:rgba(255,255,255,0.40);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;background:rgba(255,255,255,0.07);border-radius:4px;padding:2px 8px;font-family:system-ui,sans-serif;letter-spacing:0}
+    .pf-browser-screen{aspect-ratio:16/10;overflow:hidden;line-height:0}
+    .pf-browser-screen img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 
     /* ─── FINAL CTA ─── */
     .sec-cta {
@@ -835,8 +795,10 @@
       .co-zawiera-card { padding: 24px 20px !important; }
     }
     @media (max-width: 480px) {
-      .pf-grid { grid-template-columns: 1fr; }
       .buyers-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 768px) {
+      .pf-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -1289,8 +1251,6 @@
       </a>
     </div>
     <div class="pf-grid">
-
-      <!-- Hydraulik -->
       <a href="https://hydraulik-krakow-pro.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide">
         <div class="pf-browser" aria-hidden="true">
           <div class="pf-browser-chrome">
@@ -1298,74 +1258,67 @@
             <div class="pf-browser-url">hydraulik-krakow-pro.netlify.app</div>
           </div>
           <div class="pf-browser-screen">
-            <img src="/preview-hydraulik.webp" alt="Strona wizytówka dla hydraulika — podgląd" loading="lazy">
+            <img src="/preview-hydraulik.webp" alt="Podgląd strony — Hydraulik Kraków" loading="lazy">
           </div>
         </div>
+        <div class="pf-img"><img src="/hydraulik.webp" alt="Strona internetowa dla firmy hydraulicznej Hydraulik Kraków Pro" loading="lazy"></div>
         <div class="pf-body">
           <div class="pf-meta"><span>PL · HYDRAULIKA</span><span>01 / 04</span></div>
           <h3>Hydraulik Kraków</h3>
-          <p>Strona wizytówka dla lokalnej firmy hydraulicznej. Formularz kontaktowy, telefon klikalny na mobile, lokalne SEO pod frazy „hydraulik Kraków". Gotowa w 7 dni.</p>
-          <span class="pf-link">↗ odwiedź stronę</span>
+          <p>Strona dla firmy hydraulicznej — szybki kontakt i wycena.</p>
         </div>
       </a>
-
-      <!-- Księgowość -->
-      <a href="https://candid-babka-edf09d.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-100">
-        <div class="pf-browser" aria-hidden="true">
-          <div class="pf-browser-chrome">
-            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
-            <div class="pf-browser-url">Kowalska &amp; Wspólnicy</div>
-          </div>
-          <div class="pf-browser-screen">
-            <img src="/preview-ksiegowa.webp" alt="Strona wizytówka dla biura rachunkowego — podgląd" loading="lazy">
-          </div>
-        </div>
-        <div class="pf-body">
-          <div class="pf-meta"><span>PL · KSIĘGOWOŚĆ</span><span>02 / 04</span></div>
-          <h3>Kowalska &amp; Wspólnicy</h3>
-          <p>Strona internetowa dla małej firmy księgowej we Wrocławiu. Trzy podstrony: usługi, cennik, kontakt. Formularz do umawiania konsultacji i lokalne SEO.</p>
-          <span class="pf-link">↗ odwiedź stronę</span>
-        </div>
-      </a>
-
-      <!-- Elektryk -->
-      <a href="https://magical-torte-31e1b9.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-200">
-        <div class="pf-browser" aria-hidden="true">
-          <div class="pf-browser-chrome">
-            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
-            <div class="pf-browser-url">ElectroPro — Elektryk</div>
-          </div>
-          <div class="pf-browser-screen">
-            <img src="/preview-electropro.webp" alt="Strona wizytówka dla elektryka — podgląd" loading="lazy">
-          </div>
-        </div>
-        <div class="pf-body">
-          <div class="pf-meta"><span>PL · ELEKTRYK</span><span>03 / 04</span></div>
-          <h3>ElectroPro — Elektryk</h3>
-          <p>Strona www dla firmy elektrycznej. Szybki kontakt, zakres usług, cennik orientacyjny. SEO lokalne sprawia, że klient z Google Twoje dane widzi zanim wejdzie na stronę.</p>
-          <span class="pf-link">↗ odwiedź stronę</span>
-        </div>
-      </a>
-
-      <!-- Przeprowadzki -->
-      <a href="https://przenosiny-warszawa.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-300">
+      <a href="https://przenosiny-warszawa.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-100">
         <div class="pf-browser" aria-hidden="true">
           <div class="pf-browser-chrome">
             <div class="pf-browser-dots"><span></span><span></span><span></span></div>
             <div class="pf-browser-url">przenosiny-warszawa.netlify.app</div>
           </div>
           <div class="pf-browser-screen">
-            <img src="/preview-przeprowadzki.webp" alt="Strona wizytówka dla firmy przeprowadzkowej — podgląd" loading="lazy">
+            <img src="/preview-przeprowadzki.webp" alt="Podgląd strony — Przenosiny Warszawa" loading="lazy">
           </div>
         </div>
+        <div class="pf-img"><img src="/przepro.webp" alt="Strona internetowa dla firmy przeprowadzkowej Przenosiny Warszawa" loading="lazy"></div>
         <div class="pf-body">
-          <div class="pf-meta"><span>PL · PRZEPROWADZKI</span><span>04 / 04</span></div>
+          <div class="pf-meta"><span>PL · PRZEPROWADZKI</span><span>02 / 04</span></div>
           <h3>Przenosiny Warszawa</h3>
-          <p>Strona internetowa dla małej firmy przeprowadzkowej w Warszawie. Formularz wyceny, obszar działania, opinie klientów i cennik — wszystko co potrzebne, nic ponad to.</p>
-          <span class="pf-link">↗ odwiedź stronę</span>
+          <p>Strona dla warszawskiej firmy przeprowadzkowej — cennik, opinie, obszar działania i formularz wyceny.</p>
         </div>
       </a>
-
+      <a href="https://candid-babka-edf09d.netlify.app/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-200">
+        <div class="pf-browser" aria-hidden="true">
+          <div class="pf-browser-chrome">
+            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
+            <div class="pf-browser-url">Kowalska &amp; Wspólnicy</div>
+          </div>
+          <div class="pf-browser-screen">
+            <img src="/preview-ksiegowa.webp" alt="Podgląd strony — Kowalska i Wspólnicy" loading="lazy">
+          </div>
+        </div>
+        <div class="pf-img"><img src="/accountant.webp" alt="Strona internetowa dla biura rachunkowego Kowalska i Wspólnicy Wrocław" loading="lazy"></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · KSIĘGOWOŚĆ</span><span>03 / 04</span></div>
+          <h3>Kowalska &amp; Wspólnicy</h3>
+          <p>Strona dla wrocławskiego biura rachunkowego — usługi, cennik, FAQ i umawianie konsultacji.</p>
+        </div>
+      </a>
+      <a href="https://www.yogaretreat.fit/" target="_blank" rel="noopener" class="pf-card anim-blur-slide anim-delay-300">
+        <div class="pf-browser" aria-hidden="true">
+          <div class="pf-browser-chrome">
+            <div class="pf-browser-dots"><span></span><span></span><span></span></div>
+            <div class="pf-browser-url">yogaretreat.fit</div>
+          </div>
+          <div class="pf-browser-screen">
+            <img src="/preview-yoga.webp" alt="Podgląd strony — yogaretreat.fit" loading="lazy">
+          </div>
+        </div>
+        <div class="pf-img"><img src="/teaser-yoga.webp" alt="yogaretreat.fit" loading="lazy"></div>
+        <div class="pf-body">
+          <div class="pf-meta"><span>PL · RETREATY</span><span>04 / 04</span></div>
+          <h3>yogaretreat.fit</h3>
+          <p>Retreaty jogi na wyspie Thasos. Strona generująca zapisy online dzięki lokalnemu SEO.</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
